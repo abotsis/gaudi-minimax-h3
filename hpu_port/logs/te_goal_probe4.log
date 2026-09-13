@@ -1,0 +1,77 @@
+============================= HPU PT BRIDGE CONFIGURATION ON RANK = 0 ============= 
+ PT_HPU_LAZY_MODE = 1
+ PT_HPU_RECIPE_CACHE_CONFIG = ,false,1024,false
+ PT_HPU_MAX_COMPOUND_OP_SIZE = 9223372036854775807
+ PT_HPU_LAZY_ACC_PAR_MODE = 1
+ PT_HPU_ENABLE_REFINE_DYNAMIC_SHAPES = 0
+ PT_HPU_EAGER_PIPELINE_ENABLE = 1
+ PT_HPU_EAGER_COLLECTIVE_PIPELINE_ENABLE = 1
+ PT_HPU_ENABLE_LAZY_COLLECTIVES = 0
+---------------------------: System Configuration :---------------------------
+Num CPU Cores : 128
+CPU RAM       : 125 GB
+------------------------------------------------------------------------------
+Loading weights:   0%|          | 0/1058 [00:00<?, ?it/s]Loading weights:  17%|█▋        | 183/1058 [00:00<00:00, 1789.59it/s]Loading weights:  34%|███▍      | 362/1058 [00:00<00:00, 1662.07it/s]Loading weights:  50%|█████     | 529/1058 [00:00<00:00, 1510.55it/s]Loading weights:  64%|██████▍   | 682/1058 [00:00<00:00, 1399.71it/s]Loading weights:  80%|███████▉  | 844/1058 [00:00<00:00, 1470.11it/s]Loading weights:  97%|█████████▋| 1024/1058 [00:00<00:00, 1572.28it/s]Loading weights: 100%|██████████| 1058/1058 [00:00<00:00, 1554.02it/s]
+[goal-probe] model + processor loaded
+[te-stream] dropped 13 never-executed decoder layers
+[te-stream] dropped lm_head (never used; embeds are tied)
+[te-stream] rotary on hpu; vision tower + embed stay on CPU (bit-exact)
+[te-stream] activated on hpu (graphs OFF, eager recipes per region)
+[goal-probe] streamed conditioner active
+[goal-probe] seq    10: rel_fro(vs cpu bf16)=0.00000 det=True t0=5.7s steady=4.25s -> PASS
+[goal-probe] seq    40: rel_fro(vs cpu bf16)=0.00000 det=True t0=4.5s steady=4.21s -> PASS
+[goal-probe] seq   146: rel_fro(vs cpu bf16)=0.00000 det=True t0=4.6s steady=4.54s -> PASS
+[goal-probe] seq   510: rel_fro(vs cpu bf16)=0.00000 det=True t0=4.6s steady=4.22s -> PASS
+[goal-probe] image presentation seq 415: cpu bf16 ref done
+[goal-probe] streamed image: t0=7.9s det=True rel_fro(vs cpu bf16)=0.00000
+[goal-probe] localized fp32 adjudication at layer 43...
+Traceback (most recent call last):
+  File "/root/src/h3/hpu_port/tests/te_stream_goal_probe.py", line 231, in <module>
+    sys.exit(main())
+             ^^^^^^
+  File "/root/src/h3/hpu_port/tests/te_stream_goal_probe.py", line 167, in main
+    _ = stream.encode(ids_img, vision_inputs=vision_kwargs, dtype=torch.bfloat16)
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/root/src/h3/hpu_port/te_stream.py", line 304, in encode
+    outputs = self.text_encoder.model(
+              ^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/root/src/h3/.venv/lib/python3.12/site-packages/torch/nn/modules/module.py", line 1779, in _wrapped_call_impl
+    return self._call_impl(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/root/src/h3/.venv/lib/python3.12/site-packages/torch/nn/modules/module.py", line 1885, in _call_impl
+    return inner()
+           ^^^^^^^
+  File "/root/src/h3/.venv/lib/python3.12/site-packages/torch/nn/modules/module.py", line 1833, in inner
+    result = forward_call(*args, **kwargs)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/root/src/h3/hpu_port/te_stream.py", line 447, in _lm_forward_streamed
+    outputs = self.language_model(
+              ^^^^^^^^^^^^^^^^^^^^
+  File "/root/src/h3/.venv/lib/python3.12/site-packages/torch/nn/modules/module.py", line 1779, in _wrapped_call_impl
+    return self._call_impl(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/root/src/h3/.venv/lib/python3.12/site-packages/torch/nn/modules/module.py", line 1885, in _call_impl
+    return inner()
+           ^^^^^^^
+  File "/root/src/h3/.venv/lib/python3.12/site-packages/torch/nn/modules/module.py", line 1833, in inner
+    result = forward_call(*args, **kwargs)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/root/src/h3/hpu_port/te_stream.py", line 520, in _lang_forward_streamed
+    hidden_states = decoder_layer(
+                    ^^^^^^^^^^^^^^
+  File "/root/src/h3/.venv/lib/python3.12/site-packages/transformers/modeling_layers.py", line 114, in __call__
+    return super().__call__(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/root/src/h3/.venv/lib/python3.12/site-packages/torch/nn/modules/module.py", line 1779, in _wrapped_call_impl
+    return self._call_impl(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/root/src/h3/.venv/lib/python3.12/site-packages/torch/nn/modules/module.py", line 1885, in _call_impl
+    return inner()
+           ^^^^^^^
+  File "/root/src/h3/.venv/lib/python3.12/site-packages/torch/nn/modules/module.py", line 1833, in inner
+    result = forward_call(*args, **kwargs)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/root/src/h3/hpu_port/tests/te_stream_goal_probe.py", line 158, in spy43
+    out = te_stream._layer_forward_streamed(self, hidden_states, **kw)
+          ^^^^^^^^^
+NameError: name 'te_stream' is not defined

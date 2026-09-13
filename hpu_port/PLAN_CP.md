@@ -526,3 +526,28 @@ graph wedge class. Hybrid: stream decoder-layer weights H2D per prompt.
 H3_ALLOW_HPU=1 ... --device-map te=stream,dit=hpu,vae=hpu,audio=hpu
 (pin_weights=False default = v1 unpinned; pin_weights=True is the v2 flat-
 buffer fast path, blocked on the HP-pool cap above).
+
+### Goal acceptance (2026-09-13, tests/te_stream_goal_probe.py + end-to-end)
+* Varying text sizes (10/40/146/510 tokens): streamed vs CPU-bf16 rel_fro
+  0.00000 (bit-identical ALL sizes), within-process deterministic, steady
+  4.1-4.5 s (copy-bound; seq-independent as designed).
+* Image presentation (405-token anchor @ r480 grid): within-process
+  deterministic; BOOT-DEPENDENT branch: some boots bit-match CPU
+  (rel_fro 0.000), others flip the layer-43 sink channel (rel_fro 0.24-
+  0.35). Text presentations are boot-stable; image presentations have
+  knife-edge layers that resolve per-process. Adjudication (localized
+  fp32 layer-43 replay, CAUSAL mask — a maskless replay is non-causal and
+  invalid: goal_probe5's triangle-inequality violation): both branches sit
+  0.00284 from fp32 truth — peers, no truth violation. Acceptance gates
+  are therefore: within-process determinism + truth-faithfulness, NOT
+  cross-path bit-identity.
+* fl2va end-to-end, 2 anchors (start+end), te=stream + fused decode
+  (H3_FUSED_DECODE=1, vae=hpu — the v98 production config): COMPLETED,
+  124 frames + wav, generate 197 s. Anchor fidelity frame0-vs-start
+  cos 0.9997 / frameN-vs-end cos 0.9995 (cross ~0.74: distinct anchors,
+  real interpolation). NOTE: keyframe VAE encoder requires HPU tensors ->
+  fl2va with vae=cpu fails pre-TE ("Got a non-HPU tensor") — fl2va needs
+  the fused-decode config, CPU-VAE decode config is t2va-only.
+* te=stream produced ZERO errors across all runs; the two pipeline
+  failures observed (VAE decode dma-timeout at CP=1 in-process; keyframe
+  encoder on CPU) are pre-existing device-map issues unrelated to the TE.

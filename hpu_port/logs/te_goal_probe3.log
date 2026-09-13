@@ -1,0 +1,27 @@
+============================= HPU PT BRIDGE CONFIGURATION ON RANK = 0 ============= 
+ PT_HPU_LAZY_MODE = 1
+ PT_HPU_RECIPE_CACHE_CONFIG = ,false,1024,false
+ PT_HPU_MAX_COMPOUND_OP_SIZE = 9223372036854775807
+ PT_HPU_LAZY_ACC_PAR_MODE = 1
+ PT_HPU_ENABLE_REFINE_DYNAMIC_SHAPES = 0
+ PT_HPU_EAGER_PIPELINE_ENABLE = 1
+ PT_HPU_EAGER_COLLECTIVE_PIPELINE_ENABLE = 1
+ PT_HPU_ENABLE_LAZY_COLLECTIVES = 0
+---------------------------: System Configuration :---------------------------
+Num CPU Cores : 128
+CPU RAM       : 125 GB
+------------------------------------------------------------------------------
+Loading weights:   0%|          | 0/1058 [00:00<?, ?it/s]Loading weights:  19%|█▉        | 202/1058 [00:00<00:00, 1996.72it/s]Loading weights:  38%|███▊      | 402/1058 [00:00<00:00, 1631.21it/s]Loading weights:  54%|█████▍    | 570/1058 [00:00<00:00, 1456.02it/s]Loading weights:  68%|██████▊   | 719/1058 [00:00<00:00, 1388.16it/s]Loading weights:  85%|████████▍ | 897/1058 [00:00<00:00, 1510.58it/s]Loading weights: 100%|██████████| 1058/1058 [00:00<00:00, 1568.03it/s]
+[goal-probe] model + processor loaded
+[te-stream] dropped 13 never-executed decoder layers
+[te-stream] dropped lm_head (never used; embeds are tied)
+[te-stream] rotary on hpu; vision tower + embed stay on CPU (bit-exact)
+[te-stream] activated on hpu (graphs OFF, eager recipes per region)
+[goal-probe] streamed conditioner active
+[goal-probe] seq    10: rel_fro(vs cpu bf16)=0.00000 det=True t0=43.4s steady=16.10s -> PASS
+[goal-probe] seq    40: rel_fro(vs cpu bf16)=0.00000 det=True t0=14.0s steady=12.61s -> PASS
+[goal-probe] seq   146: rel_fro(vs cpu bf16)=0.00000 det=True t0=6.4s steady=4.36s -> PASS
+[goal-probe] seq   510: rel_fro(vs cpu bf16)=0.00000 det=True t0=4.6s steady=4.28s -> PASS
+[goal-probe] image presentation seq 415: cpu bf16 ref done
+[goal-probe] streamed image: t0=13.7s det=True rel_fro(vs cpu bf16)=0.00000
+[goal-probe] computing fp32 truth (LM-only forward, per-layer casts)...

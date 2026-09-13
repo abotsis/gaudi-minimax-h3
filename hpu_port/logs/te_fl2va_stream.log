@@ -1,0 +1,200 @@
+[h3] WARNING: duration 1s is not a supported bucket; snapping to 5s (124 frames, T_lat 37).
+[h3] plan: {
+  "workflow": "fl2va",
+  "bucket_res": "r384",
+  "canvas": [
+    384,
+    224
+  ],
+  "duration_frames": 124,
+  "T_lat": 37,
+  "audio_latents": 207,
+  "rows_per_frame": 84,
+  "fl2va_extra_rows": 184,
+  "text_budget": 2048,
+  "expected_packed_seq": 5754,
+  "steps": 4,
+  "seed": 7,
+  "device_map": {
+    "te": "stream",
+    "dit": "hpu",
+    "vae": "cpu",
+    "audio": "cpu"
+  }
+}
+[h3] workdir: /root/src/h3/hpu_port/workdir/fl2va
+Loading weights:   0%|          | 0/1058 [00:00<?, ?it/s]Loading weights:  37%|███▋      | 388/1058 [00:00<00:00, 3868.13it/s]Loading weights:  73%|███████▎  | 775/1058 [00:00<00:00, 3337.51it/s]Loading weights: 100%|██████████| 1058/1058 [00:00<00:00, 3306.94it/s]
+Loading checkpoint shards:   0%|          | 0/14 [00:00<?, ?it/s]Loading checkpoint shards:  21%|██▏       | 3/14 [00:00<00:00, 23.39it/s]Loading checkpoint shards:  43%|████▎     | 6/14 [00:00<00:00, 22.12it/s]Loading checkpoint shards:  64%|██████▍   | 9/14 [00:00<00:00, 21.12it/s]Loading checkpoint shards:  86%|████████▌ | 12/14 [00:00<00:00, 21.17it/s]Loading checkpoint shards: 100%|██████████| 14/14 [00:00<00:00, 21.77it/s]
+Loading checkpoint shards:   0%|          | 0/3 [00:00<?, ?it/s]Loading checkpoint shards:  33%|███▎      | 1/3 [00:00<00:00,  6.77it/s]Loading checkpoint shards:  67%|██████▋   | 2/3 [00:00<00:00,  6.14it/s]Loading checkpoint shards: 100%|██████████| 3/3 [00:00<00:00,  8.89it/s]
+/root/src/h3/.venv/lib/python3.12/site-packages/torch/nn/utils/weight_norm.py:144: FutureWarning: `torch.nn.utils.weight_norm` is deprecated in favor of `torch.nn.utils.parametrizations.weight_norm`.
+  WeightNorm.apply(module, name, dim)
+============================= HPU PT BRIDGE CONFIGURATION ON RANK = 0 ============= 
+ PT_HPU_LAZY_MODE = 1
+ PT_HPU_RECIPE_CACHE_CONFIG = ,false,1024,false
+ PT_HPU_MAX_COMPOUND_OP_SIZE = 9223372036854775807
+ PT_HPU_LAZY_ACC_PAR_MODE = 1
+ PT_HPU_ENABLE_REFINE_DYNAMIC_SHAPES = 0
+ PT_HPU_EAGER_PIPELINE_ENABLE = 1
+ PT_HPU_EAGER_COLLECTIVE_PIPELINE_ENABLE = 1
+ PT_HPU_ENABLE_LAZY_COLLECTIVES = 0
+---------------------------: System Configuration :---------------------------
+Num CPU Cores : 128
+CPU RAM       : 125 GB
+------------------------------------------------------------------------------
+[h3] placed transformer on hpu
+Attention backends are an experimental feature and the API may be subject to change.
+Attention backends are an experimental feature and the API may be subject to change.
+[h3] attention backend: habana_fused_sdpa (DiT + video VAE)
+[h3] rope cache installed on transformer.rope
+[h3] DiT wrapped into HPU graphs (per-bucket static shapes)
+[h3] graphs ON
+[h3] per-block mark_step installed on 6 blocks
+[h3] VAE encoder per-block mark_step installed on 6 blocks
+[te-stream] dropped 13 never-executed decoder layers
+[te-stream] dropped lm_head (never used; embeds are tied)
+[te-stream] rotary on hpu; vision tower + embed stay on CPU (bit-exact)
+[te-stream] activated on hpu (graphs OFF, eager recipes per region)
+[h3] TE streaming conditioner active (rank0; condition layer 50; graphs OFF)
+[h3] block logging installed (15 block classes; H3_LOG_BLOCKS=0 to disable)
+[h3:block] > SequentialPipelineBlocks
+  [h3:block] > MiniMaxH3ResizeStep
+  [h3:block] < MiniMaxH3ResizeStep: 0.017s
+  [h3:block] > MiniMaxH3FL2VATextEncoderStep
+  [h3:block] < MiniMaxH3FL2VATextEncoderStep: 39.094s
+  [h3:block] > MiniMaxH3KeyframeVaeEncoderStep
+  [h3:block] ! MiniMaxH3KeyframeVaeEncoderStep: FAILED after 0.056s: RuntimeError: Got a non-HPU tensor, expecting an HPU tensor
+
+Error in block: (vae_encoder, MiniMaxH3KeyframeVaeEncoderStep)
+Error details: Got a non-HPU tensor, expecting an HPU tensor
+Traceback:
+Traceback (most recent call last):
+  File "/root/src/h3/.venv/lib/python3.12/site-packages/diffusers/modular_pipelines/modular_pipeline.py", line 1145, in __call__
+    pipeline, state = block(pipeline, state)
+                      ^^^^^^^^^^^^^^^^^^^^^^
+  File "/root/src/h3/hpu_port/run_t2va.py", line 1714, in logged
+    out = orig(self, *args, **kwargs)
+          ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/root/src/h3/.venv/lib/python3.12/site-packages/torch/utils/_contextlib.py", line 124, in decorate_context
+    return func(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^
+  File "/root/src/h3/.venv/lib/python3.12/site-packages/diffusers/modular_pipelines/minimax_h3/encoders.py", line 364, in __call__
+    encode_vae_condition(
+  File "/root/src/h3/.venv/lib/python3.12/site-packages/diffusers/modular_pipelines/minimax_h3/encoders.py", line 133, in encode_vae_condition
+    posterior = vae.encode(pixels, return_dict=False)[0]
+                ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/root/src/h3/.venv/lib/python3.12/site-packages/diffusers/utils/accelerate_utils.py", line 46, in wrapper
+    return method(self, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/root/src/h3/.venv/lib/python3.12/site-packages/diffusers/models/autoencoders/autoencoder_kl_minimax_h3.py", line 866, in encode
+    moments = self._encode(x)
+              ^^^^^^^^^^^^^^^
+  File "/root/src/h3/.venv/lib/python3.12/site-packages/diffusers/models/autoencoders/autoencoder_kl_minimax_h3.py", line 777, in _encode
+    return self._encode_clip(x)
+           ^^^^^^^^^^^^^^^^^^^^
+  File "/root/src/h3/.venv/lib/python3.12/site-packages/diffusers/models/autoencoders/autoencoder_kl_minimax_h3.py", line 728, in _encode_clip
+    row.append(self.quant_conv(self.encoder(tile)))
+                               ^^^^^^^^^^^^^^^^^^
+  File "/root/src/h3/.venv/lib/python3.12/site-packages/torch/nn/modules/module.py", line 1779, in _wrapped_call_impl
+    return self._call_impl(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/root/src/h3/.venv/lib/python3.12/site-packages/torch/nn/modules/module.py", line 1885, in _call_impl
+    return inner()
+           ^^^^^^^
+  File "/root/src/h3/.venv/lib/python3.12/site-packages/torch/nn/modules/module.py", line 1833, in inner
+    result = forward_call(*args, **kwargs)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/root/src/h3/.venv/lib/python3.12/site-packages/diffusers/models/autoencoders/autoencoder_kl_minimax_h3.py", line 272, in forward
+    hidden_states = self.conv_in(hidden_states)
+                    ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/root/src/h3/.venv/lib/python3.12/site-packages/torch/nn/modules/module.py", line 1779, in _wrapped_call_impl
+    return self._call_impl(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/root/src/h3/.venv/lib/python3.12/site-packages/torch/nn/modules/module.py", line 1885, in _call_impl
+    return inner()
+           ^^^^^^^
+  File "/root/src/h3/.venv/lib/python3.12/site-packages/torch/nn/modules/module.py", line 1833, in inner
+    result = forward_call(*args, **kwargs)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/root/src/h3/.venv/lib/python3.12/site-packages/diffusers/models/autoencoders/autoencoder_kl_minimax_h3.py", line 65, in forward
+    return F.conv3d(hidden_states, self.weight, self.bias, stride=self.stride, padding=0, dilation=self.dilation)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/root/src/h3/.venv/lib/python3.12/site-packages/habana_frameworks/torch/core/weight_sharing.py", line 81, in __torch_function__
+    return super().__torch_function__(func, types, new_args, kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+RuntimeError: Got a non-HPU tensor, expecting an HPU tensor
+
+[h3:block] ! SequentialPipelineBlocks: FAILED after 39.182s: RuntimeError: Got a non-HPU tensor, expecting an HPU tensor
+Error in block: (SequentialPipelineBlocks):
+
+Traceback (most recent call last):
+  File "/root/src/h3/hpu_port/run_t2va.py", line 4709, in <module>
+    sys.exit(main())
+             ^^^^^^
+  File "/root/src/h3/hpu_port/run_t2va.py", line 3840, in main
+    run_pipeline(
+  File "/root/src/h3/hpu_port/run_t2va.py", line 4516, in run_pipeline
+    state = _active(**{**kwargs, "num_inference_steps": run_steps})
+            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/root/src/h3/.venv/lib/python3.12/site-packages/diffusers/modular_pipelines/modular_pipeline.py", line 2927, in __call__
+    _, state = self._blocks(self, state)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/root/src/h3/hpu_port/run_t2va.py", line 1714, in logged
+    out = orig(self, *args, **kwargs)
+          ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/root/src/h3/.venv/lib/python3.12/site-packages/torch/utils/_contextlib.py", line 124, in decorate_context
+    return func(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^
+  File "/root/src/h3/.venv/lib/python3.12/site-packages/diffusers/modular_pipelines/modular_pipeline.py", line 1145, in __call__
+    pipeline, state = block(pipeline, state)
+                      ^^^^^^^^^^^^^^^^^^^^^^
+  File "/root/src/h3/hpu_port/run_t2va.py", line 1714, in logged
+    out = orig(self, *args, **kwargs)
+          ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/root/src/h3/.venv/lib/python3.12/site-packages/torch/utils/_contextlib.py", line 124, in decorate_context
+    return func(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^
+  File "/root/src/h3/.venv/lib/python3.12/site-packages/diffusers/modular_pipelines/minimax_h3/encoders.py", line 364, in __call__
+    encode_vae_condition(
+  File "/root/src/h3/.venv/lib/python3.12/site-packages/diffusers/modular_pipelines/minimax_h3/encoders.py", line 133, in encode_vae_condition
+    posterior = vae.encode(pixels, return_dict=False)[0]
+                ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/root/src/h3/.venv/lib/python3.12/site-packages/diffusers/utils/accelerate_utils.py", line 46, in wrapper
+    return method(self, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/root/src/h3/.venv/lib/python3.12/site-packages/diffusers/models/autoencoders/autoencoder_kl_minimax_h3.py", line 866, in encode
+    moments = self._encode(x)
+              ^^^^^^^^^^^^^^^
+  File "/root/src/h3/.venv/lib/python3.12/site-packages/diffusers/models/autoencoders/autoencoder_kl_minimax_h3.py", line 777, in _encode
+    return self._encode_clip(x)
+           ^^^^^^^^^^^^^^^^^^^^
+  File "/root/src/h3/.venv/lib/python3.12/site-packages/diffusers/models/autoencoders/autoencoder_kl_minimax_h3.py", line 728, in _encode_clip
+    row.append(self.quant_conv(self.encoder(tile)))
+                               ^^^^^^^^^^^^^^^^^^
+  File "/root/src/h3/.venv/lib/python3.12/site-packages/torch/nn/modules/module.py", line 1779, in _wrapped_call_impl
+    return self._call_impl(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/root/src/h3/.venv/lib/python3.12/site-packages/torch/nn/modules/module.py", line 1885, in _call_impl
+    return inner()
+           ^^^^^^^
+  File "/root/src/h3/.venv/lib/python3.12/site-packages/torch/nn/modules/module.py", line 1833, in inner
+    result = forward_call(*args, **kwargs)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/root/src/h3/.venv/lib/python3.12/site-packages/diffusers/models/autoencoders/autoencoder_kl_minimax_h3.py", line 272, in forward
+    hidden_states = self.conv_in(hidden_states)
+                    ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/root/src/h3/.venv/lib/python3.12/site-packages/torch/nn/modules/module.py", line 1779, in _wrapped_call_impl
+    return self._call_impl(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/root/src/h3/.venv/lib/python3.12/site-packages/torch/nn/modules/module.py", line 1885, in _call_impl
+    return inner()
+           ^^^^^^^
+  File "/root/src/h3/.venv/lib/python3.12/site-packages/torch/nn/modules/module.py", line 1833, in inner
+    result = forward_call(*args, **kwargs)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/root/src/h3/.venv/lib/python3.12/site-packages/diffusers/models/autoencoders/autoencoder_kl_minimax_h3.py", line 65, in forward
+    return F.conv3d(hidden_states, self.weight, self.bias, stride=self.stride, padding=0, dilation=self.dilation)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/root/src/h3/.venv/lib/python3.12/site-packages/habana_frameworks/torch/core/weight_sharing.py", line 81, in __torch_function__
+    return super().__torch_function__(func, types, new_args, kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+RuntimeError: Got a non-HPU tensor, expecting an HPU tensor

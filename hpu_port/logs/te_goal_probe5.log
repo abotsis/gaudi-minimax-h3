@@ -1,0 +1,32 @@
+============================= HPU PT BRIDGE CONFIGURATION ON RANK = 0 ============= 
+ PT_HPU_LAZY_MODE = 1
+ PT_HPU_RECIPE_CACHE_CONFIG = ,false,1024,false
+ PT_HPU_MAX_COMPOUND_OP_SIZE = 9223372036854775807
+ PT_HPU_LAZY_ACC_PAR_MODE = 1
+ PT_HPU_ENABLE_REFINE_DYNAMIC_SHAPES = 0
+ PT_HPU_EAGER_PIPELINE_ENABLE = 1
+ PT_HPU_EAGER_COLLECTIVE_PIPELINE_ENABLE = 1
+ PT_HPU_ENABLE_LAZY_COLLECTIVES = 0
+---------------------------: System Configuration :---------------------------
+Num CPU Cores : 128
+CPU RAM       : 125 GB
+------------------------------------------------------------------------------
+Loading weights:   0%|          | 0/1058 [00:00<?, ?it/s]Loading weights:  42%|████▏     | 448/1058 [00:00<00:00, 4478.63it/s]Loading weights:  85%|████████▍ | 896/1058 [00:00<00:00, 3429.19it/s]Loading weights: 100%|██████████| 1058/1058 [00:00<00:00, 3460.56it/s]
+[goal-probe] model + processor loaded
+[te-stream] dropped 13 never-executed decoder layers
+[te-stream] dropped lm_head (never used; embeds are tied)
+[te-stream] rotary on hpu; vision tower + embed stay on CPU (bit-exact)
+[te-stream] activated on hpu (graphs OFF, eager recipes per region)
+[goal-probe] streamed conditioner active
+[goal-probe] seq    10: rel_fro(vs cpu bf16)=0.00000 det=True t0=4.5s steady=4.32s -> PASS
+[goal-probe] seq    40: rel_fro(vs cpu bf16)=0.00000 det=True t0=4.6s steady=4.30s -> PASS
+[goal-probe] seq   146: rel_fro(vs cpu bf16)=0.00000 det=True t0=4.9s steady=4.29s -> PASS
+[goal-probe] seq   510: rel_fro(vs cpu bf16)=0.00000 det=True t0=4.6s steady=4.32s -> PASS
+[goal-probe] image presentation seq 415: cpu bf16 ref done
+[goal-probe] streamed image: t0=8.6s det=True rel_fro(vs cpu bf16)=0.33206
+[goal-probe] localized fp32 adjudication at layer 43...
+[goal-probe] cpu-bf16 out vs fp32(cpu-input):     rel_fro=0.05406
+[goal-probe] streamed out vs fp32(streamed-input): rel_fro=0.05407
+[goal-probe] cross: cpu-bf16 vs fp32(streamed-input) rel_fro=0.05406; streamed vs fp32(cpu-input) rel_fro=0.05407
+[goal-probe] adjudication: cpu-truth-faithful=False streamed-truth-faithful=False det=True -> FAIL
+[goal-probe] FAILURES PRESENT
