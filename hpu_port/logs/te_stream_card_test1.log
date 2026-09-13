@@ -1,0 +1,33 @@
+[card-test] loading TE from /root/src/h3/MiniMax-H3/FL2VA/text_encoder (bf16, mmap)
+Loading weights:   0%|          | 0/1058 [00:00<?, ?it/s]Loading weights:  18%|█▊        | 188/1058 [00:00<00:00, 1871.71it/s]Loading weights:  36%|███▌      | 376/1058 [00:00<00:00, 1789.29it/s]Loading weights:  60%|██████    | 637/1058 [00:00<00:00, 2153.47it/s]Loading weights:  81%|████████  | 855/1058 [00:00<00:00, 2153.52it/s]Loading weights: 100%|██████████| 1058/1058 [00:00<00:00, 2087.77it/s]
+[card-test] load: 1.1 s
+[card-test] prompt tokens: 10
+[card-test] stock CPU forward: 82.1 s -> hidden[50] (1, 10, 5120)
+[te-stream] dropped 13 never-executed decoder layers
+[te-stream] dropped lm_head (never used; embeds are tied)
+Traceback (most recent call last):
+  File "/root/src/h3/hpu_port/tests/te_stream_card_test.py", line 165, in <module>
+    sys.exit(main())
+             ^^^^^^
+  File "/root/src/h3/hpu_port/tests/te_stream_card_test.py", line 77, in main
+    stream.activate()
+  File "/root/src/h3/hpu_port/te_stream.py", line 112, in activate
+    self.lang.embed_tokens.to(dev)
+  File "/root/src/h3/.venv/lib/python3.12/site-packages/habana_frameworks/torch/core/weight_sharing.py", line 201, in wrapped_to
+    result = self.original_to(*args, **kwargs)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/root/src/h3/.venv/lib/python3.12/site-packages/torch/nn/modules/module.py", line 1384, in to
+    return self._apply(convert)
+           ^^^^^^^^^^^^^^^^^^^^
+  File "/root/src/h3/.venv/lib/python3.12/site-packages/torch/nn/modules/module.py", line 965, in _apply
+    param_applied = fn(param)
+                    ^^^^^^^^^
+  File "/root/src/h3/.venv/lib/python3.12/site-packages/torch/nn/modules/module.py", line 1370, in convert
+    return t.to(
+           ^^^^^
+  File "/root/src/h3/.venv/lib/python3.12/site-packages/habana_frameworks/torch/core/weight_sharing.py", line 81, in __torch_function__
+    return super().__torch_function__(func, types, new_args, kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/root/src/h3/.venv/lib/python3.12/site-packages/habana_frameworks/torch/hpu/__init__.py", line 85, in _lazy_init
+    _hpu_C.init()
+RuntimeError: synStatus=8 [Device not found] Device acquire failed.

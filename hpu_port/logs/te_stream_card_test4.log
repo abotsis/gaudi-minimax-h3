@@ -1,0 +1,32 @@
+============================= HPU PT BRIDGE CONFIGURATION ON RANK = 0 ============= 
+ PT_HPU_LAZY_MODE = 1
+ PT_HPU_RECIPE_CACHE_CONFIG = ,false,1024,false
+ PT_HPU_MAX_COMPOUND_OP_SIZE = 9223372036854775807
+ PT_HPU_LAZY_ACC_PAR_MODE = 1
+ PT_HPU_ENABLE_REFINE_DYNAMIC_SHAPES = 0
+ PT_HPU_EAGER_PIPELINE_ENABLE = 1
+ PT_HPU_EAGER_COLLECTIVE_PIPELINE_ENABLE = 1
+ PT_HPU_ENABLE_LAZY_COLLECTIVES = 0
+---------------------------: System Configuration :---------------------------
+Num CPU Cores : 128
+CPU RAM       : 125 GB
+------------------------------------------------------------------------------
+[card-test] Synapse device opened (pre-load)
+[card-test] loading TE from /root/src/h3/MiniMax-H3/FL2VA/text_encoder (bf16, mmap)
+Loading weights:   0%|          | 0/1058 [00:00<?, ?it/s]Loading weights:  22%|██▏       | 238/1058 [00:00<00:00, 2378.67it/s]Loading weights:  45%|████▍     | 476/1058 [00:00<00:00, 2255.05it/s]Loading weights:  66%|██████▋   | 702/1058 [00:00<00:00, 2022.99it/s]Loading weights:  96%|█████████▌| 1015/1058 [00:00<00:00, 2420.37it/s]Loading weights: 100%|██████████| 1058/1058 [00:00<00:00, 2355.05it/s]
+[card-test] load: 1.1 s
+[card-test] prompt tokens: 10
+[card-test] stock CPU forward: 82.5 s -> hidden[50] (1, 10, 5120)
+[te-stream] dropped 13 never-executed decoder layers
+[te-stream] dropped lm_head (never used; embeds are tied)
+[te-stream] embed_tokens + visual tower + rotary resident on hpu (~2.8 GB)
+Traceback (most recent call last):
+  File "/root/src/h3/hpu_port/tests/te_stream_card_test.py", line 172, in <module>
+    sys.exit(main())
+             ^^^^^^
+  File "/root/src/h3/hpu_port/tests/te_stream_card_test.py", line 84, in main
+    stream.activate()
+  File "/root/src/h3/hpu_port/te_stream.py", line 141, in activate
+    p.data = p.data.pin_memory()
+             ^^^^^^^^^^^^^^^^^^^
+RuntimeError: synStatus=3 [Out of HOST memory (OOM)] synHostMalloc failed to allocate 262144000 bytes

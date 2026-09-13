@@ -1795,6 +1795,22 @@ def patch_text_encoder_device():
     @functools.wraps(orig)
     def bridged(*args, **kwargs):
         text_encoder = kwargs.get("text_encoder") or (args[0] if args else None)
+        # te=stream: the streamed conditioner replaces the whole call.
+        stream = getattr(text_encoder, "_h3_stream", None) if text_encoder is not None else None
+        if stream is not None:
+            # orig signature: (text_encoder, processor, token_ids,
+            #  vision_inputs=None, text_encoder_layer=50, device=None, dtype=None)
+            _pos = args[2:] if len(args) > 2 else []
+            token_ids = kwargs.get("token_ids", _pos[0] if len(_pos) > 0 else None)
+            if token_ids is None:
+                raise ValueError("[te-stream] no token_ids in get_qwen3vl_prompt_embeds call")
+            return stream.encode(
+                token_ids=token_ids,
+                vision_inputs=kwargs.get("vision_inputs", _pos[1] if len(_pos) > 1 else None),
+                text_encoder_layer=kwargs.get("text_encoder_layer", _pos[2] if len(_pos) > 2 else None),
+                device=kwargs.get("device"),
+                dtype=kwargs.get("dtype"),
+            )
         target_device = kwargs.get("device")
         if (
             text_encoder is not None
@@ -3580,7 +3596,7 @@ def parse_device_map(raw: str) -> dict:
             continue
         key, _, value = part.partition("=")
         key, value = key.strip(), value.strip().lower()
-        if key not in ("te", "dit", "vae", "audio") or value not in ("cpu", "hpu"):
+        if key not in ("te", "dit", "vae", "audio") or value not in ("cpu", "hpu", "stream"):
             raise ValueError(
                 f"Bad H3_DEVICE_MAP entry {part!r} (expected te/dit/vae/audio = cpu|hpu)"
             )
@@ -3660,7 +3676,7 @@ def parse_args(argv=None):
     p.add_argument(
         "--device-map",
         default=None,
-        help="H3_DEVICE_MAP override, e.g. te=cpu,dit=hpu,vae=hpu,audio=hpu",
+        help="H3_DEVICE_MAP override, e.g. te=stream,dit=hpu,vae=hpu,audio=hpu (te: cpu|hpu|stream)",
     )
     p.add_argument(
         "--allow-hpu",
@@ -4207,6 +4223,37 @@ def run_pipeline(
         cache_dir = workdir / ".ecache"
         print(f"[h3] CP embed cache (encode-once): {cache_dir}", flush=True)
     te_layer = getattr(pipe, "text_encoder_layer", None)
+    if device_map.get("te") == "stream":
+        # te=stream: streamed Qwen3-VL conditioner — decoder layers pinned in
+        # host RAM, ONE scratch layer on-card, H2D copy + eager forward per
+        # layer, NO graphs (te_stream_probe5: 47 ms/layer steady => ~3 s for
+        # the 51-layer prefill vs ~89 s CPU). RANK 0 ONLY: pinning makes the
+        # weights private (the mmap page sharing across ranks is lost), so
+        # activating on every rank would need 8x53 GB pinned.
+        if exec_device.type != "hpu":
+            print("[h3] te=stream requested without an HPU exec device -> te=cpu fallback")
+            device_map["te"] = "cpu"
+        elif world_size > 1 and (_RUNTIME.get("rank", 0) or 0) != 0:
+            print(
+                "[h3] te=stream on rank>0: encode-once-broadcast covers this rank "
+                "(mmap CPU TE kept as fail-open fallback)"
+            )
+        else:
+            from te_stream import StreamedQwen3VL
+
+            _stream = StreamedQwen3VL(
+                text_encoder,
+                getattr(pipe, "processor", None),
+                exec_device=exec_device,
+                text_encoder_layer=int(te_layer) if te_layer is not None else 50,
+            )
+            _stream.activate()
+            text_encoder._h3_stream = _stream
+            print(
+                f"[h3] TE streaming conditioner active (rank0; condition layer "
+                f"{_stream.text_encoder_layer}; graphs OFF)",
+                flush=True,
+            )
     # Under CP the plan (resolution/duration/budget resolution) lives in the
     # parent's `info` dict; derive the fingerprint inputs from it.
     _canvas = info.get("canvas") or [args.width, args.height]
@@ -4214,7 +4261,12 @@ def run_pipeline(
     frames = int(info.get("duration_frames") or args.duration)
     budget = int(info.get("text_budget") or args.text_budget or 0)
     steps = int(info.get("steps") or args.steps or 0)
-    fingerprint = f"te{te_layer}/{width}x{height}/{frames}/{args.workflow}"
+    # te device in the fingerprint: streamed-TE embeds are a DIFFERENT bf16
+    # branch than CPU-TE embeds (sink-channel knife-edge layers flip on 1-ulp
+    # accumulation noise — img_bisect7) and must not cross-contaminate caches.
+    fingerprint = (
+        f"te{te_layer}/{width}x{height}/{frames}/{args.workflow}/{device_map.get('te', 'cpu')}"
+    )
     budget_cache_key = embed_cache_key(
         args.workflow, args.prompt, args.keyframe, fingerprint
     )

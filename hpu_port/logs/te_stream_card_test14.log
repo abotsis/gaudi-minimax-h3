@@ -1,0 +1,39 @@
+============================= HPU PT BRIDGE CONFIGURATION ON RANK = 0 ============= 
+ PT_HPU_LAZY_MODE = 1
+ PT_HPU_RECIPE_CACHE_CONFIG = ,false,1024,false
+ PT_HPU_MAX_COMPOUND_OP_SIZE = 9223372036854775807
+ PT_HPU_LAZY_ACC_PAR_MODE = 1
+ PT_HPU_ENABLE_REFINE_DYNAMIC_SHAPES = 0
+ PT_HPU_EAGER_PIPELINE_ENABLE = 1
+ PT_HPU_EAGER_COLLECTIVE_PIPELINE_ENABLE = 1
+ PT_HPU_ENABLE_LAZY_COLLECTIVES = 0
+---------------------------: System Configuration :---------------------------
+Num CPU Cores : 128
+CPU RAM       : 125 GB
+------------------------------------------------------------------------------
+[card-test] Synapse device opened (pre-load)
+[card-test] loading TE from /root/src/h3/MiniMax-H3/FL2VA/text_encoder (bf16, mmap)
+Loading weights:   0%|          | 0/1058 [00:00<?, ?it/s]Loading weights:  15%|█▌        | 160/1058 [00:00<00:00, 1597.56it/s]Loading weights:  30%|███       | 320/1058 [00:00<00:00, 1289.09it/s]Loading weights:  43%|████▎     | 453/1058 [00:00<00:00, 1270.45it/s]Loading weights:  55%|█████▌    | 582/1058 [00:00<00:00, 1273.52it/s]Loading weights:  71%|███████▏  | 755/1058 [00:00<00:00, 1426.26it/s]Loading weights:  88%|████████▊ | 927/1058 [00:00<00:00, 1511.87it/s]Loading weights: 100%|██████████| 1058/1058 [00:00<00:00, 1460.10it/s]
+[card-test] load: 1.5 s
+[card-test] prompt tokens: 10
+[card-test] stock CPU forward: 86.6 s -> hidden[50] (1, 10, 5120)
+[card-test] image: pixel_values (1620, 1536) grid [[1, 30, 54]]
+[card-test] image presentation: 10 text + 405 image tokens
+[card-test] stock CPU image forward: 73.0 s
+[te-stream] dropped 13 never-executed decoder layers
+[te-stream] dropped lm_head (never used; embeds are tied)
+[te-stream] rotary on hpu; vision tower + embed stay on CPU (bit-exact)
+[te-stream] pin layer 0: memfree=7092692kB avail=68775308kB cached=69716492kB hp_free=12661/12727 vmlck=0kB
+[te-stream] pin layer 8: memfree=7196300kB avail=68614936kB cached=69707244kB hp_free=8933/12727 vmlck=0kB
+[te-stream] pin layer 16: memfree=6908448kB avail=68331604kB cached=69459372kB hp_free=5205/12727 vmlck=0kB
+[te-stream] pin layer 24: memfree=7662844kB avail=68336276kB cached=68709256kB hp_free=1477/12727 vmlck=0kB
+Traceback (most recent call last):
+  File "/root/src/h3/hpu_port/tests/te_stream_card_test.py", line 188, in <module>
+    sys.exit(main())
+             ^^^^^^
+  File "/root/src/h3/hpu_port/tests/te_stream_card_test.py", line 124, in main
+    stream.activate()
+  File "/root/src/h3/hpu_port/te_stream.py", line 210, in activate
+    buf = buf.pin_memory()
+          ^^^^^^^^^^^^^^^^
+RuntimeError: synStatus=3 [Out of HOST memory (OOM)] synHostMalloc failed to allocate 975196672 bytes

@@ -1,0 +1,35 @@
+============================= HPU PT BRIDGE CONFIGURATION ON RANK = 0 ============= 
+ PT_HPU_LAZY_MODE = 1
+ PT_HPU_RECIPE_CACHE_CONFIG = ,false,1024,false
+ PT_HPU_MAX_COMPOUND_OP_SIZE = 9223372036854775807
+ PT_HPU_LAZY_ACC_PAR_MODE = 1
+ PT_HPU_ENABLE_REFINE_DYNAMIC_SHAPES = 0
+ PT_HPU_EAGER_PIPELINE_ENABLE = 1
+ PT_HPU_EAGER_COLLECTIVE_PIPELINE_ENABLE = 1
+ PT_HPU_ENABLE_LAZY_COLLECTIVES = 0
+---------------------------: System Configuration :---------------------------
+Num CPU Cores : 128
+CPU RAM       : 125 GB
+------------------------------------------------------------------------------
+[card-test] Synapse device opened (pre-load)
+[card-test] loading TE from /root/src/h3/MiniMax-H3/FL2VA/text_encoder (bf16, mmap)
+Loading weights:   0%|          | 0/1058 [00:00<?, ?it/s]Loading weights:  32%|███▏      | 337/1058 [00:00<00:00, 3368.44it/s]Loading weights:  64%|██████▎   | 674/1058 [00:00<00:00, 2950.26it/s]Loading weights:  92%|█████████▏| 975/1058 [00:00<00:00, 2969.87it/s]Loading weights: 100%|██████████| 1058/1058 [00:00<00:00, 3000.49it/s]
+[card-test] load: 1.0 s
+[card-test] prompt tokens: 10
+[card-test] stock CPU forward: 48.4 s -> hidden[50] (1, 10, 5120)
+[card-test] image: pixel_values (1620, 1536) grid [[1, 30, 54]]
+[card-test] image presentation: 10 text + 405 image tokens
+[card-test] stock CPU image forward: 69.9 s
+[te-stream] dropped 13 never-executed decoder layers
+[te-stream] dropped lm_head (never used; embeds are tied)
+[te-stream] embed_tokens + visual tower + rotary resident on hpu (~2.8 GB)
+[te-stream] 51 flat bf16 layer buffers pinned (0.98 GB each, ~49.7 GB host RAM)
+[te-stream] activated on hpu (graphs OFF, eager recipes per region)
+[card-test] activate (pin+scratch): 50.8 s
+[card-test] streamed HPU encode rep0: 5.1 s
+[card-test] streamed HPU encode rep1: 3.7 s
+[card-test] compare: min per-token cos=0.9997795 rel_fro=0.00434 -> PASS (gates: cos>0.999, rel_fro<0.01)
+[card-test] speedup steady: 12.9x (48.4s -> 3.75s)
+[card-test] streamed HPU image encode: 8.8 s
+[card-test] image compare: min per-token cos=0.5696511 rel_fro=1.00694 -> FAIL
+[card-test] FAILURES PRESENT

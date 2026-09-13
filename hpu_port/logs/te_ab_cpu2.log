@@ -1,0 +1,107 @@
+[h3] WARNING: duration 1s is not a supported bucket; snapping to 5s (124 frames, T_lat 37).
+[h3] plan: {
+  "workflow": "t2va",
+  "bucket_res": "r384",
+  "canvas": [
+    384,
+    224
+  ],
+  "duration_frames": 124,
+  "T_lat": 37,
+  "audio_latents": 207,
+  "rows_per_frame": 84,
+  "fl2va_extra_rows": 0,
+  "text_budget": 2048,
+  "expected_packed_seq": 5570,
+  "steps": 4,
+  "seed": 7,
+  "device_map": {
+    "te": "cpu",
+    "dit": "hpu",
+    "vae": "cpu",
+    "audio": "cpu"
+  }
+}
+[h3] workdir: /root/src/h3/hpu_port/workdir/t2va
+Loading weights:   0%|          | 0/1058 [00:00<?, ?it/s]Loading weights:  16%|█▋        | 172/1058 [00:00<00:00, 1718.56it/s]Loading weights:  41%|████▏     | 438/1058 [00:00<00:00, 2271.52it/s]Loading weights:  68%|██████▊   | 716/1058 [00:00<00:00, 2448.91it/s]Loading weights:  94%|█████████▍| 995/1058 [00:00<00:00, 2579.95it/s]Loading weights: 100%|██████████| 1058/1058 [00:00<00:00, 2458.50it/s]
+Loading checkpoint shards:   0%|          | 0/14 [00:00<?, ?it/s]Loading checkpoint shards:  71%|███████▏  | 10/14 [00:00<00:00, 99.07it/s]Loading checkpoint shards: 100%|██████████| 14/14 [00:00<00:00, 100.02it/s]
+Loading checkpoint shards:   0%|          | 0/3 [00:00<?, ?it/s]Loading checkpoint shards: 100%|██████████| 3/3 [00:00<00:00, 41.35it/s]
+/root/src/h3/.venv/lib/python3.12/site-packages/torch/nn/utils/weight_norm.py:144: FutureWarning: `torch.nn.utils.weight_norm` is deprecated in favor of `torch.nn.utils.parametrizations.weight_norm`.
+  WeightNorm.apply(module, name, dim)
+============================= HPU PT BRIDGE CONFIGURATION ON RANK = 0 ============= 
+ PT_HPU_LAZY_MODE = 1
+ PT_HPU_RECIPE_CACHE_CONFIG = ,false,1024,false
+ PT_HPU_MAX_COMPOUND_OP_SIZE = 9223372036854775807
+ PT_HPU_LAZY_ACC_PAR_MODE = 1
+ PT_HPU_ENABLE_REFINE_DYNAMIC_SHAPES = 0
+ PT_HPU_EAGER_PIPELINE_ENABLE = 1
+ PT_HPU_EAGER_COLLECTIVE_PIPELINE_ENABLE = 1
+ PT_HPU_ENABLE_LAZY_COLLECTIVES = 0
+---------------------------: System Configuration :---------------------------
+Num CPU Cores : 128
+CPU RAM       : 125 GB
+------------------------------------------------------------------------------
+[h3] placed transformer on hpu
+Attention backends are an experimental feature and the API may be subject to change.
+Attention backends are an experimental feature and the API may be subject to change.
+[h3] attention backend: habana_fused_sdpa (DiT + video VAE)
+[h3] rope cache installed on transformer.rope
+[h3] DiT wrapped into HPU graphs (per-bucket static shapes)
+[h3] graphs ON
+[h3] block logging installed (12 block classes; H3_LOG_BLOCKS=0 to disable)
+[h3:block] > SequentialPipelineBlocks
+  [h3:block] > MiniMaxH3TextEncoderStep
+[h3] embed cache hit: /root/src/h3/hpu_port/.ecache/188ebd48b809a72fc4f0895fa08719c05001fc407337f7f8ca1cded2fb3a270e.pt
+  [h3:block] < MiniMaxH3TextEncoderStep: 0.046s
+  [h3:block] > MiniMaxH3NoKeyframeAnchorsStep
+  [h3:block] < MiniMaxH3NoKeyframeAnchorsStep: 0.000s
+  [h3:block] > MiniMaxH3PrepareLayoutStep
+  [h3:block] < MiniMaxH3PrepareLayoutStep: 0.013s
+  [h3:block] > MiniMaxH3PrepareLatentsStep
+  [h3:block] < MiniMaxH3PrepareLatentsStep: 0.007s
+  [h3:block] > MiniMaxH3SetTimestepsStep
+  [h3:block] < MiniMaxH3SetTimestepsStep: 0.008s
+  [h3:block] > MiniMaxH3DenoiseStep
+  0%|          | 0/3 [00:00<?, ?it/s]    [h3:block] > MiniMaxH3LoopDenoiser i=0 t=0.0000
+[W913 01:48:34.048300979 hpu_lazy_tensors.cpp:1293] Warning: The following operations used in HPU graphs might result in accuracy issues : index_select. (function WarnIfOpsIncompatibleWithHPUGraphs)
+    [h3:block] < MiniMaxH3LoopDenoiser i=0 t=0.0000: 90.578s
+    [h3:block] > MiniMaxH3LoopSchedulerStep i=0 t=0.0000
+    [h3:block] < MiniMaxH3LoopSchedulerStep i=0 t=0.0000: 0.009s
+ 33%|███▎      | 1/3 [01:30<03:01, 90.59s/it]    [h3:block] > MiniMaxH3LoopDenoiser i=1 t=0.0400
+    [h3:block] < MiniMaxH3LoopDenoiser i=1 t=0.0400: 81.918s
+    [h3:block] > MiniMaxH3LoopSchedulerStep i=1 t=0.0400
+    [h3:block] < MiniMaxH3LoopSchedulerStep i=1 t=0.0400: 0.004s
+ 67%|██████▋   | 2/3 [02:52<01:25, 85.49s/it]    [h3:block] > MiniMaxH3LoopDenoiser i=2 t=0.1429
+    [h3:block] < MiniMaxH3LoopDenoiser i=2 t=0.1429: 0.014s
+    [h3:block] > MiniMaxH3LoopSchedulerStep i=2 t=0.1429
+    [h3:block] < MiniMaxH3LoopSchedulerStep i=2 t=0.1429: 0.002s
+100%|██████████| 3/3 [02:52<00:00, 57.51s/it]
+  [h3:block] < MiniMaxH3DenoiseStep: 172.531s
+  [h3:block] > MiniMaxH3AfterDenoiseStep
+  [h3:block] < MiniMaxH3AfterDenoiseStep: 0.002s
+  [h3:block] > _H3VideoDecodeStep
+[h3] denoise complete: device synced at decode entry (1.04s)
+ModularPipeline.update_components: setting transformer to None (spec unchanged)
+[h3] DiT freed from HPU before decode: mem_get_info free 26.5 -> 26.5 GiB of 94.6 (accounting lags; release verified functional)
+  [h3:block] < _H3VideoDecodeStep: 144.381s
+  [h3:block] > _H3AudioDecodeStep
+[h3] video decode complete: device synced at audio entry (0.00s)
+  [h3:block] < _H3AudioDecodeStep: 3.457s
+[h3:block] < SequentialPipelineBlocks: 320.455s
+[h3] pipeline complete: device synced before export (0.00s)
+[h3] wrote 124 frames to workdir/ab/cpu_art_frames
+[h3] mux: /usr/bin/ffmpeg -y -framerate 24 -i workdir/ab/cpu_art_frames/frame_%06d.png -i workdir/ab/cpu_art.wav -filter_complex [0:v]format=yuv420p[v];[1:a]aresample=48000[a] -map [v] -map [a] -c:v libx264 -preset slow -crf 17 -c:a aac -b:a 192k -movflags +faststart -shortest workdir/ab/cpu_art.mp4
+[h3] WARNING: ffmpeg failed:
+ffmpeg version 7.1.5-0+deb13u1 Copyright (c) 2000-2026 the FFmpeg developers
+  built with gcc 14 (Debian 14.2.0-19)
+  configuration: --prefix=/usr --extra-version=0+deb13u1 --toolchain=hardened --libdir=/usr/lib/x86_64-linux-gnu --incdir=/usr/include/x86_64-linux-gnu --arch=amd64 --enable-gpl --disable-stripping --disable-libmfx --disable-omx --enable-gnutls --enable-libaom --enable-libass --enable-libbs2b --enable-libcdio --enable-libcodec2 --enable-libdav1d --enable-libflite --enable-libfontconfig --enable-libfreetype --enable-libfribidi --enable-libglslang --enable-libgme --enable-libgsm --enable-libharfbuzz --enable-libmp3lame --enable-libmysofa --enable-libopenjpeg --enable-libopenmpt --enable-libopus --enable-librubberband --enable-libshine --enable-libsnappy --enable-libsoxr --enable-libspeex --enable-libtheora --enable-libtwolame --enable-libvidstab --enable-libvorbis --enable-libvpx --enable-libwebp --enable-libx265 --enable-libxml2 --enable-libxvid --enable-libzimg --enable-openal --enable-opencl --enable-opengl --disable-sndio --enable-libvpl --enable-libdc1394 --enable-libdrm --enable-libiec61883 --enable-chromaprint --enable-frei0r --enable-ladspa --enable-libbluray --enable-libcaca --enable-libdvdnav --enable-libdvdread --enable-libjack --enable-libpulse --enable-librabbitmq --enable-librist --enable-libsrt --enable-libssh --enable-libsvtav1 --enable-libx264 --enable-libzmq --enable-libzvbi --enable-lv2 --enable-sdl2 --enable-libplacebo --enable-librav1e --enable-pocketsphinx --enable-librsvg --enable-libjxl --enable-shared
+  libavutil      59. 39.100 / 59. 39.100
+  libavcodec     61. 19.101 / 61. 19.101
+  libavformat    61.  7.103 / 61.  7.103
+  libavdevice    61.  3.100 / 61.  3.100
+  libavfilter    10.  5.100 / 10.  5.100
+  libswscale      8.  3.100 /  8.  3.100
+  libswresample   5.  3.100 /  5.  3.100
+  libpostproc    58.  3.100 / 58.  3.100
+
+[h3] timings: {"generate": 320.46, "export": 4.63, "mux": 0.0}

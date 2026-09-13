@@ -447,3 +447,82 @@ export+mux ~4 s => ~26-30 s per request, weights NEVER leave HBM.
 * Production server: H3_ALLOW_HPU=1 H3_FUSED_DECODE=1 launch_h3.sh --cp 8
   --server --port 8032 --te-threads 32. Steady state ~9-10 s/request
   (cached embeds), weights never leave HBM.
+
+## Phase 8 — Streamed text encoder (te=stream, v115+, 2026-09-13)
+
+### Motivation
+Fresh-prompt TE tax was the last big server cost (~48-89 s CPU Qwen3-VL-32B
+forward vs ~9-10 s steady-state request). Full TE on-card is impossible
+alongside the DiT (63 GB vs 62 GB replicated) AND triggers the giant-lazy-
+graph wedge class. Hybrid: stream decoder-layer weights H2D per prompt.
+
+### Design (te_stream.py, StreamedQwen3VL)
+* LM decoder layers stay CPU-resident (mmap params, identical footprint to
+  te=cpu); ONE scratch Qwen3VLTextDecoderLayer on-card; per layer: 11
+  unpinned per-param copy_ H2D (~235 ms) + stock eager forward (5.5 ms,
+  ~105 TFLOPS) + mark_step. NO HPU graphs (avoids the wedge class).
+* MiniMax-H3 conditions on hidden_states[50] -> layers 51..63 (14 GB) and
+  lm_head dropped at activate.
+* Vision tower + embed_tokens + mrope + masked_scatter stay ON CPU
+  (bit-exact): on-card vision runs imprecisely (pool cos 0.92 — tanh-gelu/
+  conv3d/interp divergences) and the 9% error amplifies through 51 streamed
+  layers into garbage. Rotary emb on-card (safe).
+* Deepstack injection: full-sequence zero-padded dense adds (no advanced
+  indexing in lazy IR); numerically identical to the stock indexed scatter.
+* Rank0-only activation (pinning would make weights private x8 ranks);
+  ranks 1..7 keep mmap CPU TE as the encode-once-broadcast fail-open path.
+* Bridge: patch_text_encoder_device routes get_qwen3vl_prompt_embeds to
+  stream.encode when text_encoder._h3_stream exists. Embed-cache
+  fingerprint includes the te device (the two paths are DIFFERENT bf16
+  branches — see below).
+
+### Synapse host-memory facts (probe-proven, /tmp/pin_bisect*)
+* torch pin_memory caps at ~24-25 GB total in mixed/sub-1GB allocations:
+  Synapse backs host allocs with the machine's 2 MB huge-page pool
+  (12288 HPs stock; vm.nr_hugepages to grow) and its regular-page fallback
+  fails with ENOMEM under pressure (dmesg "Failed to pin host memory").
+  Uniform >=1 GB allocations pin past 80 GB (driver path, no HP pool).
+* H2D from an allocation's BASE pointer: 24 GB/s. From any offset: ~2-6
+  GB/s (runtime staging). Flat per-layer buffers exploit (a)+(b).
+* CPU->HPU module .to() and param copy_ stage through synHostMalloc ->
+  build scratch with torch.device("hpu") context instead; never rebind
+  Parameter objects post-construction (Module._apply rebinds silenty —
+  parity-debug: captured id != live id).
+* aten::view.dtype (uint8->bf16) is a REAL lazy graph node: precomputed
+  dtype-views of a mirror snapshot the EMPTY tensor at activate ->
+  zero-weight identity layers (bit-identical garbage across runs). Use
+  plain narrow() strided views in bf16 element space.
+
+### Numerics: the sink-channel branch flip (img_bisect6/7)
+* Streamed hidden states track the CPU bf16 reference within 1 ulp through
+  layer 42 (maxdiff 64 = 1 bf16 ulp at the ~16k massive-activation
+  channels), then layer 43 flips a sink-channel cancellation: output cos
+  0.69 vs the CPU branch.
+* NOT an HPU bug: CPU bf16 layer 43 on the SAME streamed input flips
+  identically (cos 0.695 vs CPU branch, 0.99996 vs HPU output). Given the
+  EXACT CPU input, HPU layer 43 matches the CPU branch (cos 1.0005). The
+  layer sits on a knife-edge cancellation; 1-ulp input noise decides the
+  branch on either device.
+* fp32 replay of layer 43 on fp32(ref[43]) shows the CPU bf16 branch
+  itself deviates from fp32 truth by 681 (vs HPU-streamed 18367) — bf16
+  has no "correct" branch here.
+* Downstream A/B (r384, 124 frames, 4 steps, seed 7; vae=cpu both sides):
+  video per-frame RGB cos 0.995-0.997 (PSNR 30.1 dB) — same content,
+  detail divergence; audio waveform cos 0.927. Per-path determinism
+  unaffected (same path + seed = same bits).
+
+### Results
+* Card test (tests/te_stream_card_test.py, real weights, seq 415 image
+  presentation): text min per-token cos 0.99978 rel_fro 0.0043 PASS;
+  steady 3.7-4.1 s for the full 51-layer prefill vs 48-89 s CPU (12-20x).
+* CPU parity (tests/te_stream_cpu_parity.py): BIT-EXACT vs stock forward
+  on tiny-config Qwen3-VL (text-only, deepstack image, long-seq cases).
+* End-to-end A/B through run_t2va.py: both paths complete; artifacts
+  differ at the level documented above.
+* Production server fresh-prompt: ~90 s -> ~10 s projected (TE ~4 s +
+  resident replay); embed cache unchanged for repeats (~0 s).
+
+### Usage
+H3_ALLOW_HPU=1 ... --device-map te=stream,dit=hpu,vae=hpu,audio=hpu
+(pin_weights=False default = v1 unpinned; pin_weights=True is the v2 flat-
+buffer fast path, blocked on the HP-pool cap above).

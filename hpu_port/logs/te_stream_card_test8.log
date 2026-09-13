@@ -1,0 +1,35 @@
+============================= HPU PT BRIDGE CONFIGURATION ON RANK = 0 ============= 
+ PT_HPU_LAZY_MODE = 1
+ PT_HPU_RECIPE_CACHE_CONFIG = ,false,1024,false
+ PT_HPU_MAX_COMPOUND_OP_SIZE = 9223372036854775807
+ PT_HPU_LAZY_ACC_PAR_MODE = 1
+ PT_HPU_ENABLE_REFINE_DYNAMIC_SHAPES = 0
+ PT_HPU_EAGER_PIPELINE_ENABLE = 1
+ PT_HPU_EAGER_COLLECTIVE_PIPELINE_ENABLE = 1
+ PT_HPU_ENABLE_LAZY_COLLECTIVES = 0
+---------------------------: System Configuration :---------------------------
+Num CPU Cores : 128
+CPU RAM       : 125 GB
+------------------------------------------------------------------------------
+[card-test] Synapse device opened (pre-load)
+[card-test] loading TE from /root/src/h3/MiniMax-H3/FL2VA/text_encoder (bf16, mmap)
+Loading weights:   0%|          | 0/1058 [00:00<?, ?it/s]Loading weights:  40%|███▉      | 421/1058 [00:00<00:00, 4198.27it/s]Loading weights:  79%|███████▉  | 841/1058 [00:00<00:00, 2821.29it/s]Loading weights: 100%|██████████| 1058/1058 [00:00<00:00, 2931.87it/s]
+[card-test] load: 1.0 s
+[card-test] prompt tokens: 10
+[card-test] stock CPU forward: 48.8 s -> hidden[50] (1, 10, 5120)
+[te-stream] dropped 13 never-executed decoder layers
+[te-stream] dropped lm_head (never used; embeds are tied)
+[te-stream] embed_tokens + visual tower + rotary resident on hpu (~2.8 GB)
+[te-stream] pinned 561 params across 51 layers in 51x1 GB arenas (~51 GB host RAM)
+Traceback (most recent call last):
+  File "/root/src/h3/hpu_port/tests/te_stream_card_test.py", line 172, in <module>
+    sys.exit(main())
+             ^^^^^^
+  File "/root/src/h3/hpu_port/tests/te_stream_card_test.py", line 84, in main
+    stream.activate()
+  File "/root/src/h3/hpu_port/te_stream.py", line 194, in activate
+    s_param.copy_(l_param.data if self.pin_weights else l_param)
+  File "/root/src/h3/.venv/lib/python3.12/site-packages/habana_frameworks/torch/core/weight_sharing.py", line 81, in __torch_function__
+    return super().__torch_function__(func, types, new_args, kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+RuntimeError: [Rank:0] FATAL ERROR :: MODULE:PT_SYNHELPER synStatus 3 [Out of HOST memory (OOM)]. Host malloc failed

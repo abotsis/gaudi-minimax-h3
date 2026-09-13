@@ -1,0 +1,36 @@
+============================= HPU PT BRIDGE CONFIGURATION ON RANK = 0 ============= 
+ PT_HPU_LAZY_MODE = 1
+ PT_HPU_RECIPE_CACHE_CONFIG = ,false,1024,false
+ PT_HPU_MAX_COMPOUND_OP_SIZE = 9223372036854775807
+ PT_HPU_LAZY_ACC_PAR_MODE = 1
+ PT_HPU_ENABLE_REFINE_DYNAMIC_SHAPES = 0
+ PT_HPU_EAGER_PIPELINE_ENABLE = 1
+ PT_HPU_EAGER_COLLECTIVE_PIPELINE_ENABLE = 1
+ PT_HPU_ENABLE_LAZY_COLLECTIVES = 0
+---------------------------: System Configuration :---------------------------
+Num CPU Cores : 128
+CPU RAM       : 125 GB
+------------------------------------------------------------------------------
+[card-test] Synapse device opened (pre-load)
+[card-test] loading TE from /root/src/h3/MiniMax-H3/FL2VA/text_encoder (bf16, mmap)
+Loading weights:   0%|          | 0/1058 [00:00<?, ?it/s]Loading weights:  28%|██▊       | 296/1058 [00:00<00:00, 2954.88it/s]Loading weights:  56%|█████▌    | 592/1058 [00:00<00:00, 2470.77it/s]Loading weights:  80%|███████▉  | 845/1058 [00:00<00:00, 2292.67it/s]Loading weights: 100%|██████████| 1058/1058 [00:00<00:00, 2356.06it/s]
+[card-test] load: 1.1 s
+[card-test] prompt tokens: 10
+[card-test] stock CPU forward: 45.8 s -> hidden[50] (1, 10, 5120)
+[card-test] image: pixel_values (1620, 1536) grid [[1, 30, 54]]
+[card-test] image presentation: 10 text + 405 image tokens
+[card-test] stock CPU image forward: 72.2 s
+[te-stream] dropped 13 never-executed decoder layers
+[te-stream] dropped lm_head (never used; embeds are tied)
+[te-stream] embed_tokens + visual tower + rotary resident on hpu (~2.8 GB)
+[te-stream] 51 flat layer buffers pinned (0.98 GB each, ~49.7 GB host RAM)
+[te-stream] scratch layer resident on hpu
+[te-stream] activated on hpu (graphs OFF, eager recipes per region)
+[card-test] activate (pin+scratch): 50.6 s
+[card-test] streamed HPU encode rep0: 5.2 s
+[card-test] streamed HPU encode rep1: 3.7 s
+[card-test] compare: maxabs=15679.92188 maxrel=35156.25000 cos=0.0163444 -> FAIL (tolerance atol 0.05 / rel 0.05 / cos 0.9999)
+[card-test] speedup steady: 12.4x (45.8s -> 3.69s)
+[card-test] streamed HPU image encode: 7.9 s
+[card-test] image compare: maxabs=16894.04688 cos=0.0264800 -> FAIL
+[card-test] FAILURES PRESENT

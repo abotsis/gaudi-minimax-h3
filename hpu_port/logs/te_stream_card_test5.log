@@ -1,0 +1,107 @@
+============================= HPU PT BRIDGE CONFIGURATION ON RANK = 0 ============= 
+ PT_HPU_LAZY_MODE = 1
+ PT_HPU_RECIPE_CACHE_CONFIG = ,false,1024,false
+ PT_HPU_MAX_COMPOUND_OP_SIZE = 9223372036854775807
+ PT_HPU_LAZY_ACC_PAR_MODE = 1
+ PT_HPU_ENABLE_REFINE_DYNAMIC_SHAPES = 0
+ PT_HPU_EAGER_PIPELINE_ENABLE = 1
+ PT_HPU_EAGER_COLLECTIVE_PIPELINE_ENABLE = 1
+ PT_HPU_ENABLE_LAZY_COLLECTIVES = 0
+---------------------------: System Configuration :---------------------------
+Num CPU Cores : 128
+CPU RAM       : 125 GB
+------------------------------------------------------------------------------
+[card-test] Synapse device opened (pre-load)
+[card-test] loading TE from /root/src/h3/MiniMax-H3/FL2VA/text_encoder (bf16, mmap)
+Loading weights:   0%|          | 0/1058 [00:00<?, ?it/s]Loading weights:  33%|███▎      | 354/1058 [00:00<00:00, 3535.89it/s]Loading weights:  67%|██████▋   | 708/1058 [00:00<00:00, 2713.81it/s]Loading weights:  94%|█████████▍| 999/1058 [00:00<00:00, 2789.50it/s]Loading weights: 100%|██████████| 1058/1058 [00:00<00:00, 2833.08it/s]
+[card-test] load: 1.0 s
+[card-test] prompt tokens: 10
+[card-test] stock CPU forward: 7.4 s -> hidden[50] (1, 10, 5120)
+[te-stream] dropped 13 never-executed decoder layers
+[te-stream] dropped lm_head (never used; embeds are tied)
+[te-stream] embed_tokens + visual tower + rotary resident on hpu (~2.8 GB)
+[te-stream] pinned self_attn.q_proj.weight (83886080 B); ['VmLck:\t       0 kB\n']
+[te-stream] pinned self_attn.q_norm.weight (256 B); ['VmLck:\t       0 kB\n']
+[te-stream] pinned mlp.down_proj.weight (262144000 B); ['VmLck:\t       0 kB\n']
+[te-stream] pinned self_attn.k_proj.weight (10485760 B); ['VmLck:\t       0 kB\n']
+[te-stream] pinned self_attn.k_norm.weight (256 B); ['VmLck:\t       0 kB\n']
+[te-stream] pinned input_layernorm.weight (10240 B); ['VmLck:\t       0 kB\n']
+[te-stream] pinned self_attn.v_proj.weight (10485760 B); ['VmLck:\t       0 kB\n']
+[te-stream] pinned mlp.gate_proj.weight (262144000 B); ['VmLck:\t       0 kB\n']
+[te-stream] pinned post_attention_layernorm.weight (10240 B); ['VmLck:\t       0 kB\n']
+[te-stream] pinned self_attn.o_proj.weight (83886080 B); ['VmLck:\t       0 kB\n']
+[te-stream] pinned mlp.up_proj.weight (262144000 B); ['VmLck:\t       0 kB\n']
+[te-stream] pinned self_attn.q_proj.weight (83886080 B); ['VmLck:\t       0 kB\n']
+[te-stream] pinned self_attn.q_norm.weight (256 B); ['VmLck:\t       0 kB\n']
+[te-stream] pinned mlp.down_proj.weight (262144000 B); ['VmLck:\t       0 kB\n']
+[te-stream] pinned self_attn.k_proj.weight (10485760 B); ['VmLck:\t       0 kB\n']
+[te-stream] pinned self_attn.k_norm.weight (256 B); ['VmLck:\t       0 kB\n']
+[te-stream] pinned input_layernorm.weight (10240 B); ['VmLck:\t       0 kB\n']
+[te-stream] pinned self_attn.v_proj.weight (10485760 B); ['VmLck:\t       0 kB\n']
+[te-stream] pinned mlp.gate_proj.weight (262144000 B); ['VmLck:\t       0 kB\n']
+[te-stream] pinned post_attention_layernorm.weight (10240 B); ['VmLck:\t       0 kB\n']
+[te-stream] pinned self_attn.o_proj.weight (83886080 B); ['VmLck:\t       0 kB\n']
+[te-stream] pinned mlp.up_proj.weight (262144000 B); ['VmLck:\t       0 kB\n']
+[te-stream] pinned self_attn.q_proj.weight (83886080 B); ['VmLck:\t       0 kB\n']
+[te-stream] pinned self_attn.q_norm.weight (256 B); ['VmLck:\t       0 kB\n']
+[te-stream] pinned mlp.down_proj.weight (262144000 B); ['VmLck:\t       0 kB\n']
+[te-stream] pinned self_attn.k_proj.weight (10485760 B); ['VmLck:\t       0 kB\n']
+[te-stream] pinned self_attn.k_norm.weight (256 B); ['VmLck:\t       0 kB\n']
+[te-stream] pinned input_layernorm.weight (10240 B); ['VmLck:\t       0 kB\n']
+[te-stream] pinned self_attn.v_proj.weight (10485760 B); ['VmLck:\t       0 kB\n']
+[te-stream] pinned mlp.gate_proj.weight (262144000 B); ['VmLck:\t       0 kB\n']
+[te-stream] pinned post_attention_layernorm.weight (10240 B); ['VmLck:\t       0 kB\n']
+[te-stream] pinned self_attn.o_proj.weight (83886080 B); ['VmLck:\t       0 kB\n']
+[te-stream] pinned mlp.up_proj.weight (262144000 B); ['VmLck:\t       0 kB\n']
+[te-stream] pinned self_attn.q_proj.weight (83886080 B); ['VmLck:\t       0 kB\n']
+[te-stream] pinned self_attn.q_norm.weight (256 B); ['VmLck:\t       0 kB\n']
+[te-stream] pinned mlp.down_proj.weight (262144000 B); ['VmLck:\t       0 kB\n']
+[te-stream] pinned self_attn.k_proj.weight (10485760 B); ['VmLck:\t       0 kB\n']
+[te-stream] pinned self_attn.k_norm.weight (256 B); ['VmLck:\t       0 kB\n']
+[te-stream] pinned input_layernorm.weight (10240 B); ['VmLck:\t       0 kB\n']
+[te-stream] pinned self_attn.v_proj.weight (10485760 B); ['VmLck:\t       0 kB\n']
+[te-stream] pinned mlp.gate_proj.weight (262144000 B); ['VmLck:\t       0 kB\n']
+[te-stream] pinned post_attention_layernorm.weight (10240 B); ['VmLck:\t       0 kB\n']
+[te-stream] pinned self_attn.o_proj.weight (83886080 B); ['VmLck:\t       0 kB\n']
+[te-stream] pinned mlp.up_proj.weight (262144000 B); ['VmLck:\t       0 kB\n']
+[te-stream] pinned self_attn.q_proj.weight (83886080 B); ['VmLck:\t       0 kB\n']
+[te-stream] pinned self_attn.q_norm.weight (256 B); ['VmLck:\t       0 kB\n']
+[te-stream] pinned mlp.down_proj.weight (262144000 B); ['VmLck:\t       0 kB\n']
+[te-stream] pinned self_attn.k_proj.weight (10485760 B); ['VmLck:\t       0 kB\n']
+[te-stream] pinned self_attn.k_norm.weight (256 B); ['VmLck:\t       0 kB\n']
+[te-stream] pinned input_layernorm.weight (10240 B); ['VmLck:\t       0 kB\n']
+[te-stream] pinned self_attn.v_proj.weight (10485760 B); ['VmLck:\t       0 kB\n']
+[te-stream] pinned mlp.gate_proj.weight (262144000 B); ['VmLck:\t       0 kB\n']
+[te-stream] pinned post_attention_layernorm.weight (10240 B); ['VmLck:\t       0 kB\n']
+[te-stream] pinned self_attn.o_proj.weight (83886080 B); ['VmLck:\t       0 kB\n']
+[te-stream] pinned mlp.up_proj.weight (262144000 B); ['VmLck:\t       0 kB\n']
+[te-stream] pinned self_attn.q_proj.weight (83886080 B); ['VmLck:\t       0 kB\n']
+[te-stream] pinned self_attn.q_norm.weight (256 B); ['VmLck:\t       0 kB\n']
+[te-stream] pinned mlp.down_proj.weight (262144000 B); ['VmLck:\t       0 kB\n']
+[te-stream] pinned self_attn.k_proj.weight (10485760 B); ['VmLck:\t       0 kB\n']
+[te-stream] pinned self_attn.k_norm.weight (256 B); ['VmLck:\t       0 kB\n']
+[te-stream] pinned input_layernorm.weight (10240 B); ['VmLck:\t       0 kB\n']
+[te-stream] pinned self_attn.v_proj.weight (10485760 B); ['VmLck:\t       0 kB\n']
+[te-stream] pinned mlp.gate_proj.weight (262144000 B); ['VmLck:\t       0 kB\n']
+[te-stream] pinned post_attention_layernorm.weight (10240 B); ['VmLck:\t       0 kB\n']
+[te-stream] pinned self_attn.o_proj.weight (83886080 B); ['VmLck:\t       0 kB\n']
+[te-stream] pinned mlp.up_proj.weight (262144000 B); ['VmLck:\t       0 kB\n']
+[te-stream] pinned self_attn.q_proj.weight (83886080 B); ['VmLck:\t       0 kB\n']
+[te-stream] pinned self_attn.q_norm.weight (256 B); ['VmLck:\t       0 kB\n']
+[te-stream] PIN FAIL at mlp.gate_proj.weight (262144000 B): synStatus=3 [Out of HOST memory (OOM)] synHostMalloc failed to allocate 262144000 bytes
+  pinned so far: 270 params; ['VmLck:\t       0 kB\n']
+MemFree:         8108272 kB
+MemAvailable:   71839716 kB
+Cached:         71236396 kB
+Dirty:               200 kB
+
+Traceback (most recent call last):
+  File "/root/src/h3/hpu_port/tests/te_stream_card_test.py", line 172, in <module>
+    sys.exit(main())
+             ^^^^^^
+  File "/root/src/h3/hpu_port/tests/te_stream_card_test.py", line 84, in main
+    stream.activate()
+  File "/root/src/h3/hpu_port/te_stream.py", line 144, in activate
+    p.data = p.data.pin_memory()
+             ^^^^^^^^^^^^^^^^^^^
+RuntimeError: synStatus=3 [Out of HOST memory (OOM)] synHostMalloc failed to allocate 262144000 bytes

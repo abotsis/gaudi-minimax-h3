@@ -1,0 +1,33 @@
+============================= HPU PT BRIDGE CONFIGURATION ON RANK = 0 ============= 
+ PT_HPU_LAZY_MODE = 1
+ PT_HPU_RECIPE_CACHE_CONFIG = ,false,1024,false
+ PT_HPU_MAX_COMPOUND_OP_SIZE = 9223372036854775807
+ PT_HPU_LAZY_ACC_PAR_MODE = 1
+ PT_HPU_ENABLE_REFINE_DYNAMIC_SHAPES = 0
+ PT_HPU_EAGER_PIPELINE_ENABLE = 1
+ PT_HPU_EAGER_COLLECTIVE_PIPELINE_ENABLE = 1
+ PT_HPU_ENABLE_LAZY_COLLECTIVES = 0
+---------------------------: System Configuration :---------------------------
+Num CPU Cores : 128
+CPU RAM       : 125 GB
+------------------------------------------------------------------------------
+[card-test] Synapse device opened (pre-load)
+[card-test] loading TE from /root/src/h3/MiniMax-H3/FL2VA/text_encoder (bf16, mmap)
+Loading weights:   0%|          | 0/1058 [00:00<?, ?it/s]Loading weights:  37%|███▋      | 389/1058 [00:00<00:00, 3837.49it/s]Loading weights:  73%|███████▎  | 773/1058 [00:00<00:00, 3114.11it/s]Loading weights: 100%|██████████| 1058/1058 [00:00<00:00, 3164.53it/s]
+[card-test] load: 0.9 s
+[card-test] prompt tokens: 10
+[card-test] stock CPU forward: 44.0 s -> hidden[50] (1, 10, 5120)
+[te-stream] dropped 13 never-executed decoder layers
+[te-stream] dropped lm_head (never used; embeds are tied)
+[te-stream] embed_tokens + visual tower + rotary resident on hpu (~2.8 GB)
+[te-stream] pinned 561 params across 51 layers in 51x1 GB arenas (~51 GB host RAM)
+[te-stream] scratch layer resident on hpu
+[te-stream] activated on hpu (graphs OFF, eager recipes per region)
+[card-test] activate (pin+scratch): 99.5 s
+[card-test] streamed HPU encode rep0: 22.8 s
+[card-test] streamed HPU encode rep1: 20.5 s
+[card-test] compare: maxabs=15671.50000 maxrel=23375000.00000 cos=0.0037807 -> FAIL (tolerance atol 0.05 / rel 0.05 / cos 0.9999)
+[card-test] speedup steady: 2.2x (44.0s -> 20.46s)
+[card-test] image: pixel_values (1620, 1536) grid [[1, 30, 54]]
+[card-test] image path SKIPPED/FAILED: RuntimeError: Input type (CPUBFloat16Type) and weight type (HPUBFloat16Type) should be the same or input should be a MKLDNN tensor and weight is a dense tensor
+[card-test] FAILURES PRESENT

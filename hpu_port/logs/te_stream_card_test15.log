@@ -1,0 +1,34 @@
+============================= HPU PT BRIDGE CONFIGURATION ON RANK = 0 ============= 
+ PT_HPU_LAZY_MODE = 1
+ PT_HPU_RECIPE_CACHE_CONFIG = ,false,1024,false
+ PT_HPU_MAX_COMPOUND_OP_SIZE = 9223372036854775807
+ PT_HPU_LAZY_ACC_PAR_MODE = 1
+ PT_HPU_ENABLE_REFINE_DYNAMIC_SHAPES = 0
+ PT_HPU_EAGER_PIPELINE_ENABLE = 1
+ PT_HPU_EAGER_COLLECTIVE_PIPELINE_ENABLE = 1
+ PT_HPU_ENABLE_LAZY_COLLECTIVES = 0
+---------------------------: System Configuration :---------------------------
+Num CPU Cores : 128
+CPU RAM       : 125 GB
+------------------------------------------------------------------------------
+[card-test] Synapse device opened (pre-load)
+[card-test] loading TE from /root/src/h3/MiniMax-H3/FL2VA/text_encoder (bf16, mmap)
+Loading weights:   0%|          | 0/1058 [00:00<?, ?it/s]Loading weights:  36%|███▌      | 381/1058 [00:00<00:00, 2988.12it/s]Loading weights:  64%|██████▍   | 680/1058 [00:00<00:00, 2801.87it/s]Loading weights:  91%|█████████▏| 966/1058 [00:00<00:00, 2819.25it/s]Loading weights: 100%|██████████| 1058/1058 [00:00<00:00, 2850.91it/s]
+[card-test] load: 0.9 s
+[card-test] prompt tokens: 10
+[card-test] stock CPU forward: 11.9 s -> hidden[50] (1, 10, 5120)
+[card-test] image: pixel_values (1620, 1536) grid [[1, 30, 54]]
+[card-test] image presentation: 10 text + 405 image tokens
+[card-test] stock CPU image forward: 68.7 s
+[te-stream] dropped 13 never-executed decoder layers
+[te-stream] dropped lm_head (never used; embeds are tied)
+[te-stream] rotary on hpu; vision tower + embed stay on CPU (bit-exact)
+[te-stream] activated on hpu (graphs OFF, eager recipes per region)
+[card-test] activate (pin+scratch): 0.3 s
+[card-test] streamed HPU encode rep0: 6.7 s
+[card-test] streamed HPU encode rep1: 4.1 s
+[card-test] compare: min per-token cos=0.9997795 rel_fro=0.00434 -> PASS (gates: cos>0.999, rel_fro<0.01)
+[card-test] speedup steady: 2.9x (11.9s -> 4.11s)
+[card-test] streamed HPU image encode: 7.9 s
+[card-test] image compare: min per-token cos=0.6302971 rel_fro=1.08111 -> FAIL
+[card-test] FAILURES PRESENT
