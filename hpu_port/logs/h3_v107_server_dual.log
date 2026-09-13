@@ -1,0 +1,419 @@
+launch_h3.sh: GC plugin missing in /usr/lib/habanatools/habana_plugins; using /opt/habanalabs/habana_plugins
+[h3] CP: seq 15911 padded by 1 text rows to 15912 (divisible by 2)
+[h3] plan: {
+  "workflow": "t2va",
+  "bucket_res": "r480",
+  "canvas": [
+    864,
+    480
+  ],
+  "duration_frames": 124,
+  "T_lat": 37,
+  "audio_latents": 207,
+  "rows_per_frame": 405,
+  "fl2va_extra_rows": 0,
+  "text_budget": 513,
+  "expected_packed_seq": 15912,
+  "steps": 5,
+  "seed": 42,
+  "device_map": {
+    "te": "cpu",
+    "dit": "hpu",
+    "vae": "hpu",
+    "audio": "hpu"
+  },
+  "cp": 2,
+  "cp_seq_base": 15911,
+  "cp_seq_pad": 1
+}
+[h3] server: HTTP API on :8032 (spool ../out/.server)
+[h3:r1]] workdir: /root/src/h3/hpu_port/workdir/t2va
+Loading weights:   0%|          | 0/1058 [00:00<?, ?it/s][h3:r0]] workdir: /root/src/h3/hpu_port/workdir/t2va
+Loading weights:   0%|          | 0/1058 [00:00<?, ?it/s]Loading weights:  18%|█▊        | 193/1058 [00:00<00:00, 1928.89it/s]Loading weights:  20%|██        | 214/1058 [00:00<00:00, 2136.42it/s]Loading weights:  36%|███▋      | 386/1058 [00:00<00:00, 1657.53it/s]Loading weights:  40%|████      | 428/1058 [00:00<00:00, 1745.40it/s]Loading weights:  52%|█████▏    | 555/1058 [00:00<00:00, 1616.29it/s]Loading weights:  57%|█████▋    | 607/1058 [00:00<00:00, 1692.50it/s]Loading weights:  69%|██████▉   | 730/1058 [00:00<00:00, 1664.56it/s]Loading weights:  74%|███████▍  | 786/1058 [00:00<00:00, 1726.20it/s]Loading weights:  87%|████████▋ | 923/1058 [00:00<00:00, 1747.21it/s]Loading weights:  92%|█████████▏| 977/1058 [00:00<00:00, 1784.34it/s]Loading weights: 100%|██████████| 1058/1058 [00:00<00:00, 1742.70it/s]
+Loading weights: 100%|██████████| 1058/1058 [00:00<00:00, 1789.87it/s]
+Loading checkpoint shards:   0%|          | 0/14 [00:00<?, ?it/s]Loading checkpoint shards:  29%|██▊       | 4/14 [00:00<00:00, 32.33it/s]Loading checkpoint shards:  57%|█████▋    | 8/14 [00:00<00:00, 26.39it/s]Loading checkpoint shards:  79%|███████▊  | 11/14 [00:00<00:00, 26.31it/s]Loading checkpoint shards: 100%|██████████| 14/14 [00:00<00:00, 24.71it/s]Loading checkpoint shards: 100%|██████████| 14/14 [00:00<00:00, 25.71it/s]
+Loading checkpoint shards:   0%|          | 0/3 [00:00<?, ?it/s]Loading checkpoint shards:  33%|███▎      | 1/3 [00:00<00:00,  7.53it/s]Loading checkpoint shards:  67%|██████▋   | 2/3 [00:00<00:00,  6.57it/s]Loading checkpoint shards: 100%|██████████| 3/3 [00:00<00:00,  9.54it/s]
+/root/src/h3/.venv/lib/python3.12/site-packages/torch/nn/utils/weight_norm.py:144: FutureWarning: `torch.nn.utils.weight_norm` is deprecated in favor of `torch.nn.utils.parametrizations.weight_norm`.
+  WeightNorm.apply(module, name, dim)
+/root/src/h3/.venv/lib/python3.12/site-packages/torch/nn/utils/weight_norm.py:144: FutureWarning: `torch.nn.utils.weight_norm` is deprecated in favor of `torch.nn.utils.parametrizations.weight_norm`.
+  WeightNorm.apply(module, name, dim)
+============================= HPU PT BRIDGE CONFIGURATION ON RANK = 0 ============= 
+ PT_HPU_LAZY_MODE = 1
+ PT_HPU_RECIPE_CACHE_CONFIG = /root/src/h3/hpu_port/.recipe_cache_rank0,false,8192,false
+ PT_HPU_MAX_COMPOUND_OP_SIZE = 9223372036854775807
+ PT_HPU_LAZY_ACC_PAR_MODE = 1
+ PT_HPU_ENABLE_REFINE_DYNAMIC_SHAPES = 0
+ PT_HPU_EAGER_PIPELINE_ENABLE = 1
+ PT_HPU_EAGER_COLLECTIVE_PIPELINE_ENABLE = 1
+ PT_HPU_ENABLE_LAZY_COLLECTIVES = 0
+---------------------------: System Configuration :---------------------------
+Num CPU Cores : 128
+CPU RAM       : 125 GB
+------------------------------------------------------------------------------
+Attention backends are an experimental feature and the API may be subject to change.
+Attention backends are an experimental feature and the API may be subject to change.
+`enable_parallelism` is an experimental feature. The API may change in the future and breaking changes may be introduced at any time without warning.
+[h3:r0]] placed transformer on hpu
+[h3:r0]] placed vae on hpu
+[h3:r0]] placed audio_vae on hpu
+[h3:r0]] CP device map: dit/vae/audio on hpu (replicated); te on cpu
+[h3:r0]] attention backend: habana_fused_sdpa (DiT + video VAE)
+[h3:r0]] rope cache installed on transformer.rope
+[h3:r0]] CP: token refiner kept replicated (2 processors un-stamped; refiner runs pre-packing on the full text run)
+[h3:r0]] context parallelism ON: ulysses=2 backend=hccl mesh=DeviceMesh((ring=1, ulysses=2), 'hpu', stride=(2, 1)) (seq sharded inside diffusers via the model's _cp_plan)
+[h3:r1]] placed transformer on hpu
+[h3:r1]] placed vae on hpu
+[h3:r1]] placed audio_vae on hpu
+[h3:r1]] CP device map: dit/vae/audio on hpu (replicated); te on cpu
+[h3:r1]] attention backend: habana_fused_sdpa (DiT + video VAE)
+[h3:r1]] rope cache installed on transformer.rope
+[h3:r1]] CP: token refiner kept replicated (2 processors un-stamped; refiner runs pre-packing on the full text run)
+[h3:r1]] context parallelism ON: ulysses=2 backend=hccl mesh=DeviceMesh((ring=1, ulysses=2), 'hpu', stride=(2, 1)) (seq sharded inside diffusers via the model's _cp_plan)
+[h3:r0]] CP: HPU graphs default OFF under CP (collectives inside graph capture are untested; H3_CP_GRAPHS=1 to force)
+[h3:r0]] graphs OFF: eager lazy mode with post-call mark_step
+[h3:r0]] per-block mark_step installed on 52 blocks
+[h3:r0]] per-block mark_step installed on 36 blocks
+[h3:r1]] CP: HPU graphs default OFF under CP (collectives inside graph capture are untested; H3_CP_GRAPHS=1 to force)
+[h3:r1]] graphs OFF: eager lazy mode with post-call mark_step
+[h3:r1]] per-block mark_step installed on 52 blocks
+[h3:r0]] VAE decoder per-block mark_step installed on 36 blocks
+[h3:r0]] per-block mark_step installed on 6 blocks
+[h3:r0]] VAE encoder per-block mark_step installed on 6 blocks
+[h3:r1]] per-block mark_step installed on 36 blocks
+[h3:r1]] VAE decoder per-block mark_step installed on 36 blocks
+[h3:r1]] per-block mark_step installed on 6 blocks
+[h3:r1]] VAE encoder per-block mark_step installed on 6 blocks
+[h3:r1]] server: dual-pipe ready (t2va + fl2va; shared weights)
+[h3:r0]] server: dual-pipe ready (t2va + fl2va; shared weights)
+[h3:r1]] block logging installed (12 block classes; H3_LOG_BLOCKS=0 to disable)
+[h3:r0]] block logging installed (12 block classes; H3_LOG_BLOCKS=0 to disable)
+[h3:r0]] server: claimed job_f38168f811 (seq 1)
+[h3:r0]] === server request job_f38168f811 (fl2va) ===
+[h3:r0]:block] > SequentialPipelineBlocks
+[h3:r1]:r1]] server: received claim job_f38168f811 (seq 1)
+[h3:r1]] === server request job_f38168f811 (fl2va) ===
+[h3:r1]:block] > SequentialPipelineBlocks
+[h3:r1]] embed cache hit: /tmp/h3_ecache2/d3f7ffba2392f1e3afaa54006d6ff79e2e037e2f200bf609865698d7de74d6a9.pt
+[h3:r1]] TE broadcast: received embeds from rank0 (waited 230.0s)
+  [h3:r0]:block] > MiniMaxH3PrepareLayoutStep
+  [h3:r0]:block] < MiniMaxH3PrepareLayoutStep: 0.034s
+  [h3:r0]:block] > MiniMaxH3PrepareLatentsStep
+  [h3:r1]:block] > MiniMaxH3PrepareLayoutStep
+  [h3:r1]:block] < MiniMaxH3PrepareLayoutStep: 0.015s
+  [h3:r1]:block] > MiniMaxH3PrepareLatentsStep
+[h3:r0]] CP noise determinism: video noise rows identical on all 2 ranks
+  [h3:r1]:block] < MiniMaxH3PrepareLatentsStep: 0.073s
+[h3:r0]] CP noise determinism: audio noise rows identical on all 2 ranks
+  [h3:r1]:block] > MiniMaxH3SetTimestepsStep
+  [h3:r0]:block] < MiniMaxH3PrepareLatentsStep: 1.102s
+  [h3:r0]:block] > MiniMaxH3SetTimestepsStep
+  [h3:r0]:block] < MiniMaxH3SetTimestepsStep: 0.027s
+  [h3:r0]:block] > MiniMaxH3DenoiseStep
+  [h3:r1]:block] < MiniMaxH3SetTimestepsStep: 0.030s
+  [h3:r1]:block] > MiniMaxH3DenoiseStep
+  0%|          | 0/1 [00:00<?, ?it/s]  0%|          | 0/1 [00:00<?, ?it/s]    [h3:r0]:block] > MiniMaxH3LoopDenoiser i=0 t=0.0000
+    [h3:r1]:block] > MiniMaxH3LoopDenoiser i=0 t=0.0000
+    [h3:r0]:block] ! MiniMaxH3LoopDenoiser i=0 t=0.0000: FAILED after 0.007s: AssertionError: Tensor size along dimension to be sharded must be divisible by mesh size
+    [h3:r1]:block] ! MiniMaxH3LoopDenoiser i=0 t=0.0000: FAILED after 0.007s: AssertionError: Tensor size along dimension to be sharded must be divisible by mesh size
+
+Error in block: (denoiser, MiniMaxH3LoopDenoiser)
+Error details: Tensor size along dimension to be sharded must be divisible by mesh size
+Traceback:
+Traceback (most recent call last):
+  File "/root/src/h3/.venv/lib/python3.12/site-packages/diffusers/modular_pipelines/modular_pipeline.py", line 1515, in loop_step
+    components, state = block(components, state, **kwargs)
+                        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/root/src/h3/hpu_port/run_t2va.py", line 1714, in logged
+    out = orig(self, *args, **kwargs)
+          ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/root/src/h3/hpu_port/run_t2va.py", line 846, in prewarmed_call
+    return orig(self, components, block_state, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/root/src/h3/.venv/lib/python3.12/site-packages/torch/utils/_contextlib.py", line 124, in decorate_context
+    return func(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^
+  File "/root/src/h3/.venv/lib/python3.12/site-packages/diffusers/modular_pipelines/minimax_h3/denoise.py", line 121, in __call__
+    block_state.noise_pred, block_state.audio_noise_pred = transformer(
+                                                           ^^^^^^^^^^^^
+  File "/root/src/h3/.venv/lib/python3.12/site-packages/torch/nn/modules/module.py", line 1779, in _wrapped_call_impl
+    return self._call_impl(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/root/src/h3/.venv/lib/python3.12/site-packages/torch/nn/modules/module.py", line 1790, in _call_impl
+    return forward_call(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/root/src/h3/hpu_port/run_t2va.py", line 2019, in wrapped
+    out = orig(*args, **kwargs)
+          ^^^^^^^^^^^^^^^^^^^^^
+  File "/root/src/h3/.venv/lib/python3.12/site-packages/diffusers/utils/peft_utils.py", line 323, in wrapper
+    result = forward_fn(self, *args, **kwargs)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/root/src/h3/.venv/lib/python3.12/site-packages/diffusers/models/transformers/transformer_minimax_h3.py", line 622, in forward
+    rotary_emb = self.rope(position_ids)
+                 ^^^^^^^^^^^^^^^^^^^^^^^
+  File "/root/src/h3/.venv/lib/python3.12/site-packages/torch/nn/modules/module.py", line 1779, in _wrapped_call_impl
+    return self._call_impl(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/root/src/h3/.venv/lib/python3.12/site-packages/torch/nn/modules/module.py", line 1885, in _call_impl
+    return inner()
+           ^^^^^^^
+  File "/root/src/h3/.venv/lib/python3.12/site-packages/torch/nn/modules/module.py", line 1833, in inner
+    result = forward_call(*args, **kwargs)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/root/src/h3/.venv/lib/python3.12/site-packages/diffusers/hooks/hooks.py", line 190, in new_forward
+    return function_reference.post_forward(module, output)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/root/src/h3/.venv/lib/python3.12/site-packages/diffusers/hooks/context_parallel.py", line 201, in post_forward
+    current_output = self._prepare_cp_input(current_output, cpm)
+                     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/root/src/h3/.venv/lib/python3.12/site-packages/diffusers/hooks/context_parallel.py", line 217, in _prepare_cp_input
+    return EquipartitionSharder.shard(x, cp_input.split_dim, self.parallel_config._flattened_mesh)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/root/src/h3/.venv/lib/python3.12/site-packages/diffusers/hooks/context_parallel.py", line 274, in shard
+    assert tensor.size()[dim] % mesh.size() == 0, (
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: Tensor size along dimension to be sharded must be divisible by mesh size
+
+  0%|          | 0/1 [00:00<?, ?it/s]
+  [h3:r0]:block] ! MiniMaxH3DenoiseStep: FAILED after 0.027s: AssertionError: Tensor size along dimension to be sharded must be divisible by mesh size
+  0%|          | 0/1 [00:00<?, ?it/s]
+  [h3:r1]:block] ! MiniMaxH3DenoiseStep: FAILED after 0.027s: AssertionError: Tensor size along dimension to be sharded must be divisible by mesh size
+
+Error in block: (denoise.denoise, MiniMaxH3DenoiseStep)
+Error details: Tensor size along dimension to be sharded must be divisible by mesh size
+Traceback:
+Traceback (most recent call last):
+  File "/root/src/h3/.venv/lib/python3.12/site-packages/diffusers/modular_pipelines/modular_pipeline.py", line 1145, in __call__
+    pipeline, state = block(pipeline, state)
+                      ^^^^^^^^^^^^^^^^^^^^^^
+  File "/root/src/h3/hpu_port/run_t2va.py", line 1714, in logged
+    out = orig(self, *args, **kwargs)
+          ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/root/src/h3/.venv/lib/python3.12/site-packages/torch/utils/_contextlib.py", line 124, in decorate_context
+    return func(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^
+  File "/root/src/h3/.venv/lib/python3.12/site-packages/diffusers/modular_pipelines/minimax_h3/denoise.py", line 265, in __call__
+    components, block_state = self.loop_step(components, block_state, i=i, t=t)
+                              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/root/src/h3/.venv/lib/python3.12/site-packages/diffusers/modular_pipelines/modular_pipeline.py", line 1515, in loop_step
+    components, state = block(components, state, **kwargs)
+                        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/root/src/h3/hpu_port/run_t2va.py", line 1714, in logged
+    out = orig(self, *args, **kwargs)
+          ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/root/src/h3/hpu_port/run_t2va.py", line 846, in prewarmed_call
+    return orig(self, components, block_state, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/root/src/h3/.venv/lib/python3.12/site-packages/torch/utils/_contextlib.py", line 124, in decorate_context
+    return func(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^
+  File "/root/src/h3/.venv/lib/python3.12/site-packages/diffusers/modular_pipelines/minimax_h3/denoise.py", line 121, in __call__
+    block_state.noise_pred, block_state.audio_noise_pred = transformer(
+                                                           ^^^^^^^^^^^^
+  File "/root/src/h3/.venv/lib/python3.12/site-packages/torch/nn/modules/module.py", line 1779, in _wrapped_call_impl
+    return self._call_impl(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/root/src/h3/.venv/lib/python3.12/site-packages/torch/nn/modules/module.py", line 1790, in _call_impl
+    return forward_call(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/root/src/h3/hpu_port/run_t2va.py", line 2019, in wrapped
+    out = orig(*args, **kwargs)
+          ^^^^^^^^^^^^^^^^^^^^^
+  File "/root/src/h3/.venv/lib/python3.12/site-packages/diffusers/utils/peft_utils.py", line 323, in wrapper
+    result = forward_fn(self, *args, **kwargs)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/root/src/h3/.venv/lib/python3.12/site-packages/diffusers/models/transformers/transformer_minimax_h3.py", line 622, in forward
+    rotary_emb = self.rope(position_ids)
+                 ^^^^^^^^^^^^^^^^^^^^^^^
+  File "/root/src/h3/.venv/lib/python3.12/site-packages/torch/nn/modules/module.py", line 1779, in _wrapped_call_impl
+    return self._call_impl(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/root/src/h3/.venv/lib/python3.12/site-packages/torch/nn/modules/module.py", line 1885, in _call_impl
+    return inner()
+           ^^^^^^^
+  File "/root/src/h3/.venv/lib/python3.12/site-packages/torch/nn/modules/module.py", line 1833, in inner
+    result = forward_call(*args, **kwargs)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/root/src/h3/.venv/lib/python3.12/site-packages/diffusers/hooks/hooks.py", line 190, in new_forward
+    return function_reference.post_forward(module, output)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/root/src/h3/.venv/lib/python3.12/site-packages/diffusers/hooks/context_parallel.py", line 201, in post_forward
+    current_output = self._prepare_cp_input(current_output, cpm)
+                     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/root/src/h3/.venv/lib/python3.12/site-packages/diffusers/hooks/context_parallel.py", line 217, in _prepare_cp_input
+    return EquipartitionSharder.shard(x, cp_input.split_dim, self.parallel_config._flattened_mesh)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/root/src/h3/.venv/lib/python3.12/site-packages/diffusers/hooks/context_parallel.py", line 274, in shard
+    assert tensor.size()[dim] % mesh.size() == 0, (
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: Tensor size along dimension to be sharded must be divisible by mesh size
+
+[h3:r0]:block] ! SequentialPipelineBlocks: FAILED after 237.579s: AssertionError: Tensor size along dimension to be sharded must be divisible by mesh size
+Error in block: (SequentialPipelineBlocks):
+
+[h3:r1]:block] ! SequentialPipelineBlocks: FAILED after 236.577s: AssertionError: Tensor size along dimension to be sharded must be divisible by mesh size
+Traceback (most recent call last):
+  File "/root/src/h3/hpu_port/run_t2va.py", line 3171, in _cp_worker_entry
+    _cp_worker_main(rank, payload)
+  File "/root/src/h3/hpu_port/run_t2va.py", line 3203, in _cp_worker_main
+    timings = run_pipeline(
+              ^^^^^^^^^^^^^
+  File "/root/src/h3/hpu_port/run_t2va.py", line 4410, in run_pipeline
+    state = _active(**{**kwargs, "num_inference_steps": run_steps})
+            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/root/src/h3/.venv/lib/python3.12/site-packages/diffusers/modular_pipelines/modular_pipeline.py", line 2927, in __call__
+    _, state = self._blocks(self, state)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/root/src/h3/hpu_port/run_t2va.py", line 1714, in logged
+    out = orig(self, *args, **kwargs)
+          ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/root/src/h3/.venv/lib/python3.12/site-packages/torch/utils/_contextlib.py", line 124, in decorate_context
+    return func(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^
+  File "/root/src/h3/.venv/lib/python3.12/site-packages/diffusers/modular_pipelines/modular_pipeline.py", line 1145, in __call__
+    pipeline, state = block(pipeline, state)
+                      ^^^^^^^^^^^^^^^^^^^^^^
+  File "/root/src/h3/hpu_port/run_t2va.py", line 1714, in logged
+    out = orig(self, *args, **kwargs)
+          ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/root/src/h3/.venv/lib/python3.12/site-packages/torch/utils/_contextlib.py", line 124, in decorate_context
+    return func(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^
+  File "/root/src/h3/.venv/lib/python3.12/site-packages/diffusers/modular_pipelines/minimax_h3/denoise.py", line 265, in __call__
+    components, block_state = self.loop_step(components, block_state, i=i, t=t)
+                              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/root/src/h3/.venv/lib/python3.12/site-packages/diffusers/modular_pipelines/modular_pipeline.py", line 1515, in loop_step
+    components, state = block(components, state, **kwargs)
+                        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/root/src/h3/hpu_port/run_t2va.py", line 1714, in logged
+    out = orig(self, *args, **kwargs)
+          ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/root/src/h3/hpu_port/run_t2va.py", line 846, in prewarmed_call
+    return orig(self, components, block_state, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/root/src/h3/.venv/lib/python3.12/site-packages/torch/utils/_contextlib.py", line 124, in decorate_context
+    return func(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^
+  File "/root/src/h3/.venv/lib/python3.12/site-packages/diffusers/modular_pipelines/minimax_h3/denoise.py", line 121, in __call__
+    block_state.noise_pred, block_state.audio_noise_pred = transformer(
+                                                           ^^^^^^^^^^^^
+  File "/root/src/h3/.venv/lib/python3.12/site-packages/torch/nn/modules/module.py", line 1779, in _wrapped_call_impl
+    return self._call_impl(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/root/src/h3/.venv/lib/python3.12/site-packages/torch/nn/modules/module.py", line 1790, in _call_impl
+    return forward_call(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/root/src/h3/hpu_port/run_t2va.py", line 2019, in wrapped
+    out = orig(*args, **kwargs)
+          ^^^^^^^^^^^^^^^^^^^^^
+  File "/root/src/h3/.venv/lib/python3.12/site-packages/diffusers/utils/peft_utils.py", line 323, in wrapper
+    result = forward_fn(self, *args, **kwargs)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/root/src/h3/.venv/lib/python3.12/site-packages/diffusers/models/transformers/transformer_minimax_h3.py", line 622, in forward
+    rotary_emb = self.rope(position_ids)
+                 ^^^^^^^^^^^^^^^^^^^^^^^
+  File "/root/src/h3/.venv/lib/python3.12/site-packages/torch/nn/modules/module.py", line 1779, in _wrapped_call_impl
+    return self._call_impl(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/root/src/h3/.venv/lib/python3.12/site-packages/torch/nn/modules/module.py", line 1885, in _call_impl
+    return inner()
+           ^^^^^^^
+  File "/root/src/h3/.venv/lib/python3.12/site-packages/torch/nn/modules/module.py", line 1833, in inner
+    result = forward_call(*args, **kwargs)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/root/src/h3/.venv/lib/python3.12/site-packages/diffusers/hooks/hooks.py", line 190, in new_forward
+    return function_reference.post_forward(module, output)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/root/src/h3/.venv/lib/python3.12/site-packages/diffusers/hooks/context_parallel.py", line 201, in post_forward
+    current_output = self._prepare_cp_input(current_output, cpm)
+                     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/root/src/h3/.venv/lib/python3.12/site-packages/diffusers/hooks/context_parallel.py", line 217, in _prepare_cp_input
+    return EquipartitionSharder.shard(x, cp_input.split_dim, self.parallel_config._flattened_mesh)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/root/src/h3/.venv/lib/python3.12/site-packages/diffusers/hooks/context_parallel.py", line 274, in shard
+    assert tensor.size()[dim] % mesh.size() == 0, (
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: Tensor size along dimension to be sharded must be divisible by mesh size
+Traceback (most recent call last):
+  File "/root/src/h3/hpu_port/run_t2va.py", line 3171, in _cp_worker_entry
+    _cp_worker_main(rank, payload)
+  File "/root/src/h3/hpu_port/run_t2va.py", line 3203, in _cp_worker_main
+    timings = run_pipeline(
+              ^^^^^^^^^^^^^
+  File "/root/src/h3/hpu_port/run_t2va.py", line 4410, in run_pipeline
+    state = _active(**{**kwargs, "num_inference_steps": run_steps})
+            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/root/src/h3/.venv/lib/python3.12/site-packages/diffusers/modular_pipelines/modular_pipeline.py", line 2927, in __call__
+    _, state = self._blocks(self, state)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/root/src/h3/hpu_port/run_t2va.py", line 1714, in logged
+    out = orig(self, *args, **kwargs)
+          ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/root/src/h3/.venv/lib/python3.12/site-packages/torch/utils/_contextlib.py", line 124, in decorate_context
+    return func(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^
+  File "/root/src/h3/.venv/lib/python3.12/site-packages/diffusers/modular_pipelines/modular_pipeline.py", line 1145, in __call__
+    pipeline, state = block(pipeline, state)
+                      ^^^^^^^^^^^^^^^^^^^^^^
+  File "/root/src/h3/hpu_port/run_t2va.py", line 1714, in logged
+    out = orig(self, *args, **kwargs)
+          ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/root/src/h3/.venv/lib/python3.12/site-packages/torch/utils/_contextlib.py", line 124, in decorate_context
+    return func(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^
+  File "/root/src/h3/.venv/lib/python3.12/site-packages/diffusers/modular_pipelines/minimax_h3/denoise.py", line 265, in __call__
+    components, block_state = self.loop_step(components, block_state, i=i, t=t)
+                              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/root/src/h3/.venv/lib/python3.12/site-packages/diffusers/modular_pipelines/modular_pipeline.py", line 1515, in loop_step
+    components, state = block(components, state, **kwargs)
+                        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/root/src/h3/hpu_port/run_t2va.py", line 1714, in logged
+    out = orig(self, *args, **kwargs)
+          ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/root/src/h3/hpu_port/run_t2va.py", line 846, in prewarmed_call
+    return orig(self, components, block_state, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/root/src/h3/.venv/lib/python3.12/site-packages/torch/utils/_contextlib.py", line 124, in decorate_context
+    return func(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^
+  File "/root/src/h3/.venv/lib/python3.12/site-packages/diffusers/modular_pipelines/minimax_h3/denoise.py", line 121, in __call__
+    block_state.noise_pred, block_state.audio_noise_pred = transformer(
+                                                           ^^^^^^^^^^^^
+  File "/root/src/h3/.venv/lib/python3.12/site-packages/torch/nn/modules/module.py", line 1779, in _wrapped_call_impl
+    return self._call_impl(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/root/src/h3/.venv/lib/python3.12/site-packages/torch/nn/modules/module.py", line 1790, in _call_impl
+    return forward_call(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/root/src/h3/hpu_port/run_t2va.py", line 2019, in wrapped
+    out = orig(*args, **kwargs)
+          ^^^^^^^^^^^^^^^^^^^^^
+  File "/root/src/h3/.venv/lib/python3.12/site-packages/diffusers/utils/peft_utils.py", line 323, in wrapper
+    result = forward_fn(self, *args, **kwargs)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/root/src/h3/.venv/lib/python3.12/site-packages/diffusers/models/transformers/transformer_minimax_h3.py", line 622, in forward
+    rotary_emb = self.rope(position_ids)
+                 ^^^^^^^^^^^^^^^^^^^^^^^
+  File "/root/src/h3/.venv/lib/python3.12/site-packages/torch/nn/modules/module.py", line 1779, in _wrapped_call_impl
+    return self._call_impl(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/root/src/h3/.venv/lib/python3.12/site-packages/torch/nn/modules/module.py", line 1885, in _call_impl
+    return inner()
+           ^^^^^^^
+  File "/root/src/h3/.venv/lib/python3.12/site-packages/torch/nn/modules/module.py", line 1833, in inner
+    result = forward_call(*args, **kwargs)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/root/src/h3/.venv/lib/python3.12/site-packages/diffusers/hooks/hooks.py", line 190, in new_forward
+    return function_reference.post_forward(module, output)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/root/src/h3/.venv/lib/python3.12/site-packages/diffusers/hooks/context_parallel.py", line 201, in post_forward
+    current_output = self._prepare_cp_input(current_output, cpm)
+                     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/root/src/h3/.venv/lib/python3.12/site-packages/diffusers/hooks/context_parallel.py", line 217, in _prepare_cp_input
+    return EquipartitionSharder.shard(x, cp_input.split_dim, self.parallel_config._flattened_mesh)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/root/src/h3/.venv/lib/python3.12/site-packages/diffusers/hooks/context_parallel.py", line 274, in shard
+    assert tensor.size()[dim] % mesh.size() == 0, (
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: Tensor size along dimension to be sharded must be divisible by mesh size
+[h3] CP timing merge: no per-rank timing files found
+[h3] CP FAILED: ['h3-cp-rank0', 'h3-cp-rank1'] (exit codes {'h3-cp-rank0': 1, 'h3-cp-rank1': 1})

@@ -1,0 +1,153 @@
+Failed to create component processor:
+- Component spec: ComponentSpec(name='processor', type_hint=<class 'transformers.models.qwen3_vl.processing_qwen3_vl.Qwen3VLProcessor'>, description=None, config=None, pretrained_model_name_or_path='/root/src/h3/hpu_port/workdir/t2va', subfolder='processor', variant=None, revision=None, default_creation_method='from_pretrained', repo=None)
+- load() called with kwargs: {'local_files_only': True}
+If this component is not required for your workflow you can safely ignore this message.
+
+Traceback:
+Traceback (most recent call last):
+  File "/root/src/h3/.venv/lib/python3.12/site-packages/diffusers/modular_pipelines/modular_pipeline_utils.py", line 347, in load
+    component = load_method(pretrained_model_name_or_path, **load_kwargs, **kwargs)
+                ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/root/src/h3/.venv/lib/python3.12/site-packages/transformers/processing_utils.py", line 1735, in from_pretrained
+    args = cls._get_arguments_from_pretrained(pretrained_model_name_or_path, processor_dict, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/root/src/h3/.venv/lib/python3.12/site-packages/transformers/processing_utils.py", line 1875, in _get_arguments_from_pretrained
+    sub_processor = auto_processor_class.from_pretrained(
+                    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/root/src/h3/.venv/lib/python3.12/site-packages/transformers/models/auto/video_processing_auto.py", line 380, in from_pretrained
+    return video_processor_class.from_pretrained(pretrained_model_name_or_path, *inputs, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/root/src/h3/.venv/lib/python3.12/site-packages/transformers/utils/import_utils.py", line 2359, in __getattribute__
+    requires_backends(cls, cls._backends)
+  File "/root/src/h3/.venv/lib/python3.12/site-packages/transformers/utils/import_utils.py", line 2345, in requires_backends
+    raise ImportError("".join(failed))
+ImportError: 
+Qwen3VLVideoProcessor requires the Torchvision library but it was not found in your environment. Check out the instructions on the
+installation page: https://pytorch.org/get-started/locally/ and follow the ones that match your environment.
+Please note that you may need to restart your runtime after installation.
+
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/root/src/h3/.venv/lib/python3.12/site-packages/diffusers/modular_pipelines/modular_pipeline.py", line 2465, in load_components
+    components_to_register[name] = spec.load(**component_load_kwargs)
+                                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/root/src/h3/.venv/lib/python3.12/site-packages/diffusers/modular_pipelines/modular_pipeline_utils.py", line 349, in load
+    raise ValueError(f"Unable to load {self.name} using load method: {e}")
+ValueError: Unable to load processor using load method: 
+Qwen3VLVideoProcessor requires the Torchvision library but it was not found in your environment. Check out the instructions on the
+installation page: https://pytorch.org/get-started/locally/ and follow the ones that match your environment.
+Please note that you may need to restart your runtime after installation.
+
+
+[h3] plan: {
+  "workflow": "t2va",
+  "bucket_res": "r480",
+  "canvas": [
+    864,
+    480
+  ],
+  "duration_frames": 124,
+  "T_lat": 37,
+  "audio_latents": 207,
+  "rows_per_frame": 405,
+  "fl2va_extra_rows": 0,
+  "text_budget": 512,
+  "expected_packed_seq": 15911,
+  "steps": 30,
+  "seed": 42,
+  "device_map": {
+    "te": "cpu",
+    "dit": "hpu",
+    "vae": "hpu",
+    "audio": "hpu"
+  }
+}
+[h3] workdir: /root/src/h3/hpu_port/workdir/t2va
+Loading weights:   0%|          | 0/1058 [00:00<?, ?it/s]Loading weights:  31%|███▏      | 332/1058 [00:00<00:00, 3309.63it/s]Loading weights:  63%|██████▎   | 663/1058 [00:00<00:00, 3099.15it/s]Loading weights:  92%|█████████▏| 975/1058 [00:00<00:00, 3107.25it/s]Loading weights: 100%|██████████| 1058/1058 [00:00<00:00, 3133.78it/s]
+Loading checkpoint shards:   0%|          | 0/14 [00:00<?, ?it/s]Loading checkpoint shards:  71%|███████▏  | 10/14 [00:00<00:00, 96.66it/s]Loading checkpoint shards: 100%|██████████| 14/14 [00:00<00:00, 96.36it/s]
+Loading checkpoint shards:   0%|          | 0/3 [00:00<?, ?it/s]Loading checkpoint shards: 100%|██████████| 3/3 [00:00<00:00, 35.76it/s]
+/root/src/h3/.venv/lib/python3.12/site-packages/torch/nn/utils/weight_norm.py:144: FutureWarning: `torch.nn.utils.weight_norm` is deprecated in favor of `torch.nn.utils.parametrizations.weight_norm`.
+  WeightNorm.apply(module, name, dim)
+============================= HPU PT BRIDGE CONFIGURATION ON RANK = 0 ============= 
+ PT_HPU_LAZY_MODE = 1
+ PT_HPU_RECIPE_CACHE_CONFIG = /root/src/h3/hpu_port/.recipe_cache,false,8192,false
+ PT_HPU_MAX_COMPOUND_OP_SIZE = 9223372036854775807
+ PT_HPU_LAZY_ACC_PAR_MODE = 1
+ PT_HPU_ENABLE_REFINE_DYNAMIC_SHAPES = 0
+ PT_HPU_EAGER_PIPELINE_ENABLE = 1
+ PT_HPU_EAGER_COLLECTIVE_PIPELINE_ENABLE = 1
+ PT_HPU_ENABLE_LAZY_COLLECTIVES = 0
+---------------------------: System Configuration :---------------------------
+Num CPU Cores : 128
+CPU RAM       : 125 GB
+------------------------------------------------------------------------------
+Attention backends are an experimental feature and the API may be subject to change.
+Attention backends are an experimental feature and the API may be subject to change.
+
+Error in block: (text_encoder, MiniMaxH3TextEncoderStep)
+Error details: 'NoneType' object has no attribute 'create_mm_token_type_ids'
+Traceback:
+Traceback (most recent call last):
+  File "/root/src/h3/.venv/lib/python3.12/site-packages/diffusers/modular_pipelines/modular_pipeline.py", line 1145, in __call__
+    pipeline, state = block(pipeline, state)
+                      ^^^^^^^^^^^^^^^^^^^^^^
+  File "/root/src/h3/hpu_port/run_t2va.py", line 736, in wrapped
+    components, state = _orig(self, components, state)
+                        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/root/src/h3/.venv/lib/python3.12/site-packages/torch/utils/_contextlib.py", line 124, in decorate_context
+    return func(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^
+  File "/root/src/h3/.venv/lib/python3.12/site-packages/diffusers/modular_pipelines/minimax_h3/encoders.py", line 196, in __call__
+    block_state.prompt_embeds = get_qwen3vl_prompt_embeds(
+                                ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/root/src/h3/hpu_port/run_t2va.py", line 690, in bridged
+    out = orig(*args, **run_kwargs)
+          ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/root/src/h3/.venv/lib/python3.12/site-packages/diffusers/modular_pipelines/minimax_h3/encoders.py", line 73, in get_qwen3vl_prompt_embeds
+    mm_token_type_ids = torch.tensor(processor.create_mm_token_type_ids([token_ids]), dtype=torch.long, device=device)
+                                     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AttributeError: 'NoneType' object has no attribute 'create_mm_token_type_ids'
+
+Error in block: (SequentialPipelineBlocks):
+
+Traceback (most recent call last):
+  File "/root/src/h3/hpu_port/run_t2va.py", line 1510, in <module>
+    sys.exit(main())
+             ^^^^^^
+  File "/root/src/h3/hpu_port/run_t2va.py", line 1467, in main
+    state = pipe(**{**kwargs, "num_inference_steps": run_steps})
+            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/root/src/h3/.venv/lib/python3.12/site-packages/diffusers/modular_pipelines/modular_pipeline.py", line 2927, in __call__
+    _, state = self._blocks(self, state)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/root/src/h3/.venv/lib/python3.12/site-packages/torch/utils/_contextlib.py", line 124, in decorate_context
+    return func(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^
+  File "/root/src/h3/.venv/lib/python3.12/site-packages/diffusers/modular_pipelines/modular_pipeline.py", line 1145, in __call__
+    pipeline, state = block(pipeline, state)
+                      ^^^^^^^^^^^^^^^^^^^^^^
+  File "/root/src/h3/hpu_port/run_t2va.py", line 736, in wrapped
+    components, state = _orig(self, components, state)
+                        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/root/src/h3/.venv/lib/python3.12/site-packages/torch/utils/_contextlib.py", line 124, in decorate_context
+    return func(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^
+  File "/root/src/h3/.venv/lib/python3.12/site-packages/diffusers/modular_pipelines/minimax_h3/encoders.py", line 196, in __call__
+    block_state.prompt_embeds = get_qwen3vl_prompt_embeds(
+                                ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/root/src/h3/hpu_port/run_t2va.py", line 690, in bridged
+    out = orig(*args, **run_kwargs)
+          ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/root/src/h3/.venv/lib/python3.12/site-packages/diffusers/modular_pipelines/minimax_h3/encoders.py", line 73, in get_qwen3vl_prompt_embeds
+    mm_token_type_ids = torch.tensor(processor.create_mm_token_type_ids([token_ids]), dtype=torch.long, device=device)
+                                     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AttributeError: 'NoneType' object has no attribute 'create_mm_token_type_ids'
+[h3] placed transformer on hpu
+[h3] placed vae on hpu
+[h3] placed audio_vae on hpu
+[h3] attention backend: habana_fused_sdpa (DiT + video VAE)
+[h3] rope cache installed on transformer.rope
+[h3] DiT wrapped into HPU graphs (per-bucket static shapes)
+[h3] graphs ON

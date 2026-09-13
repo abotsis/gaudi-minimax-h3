@@ -1,0 +1,95 @@
+[h3] plan: {
+  "workflow": "t2va",
+  "bucket_res": "r480",
+  "canvas": [
+    864,
+    480
+  ],
+  "duration_frames": 124,
+  "T_lat": 37,
+  "audio_latents": 207,
+  "rows_per_frame": 405,
+  "fl2va_extra_rows": 0,
+  "text_budget": 512,
+  "expected_packed_seq": 15911,
+  "steps": 30,
+  "seed": 42,
+  "device_map": {
+    "te": "cpu",
+    "dit": "hpu",
+    "vae": "hpu",
+    "audio": "hpu"
+  }
+}
+[h3] workdir: /root/src/h3/hpu_port/workdir/t2va
+Loading weights:   0%|          | 0/1058 [00:00<?, ?it/s]Loading weights:  36%|███▋      | 386/1058 [00:00<00:00, 3857.59it/s]Loading weights:  73%|███████▎  | 772/1058 [00:00<00:00, 3220.35it/s]Loading weights: 100%|██████████| 1058/1058 [00:00<00:00, 3240.49it/s]
+Loading checkpoint shards:   0%|          | 0/14 [00:00<?, ?it/s]Loading checkpoint shards:  71%|███████▏  | 10/14 [00:00<00:00, 99.33it/s]Loading checkpoint shards: 100%|██████████| 14/14 [00:00<00:00, 99.48it/s]
+Loading checkpoint shards:   0%|          | 0/3 [00:00<?, ?it/s]Loading checkpoint shards: 100%|██████████| 3/3 [00:00<00:00, 40.39it/s]
+/root/src/h3/.venv/lib/python3.12/site-packages/torch/nn/utils/weight_norm.py:144: FutureWarning: `torch.nn.utils.weight_norm` is deprecated in favor of `torch.nn.utils.parametrizations.weight_norm`.
+  WeightNorm.apply(module, name, dim)
+============================= HPU PT BRIDGE CONFIGURATION ON RANK = 0 ============= 
+ PT_HPU_LAZY_MODE = 1
+ PT_HPU_RECIPE_CACHE_CONFIG = /root/src/h3/hpu_port/.recipe_cache,false,8192,false
+ PT_HPU_MAX_COMPOUND_OP_SIZE = 9223372036854775807
+ PT_HPU_LAZY_ACC_PAR_MODE = 1
+ PT_HPU_ENABLE_REFINE_DYNAMIC_SHAPES = 0
+ PT_HPU_EAGER_PIPELINE_ENABLE = 1
+ PT_HPU_EAGER_COLLECTIVE_PIPELINE_ENABLE = 1
+ PT_HPU_ENABLE_LAZY_COLLECTIVES = 0
+---------------------------: System Configuration :---------------------------
+Num CPU Cores : 128
+CPU RAM       : 125 GB
+------------------------------------------------------------------------------
+Attention backends are an experimental feature and the API may be subject to change.
+Attention backends are an experimental feature and the API may be subject to change.
+
+Error in block: (denoise.set_timesteps, MiniMaxH3SetTimestepsStep)
+Error details: Graph compile failed. Recipe: .graph_dumps/HabanaFusedOpLazy_0_1, synStatus=synStatus 26 [Generic failure]. 
+Last synapse error: file: recipe_manager.cpp:304 function: compileGraph, scope: SYN_RECIPE, failed condition: (ret == false), message: Can not compile graph. Recipe name .graph_dumps/HabanaFusedOpLazy_0_1, graph name: .graph_dumps/HabanaFusedOpLazy_0_1
+Traceback:
+Traceback (most recent call last):
+  File "/root/src/h3/.venv/lib/python3.12/site-packages/diffusers/modular_pipelines/modular_pipeline.py", line 1145, in __call__
+    pipeline, state = block(pipeline, state)
+                      ^^^^^^^^^^^^^^^^^^^^^^
+  File "/root/src/h3/.venv/lib/python3.12/site-packages/torch/utils/_contextlib.py", line 124, in decorate_context
+    return func(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^
+  File "/root/src/h3/.venv/lib/python3.12/site-packages/diffusers/modular_pipelines/minimax_h3/before_denoise.py", line 1237, in __call__
+    float(timestep),
+    ^^^^^^^^^^^^^^^
+RuntimeError: Graph compile failed. Recipe: .graph_dumps/HabanaFusedOpLazy_0_1, synStatus=synStatus 26 [Generic failure]. 
+Last synapse error: file: recipe_manager.cpp:304 function: compileGraph, scope: SYN_RECIPE, failed condition: (ret == false), message: Can not compile graph. Recipe name .graph_dumps/HabanaFusedOpLazy_0_1, graph name: .graph_dumps/HabanaFusedOpLazy_0_1
+
+Error in block: (SequentialPipelineBlocks):
+
+Traceback (most recent call last):
+  File "/root/src/h3/hpu_port/run_t2va.py", line 1510, in <module>
+    sys.exit(main())
+             ^^^^^^
+  File "/root/src/h3/hpu_port/run_t2va.py", line 1467, in main
+    state = pipe(**{**kwargs, "num_inference_steps": run_steps})
+            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/root/src/h3/.venv/lib/python3.12/site-packages/diffusers/modular_pipelines/modular_pipeline.py", line 2927, in __call__
+    _, state = self._blocks(self, state)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/root/src/h3/.venv/lib/python3.12/site-packages/torch/utils/_contextlib.py", line 124, in decorate_context
+    return func(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^
+  File "/root/src/h3/.venv/lib/python3.12/site-packages/diffusers/modular_pipelines/modular_pipeline.py", line 1145, in __call__
+    pipeline, state = block(pipeline, state)
+                      ^^^^^^^^^^^^^^^^^^^^^^
+  File "/root/src/h3/.venv/lib/python3.12/site-packages/torch/utils/_contextlib.py", line 124, in decorate_context
+    return func(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^
+  File "/root/src/h3/.venv/lib/python3.12/site-packages/diffusers/modular_pipelines/minimax_h3/before_denoise.py", line 1237, in __call__
+    float(timestep),
+    ^^^^^^^^^^^^^^^
+RuntimeError: Graph compile failed. Recipe: .graph_dumps/HabanaFusedOpLazy_0_1, synStatus=synStatus 26 [Generic failure]. 
+Last synapse error: file: recipe_manager.cpp:304 function: compileGraph, scope: SYN_RECIPE, failed condition: (ret == false), message: Can not compile graph. Recipe name .graph_dumps/HabanaFusedOpLazy_0_1, graph name: .graph_dumps/HabanaFusedOpLazy_0_1
+[h3] placed transformer on hpu
+[h3] placed vae on hpu
+[h3] placed audio_vae on hpu
+[h3] attention backend: habana_fused_sdpa (DiT + video VAE)
+[h3] rope cache installed on transformer.rope
+[h3] DiT wrapped into HPU graphs (per-bucket static shapes)
+[h3] graphs ON

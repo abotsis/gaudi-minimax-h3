@@ -1,0 +1,957 @@
+launch_h3.sh: GC plugin missing in /usr/lib/habanatools/habana_plugins; using /opt/habanalabs/habana_plugins
+[h3] CP: seq 15911 padded by 1 text rows to 15912 (divisible by 8)
+[h3] plan: {
+  "workflow": "t2va",
+  "bucket_res": "r480",
+  "canvas": [
+    864,
+    480
+  ],
+  "duration_frames": 124,
+  "T_lat": 37,
+  "audio_latents": 207,
+  "rows_per_frame": 405,
+  "fl2va_extra_rows": 0,
+  "text_budget": 513,
+  "expected_packed_seq": 15912,
+  "steps": 20,
+  "seed": 42,
+  "device_map": {
+    "te": "cpu",
+    "dit": "hpu",
+    "vae": "hpu",
+    "audio": "hpu"
+  },
+  "cp": 8,
+  "cp_seq_base": 15911,
+  "cp_seq_pad": 1
+}
+[h3:r5]] workdir: /root/src/h3/hpu_port/workdir/t2va
+Loading weights:   0%|          | 0/1058 [00:00<?, ?it/s][h3:r4]] workdir: /root/src/h3/hpu_port/workdir/t2va
+Loading weights:   0%|          | 0/1058 [00:00<?, ?it/s][h3:r3]] workdir: /root/src/h3/hpu_port/workdir/t2va
+Loading weights:   0%|          | 0/1058 [00:00<?, ?it/s][h3:r2]] workdir: /root/src/h3/hpu_port/workdir/t2va
+Loading weights:   0%|          | 0/1058 [00:00<?, ?it/s][h3:r7]] workdir: /root/src/h3/hpu_port/workdir/t2va
+Loading weights:   0%|          | 0/1058 [00:00<?, ?it/s]Loading weights:  19%|█▉        | 203/1058 [00:00<00:00, 2028.46it/s]Loading weights:  19%|█▉        | 204/1058 [00:00<00:00, 2037.76it/s]Loading weights:  20%|█▉        | 208/1058 [00:00<00:00, 2066.17it/s]Loading weights:  20%|█▉        | 209/1058 [00:00<00:00, 2051.78it/s]Loading weights:  28%|██▊       | 295/1058 [00:00<00:00, 2946.49it/s][h3:r1]] workdir: /root/src/h3/hpu_port/workdir/t2va
+Loading weights:   0%|          | 0/1058 [00:00<?, ?it/s]Loading weights:  38%|███▊      | 406/1058 [00:00<00:00, 1890.74it/s]Loading weights:  39%|███▊      | 408/1058 [00:00<00:00, 1909.87it/s]Loading weights:  39%|███▉      | 415/1058 [00:00<00:00, 1900.73it/s]Loading weights:  39%|███▉      | 415/1058 [00:00<00:00, 1906.44it/s]Loading weights:  32%|███▏      | 339/1058 [00:00<00:00, 3378.73it/s]Loading weights:  56%|█████▌    | 590/1058 [00:00<00:00, 2196.61it/s]Loading weights:  56%|█████▋    | 596/1058 [00:00<00:00, 1889.92it/s]Loading weights:  57%|█████▋    | 600/1058 [00:00<00:00, 1900.20it/s]Loading weights:  57%|█████▋    | 607/1058 [00:00<00:00, 1907.69it/s]Loading weights:  57%|█████▋    | 607/1058 [00:00<00:00, 1900.87it/s][h3:r0]] workdir: /root/src/h3/hpu_port/workdir/t2va
+Loading weights:   0%|          | 0/1058 [00:00<?, ?it/s][h3:r6]] workdir: /root/src/h3/hpu_port/workdir/t2va
+Loading weights:   0%|          | 0/1058 [00:00<?, ?it/s]Loading weights:  64%|██████▍   | 677/1058 [00:00<00:00, 3063.26it/s]Loading weights:  77%|███████▋  | 810/1058 [00:00<00:00, 1984.17it/s]Loading weights:  77%|███████▋  | 813/1058 [00:00<00:00, 1987.80it/s]Loading weights:  78%|███████▊  | 822/1058 [00:00<00:00, 2176.22it/s]Loading weights:  78%|███████▊  | 822/1058 [00:00<00:00, 1999.48it/s]Loading weights:  78%|███████▊  | 822/1058 [00:00<00:00, 1995.54it/s]Loading weights:  37%|███▋      | 387/1058 [00:00<00:00, 3864.44it/s]Loading weights:  38%|███▊      | 404/1058 [00:00<00:00, 4027.35it/s]Loading weights:  93%|█████████▎| 986/1058 [00:00<00:00, 2993.86it/s]Loading weights:  98%|█████████▊| 1040/1058 [00:00<00:00, 2093.19it/s]Loading weights:  98%|█████████▊| 1039/1058 [00:00<00:00, 2079.52it/s]Loading weights:  99%|█████████▉| 1047/1058 [00:00<00:00, 2199.97it/s]Loading weights:  99%|█████████▉| 1049/1058 [00:00<00:00, 2092.16it/s]Loading weights:  99%|█████████▉| 1050/1058 [00:00<00:00, 2096.80it/s]Loading weights: 100%|██████████| 1058/1058 [00:00<00:00, 2035.11it/s]
+Loading weights: 100%|██████████| 1058/1058 [00:00<00:00, 2038.67it/s]
+Loading weights: 100%|██████████| 1058/1058 [00:00<00:00, 2250.33it/s]
+Loading weights: 100%|██████████| 1058/1058 [00:00<00:00, 2033.31it/s]
+Loading weights: 100%|██████████| 1058/1058 [00:00<00:00, 2024.70it/s]
+Loading weights: 100%|██████████| 1058/1058 [00:00<00:00, 3021.51it/s]
+Loading weights:  73%|███████▎  | 774/1058 [00:00<00:00, 3264.49it/s]Loading weights:  76%|███████▋  | 807/1058 [00:00<00:00, 3266.36it/s]Loading weights: 100%|██████████| 1058/1058 [00:00<00:00, 3281.65it/s]
+Loading weights: 100%|██████████| 1058/1058 [00:00<00:00, 3210.11it/s]
+Loading checkpoint shards:   0%|          | 0/14 [00:00<?, ?it/s]Loading checkpoint shards:  71%|███████▏  | 10/14 [00:00<00:00, 99.20it/s]/root/src/h3/.venv/lib/python3.12/site-packages/torch/nn/utils/weight_norm.py:144: FutureWarning: `torch.nn.utils.weight_norm` is deprecated in favor of `torch.nn.utils.parametrizations.weight_norm`.
+  WeightNorm.apply(module, name, dim)
+/root/src/h3/.venv/lib/python3.12/site-packages/torch/nn/utils/weight_norm.py:144: FutureWarning: `torch.nn.utils.weight_norm` is deprecated in favor of `torch.nn.utils.parametrizations.weight_norm`.
+  WeightNorm.apply(module, name, dim)
+/root/src/h3/.venv/lib/python3.12/site-packages/torch/nn/utils/weight_norm.py:144: FutureWarning: `torch.nn.utils.weight_norm` is deprecated in favor of `torch.nn.utils.parametrizations.weight_norm`.
+  WeightNorm.apply(module, name, dim)
+/root/src/h3/.venv/lib/python3.12/site-packages/torch/nn/utils/weight_norm.py:144: FutureWarning: `torch.nn.utils.weight_norm` is deprecated in favor of `torch.nn.utils.parametrizations.weight_norm`.
+  WeightNorm.apply(module, name, dim)
+/root/src/h3/.venv/lib/python3.12/site-packages/torch/nn/utils/weight_norm.py:144: FutureWarning: `torch.nn.utils.weight_norm` is deprecated in favor of `torch.nn.utils.parametrizations.weight_norm`.
+  WeightNorm.apply(module, name, dim)
+/root/src/h3/.venv/lib/python3.12/site-packages/torch/nn/utils/weight_norm.py:144: FutureWarning: `torch.nn.utils.weight_norm` is deprecated in favor of `torch.nn.utils.parametrizations.weight_norm`.
+  WeightNorm.apply(module, name, dim)
+Loading checkpoint shards: 100%|██████████| 14/14 [00:00<00:00, 99.58it/s]
+Loading checkpoint shards:   0%|          | 0/3 [00:00<?, ?it/s]Loading checkpoint shards: 100%|██████████| 3/3 [00:00<00:00, 40.83it/s]
+/root/src/h3/.venv/lib/python3.12/site-packages/torch/nn/utils/weight_norm.py:144: FutureWarning: `torch.nn.utils.weight_norm` is deprecated in favor of `torch.nn.utils.parametrizations.weight_norm`.
+  WeightNorm.apply(module, name, dim)
+/root/src/h3/.venv/lib/python3.12/site-packages/torch/nn/utils/weight_norm.py:144: FutureWarning: `torch.nn.utils.weight_norm` is deprecated in favor of `torch.nn.utils.parametrizations.weight_norm`.
+  WeightNorm.apply(module, name, dim)
+============================= HPU PT BRIDGE CONFIGURATION ON RANK = 0 ============= 
+ PT_HPU_LAZY_MODE = 1
+ PT_HPU_RECIPE_CACHE_CONFIG = /root/src/h3/hpu_port/.recipe_cache_rank0,false,8192,false
+ PT_HPU_MAX_COMPOUND_OP_SIZE = 9223372036854775807
+ PT_HPU_LAZY_ACC_PAR_MODE = 1
+ PT_HPU_ENABLE_REFINE_DYNAMIC_SHAPES = 0
+ PT_HPU_EAGER_PIPELINE_ENABLE = 1
+ PT_HPU_EAGER_COLLECTIVE_PIPELINE_ENABLE = 1
+ PT_HPU_ENABLE_LAZY_COLLECTIVES = 0
+---------------------------: System Configuration :---------------------------
+Num CPU Cores : 128
+CPU RAM       : 125 GB
+------------------------------------------------------------------------------
+Attention backends are an experimental feature and the API may be subject to change.
+Attention backends are an experimental feature and the API may be subject to change.
+`enable_parallelism` is an experimental feature. The API may change in the future and breaking changes may be introduced at any time without warning.
+[h3:r0]] placed transformer on hpu
+[h3:r0]] placed vae on hpu
+[h3:r0]] placed audio_vae on hpu
+[h3:r0]] CP device map: dit/vae/audio on hpu (replicated); te on cpu
+[h3:r0]] attention backend: habana_fused_sdpa (DiT + video VAE)
+[h3:r0]] rope cache installed on transformer.rope
+[h3:r0]] CP: token refiner kept replicated (2 processors un-stamped; refiner runs pre-packing on the full text run)
+[h3:r0]] context parallelism ON: ulysses=8 backend=hccl mesh=DeviceMesh((ring=1, ulysses=8), 'hpu', stride=(8, 1)) (seq sharded inside diffusers via the model's _cp_plan)
+[h3:r7]] placed transformer on hpu
+[h3:r7]] placed vae on hpu
+[h3:r7]] placed audio_vae on hpu
+[h3:r7]] CP device map: dit/vae/audio on hpu (replicated); te on cpu
+[h3:r7]] attention backend: habana_fused_sdpa (DiT + video VAE)
+[h3:r7]] rope cache installed on transformer.rope
+[h3:r7]] CP: token refiner kept replicated (2 processors un-stamped; refiner runs pre-packing on the full text run)
+[h3:r5]] placed transformer on hpu
+[h3:r5]] placed vae on hpu
+[h3:r5]] placed audio_vae on hpu
+[h3:r5]] CP device map: dit/vae/audio on hpu (replicated); te on cpu
+[h3:r5]] attention backend: habana_fused_sdpa (DiT + video VAE)
+[h3:r5]] rope cache installed on transformer.rope
+[h3:r5]] CP: token refiner kept replicated (2 processors un-stamped; refiner runs pre-packing on the full text run)
+[h3:r7]] context parallelism ON: ulysses=8 backend=hccl mesh=DeviceMesh((ring=1, ulysses=8), 'hpu', stride=(8, 1)) (seq sharded inside diffusers via the model's _cp_plan)
+[h3:r5]] context parallelism ON: ulysses=8 backend=hccl mesh=DeviceMesh((ring=1, ulysses=8), 'hpu', stride=(8, 1)) (seq sharded inside diffusers via the model's _cp_plan)
+[h3:r1]] placed transformer on hpu
+[h3:r1]] placed vae on hpu
+[h3:r1]] placed audio_vae on hpu
+[h3:r1]] CP device map: dit/vae/audio on hpu (replicated); te on cpu
+[h3:r1]] attention backend: habana_fused_sdpa (DiT + video VAE)
+[h3:r1]] rope cache installed on transformer.rope
+[h3:r1]] CP: token refiner kept replicated (2 processors un-stamped; refiner runs pre-packing on the full text run)
+[h3:r6]] placed transformer on hpu
+[h3:r6]] placed vae on hpu
+[h3:r6]] placed audio_vae on hpu
+[h3:r6]] CP device map: dit/vae/audio on hpu (replicated); te on cpu
+[h3:r6]] attention backend: habana_fused_sdpa (DiT + video VAE)
+[h3:r6]] rope cache installed on transformer.rope
+[h3:r6]] CP: token refiner kept replicated (2 processors un-stamped; refiner runs pre-packing on the full text run)
+[h3:r1]] context parallelism ON: ulysses=8 backend=hccl mesh=DeviceMesh((ring=1, ulysses=8), 'hpu', stride=(8, 1)) (seq sharded inside diffusers via the model's _cp_plan)
+[h3:r4]] placed transformer on hpu
+[h3:r4]] placed vae on hpu
+[h3:r4]] placed audio_vae on hpu
+[h3:r4]] CP device map: dit/vae/audio on hpu (replicated); te on cpu
+[h3:r4]] attention backend: habana_fused_sdpa (DiT + video VAE)
+[h3:r4]] rope cache installed on transformer.rope
+[h3:r4]] CP: token refiner kept replicated (2 processors un-stamped; refiner runs pre-packing on the full text run)
+[h3:r6]] context parallelism ON: ulysses=8 backend=hccl mesh=DeviceMesh((ring=1, ulysses=8), 'hpu', stride=(8, 1)) (seq sharded inside diffusers via the model's _cp_plan)
+[h3:r3]] placed transformer on hpu
+[h3:r3]] placed vae on hpu
+[h3:r3]] placed audio_vae on hpu
+[h3:r3]] CP device map: dit/vae/audio on hpu (replicated); te on cpu
+[h3:r3]] attention backend: habana_fused_sdpa (DiT + video VAE)
+[h3:r3]] rope cache installed on transformer.rope
+[h3:r3]] CP: token refiner kept replicated (2 processors un-stamped; refiner runs pre-packing on the full text run)
+[h3:r4]] context parallelism ON: ulysses=8 backend=hccl mesh=DeviceMesh((ring=1, ulysses=8), 'hpu', stride=(8, 1)) (seq sharded inside diffusers via the model's _cp_plan)
+[h3:r3]] context parallelism ON: ulysses=8 backend=hccl mesh=DeviceMesh((ring=1, ulysses=8), 'hpu', stride=(8, 1)) (seq sharded inside diffusers via the model's _cp_plan)
+[h3:r0]] CP: HPU graphs default OFF under CP (collectives inside graph capture are untested; H3_CP_GRAPHS=1 to force)
+[h3:r0]] graphs OFF: eager lazy mode with post-call mark_step
+[h3:r0]] per-block mark_step installed on 52 blocks
+[h3:r1]] CP: HPU graphs default OFF under CP (collectives inside graph capture are untested; H3_CP_GRAPHS=1 to force)
+[h3:r1]] graphs OFF: eager lazy mode with post-call mark_step
+[h3:r1]] per-block mark_step installed on 52 blocks
+[h3:r5]] CP: HPU graphs default OFF under CP (collectives inside graph capture are untested; H3_CP_GRAPHS=1 to force)
+[h3:r5]] graphs OFF: eager lazy mode with post-call mark_step
+[h3:r5]] per-block mark_step installed on 52 blocks
+[h3:r7]] CP: HPU graphs default OFF under CP (collectives inside graph capture are untested; H3_CP_GRAPHS=1 to force)
+[h3:r7]] graphs OFF: eager lazy mode with post-call mark_step
+[h3:r7]] per-block mark_step installed on 52 blocks
+[h3:r6]] CP: HPU graphs default OFF under CP (collectives inside graph capture are untested; H3_CP_GRAPHS=1 to force)
+[h3:r6]] graphs OFF: eager lazy mode with post-call mark_step
+[h3:r6]] per-block mark_step installed on 52 blocks
+[h3:r4]] CP: HPU graphs default OFF under CP (collectives inside graph capture are untested; H3_CP_GRAPHS=1 to force)
+[h3:r4]] graphs OFF: eager lazy mode with post-call mark_step
+[h3:r4]] per-block mark_step installed on 52 blocks
+[h3:r3]] CP: HPU graphs default OFF under CP (collectives inside graph capture are untested; H3_CP_GRAPHS=1 to force)
+[h3:r3]] graphs OFF: eager lazy mode with post-call mark_step
+[h3:r3]] per-block mark_step installed on 52 blocks
+[h3:r5]] block logging installed (12 block classes; H3_LOG_BLOCKS=0 to disable)
+[h3:r7]] block logging installed (12 block classes; H3_LOG_BLOCKS=0 to disable)
+[h3:r1]] block logging installed (12 block classes; H3_LOG_BLOCKS=0 to disable)
+[h3:r0]] block logging installed (12 block classes; H3_LOG_BLOCKS=0 to disable)
+[h3:r6]] block logging installed (12 block classes; H3_LOG_BLOCKS=0 to disable)
+[h3:r3]] block logging installed (12 block classes; H3_LOG_BLOCKS=0 to disable)
+[h3:r4]] block logging installed (12 block classes; H3_LOG_BLOCKS=0 to disable)
+[h3:r5]:block] > SequentialPipelineBlocks
+  [h3:r5]:block] > MiniMaxH3TextEncoderStep
+[h3:r7]:block] > SequentialPipelineBlocks
+[h3:r6]:block] > SequentialPipelineBlocks
+[h3:r3]:block] > SequentialPipelineBlocks
+[h3:r0]:block] > SequentialPipelineBlocks
+  [h3:r7]:block] > MiniMaxH3TextEncoderStep
+  [h3:r3]:block] > MiniMaxH3TextEncoderStep
+  [h3:r6]:block] > MiniMaxH3TextEncoderStep
+  [h3:r0]:block] > MiniMaxH3TextEncoderStep
+[h3:r4]:block] > SequentialPipelineBlocks
+[h3:r1]:block] > SequentialPipelineBlocks
+  [h3:r4]:block] > MiniMaxH3TextEncoderStep
+  [h3:r1]:block] > MiniMaxH3TextEncoderStep
+[h3:r2]] placed transformer on hpu
+[h3:r2]] placed vae on hpu
+[h3:r2]] placed audio_vae on hpu
+[h3:r2]] CP device map: dit/vae/audio on hpu (replicated); te on cpu
+[h3:r2]] attention backend: habana_fused_sdpa (DiT + video VAE)
+[h3:r2]] rope cache installed on transformer.rope
+[h3:r2]] CP: token refiner kept replicated (2 processors un-stamped; refiner runs pre-packing on the full text run)
+[h3:r2]] context parallelism ON: ulysses=8 backend=hccl mesh=DeviceMesh((ring=1, ulysses=8), 'hpu', stride=(8, 1)) (seq sharded inside diffusers via the model's _cp_plan)
+[h3:r2]] CP: HPU graphs default OFF under CP (collectives inside graph capture are untested; H3_CP_GRAPHS=1 to force)
+[h3:r2]] graphs OFF: eager lazy mode with post-call mark_step
+[h3:r2]] per-block mark_step installed on 52 blocks
+[h3:r2]] block logging installed (12 block classes; H3_LOG_BLOCKS=0 to disable)
+[h3:r2]:block] > SequentialPipelineBlocks
+  [h3:r2]:block] > MiniMaxH3TextEncoderStep
+[h3:r1]] embed cache hit: /root/src/h3/hpu_port/.ecache/aa8a6ccc87b0f1bbc76541a79d03a92586293f5b468e0c4d12c94cea81e1e22b.pt
+  [h3:r1]:block] < MiniMaxH3TextEncoderStep: 0.020s
+  [h3:r1]:block] > MiniMaxH3NoKeyframeAnchorsStep
+  [h3:r1]:block] < MiniMaxH3NoKeyframeAnchorsStep: 0.000s
+  [h3:r1]:block] > MiniMaxH3PrepareLayoutStep
+[h3:r5]] embed cache hit: /root/src/h3/hpu_port/.ecache/aa8a6ccc87b0f1bbc76541a79d03a92586293f5b468e0c4d12c94cea81e1e22b.pt
+  [h3:r5]:block] < MiniMaxH3TextEncoderStep: 0.022s
+[h3:r4]] embed cache hit: /root/src/h3/hpu_port/.ecache/aa8a6ccc87b0f1bbc76541a79d03a92586293f5b468e0c4d12c94cea81e1e22b.pt
+  [h3:r4]:block] < MiniMaxH3TextEncoderStep: 0.022s
+  [h3:r5]:block] > MiniMaxH3NoKeyframeAnchorsStep
+  [h3:r4]:block] > MiniMaxH3NoKeyframeAnchorsStep
+  [h3:r5]:block] < MiniMaxH3NoKeyframeAnchorsStep: 0.000s
+  [h3:r4]:block] < MiniMaxH3NoKeyframeAnchorsStep: 0.000s
+  [h3:r5]:block] > MiniMaxH3PrepareLayoutStep
+  [h3:r4]:block] > MiniMaxH3PrepareLayoutStep
+[h3:r0]] embed cache hit: /root/src/h3/hpu_port/.ecache/aa8a6ccc87b0f1bbc76541a79d03a92586293f5b468e0c4d12c94cea81e1e22b.pt
+  [h3:r0]:block] < MiniMaxH3TextEncoderStep: 0.022s
+  [h3:r0]:block] > MiniMaxH3NoKeyframeAnchorsStep
+  [h3:r0]:block] < MiniMaxH3NoKeyframeAnchorsStep: 0.000s
+  [h3:r0]:block] > MiniMaxH3PrepareLayoutStep
+[h3:r2]] embed cache hit: /root/src/h3/hpu_port/.ecache/aa8a6ccc87b0f1bbc76541a79d03a92586293f5b468e0c4d12c94cea81e1e22b.pt
+  [h3:r2]:block] < MiniMaxH3TextEncoderStep: 0.016s
+  [h3:r2]:block] > MiniMaxH3NoKeyframeAnchorsStep
+  [h3:r2]:block] < MiniMaxH3NoKeyframeAnchorsStep: 0.000s
+  [h3:r2]:block] > MiniMaxH3PrepareLayoutStep
+[h3:r6]] embed cache hit: /root/src/h3/hpu_port/.ecache/aa8a6ccc87b0f1bbc76541a79d03a92586293f5b468e0c4d12c94cea81e1e22b.pt
+  [h3:r6]:block] < MiniMaxH3TextEncoderStep: 0.024s
+  [h3:r6]:block] > MiniMaxH3NoKeyframeAnchorsStep
+  [h3:r6]:block] < MiniMaxH3NoKeyframeAnchorsStep: 0.000s
+  [h3:r6]:block] > MiniMaxH3PrepareLayoutStep
+[h3:r3]] embed cache hit: /root/src/h3/hpu_port/.ecache/aa8a6ccc87b0f1bbc76541a79d03a92586293f5b468e0c4d12c94cea81e1e22b.pt
+  [h3:r3]:block] < MiniMaxH3TextEncoderStep: 0.026s
+  [h3:r3]:block] > MiniMaxH3NoKeyframeAnchorsStep
+  [h3:r3]:block] < MiniMaxH3NoKeyframeAnchorsStep: 0.000s
+  [h3:r3]:block] > MiniMaxH3PrepareLayoutStep
+[h3:r7]] embed cache hit: /root/src/h3/hpu_port/.ecache/aa8a6ccc87b0f1bbc76541a79d03a92586293f5b468e0c4d12c94cea81e1e22b.pt
+  [h3:r7]:block] < MiniMaxH3TextEncoderStep: 0.027s
+  [h3:r7]:block] > MiniMaxH3NoKeyframeAnchorsStep
+  [h3:r7]:block] < MiniMaxH3NoKeyframeAnchorsStep: 0.000s
+  [h3:r7]:block] > MiniMaxH3PrepareLayoutStep
+  [h3:r7]:block] < MiniMaxH3PrepareLayoutStep: 0.010s
+  [h3:r7]:block] > MiniMaxH3PrepareLatentsStep
+  [h3:r2]:block] < MiniMaxH3PrepareLayoutStep: 0.014s
+  [h3:r4]:block] < MiniMaxH3PrepareLayoutStep: 0.015s
+  [h3:r3]:block] < MiniMaxH3PrepareLayoutStep: 0.010s
+  [h3:r2]:block] > MiniMaxH3PrepareLatentsStep
+  [h3:r4]:block] > MiniMaxH3PrepareLatentsStep
+  [h3:r3]:block] > MiniMaxH3PrepareLatentsStep
+  [h3:r0]:block] < MiniMaxH3PrepareLayoutStep: 0.014s
+  [h3:r0]:block] > MiniMaxH3PrepareLatentsStep
+  [h3:r1]:block] < MiniMaxH3PrepareLayoutStep: 0.017s
+  [h3:r1]:block] > MiniMaxH3PrepareLatentsStep
+  [h3:r5]:block] < MiniMaxH3PrepareLayoutStep: 0.015s
+  [h3:r5]:block] > MiniMaxH3PrepareLatentsStep
+  [h3:r6]:block] < MiniMaxH3PrepareLayoutStep: 0.014s
+  [h3:r6]:block] > MiniMaxH3PrepareLatentsStep
+[h3:r0]] CP noise determinism: video noise rows identical on all 8 ranks
+[h3:r0]] CP noise determinism: audio noise rows identical on all 8 ranks
+  [h3:r0]:block] < MiniMaxH3PrepareLatentsStep: 0.107s
+  [h3:r0]:block] > MiniMaxH3SetTimestepsStep
+  [h3:r2]:block] < MiniMaxH3PrepareLatentsStep: 0.108s
+  [h3:r2]:block] > MiniMaxH3SetTimestepsStep
+  [h3:r1]:block] < MiniMaxH3PrepareLatentsStep: 0.108s
+  [h3:r1]:block] > MiniMaxH3SetTimestepsStep
+  [h3:r7]:block] < MiniMaxH3PrepareLatentsStep: 0.109s
+  [h3:r7]:block] > MiniMaxH3SetTimestepsStep
+  [h3:r4]:block] < MiniMaxH3PrepareLatentsStep: 0.109s
+  [h3:r4]:block] > MiniMaxH3SetTimestepsStep
+  [h3:r5]:block] < MiniMaxH3PrepareLatentsStep: 0.109s
+  [h3:r5]:block] > MiniMaxH3SetTimestepsStep
+  [h3:r6]:block] < MiniMaxH3PrepareLatentsStep: 0.107s
+  [h3:r6]:block] > MiniMaxH3SetTimestepsStep
+  [h3:r3]:block] < MiniMaxH3PrepareLatentsStep: 0.109s
+  [h3:r3]:block] > MiniMaxH3SetTimestepsStep
+  [h3:r0]:block] < MiniMaxH3SetTimestepsStep: 0.029s
+  [h3:r0]:block] > MiniMaxH3DenoiseStep
+  0%|          | 0/19 [00:00<?, ?it/s]    [h3:r0]:block] > MiniMaxH3LoopDenoiser i=0 t=0.0000
+  [h3:r4]:block] < MiniMaxH3SetTimestepsStep: 0.035s
+  [h3:r4]:block] > MiniMaxH3DenoiseStep
+  [h3:r6]:block] < MiniMaxH3SetTimestepsStep: 0.035s
+  [h3:r6]:block] > MiniMaxH3DenoiseStep
+  [h3:r7]:block] < MiniMaxH3SetTimestepsStep: 0.036s
+  [h3:r7]:block] > MiniMaxH3DenoiseStep
+  0%|          | 0/19 [00:00<?, ?it/s]  [h3:r3]:block] < MiniMaxH3SetTimestepsStep: 0.036s
+    [h3:r4]:block] > MiniMaxH3LoopDenoiser i=0 t=0.0000
+  [h3:r3]:block] > MiniMaxH3DenoiseStep
+  [h3:r5]:block] < MiniMaxH3SetTimestepsStep: 0.036s
+  [h3:r5]:block] > MiniMaxH3DenoiseStep
+  0%|          | 0/19 [00:00<?, ?it/s]    [h3:r6]:block] > MiniMaxH3LoopDenoiser i=0 t=0.0000
+  0%|          | 0/19 [00:00<?, ?it/s]    [h3:r7]:block] > MiniMaxH3LoopDenoiser i=0 t=0.0000
+  0%|          | 0/19 [00:00<?, ?it/s]    [h3:r3]:block] > MiniMaxH3LoopDenoiser i=0 t=0.0000
+  [h3:r2]:block] < MiniMaxH3SetTimestepsStep: 0.039s
+  0%|          | 0/19 [00:00<?, ?it/s]  [h3:r2]:block] > MiniMaxH3DenoiseStep
+    [h3:r5]:block] > MiniMaxH3LoopDenoiser i=0 t=0.0000
+  [h3:r1]:block] < MiniMaxH3SetTimestepsStep: 0.039s
+  [h3:r1]:block] > MiniMaxH3DenoiseStep
+  0%|          | 0/19 [00:00<?, ?it/s]    [h3:r2]:block] > MiniMaxH3LoopDenoiser i=0 t=0.0000
+  0%|          | 0/19 [00:00<?, ?it/s]    [h3:r1]:block] > MiniMaxH3LoopDenoiser i=0 t=0.0000
+    [h3:r7]:block] < MiniMaxH3LoopDenoiser i=0 t=0.0000: 0.559s
+    [h3:r7]:block] > MiniMaxH3LoopSchedulerStep i=0 t=0.0000
+    [h3:r2]:block] < MiniMaxH3LoopDenoiser i=0 t=0.0000: 0.557s
+    [h3:r2]:block] > MiniMaxH3LoopSchedulerStep i=0 t=0.0000
+    [h3:r6]:block] < MiniMaxH3LoopDenoiser i=0 t=0.0000: 0.559s
+    [h3:r6]:block] > MiniMaxH3LoopSchedulerStep i=0 t=0.0000
+    [h3:r1]:block] < MiniMaxH3LoopDenoiser i=0 t=0.0000: 0.559s
+    [h3:r1]:block] > MiniMaxH3LoopSchedulerStep i=0 t=0.0000
+    [h3:r7]:block] < MiniMaxH3LoopSchedulerStep i=0 t=0.0000: 0.003s
+    [h3:r2]:block] < MiniMaxH3LoopSchedulerStep i=0 t=0.0000: 0.003s
+    [h3:r6]:block] < MiniMaxH3LoopSchedulerStep i=0 t=0.0000: 0.003s
+  5%|▌         | 1/19 [00:00<00:10,  1.78it/s]  5%|▌         | 1/19 [00:00<00:10,  1.78it/s]  5%|▌         | 1/19 [00:00<00:10,  1.78it/s]    [h3:r7]:block] > MiniMaxH3LoopDenoiser i=1 t=0.0046
+    [h3:r6]:block] > MiniMaxH3LoopDenoiser i=1 t=0.0046
+    [h3:r2]:block] > MiniMaxH3LoopDenoiser i=1 t=0.0046
+    [h3:r1]:block] < MiniMaxH3LoopSchedulerStep i=0 t=0.0000: 0.002s
+  5%|▌         | 1/19 [00:00<00:10,  1.78it/s]    [h3:r1]:block] > MiniMaxH3LoopDenoiser i=1 t=0.0046
+    [h3:r0]:block] < MiniMaxH3LoopDenoiser i=0 t=0.0000: 0.605s
+    [h3:r0]:block] > MiniMaxH3LoopSchedulerStep i=0 t=0.0000
+    [h3:r0]:block] < MiniMaxH3LoopSchedulerStep i=0 t=0.0000: 0.002s
+  5%|▌         | 1/19 [00:00<00:10,  1.65it/s]    [h3:r0]:block] > MiniMaxH3LoopDenoiser i=1 t=0.0046
+    [h3:r3]:block] < MiniMaxH3LoopDenoiser i=0 t=0.0000: 0.613s
+    [h3:r3]:block] > MiniMaxH3LoopSchedulerStep i=0 t=0.0000
+    [h3:r3]:block] < MiniMaxH3LoopSchedulerStep i=0 t=0.0000: 0.002s
+  5%|▌         | 1/19 [00:00<00:11,  1.62it/s]    [h3:r3]:block] > MiniMaxH3LoopDenoiser i=1 t=0.0046
+    [h3:r5]:block] < MiniMaxH3LoopDenoiser i=0 t=0.0000: 0.636s
+    [h3:r5]:block] > MiniMaxH3LoopSchedulerStep i=0 t=0.0000
+    [h3:r5]:block] < MiniMaxH3LoopSchedulerStep i=0 t=0.0000: 0.002s
+  5%|▌         | 1/19 [00:00<00:11,  1.57it/s]    [h3:r5]:block] > MiniMaxH3LoopDenoiser i=1 t=0.0046
+    [h3:r4]:block] < MiniMaxH3LoopDenoiser i=0 t=0.0000: 0.655s
+    [h3:r4]:block] > MiniMaxH3LoopSchedulerStep i=0 t=0.0000
+    [h3:r4]:block] < MiniMaxH3LoopSchedulerStep i=0 t=0.0000: 0.002s
+  5%|▌         | 1/19 [00:00<00:11,  1.52it/s]    [h3:r4]:block] > MiniMaxH3LoopDenoiser i=1 t=0.0046
+    [h3:r6]:block] < MiniMaxH3LoopDenoiser i=1 t=0.0046: 0.499s
+    [h3:r6]:block] > MiniMaxH3LoopSchedulerStep i=1 t=0.0046
+    [h3:r2]:block] < MiniMaxH3LoopDenoiser i=1 t=0.0046: 0.499s
+    [h3:r2]:block] > MiniMaxH3LoopSchedulerStep i=1 t=0.0046
+    [h3:r1]:block] < MiniMaxH3LoopDenoiser i=1 t=0.0046: 0.499s
+    [h3:r1]:block] > MiniMaxH3LoopSchedulerStep i=1 t=0.0046
+    [h3:r6]:block] < MiniMaxH3LoopSchedulerStep i=1 t=0.0046: 0.002s
+ 11%|█         | 2/19 [00:01<00:08,  1.90it/s]    [h3:r6]:block] > MiniMaxH3LoopDenoiser i=2 t=0.0097
+    [h3:r2]:block] < MiniMaxH3LoopSchedulerStep i=1 t=0.0046: 0.002s
+ 11%|█         | 2/19 [00:01<00:08,  1.90it/s]    [h3:r2]:block] > MiniMaxH3LoopDenoiser i=2 t=0.0097
+    [h3:r1]:block] < MiniMaxH3LoopSchedulerStep i=1 t=0.0046: 0.002s
+ 11%|█         | 2/19 [00:01<00:08,  1.90it/s]    [h3:r1]:block] > MiniMaxH3LoopDenoiser i=2 t=0.0097
+    [h3:r7]:block] < MiniMaxH3LoopDenoiser i=1 t=0.0046: 0.512s
+    [h3:r7]:block] > MiniMaxH3LoopSchedulerStep i=1 t=0.0046
+    [h3:r7]:block] < MiniMaxH3LoopSchedulerStep i=1 t=0.0046: 0.001s
+ 11%|█         | 2/19 [00:01<00:09,  1.87it/s]    [h3:r7]:block] > MiniMaxH3LoopDenoiser i=2 t=0.0097
+    [h3:r3]:block] < MiniMaxH3LoopDenoiser i=1 t=0.0046: 0.534s
+    [h3:r3]:block] > MiniMaxH3LoopSchedulerStep i=1 t=0.0046
+    [h3:r3]:block] < MiniMaxH3LoopSchedulerStep i=1 t=0.0046: 0.002s
+ 11%|█         | 2/19 [00:01<00:09,  1.76it/s]    [h3:r3]:block] > MiniMaxH3LoopDenoiser i=2 t=0.0097
+    [h3:r0]:block] < MiniMaxH3LoopDenoiser i=1 t=0.0046: 0.575s
+    [h3:r0]:block] > MiniMaxH3LoopSchedulerStep i=1 t=0.0046
+    [h3:r0]:block] < MiniMaxH3LoopSchedulerStep i=1 t=0.0046: 0.002s
+ 11%|█         | 2/19 [00:01<00:10,  1.70it/s]    [h3:r0]:block] > MiniMaxH3LoopDenoiser i=2 t=0.0097
+    [h3:r5]:block] < MiniMaxH3LoopDenoiser i=1 t=0.0046: 0.620s
+    [h3:r5]:block] > MiniMaxH3LoopSchedulerStep i=1 t=0.0046
+    [h3:r5]:block] < MiniMaxH3LoopSchedulerStep i=1 t=0.0046: 0.002s
+ 11%|█         | 2/19 [00:01<00:10,  1.59it/s]    [h3:r5]:block] > MiniMaxH3LoopDenoiser i=2 t=0.0097
+    [h3:r4]:block] < MiniMaxH3LoopDenoiser i=1 t=0.0046: 0.638s
+    [h3:r4]:block] > MiniMaxH3LoopSchedulerStep i=1 t=0.0046
+    [h3:r4]:block] < MiniMaxH3LoopSchedulerStep i=1 t=0.0046: 0.002s
+ 11%|█         | 2/19 [00:01<00:11,  1.54it/s]    [h3:r4]:block] > MiniMaxH3LoopDenoiser i=2 t=0.0097
+    [h3:r1]:block] < MiniMaxH3LoopDenoiser i=2 t=0.0097: 0.497s
+    [h3:r1]:block] > MiniMaxH3LoopSchedulerStep i=2 t=0.0097
+    [h3:r7]:block] < MiniMaxH3LoopDenoiser i=2 t=0.0097: 0.486s
+    [h3:r7]:block] > MiniMaxH3LoopSchedulerStep i=2 t=0.0097
+    [h3:r1]:block] < MiniMaxH3LoopSchedulerStep i=2 t=0.0097: 0.002s
+ 16%|█▌        | 3/19 [00:01<00:08,  1.95it/s]    [h3:r1]:block] > MiniMaxH3LoopDenoiser i=3 t=0.0154
+    [h3:r7]:block] < MiniMaxH3LoopSchedulerStep i=2 t=0.0097: 0.002s
+ 16%|█▌        | 3/19 [00:01<00:08,  1.95it/s]    [h3:r7]:block] > MiniMaxH3LoopDenoiser i=3 t=0.0154
+    [h3:r6]:block] < MiniMaxH3LoopDenoiser i=2 t=0.0097: 0.503s
+    [h3:r6]:block] > MiniMaxH3LoopSchedulerStep i=2 t=0.0097
+    [h3:r6]:block] < MiniMaxH3LoopSchedulerStep i=2 t=0.0097: 0.002s
+ 16%|█▌        | 3/19 [00:01<00:08,  1.93it/s]    [h3:r6]:block] > MiniMaxH3LoopDenoiser i=3 t=0.0154
+    [h3:r2]:block] < MiniMaxH3LoopDenoiser i=2 t=0.0097: 0.505s
+    [h3:r2]:block] > MiniMaxH3LoopSchedulerStep i=2 t=0.0097
+    [h3:r2]:block] < MiniMaxH3LoopSchedulerStep i=2 t=0.0097: 0.002s
+ 16%|█▌        | 3/19 [00:01<00:08,  1.93it/s]    [h3:r2]:block] > MiniMaxH3LoopDenoiser i=3 t=0.0154
+    [h3:r3]:block] < MiniMaxH3LoopDenoiser i=2 t=0.0097: 0.431s
+    [h3:r3]:block] > MiniMaxH3LoopSchedulerStep i=2 t=0.0097
+    [h3:r3]:block] < MiniMaxH3LoopSchedulerStep i=2 t=0.0097: 0.002s
+ 16%|█▌        | 3/19 [00:01<00:08,  1.97it/s]    [h3:r3]:block] > MiniMaxH3LoopDenoiser i=3 t=0.0154
+    [h3:r0]:block] < MiniMaxH3LoopDenoiser i=2 t=0.0097: 0.487s
+    [h3:r0]:block] > MiniMaxH3LoopSchedulerStep i=2 t=0.0097
+    [h3:r0]:block] < MiniMaxH3LoopSchedulerStep i=2 t=0.0097: 0.002s
+ 16%|█▌        | 3/19 [00:01<00:08,  1.84it/s]    [h3:r0]:block] > MiniMaxH3LoopDenoiser i=3 t=0.0154
+    [h3:r5]:block] < MiniMaxH3LoopDenoiser i=2 t=0.0097: 0.489s
+    [h3:r5]:block] > MiniMaxH3LoopSchedulerStep i=2 t=0.0097
+    [h3:r5]:block] < MiniMaxH3LoopSchedulerStep i=2 t=0.0097: 0.002s
+ 16%|█▌        | 3/19 [00:01<00:09,  1.77it/s]    [h3:r5]:block] > MiniMaxH3LoopDenoiser i=3 t=0.0154
+    [h3:r4]:block] < MiniMaxH3LoopDenoiser i=2 t=0.0097: 0.490s
+    [h3:r4]:block] > MiniMaxH3LoopSchedulerStep i=2 t=0.0097
+    [h3:r4]:block] < MiniMaxH3LoopSchedulerStep i=2 t=0.0097: 0.002s
+ 16%|█▌        | 3/19 [00:01<00:09,  1.74it/s]    [h3:r4]:block] > MiniMaxH3LoopDenoiser i=3 t=0.0154
+    [h3:r0]:block] < MiniMaxH3LoopDenoiser i=3 t=0.0154: 0.752s
+    [h3:r0]:block] > MiniMaxH3LoopSchedulerStep i=3 t=0.0154
+    [h3:r0]:block] < MiniMaxH3LoopSchedulerStep i=3 t=0.0154: 0.002s
+ 21%|██        | 4/19 [00:02<00:09,  1.59it/s]    [h3:r0]:block] > MiniMaxH3LoopDenoiser i=4 t=0.0217
+    [h3:r5]:block] < MiniMaxH3LoopDenoiser i=3 t=0.0154: 0.670s
+    [h3:r5]:block] > MiniMaxH3LoopSchedulerStep i=3 t=0.0154
+    [h3:r1]:block] < MiniMaxH3LoopDenoiser i=3 t=0.0154: 0.858s
+    [h3:r1]:block] > MiniMaxH3LoopSchedulerStep i=3 t=0.0154
+    [h3:r7]:block] < MiniMaxH3LoopDenoiser i=3 t=0.0154: 0.858s
+    [h3:r7]:block] > MiniMaxH3LoopSchedulerStep i=3 t=0.0154
+    [h3:r2]:block] < MiniMaxH3LoopDenoiser i=3 t=0.0154: 0.852s
+    [h3:r2]:block] > MiniMaxH3LoopSchedulerStep i=3 t=0.0154
+    [h3:r3]:block] < MiniMaxH3LoopDenoiser i=3 t=0.0154: 0.838s
+    [h3:r3]:block] > MiniMaxH3LoopSchedulerStep i=3 t=0.0154
+    [h3:r5]:block] < MiniMaxH3LoopSchedulerStep i=3 t=0.0154: 0.002s
+    [h3:r1]:block] < MiniMaxH3LoopSchedulerStep i=3 t=0.0154: 0.002s
+ 21%|██        | 4/19 [00:02<00:09,  1.64it/s]    [h3:r5]:block] > MiniMaxH3LoopDenoiser i=4 t=0.0217
+ 21%|██        | 4/19 [00:02<00:09,  1.54it/s]    [h3:r1]:block] > MiniMaxH3LoopDenoiser i=4 t=0.0217
+    [h3:r2]:block] < MiniMaxH3LoopSchedulerStep i=3 t=0.0154: 0.002s
+    [h3:r7]:block] < MiniMaxH3LoopSchedulerStep i=3 t=0.0154: 0.003s
+ 21%|██        | 4/19 [00:02<00:09,  1.54it/s]    [h3:r2]:block] > MiniMaxH3LoopDenoiser i=4 t=0.0217
+    [h3:r4]:block] < MiniMaxH3LoopDenoiser i=3 t=0.0154: 0.637s
+    [h3:r4]:block] > MiniMaxH3LoopSchedulerStep i=3 t=0.0154
+ 21%|██        | 4/19 [00:02<00:09,  1.54it/s]    [h3:r7]:block] > MiniMaxH3LoopDenoiser i=4 t=0.0217
+    [h3:r3]:block] < MiniMaxH3LoopSchedulerStep i=3 t=0.0154: 0.003s
+ 21%|██        | 4/19 [00:02<00:09,  1.56it/s]    [h3:r3]:block] > MiniMaxH3LoopDenoiser i=4 t=0.0217
+    [h3:r6]:block] < MiniMaxH3LoopDenoiser i=3 t=0.0154: 0.859s
+    [h3:r6]:block] > MiniMaxH3LoopSchedulerStep i=3 t=0.0154
+    [h3:r4]:block] < MiniMaxH3LoopSchedulerStep i=3 t=0.0154: 0.002s
+ 21%|██        | 4/19 [00:02<00:09,  1.66it/s]    [h3:r4]:block] > MiniMaxH3LoopDenoiser i=4 t=0.0217
+    [h3:r6]:block] < MiniMaxH3LoopSchedulerStep i=3 t=0.0154: 0.002s
+ 21%|██        | 4/19 [00:02<00:09,  1.53it/s]    [h3:r6]:block] > MiniMaxH3LoopDenoiser i=4 t=0.0217
+    [h3:r3]:block] < MiniMaxH3LoopDenoiser i=4 t=0.0217: 0.852s
+    [h3:r3]:block] > MiniMaxH3LoopSchedulerStep i=4 t=0.0217
+    [h3:r7]:block] < MiniMaxH3LoopDenoiser i=4 t=0.0217: 0.853s
+    [h3:r7]:block] > MiniMaxH3LoopSchedulerStep i=4 t=0.0217
+    [h3:r0]:block] < MiniMaxH3LoopDenoiser i=4 t=0.0217: 0.859s
+    [h3:r0]:block] > MiniMaxH3LoopSchedulerStep i=4 t=0.0217
+    [h3:r2]:block] < MiniMaxH3LoopDenoiser i=4 t=0.0217: 0.855s
+    [h3:r2]:block] > MiniMaxH3LoopSchedulerStep i=4 t=0.0217
+    [h3:r5]:block] < MiniMaxH3LoopDenoiser i=4 t=0.0217: 0.857s
+    [h3:r5]:block] > MiniMaxH3LoopSchedulerStep i=4 t=0.0217
+    [h3:r6]:block] < MiniMaxH3LoopDenoiser i=4 t=0.0217: 0.851s
+    [h3:r6]:block] > MiniMaxH3LoopSchedulerStep i=4 t=0.0217
+    [h3:r3]:block] < MiniMaxH3LoopSchedulerStep i=4 t=0.0217: 0.002s
+ 26%|██▋       | 5/19 [00:03<00:10,  1.39it/s]    [h3:r3]:block] > MiniMaxH3LoopDenoiser i=5 t=0.0289
+    [h3:r7]:block] < MiniMaxH3LoopSchedulerStep i=4 t=0.0217: 0.003s
+ 26%|██▋       | 5/19 [00:03<00:10,  1.38it/s]    [h3:r7]:block] > MiniMaxH3LoopDenoiser i=5 t=0.0289
+    [h3:r4]:block] < MiniMaxH3LoopDenoiser i=4 t=0.0217: 0.854s
+    [h3:r4]:block] > MiniMaxH3LoopSchedulerStep i=4 t=0.0217
+    [h3:r2]:block] < MiniMaxH3LoopSchedulerStep i=4 t=0.0217: 0.002s
+    [h3:r0]:block] < MiniMaxH3LoopSchedulerStep i=4 t=0.0217: 0.003s
+ 26%|██▋       | 5/19 [00:03<00:10,  1.38it/s]    [h3:r2]:block] > MiniMaxH3LoopDenoiser i=5 t=0.0289
+ 26%|██▋       | 5/19 [00:03<00:09,  1.40it/s]    [h3:r0]:block] > MiniMaxH3LoopDenoiser i=5 t=0.0289
+    [h3:r5]:block] < MiniMaxH3LoopSchedulerStep i=4 t=0.0217: 0.002s
+    [h3:r6]:block] < MiniMaxH3LoopSchedulerStep i=4 t=0.0217: 0.002s
+ 26%|██▋       | 5/19 [00:03<00:09,  1.43it/s]    [h3:r5]:block] > MiniMaxH3LoopDenoiser i=5 t=0.0289
+ 26%|██▋       | 5/19 [00:03<00:10,  1.38it/s]    [h3:r6]:block] > MiniMaxH3LoopDenoiser i=5 t=0.0289
+    [h3:r1]:block] < MiniMaxH3LoopDenoiser i=4 t=0.0217: 0.860s
+    [h3:r1]:block] > MiniMaxH3LoopSchedulerStep i=4 t=0.0217
+    [h3:r4]:block] < MiniMaxH3LoopSchedulerStep i=4 t=0.0217: 0.002s
+ 26%|██▋       | 5/19 [00:03<00:09,  1.44it/s]    [h3:r4]:block] > MiniMaxH3LoopDenoiser i=5 t=0.0289
+    [h3:r1]:block] < MiniMaxH3LoopSchedulerStep i=4 t=0.0217: 0.006s
+ 26%|██▋       | 5/19 [00:03<00:10,  1.37it/s]    [h3:r1]:block] > MiniMaxH3LoopDenoiser i=5 t=0.0289
+    [h3:r7]:block] < MiniMaxH3LoopDenoiser i=5 t=0.0289: 0.852s
+    [h3:r7]:block] > MiniMaxH3LoopSchedulerStep i=5 t=0.0289
+    [h3:r4]:block] < MiniMaxH3LoopDenoiser i=5 t=0.0289: 0.850s
+    [h3:r4]:block] > MiniMaxH3LoopSchedulerStep i=5 t=0.0289
+    [h3:r3]:block] < MiniMaxH3LoopDenoiser i=5 t=0.0289: 0.855s
+    [h3:r2]:block] < MiniMaxH3LoopDenoiser i=5 t=0.0289: 0.854s
+    [h3:r6]:block] < MiniMaxH3LoopDenoiser i=5 t=0.0289: 0.853s
+    [h3:r2]:block] > MiniMaxH3LoopSchedulerStep i=5 t=0.0289
+    [h3:r3]:block] > MiniMaxH3LoopSchedulerStep i=5 t=0.0289
+    [h3:r6]:block] > MiniMaxH3LoopSchedulerStep i=5 t=0.0289
+    [h3:r7]:block] < MiniMaxH3LoopSchedulerStep i=5 t=0.0289: 0.003s
+    [h3:r5]:block] < MiniMaxH3LoopDenoiser i=5 t=0.0289: 0.854s
+    [h3:r5]:block] > MiniMaxH3LoopSchedulerStep i=5 t=0.0289
+ 32%|███▏      | 6/19 [00:04<00:10,  1.30it/s]    [h3:r7]:block] > MiniMaxH3LoopDenoiser i=6 t=0.0370
+    [h3:r4]:block] < MiniMaxH3LoopSchedulerStep i=5 t=0.0289: 0.002s
+ 32%|███▏      | 6/19 [00:04<00:09,  1.34it/s]    [h3:r0]:block] < MiniMaxH3LoopDenoiser i=5 t=0.0289: 0.855s
+    [h3:r4]:block] > MiniMaxH3LoopDenoiser i=6 t=0.0370
+    [h3:r0]:block] > MiniMaxH3LoopSchedulerStep i=5 t=0.0289
+    [h3:r1]:block] < MiniMaxH3LoopDenoiser i=5 t=0.0289: 0.847s
+    [h3:r1]:block] > MiniMaxH3LoopSchedulerStep i=5 t=0.0289
+    [h3:r2]:block] < MiniMaxH3LoopSchedulerStep i=5 t=0.0289: 0.002s
+    [h3:r3]:block] < MiniMaxH3LoopSchedulerStep i=5 t=0.0289: 0.003s
+    [h3:r6]:block] < MiniMaxH3LoopSchedulerStep i=5 t=0.0289: 0.002s
+ 32%|███▏      | 6/19 [00:04<00:09,  1.31it/s] 32%|███▏      | 6/19 [00:04<00:10,  1.30it/s] 32%|███▏      | 6/19 [00:04<00:10,  1.30it/s]    [h3:r3]:block] > MiniMaxH3LoopDenoiser i=6 t=0.0370
+    [h3:r6]:block] > MiniMaxH3LoopDenoiser i=6 t=0.0370
+    [h3:r2]:block] > MiniMaxH3LoopDenoiser i=6 t=0.0370
+    [h3:r5]:block] < MiniMaxH3LoopSchedulerStep i=5 t=0.0289: 0.003s
+ 32%|███▏      | 6/19 [00:04<00:09,  1.33it/s]    [h3:r5]:block] > MiniMaxH3LoopDenoiser i=6 t=0.0370
+    [h3:r0]:block] < MiniMaxH3LoopSchedulerStep i=5 t=0.0289: 0.002s
+ 32%|███▏      | 6/19 [00:04<00:09,  1.31it/s]    [h3:r0]:block] > MiniMaxH3LoopDenoiser i=6 t=0.0370
+    [h3:r1]:block] < MiniMaxH3LoopSchedulerStep i=5 t=0.0289: 0.003s
+ 32%|███▏      | 6/19 [00:04<00:10,  1.30it/s]    [h3:r1]:block] > MiniMaxH3LoopDenoiser i=6 t=0.0370
+    [h3:r7]:block] < MiniMaxH3LoopDenoiser i=6 t=0.0370: 0.853s
+    [h3:r7]:block] > MiniMaxH3LoopSchedulerStep i=6 t=0.0370
+    [h3:r6]:block] < MiniMaxH3LoopDenoiser i=6 t=0.0370: 0.851s
+    [h3:r6]:block] > MiniMaxH3LoopSchedulerStep i=6 t=0.0370
+    [h3:r1]:block] < MiniMaxH3LoopDenoiser i=6 t=0.0370: 0.851s
+    [h3:r1]:block] > MiniMaxH3LoopSchedulerStep i=6 t=0.0370
+    [h3:r7]:block] < MiniMaxH3LoopSchedulerStep i=6 t=0.0370: 0.002s
+ 37%|███▋      | 7/19 [00:04<00:09,  1.25it/s]    [h3:r7]:block] > MiniMaxH3LoopDenoiser i=7 t=0.0464
+    [h3:r6]:block] < MiniMaxH3LoopSchedulerStep i=6 t=0.0370: 0.002s
+    [h3:r2]:block] < MiniMaxH3LoopDenoiser i=6 t=0.0370: 0.853s
+    [h3:r2]:block] > MiniMaxH3LoopSchedulerStep i=6 t=0.0370
+ 37%|███▋      | 7/19 [00:04<00:09,  1.25it/s]    [h3:r6]:block] > MiniMaxH3LoopDenoiser i=7 t=0.0464
+    [h3:r5]:block] < MiniMaxH3LoopDenoiser i=6 t=0.0370: 0.854s
+    [h3:r5]:block] > MiniMaxH3LoopSchedulerStep i=6 t=0.0370
+    [h3:r3]:block] < MiniMaxH3LoopDenoiser i=6 t=0.0370: 0.855s
+    [h3:r3]:block] > MiniMaxH3LoopSchedulerStep i=6 t=0.0370
+    [h3:r1]:block] < MiniMaxH3LoopSchedulerStep i=6 t=0.0370: 0.003s
+    [h3:r2]:block] < MiniMaxH3LoopSchedulerStep i=6 t=0.0370: 0.002s
+ 37%|███▋      | 7/19 [00:04<00:09,  1.25it/s]    [h3:r1]:block] > MiniMaxH3LoopDenoiser i=7 t=0.0464
+ 37%|███▋      | 7/19 [00:04<00:09,  1.25it/s]    [h3:r2]:block] > MiniMaxH3LoopDenoiser i=7 t=0.0464
+    [h3:r5]:block] < MiniMaxH3LoopSchedulerStep i=6 t=0.0370: 0.003s
+ 37%|███▋      | 7/19 [00:04<00:09,  1.27it/s]    [h3:r5]:block] > MiniMaxH3LoopDenoiser i=7 t=0.0464
+    [h3:r3]:block] < MiniMaxH3LoopSchedulerStep i=6 t=0.0370: 0.002s
+ 37%|███▋      | 7/19 [00:04<00:09,  1.26it/s]    [h3:r3]:block] > MiniMaxH3LoopDenoiser i=7 t=0.0464
+    [h3:r0]:block] < MiniMaxH3LoopDenoiser i=6 t=0.0370: 0.886s
+    [h3:r0]:block] > MiniMaxH3LoopSchedulerStep i=6 t=0.0370
+    [h3:r0]:block] < MiniMaxH3LoopSchedulerStep i=6 t=0.0370: 0.002s
+ 37%|███▋      | 7/19 [00:05<00:09,  1.25it/s]    [h3:r0]:block] > MiniMaxH3LoopDenoiser i=7 t=0.0464
+    [h3:r4]:block] < MiniMaxH3LoopDenoiser i=6 t=0.0370: 0.895s
+    [h3:r4]:block] > MiniMaxH3LoopSchedulerStep i=6 t=0.0370
+    [h3:r4]:block] < MiniMaxH3LoopSchedulerStep i=6 t=0.0370: 0.002s
+ 37%|███▋      | 7/19 [00:05<00:09,  1.26it/s]    [h3:r4]:block] > MiniMaxH3LoopDenoiser i=7 t=0.0464
+    [h3:r7]:block] < MiniMaxH3LoopDenoiser i=7 t=0.0464: 0.851s
+    [h3:r7]:block] > MiniMaxH3LoopSchedulerStep i=7 t=0.0464
+    [h3:r4]:block] < MiniMaxH3LoopDenoiser i=7 t=0.0464: 0.810s
+    [h3:r4]:block] > MiniMaxH3LoopSchedulerStep i=7 t=0.0464
+    [h3:r1]:block] < MiniMaxH3LoopDenoiser i=7 t=0.0464: 0.851s
+    [h3:r7]:block] < MiniMaxH3LoopSchedulerStep i=7 t=0.0464: 0.002s
+    [h3:r1]:block] > MiniMaxH3LoopSchedulerStep i=7 t=0.0464
+    [h3:r2]:block] < MiniMaxH3LoopDenoiser i=7 t=0.0464: 0.851s
+ 42%|████▏     | 8/19 [00:05<00:08,  1.23it/s]    [h3:r2]:block] > MiniMaxH3LoopSchedulerStep i=7 t=0.0464
+    [h3:r7]:block] > MiniMaxH3LoopDenoiser i=8 t=0.0571
+    [h3:r4]:block] < MiniMaxH3LoopSchedulerStep i=7 t=0.0464: 0.002s
+ 42%|████▏     | 8/19 [00:05<00:08,  1.25it/s]    [h3:r4]:block] > MiniMaxH3LoopDenoiser i=8 t=0.0571
+    [h3:r3]:block] < MiniMaxH3LoopDenoiser i=7 t=0.0464: 0.851s
+    [h3:r3]:block] > MiniMaxH3LoopSchedulerStep i=7 t=0.0464
+    [h3:r1]:block] < MiniMaxH3LoopSchedulerStep i=7 t=0.0464: 0.002s
+    [h3:r2]:block] < MiniMaxH3LoopSchedulerStep i=7 t=0.0464: 0.002s
+ 42%|████▏     | 8/19 [00:05<00:08,  1.23it/s]    [h3:r1]:block] > MiniMaxH3LoopDenoiser i=8 t=0.0571
+ 42%|████▏     | 8/19 [00:05<00:08,  1.23it/s]    [h3:r2]:block] > MiniMaxH3LoopDenoiser i=8 t=0.0571
+    [h3:r6]:block] < MiniMaxH3LoopDenoiser i=7 t=0.0464: 0.857s
+    [h3:r6]:block] > MiniMaxH3LoopSchedulerStep i=7 t=0.0464
+    [h3:r0]:block] < MiniMaxH3LoopDenoiser i=7 t=0.0464: 0.822s
+    [h3:r0]:block] > MiniMaxH3LoopSchedulerStep i=7 t=0.0464
+    [h3:r5]:block] < MiniMaxH3LoopDenoiser i=7 t=0.0464: 0.854s
+    [h3:r5]:block] > MiniMaxH3LoopSchedulerStep i=7 t=0.0464
+    [h3:r3]:block] < MiniMaxH3LoopSchedulerStep i=7 t=0.0464: 0.002s
+ 42%|████▏     | 8/19 [00:05<00:08,  1.23it/s]    [h3:r3]:block] > MiniMaxH3LoopDenoiser i=8 t=0.0571
+    [h3:r6]:block] < MiniMaxH3LoopSchedulerStep i=7 t=0.0464: 0.002s
+    [h3:r5]:block] < MiniMaxH3LoopSchedulerStep i=7 t=0.0464: 0.002s
+    [h3:r0]:block] < MiniMaxH3LoopSchedulerStep i=7 t=0.0464: 0.002s
+ 42%|████▏     | 8/19 [00:05<00:08,  1.24it/s]    [h3:r5]:block] > MiniMaxH3LoopDenoiser i=8 t=0.0571
+ 42%|████▏     | 8/19 [00:05<00:08,  1.22it/s]    [h3:r6]:block] > MiniMaxH3LoopDenoiser i=8 t=0.0571
+ 42%|████▏     | 8/19 [00:05<00:08,  1.23it/s]    [h3:r0]:block] > MiniMaxH3LoopDenoiser i=8 t=0.0571
+    [h3:r7]:block] < MiniMaxH3LoopDenoiser i=8 t=0.0571: 0.857s
+    [h3:r7]:block] > MiniMaxH3LoopSchedulerStep i=8 t=0.0571
+    [h3:r1]:block] < MiniMaxH3LoopDenoiser i=8 t=0.0571: 0.854s
+    [h3:r1]:block] > MiniMaxH3LoopSchedulerStep i=8 t=0.0571
+    [h3:r4]:block] < MiniMaxH3LoopDenoiser i=8 t=0.0571: 0.857s
+    [h3:r4]:block] > MiniMaxH3LoopSchedulerStep i=8 t=0.0571
+    [h3:r3]:block] < MiniMaxH3LoopDenoiser i=8 t=0.0571: 0.854s
+    [h3:r3]:block] > MiniMaxH3LoopSchedulerStep i=8 t=0.0571
+    [h3:r6]:block] < MiniMaxH3LoopDenoiser i=8 t=0.0571: 0.852s
+    [h3:r7]:block] < MiniMaxH3LoopSchedulerStep i=8 t=0.0571: 0.002s
+    [h3:r6]:block] > MiniMaxH3LoopSchedulerStep i=8 t=0.0571
+ 47%|████▋     | 9/19 [00:06<00:08,  1.21it/s]    [h3:r7]:block] > MiniMaxH3LoopDenoiser i=9 t=0.0698
+    [h3:r2]:block] < MiniMaxH3LoopDenoiser i=8 t=0.0571: 0.857s
+    [h3:r2]:block] > MiniMaxH3LoopSchedulerStep i=8 t=0.0571
+    [h3:r1]:block] < MiniMaxH3LoopSchedulerStep i=8 t=0.0571: 0.003s
+    [h3:r4]:block] < MiniMaxH3LoopSchedulerStep i=8 t=0.0571: 0.002s
+ 47%|████▋     | 9/19 [00:06<00:08,  1.21it/s]    [h3:r1]:block] > MiniMaxH3LoopDenoiser i=9 t=0.0698
+    [h3:r0]:block] < MiniMaxH3LoopDenoiser i=8 t=0.0571: 0.853s
+    [h3:r0]:block] > MiniMaxH3LoopSchedulerStep i=8 t=0.0571
+ 47%|████▋     | 9/19 [00:06<00:08,  1.22it/s]    [h3:r4]:block] > MiniMaxH3LoopDenoiser i=9 t=0.0698
+    [h3:r3]:block] < MiniMaxH3LoopSchedulerStep i=8 t=0.0571: 0.002s
+ 47%|████▋     | 9/19 [00:06<00:08,  1.21it/s]    [h3:r3]:block] > MiniMaxH3LoopDenoiser i=9 t=0.0698
+    [h3:r6]:block] < MiniMaxH3LoopSchedulerStep i=8 t=0.0571: 0.002s
+ 47%|████▋     | 9/19 [00:06<00:08,  1.21it/s]    [h3:r2]:block] < MiniMaxH3LoopSchedulerStep i=8 t=0.0571: 0.002s
+    [h3:r6]:block] > MiniMaxH3LoopDenoiser i=9 t=0.0698
+ 47%|████▋     | 9/19 [00:06<00:08,  1.21it/s]    [h3:r2]:block] > MiniMaxH3LoopDenoiser i=9 t=0.0698
+    [h3:r5]:block] < MiniMaxH3LoopDenoiser i=8 t=0.0571: 0.856s
+    [h3:r0]:block] < MiniMaxH3LoopSchedulerStep i=8 t=0.0571: 0.002s
+    [h3:r5]:block] > MiniMaxH3LoopSchedulerStep i=8 t=0.0571
+ 47%|████▋     | 9/19 [00:06<00:08,  1.21it/s]    [h3:r0]:block] > MiniMaxH3LoopDenoiser i=9 t=0.0698
+    [h3:r5]:block] < MiniMaxH3LoopSchedulerStep i=8 t=0.0571: 0.002s
+ 47%|████▋     | 9/19 [00:06<00:08,  1.21it/s]    [h3:r5]:block] > MiniMaxH3LoopDenoiser i=9 t=0.0698
+    [h3:r4]:block] < MiniMaxH3LoopDenoiser i=9 t=0.0698: 0.851s
+    [h3:r4]:block] > MiniMaxH3LoopSchedulerStep i=9 t=0.0698
+    [h3:r1]:block] < MiniMaxH3LoopDenoiser i=9 t=0.0698: 0.852s
+    [h3:r1]:block] > MiniMaxH3LoopSchedulerStep i=9 t=0.0698
+    [h3:r2]:block] < MiniMaxH3LoopDenoiser i=9 t=0.0698: 0.851s
+    [h3:r2]:block] > MiniMaxH3LoopSchedulerStep i=9 t=0.0698
+    [h3:r4]:block] < MiniMaxH3LoopSchedulerStep i=9 t=0.0698: 0.003s
+    [h3:r1]:block] < MiniMaxH3LoopSchedulerStep i=9 t=0.0698: 0.002s
+ 53%|█████▎    | 10/19 [00:07<00:07,  1.20it/s] 53%|█████▎    | 10/19 [00:07<00:07,  1.20it/s]    [h3:r4]:block] > MiniMaxH3LoopDenoiser i=10 t=0.0847
+    [h3:r1]:block] > MiniMaxH3LoopDenoiser i=10 t=0.0847
+    [h3:r2]:block] < MiniMaxH3LoopSchedulerStep i=9 t=0.0698: 0.002s
+ 53%|█████▎    | 10/19 [00:07<00:07,  1.20it/s]    [h3:r2]:block] > MiniMaxH3LoopDenoiser i=10 t=0.0847
+    [h3:r6]:block] < MiniMaxH3LoopDenoiser i=9 t=0.0698: 0.854s
+    [h3:r6]:block] > MiniMaxH3LoopSchedulerStep i=9 t=0.0698
+    [h3:r7]:block] < MiniMaxH3LoopDenoiser i=9 t=0.0698: 0.856s
+    [h3:r5]:block] < MiniMaxH3LoopDenoiser i=9 t=0.0698: 0.850s
+    [h3:r7]:block] > MiniMaxH3LoopSchedulerStep i=9 t=0.0698
+    [h3:r5]:block] > MiniMaxH3LoopSchedulerStep i=9 t=0.0698
+    [h3:r0]:block] < MiniMaxH3LoopDenoiser i=9 t=0.0698: 0.853s
+    [h3:r0]:block] > MiniMaxH3LoopSchedulerStep i=9 t=0.0698
+    [h3:r6]:block] < MiniMaxH3LoopSchedulerStep i=9 t=0.0698: 0.002s
+ 53%|█████▎    | 10/19 [00:07<00:07,  1.19it/s]    [h3:r6]:block] > MiniMaxH3LoopDenoiser i=10 t=0.0847
+    [h3:r7]:block] < MiniMaxH3LoopSchedulerStep i=9 t=0.0698: 0.002s
+    [h3:r5]:block] < MiniMaxH3LoopSchedulerStep i=9 t=0.0698: 0.002s
+    [h3:r0]:block] < MiniMaxH3LoopSchedulerStep i=9 t=0.0698: 0.002s
+ 53%|█████▎    | 10/19 [00:07<00:07,  1.20it/s]    [h3:r5]:block] > MiniMaxH3LoopDenoiser i=10 t=0.0847
+ 53%|█████▎    | 10/19 [00:07<00:07,  1.19it/s] 53%|█████▎    | 10/19 [00:07<00:07,  1.20it/s]    [h3:r7]:block] > MiniMaxH3LoopDenoiser i=10 t=0.0847
+    [h3:r0]:block] > MiniMaxH3LoopDenoiser i=10 t=0.0847
+    [h3:r3]:block] < MiniMaxH3LoopDenoiser i=9 t=0.0698: 0.857s
+    [h3:r3]:block] > MiniMaxH3LoopSchedulerStep i=9 t=0.0698
+    [h3:r3]:block] < MiniMaxH3LoopSchedulerStep i=9 t=0.0698: 0.003s
+ 53%|█████▎    | 10/19 [00:07<00:07,  1.19it/s]    [h3:r3]:block] > MiniMaxH3LoopDenoiser i=10 t=0.0847
+    [h3:r4]:block] < MiniMaxH3LoopDenoiser i=10 t=0.0847: 0.853s
+    [h3:r4]:block] > MiniMaxH3LoopSchedulerStep i=10 t=0.0847
+    [h3:r4]:block] < MiniMaxH3LoopSchedulerStep i=10 t=0.0847: 0.002s
+    [h3:r2]:block] < MiniMaxH3LoopDenoiser i=10 t=0.0847: 0.855s
+    [h3:r2]:block] > MiniMaxH3LoopSchedulerStep i=10 t=0.0847
+ 58%|█████▊    | 11/19 [00:08<00:06,  1.19it/s]    [h3:r4]:block] > MiniMaxH3LoopDenoiser i=11 t=0.1028
+    [h3:r1]:block] < MiniMaxH3LoopDenoiser i=10 t=0.0847: 0.855s
+    [h3:r1]:block] > MiniMaxH3LoopSchedulerStep i=10 t=0.0847
+    [h3:r3]:block] < MiniMaxH3LoopDenoiser i=10 t=0.0847: 0.848s
+    [h3:r3]:block] > MiniMaxH3LoopSchedulerStep i=10 t=0.0847
+    [h3:r5]:block] < MiniMaxH3LoopDenoiser i=10 t=0.0847: 0.852s
+    [h3:r5]:block] > MiniMaxH3LoopSchedulerStep i=10 t=0.0847
+    [h3:r6]:block] < MiniMaxH3LoopDenoiser i=10 t=0.0847: 0.853s
+    [h3:r6]:block] > MiniMaxH3LoopSchedulerStep i=10 t=0.0847
+    [h3:r2]:block] < MiniMaxH3LoopSchedulerStep i=10 t=0.0847: 0.002s
+ 58%|█████▊    | 11/19 [00:08<00:06,  1.19it/s]    [h3:r2]:block] > MiniMaxH3LoopDenoiser i=11 t=0.1028
+    [h3:r7]:block] < MiniMaxH3LoopDenoiser i=10 t=0.0847: 0.854s
+    [h3:r7]:block] > MiniMaxH3LoopSchedulerStep i=10 t=0.0847
+    [h3:r1]:block] < MiniMaxH3LoopSchedulerStep i=10 t=0.0847: 0.002s
+    [h3:r3]:block] < MiniMaxH3LoopSchedulerStep i=10 t=0.0847: 0.002s
+ 58%|█████▊    | 11/19 [00:08<00:06,  1.19it/s]    [h3:r1]:block] > MiniMaxH3LoopDenoiser i=11 t=0.1028
+ 58%|█████▊    | 11/19 [00:08<00:06,  1.19it/s]    [h3:r3]:block] > MiniMaxH3LoopDenoiser i=11 t=0.1028
+    [h3:r5]:block] < MiniMaxH3LoopSchedulerStep i=10 t=0.0847: 0.002s
+    [h3:r0]:block] < MiniMaxH3LoopDenoiser i=10 t=0.0847: 0.855s
+    [h3:r0]:block] > MiniMaxH3LoopSchedulerStep i=10 t=0.0847
+ 58%|█████▊    | 11/19 [00:08<00:06,  1.19it/s]    [h3:r6]:block] < MiniMaxH3LoopSchedulerStep i=10 t=0.0847: 0.002s
+    [h3:r5]:block] > MiniMaxH3LoopDenoiser i=11 t=0.1028
+ 58%|█████▊    | 11/19 [00:08<00:06,  1.19it/s]    [h3:r6]:block] > MiniMaxH3LoopDenoiser i=11 t=0.1028
+    [h3:r7]:block] < MiniMaxH3LoopSchedulerStep i=10 t=0.0847: 0.002s
+ 58%|█████▊    | 11/19 [00:08<00:06,  1.18it/s]    [h3:r7]:block] > MiniMaxH3LoopDenoiser i=11 t=0.1028
+    [h3:r0]:block] < MiniMaxH3LoopSchedulerStep i=10 t=0.0847: 0.002s
+ 58%|█████▊    | 11/19 [00:08<00:06,  1.19it/s]    [h3:r0]:block] > MiniMaxH3LoopDenoiser i=11 t=0.1028
+    [h3:r4]:block] < MiniMaxH3LoopDenoiser i=11 t=0.1028: 0.855s
+    [h3:r4]:block] > MiniMaxH3LoopSchedulerStep i=11 t=0.1028
+    [h3:r4]:block] < MiniMaxH3LoopSchedulerStep i=11 t=0.1028: 0.002s
+ 63%|██████▎   | 12/19 [00:09<00:05,  1.19it/s]    [h3:r4]:block] > MiniMaxH3LoopDenoiser i=12 t=0.1250
+    [h3:r0]:block] < MiniMaxH3LoopDenoiser i=11 t=0.1028: 0.851s
+    [h3:r0]:block] > MiniMaxH3LoopSchedulerStep i=11 t=0.1028
+    [h3:r0]:block] < MiniMaxH3LoopSchedulerStep i=11 t=0.1028: 0.002s
+ 63%|██████▎   | 12/19 [00:09<00:05,  1.18it/s]    [h3:r0]:block] > MiniMaxH3LoopDenoiser i=12 t=0.1250
+    [h3:r6]:block] < MiniMaxH3LoopDenoiser i=11 t=0.1028: 1.120s
+    [h3:r6]:block] > MiniMaxH3LoopSchedulerStep i=11 t=0.1028
+    [h3:r3]:block] < MiniMaxH3LoopDenoiser i=11 t=0.1028: 1.121s
+    [h3:r3]:block] > MiniMaxH3LoopSchedulerStep i=11 t=0.1028
+    [h3:r1]:block] < MiniMaxH3LoopDenoiser i=11 t=0.1028: 1.122s
+    [h3:r6]:block] < MiniMaxH3LoopSchedulerStep i=11 t=0.1028: 0.001s
+    [h3:r1]:block] > MiniMaxH3LoopSchedulerStep i=11 t=0.1028
+ 63%|██████▎   | 12/19 [00:09<00:06,  1.08it/s]    [h3:r6]:block] > MiniMaxH3LoopDenoiser i=12 t=0.1250
+    [h3:r3]:block] < MiniMaxH3LoopSchedulerStep i=11 t=0.1028: 0.002s
+ 63%|██████▎   | 12/19 [00:09<00:06,  1.08it/s]    [h3:r3]:block] > MiniMaxH3LoopDenoiser i=12 t=0.1250
+    [h3:r1]:block] < MiniMaxH3LoopSchedulerStep i=11 t=0.1028: 0.002s
+ 63%|██████▎   | 12/19 [00:09<00:06,  1.08it/s]    [h3:r1]:block] > MiniMaxH3LoopDenoiser i=12 t=0.1250
+    [h3:r2]:block] < MiniMaxH3LoopDenoiser i=11 t=0.1028: 1.140s
+    [h3:r2]:block] > MiniMaxH3LoopSchedulerStep i=11 t=0.1028
+    [h3:r2]:block] < MiniMaxH3LoopSchedulerStep i=11 t=0.1028: 0.002s
+ 63%|██████▎   | 12/19 [00:09<00:06,  1.07it/s]    [h3:r2]:block] > MiniMaxH3LoopDenoiser i=12 t=0.1250
+    [h3:r5]:block] < MiniMaxH3LoopDenoiser i=11 t=0.1028: 1.144s
+    [h3:r5]:block] > MiniMaxH3LoopSchedulerStep i=11 t=0.1028
+    [h3:r7]:block] < MiniMaxH3LoopDenoiser i=11 t=0.1028: 1.143s
+    [h3:r7]:block] > MiniMaxH3LoopSchedulerStep i=11 t=0.1028
+    [h3:r5]:block] < MiniMaxH3LoopSchedulerStep i=11 t=0.1028: 0.002s
+ 63%|██████▎   | 12/19 [00:09<00:06,  1.07it/s]    [h3:r5]:block] > MiniMaxH3LoopDenoiser i=12 t=0.1250
+    [h3:r7]:block] < MiniMaxH3LoopSchedulerStep i=11 t=0.1028: 0.002s
+ 63%|██████▎   | 12/19 [00:09<00:06,  1.07it/s]    [h3:r7]:block] > MiniMaxH3LoopDenoiser i=12 t=0.1250
+    [h3:r4]:block] < MiniMaxH3LoopDenoiser i=12 t=0.1250: 0.852s
+    [h3:r4]:block] > MiniMaxH3LoopSchedulerStep i=12 t=0.1250
+    [h3:r4]:block] < MiniMaxH3LoopSchedulerStep i=12 t=0.1250: 0.002s
+ 68%|██████▊   | 13/19 [00:10<00:05,  1.18it/s]    [h3:r4]:block] > MiniMaxH3LoopDenoiser i=13 t=0.1529
+    [h3:r6]:block] < MiniMaxH3LoopDenoiser i=12 t=0.1250: 0.588s
+    [h3:r0]:block] < MiniMaxH3LoopDenoiser i=12 t=0.1250: 0.853s
+    [h3:r7]:block] < MiniMaxH3LoopDenoiser i=12 t=0.1250: 0.562s
+    [h3:r6]:block] > MiniMaxH3LoopSchedulerStep i=12 t=0.1250
+    [h3:r0]:block] > MiniMaxH3LoopSchedulerStep i=12 t=0.1250
+    [h3:r7]:block] > MiniMaxH3LoopSchedulerStep i=12 t=0.1250
+    [h3:r3]:block] < MiniMaxH3LoopDenoiser i=12 t=0.1250: 0.587s
+    [h3:r3]:block] > MiniMaxH3LoopSchedulerStep i=12 t=0.1250
+    [h3:r6]:block] < MiniMaxH3LoopSchedulerStep i=12 t=0.1250: 0.002s
+    [h3:r0]:block] < MiniMaxH3LoopSchedulerStep i=12 t=0.1250: 0.002s
+ 68%|██████▊   | 13/19 [00:10<00:04,  1.21it/s] 68%|██████▊   | 13/19 [00:10<00:05,  1.18it/s]    [h3:r7]:block] < MiniMaxH3LoopSchedulerStep i=12 t=0.1250: 0.002s
+    [h3:r0]:block] > MiniMaxH3LoopDenoiser i=13 t=0.1529
+    [h3:r6]:block] > MiniMaxH3LoopDenoiser i=13 t=0.1529
+    [h3:r5]:block] < MiniMaxH3LoopDenoiser i=12 t=0.1250: 0.566s
+    [h3:r5]:block] > MiniMaxH3LoopSchedulerStep i=12 t=0.1250
+ 68%|██████▊   | 13/19 [00:10<00:04,  1.21it/s]    [h3:r7]:block] > MiniMaxH3LoopDenoiser i=13 t=0.1529
+    [h3:r3]:block] < MiniMaxH3LoopSchedulerStep i=12 t=0.1250: 0.003s
+ 68%|██████▊   | 13/19 [00:10<00:04,  1.21it/s]    [h3:r3]:block] > MiniMaxH3LoopDenoiser i=13 t=0.1529
+    [h3:r2]:block] < MiniMaxH3LoopDenoiser i=12 t=0.1250: 0.573s
+    [h3:r2]:block] > MiniMaxH3LoopSchedulerStep i=12 t=0.1250
+    [h3:r5]:block] < MiniMaxH3LoopSchedulerStep i=12 t=0.1250: 0.003s
+ 68%|██████▊   | 13/19 [00:10<00:04,  1.22it/s]    [h3:r5]:block] > MiniMaxH3LoopDenoiser i=13 t=0.1529
+    [h3:r1]:block] < MiniMaxH3LoopDenoiser i=12 t=0.1250: 0.593s
+    [h3:r1]:block] > MiniMaxH3LoopSchedulerStep i=12 t=0.1250
+    [h3:r2]:block] < MiniMaxH3LoopSchedulerStep i=12 t=0.1250: 0.003s
+ 68%|██████▊   | 13/19 [00:10<00:04,  1.21it/s]    [h3:r2]:block] > MiniMaxH3LoopDenoiser i=13 t=0.1529
+    [h3:r1]:block] < MiniMaxH3LoopSchedulerStep i=12 t=0.1250: 0.003s
+ 68%|██████▊   | 13/19 [00:10<00:04,  1.21it/s]    [h3:r1]:block] > MiniMaxH3LoopDenoiser i=13 t=0.1529
+    [h3:r4]:block] < MiniMaxH3LoopDenoiser i=13 t=0.1529: 0.853s
+    [h3:r4]:block] > MiniMaxH3LoopSchedulerStep i=13 t=0.1529
+    [h3:r1]:block] < MiniMaxH3LoopDenoiser i=13 t=0.1529: 0.843s
+    [h3:r1]:block] > MiniMaxH3LoopSchedulerStep i=13 t=0.1529
+    [h3:r4]:block] < MiniMaxH3LoopSchedulerStep i=13 t=0.1529: 0.002s
+ 74%|███████▎  | 14/19 [00:10<00:04,  1.18it/s]    [h3:r4]:block] > MiniMaxH3LoopDenoiser i=14 t=0.1892
+    [h3:r1]:block] < MiniMaxH3LoopSchedulerStep i=13 t=0.1529: 0.002s
+ 74%|███████▎  | 14/19 [00:10<00:04,  1.20it/s]    [h3:r1]:block] > MiniMaxH3LoopDenoiser i=14 t=0.1892
+    [h3:r3]:block] < MiniMaxH3LoopDenoiser i=13 t=0.1529: 0.852s
+    [h3:r7]:block] < MiniMaxH3LoopDenoiser i=13 t=0.1529: 0.853s
+    [h3:r3]:block] > MiniMaxH3LoopSchedulerStep i=13 t=0.1529
+    [h3:r6]:block] < MiniMaxH3LoopDenoiser i=13 t=0.1529: 0.853s
+    [h3:r6]:block] > MiniMaxH3LoopSchedulerStep i=13 t=0.1529
+    [h3:r7]:block] > MiniMaxH3LoopSchedulerStep i=13 t=0.1529
+    [h3:r5]:block] < MiniMaxH3LoopDenoiser i=13 t=0.1529: 0.849s
+    [h3:r5]:block] > MiniMaxH3LoopSchedulerStep i=13 t=0.1529
+    [h3:r0]:block] < MiniMaxH3LoopDenoiser i=13 t=0.1529: 0.854s
+    [h3:r0]:block] > MiniMaxH3LoopSchedulerStep i=13 t=0.1529
+    [h3:r6]:block] < MiniMaxH3LoopSchedulerStep i=13 t=0.1529: 0.002s
+ 74%|███████▎  | 14/19 [00:10<00:04,  1.20it/s]    [h3:r6]:block] > MiniMaxH3LoopDenoiser i=14 t=0.1892
+    [h3:r7]:block] < MiniMaxH3LoopSchedulerStep i=13 t=0.1529: 0.002s
+    [h3:r3]:block] < MiniMaxH3LoopSchedulerStep i=13 t=0.1529: 0.002s
+ 74%|███████▎  | 14/19 [00:10<00:04,  1.20it/s] 74%|███████▎  | 14/19 [00:10<00:04,  1.20it/s]    [h3:r5]:block] < MiniMaxH3LoopSchedulerStep i=13 t=0.1529: 0.002s
+    [h3:r7]:block] > MiniMaxH3LoopDenoiser i=14 t=0.1892
+    [h3:r3]:block] > MiniMaxH3LoopDenoiser i=14 t=0.1892
+    [h3:r0]:block] < MiniMaxH3LoopSchedulerStep i=13 t=0.1529: 0.002s
+ 74%|███████▎  | 14/19 [00:10<00:04,  1.20it/s]    [h3:r5]:block] > MiniMaxH3LoopDenoiser i=14 t=0.1892
+ 74%|███████▎  | 14/19 [00:10<00:04,  1.18it/s]    [h3:r0]:block] > MiniMaxH3LoopDenoiser i=14 t=0.1892
+    [h3:r2]:block] < MiniMaxH3LoopDenoiser i=13 t=0.1529: 0.852s
+    [h3:r2]:block] > MiniMaxH3LoopSchedulerStep i=13 t=0.1529
+    [h3:r2]:block] < MiniMaxH3LoopSchedulerStep i=13 t=0.1529: 0.002s
+ 74%|███████▎  | 14/19 [00:10<00:04,  1.20it/s]    [h3:r2]:block] > MiniMaxH3LoopDenoiser i=14 t=0.1892
+    [h3:r4]:block] < MiniMaxH3LoopDenoiser i=14 t=0.1892: 0.855s
+    [h3:r4]:block] > MiniMaxH3LoopSchedulerStep i=14 t=0.1892
+    [h3:r6]:block] < MiniMaxH3LoopDenoiser i=14 t=0.1892: 0.854s
+    [h3:r6]:block] > MiniMaxH3LoopSchedulerStep i=14 t=0.1892
+    [h3:r7]:block] < MiniMaxH3LoopDenoiser i=14 t=0.1892: 0.854s
+    [h3:r7]:block] > MiniMaxH3LoopSchedulerStep i=14 t=0.1892
+    [h3:r1]:block] < MiniMaxH3LoopDenoiser i=14 t=0.1892: 0.857s
+    [h3:r1]:block] > MiniMaxH3LoopSchedulerStep i=14 t=0.1892
+    [h3:r4]:block] < MiniMaxH3LoopSchedulerStep i=14 t=0.1892: 0.002s
+ 79%|███████▉  | 15/19 [00:11<00:03,  1.17it/s]    [h3:r4]:block] > MiniMaxH3LoopDenoiser i=15 t=0.2381
+    [h3:r5]:block] < MiniMaxH3LoopDenoiser i=14 t=0.1892: 0.855s
+    [h3:r5]:block] > MiniMaxH3LoopSchedulerStep i=14 t=0.1892
+    [h3:r6]:block] < MiniMaxH3LoopSchedulerStep i=14 t=0.1892: 0.002s
+ 79%|███████▉  | 15/19 [00:11<00:03,  1.19it/s]    [h3:r6]:block] > MiniMaxH3LoopDenoiser i=15 t=0.2381
+    [h3:r7]:block] < MiniMaxH3LoopSchedulerStep i=14 t=0.1892: 0.002s
+    [h3:r3]:block] < MiniMaxH3LoopDenoiser i=14 t=0.1892: 0.856s
+    [h3:r3]:block] > MiniMaxH3LoopSchedulerStep i=14 t=0.1892
+    [h3:r1]:block] < MiniMaxH3LoopSchedulerStep i=14 t=0.1892: 0.002s
+ 79%|███████▉  | 15/19 [00:11<00:03,  1.19it/s]    [h3:r7]:block] > MiniMaxH3LoopDenoiser i=15 t=0.2381
+ 79%|███████▉  | 15/19 [00:11<00:03,  1.19it/s]    [h3:r1]:block] > MiniMaxH3LoopDenoiser i=15 t=0.2381
+    [h3:r0]:block] < MiniMaxH3LoopDenoiser i=14 t=0.1892: 0.856s
+    [h3:r0]:block] > MiniMaxH3LoopSchedulerStep i=14 t=0.1892
+    [h3:r2]:block] < MiniMaxH3LoopDenoiser i=14 t=0.1892: 0.853s
+    [h3:r2]:block] > MiniMaxH3LoopSchedulerStep i=14 t=0.1892
+    [h3:r5]:block] < MiniMaxH3LoopSchedulerStep i=14 t=0.1892: 0.003s
+ 79%|███████▉  | 15/19 [00:11<00:03,  1.19it/s]    [h3:r5]:block] > MiniMaxH3LoopDenoiser i=15 t=0.2381
+    [h3:r3]:block] < MiniMaxH3LoopSchedulerStep i=14 t=0.1892: 0.002s
+ 79%|███████▉  | 15/19 [00:11<00:03,  1.19it/s]    [h3:r3]:block] > MiniMaxH3LoopDenoiser i=15 t=0.2381
+    [h3:r0]:block] < MiniMaxH3LoopSchedulerStep i=14 t=0.1892: 0.003s
+ 79%|███████▉  | 15/19 [00:11<00:03,  1.17it/s]    [h3:r0]:block] > MiniMaxH3LoopDenoiser i=15 t=0.2381
+    [h3:r2]:block] < MiniMaxH3LoopSchedulerStep i=14 t=0.1892: 0.002s
+ 79%|███████▉  | 15/19 [00:11<00:03,  1.19it/s]    [h3:r2]:block] > MiniMaxH3LoopDenoiser i=15 t=0.2381
+    [h3:r7]:block] < MiniMaxH3LoopDenoiser i=15 t=0.2381: 0.851s
+    [h3:r7]:block] > MiniMaxH3LoopSchedulerStep i=15 t=0.2381
+    [h3:r4]:block] < MiniMaxH3LoopDenoiser i=15 t=0.2381: 0.854s
+    [h3:r4]:block] > MiniMaxH3LoopSchedulerStep i=15 t=0.2381
+    [h3:r1]:block] < MiniMaxH3LoopDenoiser i=15 t=0.2381: 0.852s
+    [h3:r1]:block] > MiniMaxH3LoopSchedulerStep i=15 t=0.2381
+    [h3:r6]:block] < MiniMaxH3LoopDenoiser i=15 t=0.2381: 0.854s
+    [h3:r6]:block] > MiniMaxH3LoopSchedulerStep i=15 t=0.2381
+    [h3:r5]:block] < MiniMaxH3LoopDenoiser i=15 t=0.2381: 0.851s
+    [h3:r5]:block] > MiniMaxH3LoopSchedulerStep i=15 t=0.2381
+    [h3:r7]:block] < MiniMaxH3LoopSchedulerStep i=15 t=0.2381: 0.002s
+    [h3:r3]:block] < MiniMaxH3LoopDenoiser i=15 t=0.2381: 0.851s
+    [h3:r3]:block] > MiniMaxH3LoopSchedulerStep i=15 t=0.2381
+ 84%|████████▍ | 16/19 [00:12<00:02,  1.18it/s]    [h3:r7]:block] > MiniMaxH3LoopDenoiser i=16 t=0.3077
+    [h3:r4]:block] < MiniMaxH3LoopSchedulerStep i=15 t=0.2381: 0.002s
+ 84%|████████▍ | 16/19 [00:12<00:02,  1.17it/s]    [h3:r4]:block] > MiniMaxH3LoopDenoiser i=16 t=0.3077
+    [h3:r1]:block] < MiniMaxH3LoopSchedulerStep i=15 t=0.2381: 0.003s
+    [h3:r6]:block] < MiniMaxH3LoopSchedulerStep i=15 t=0.2381: 0.002s
+ 84%|████████▍ | 16/19 [00:12<00:02,  1.18it/s]    [h3:r1]:block] > MiniMaxH3LoopDenoiser i=16 t=0.3077
+ 84%|████████▍ | 16/19 [00:12<00:02,  1.18it/s]    [h3:r5]:block] < MiniMaxH3LoopSchedulerStep i=15 t=0.2381: 0.002s
+    [h3:r6]:block] > MiniMaxH3LoopDenoiser i=16 t=0.3077
+ 84%|████████▍ | 16/19 [00:12<00:02,  1.18it/s]    [h3:r3]:block] < MiniMaxH3LoopSchedulerStep i=15 t=0.2381: 0.002s
+    [h3:r5]:block] > MiniMaxH3LoopDenoiser i=16 t=0.3077
+    [h3:r0]:block] < MiniMaxH3LoopDenoiser i=15 t=0.2381: 0.853s
+    [h3:r0]:block] > MiniMaxH3LoopSchedulerStep i=15 t=0.2381
+ 84%|████████▍ | 16/19 [00:12<00:02,  1.18it/s]    [h3:r3]:block] > MiniMaxH3LoopDenoiser i=16 t=0.3077
+    [h3:r2]:block] < MiniMaxH3LoopDenoiser i=15 t=0.2381: 0.853s
+    [h3:r2]:block] > MiniMaxH3LoopSchedulerStep i=15 t=0.2381
+    [h3:r0]:block] < MiniMaxH3LoopSchedulerStep i=15 t=0.2381: 0.002s
+    [h3:r2]:block] < MiniMaxH3LoopSchedulerStep i=15 t=0.2381: 0.002s
+ 84%|████████▍ | 16/19 [00:12<00:02,  1.17it/s]    [h3:r0]:block] > MiniMaxH3LoopDenoiser i=16 t=0.3077
+ 84%|████████▍ | 16/19 [00:12<00:02,  1.18it/s]    [h3:r2]:block] > MiniMaxH3LoopDenoiser i=16 t=0.3077
+    [h3:r4]:block] < MiniMaxH3LoopDenoiser i=16 t=0.3077: 0.851s
+    [h3:r4]:block] > MiniMaxH3LoopSchedulerStep i=16 t=0.3077
+    [h3:r7]:block] < MiniMaxH3LoopDenoiser i=16 t=0.3077: 0.852s
+    [h3:r5]:block] < MiniMaxH3LoopDenoiser i=16 t=0.3077: 0.850s
+    [h3:r7]:block] > MiniMaxH3LoopSchedulerStep i=16 t=0.3077
+    [h3:r5]:block] > MiniMaxH3LoopSchedulerStep i=16 t=0.3077
+    [h3:r4]:block] < MiniMaxH3LoopSchedulerStep i=16 t=0.3077: 0.002s
+ 89%|████████▉ | 17/19 [00:13<00:01,  1.17it/s]    [h3:r4]:block] > MiniMaxH3LoopDenoiser i=17 t=0.4146
+    [h3:r2]:block] < MiniMaxH3LoopDenoiser i=16 t=0.3077: 0.849s
+    [h3:r7]:block] < MiniMaxH3LoopSchedulerStep i=16 t=0.3077: 0.002s
+    [h3:r2]:block] > MiniMaxH3LoopSchedulerStep i=16 t=0.3077
+    [h3:r5]:block] < MiniMaxH3LoopSchedulerStep i=16 t=0.3077: 0.002s
+    [h3:r1]:block] < MiniMaxH3LoopDenoiser i=16 t=0.3077: 0.853s
+    [h3:r1]:block] > MiniMaxH3LoopSchedulerStep i=16 t=0.3077
+ 89%|████████▉ | 17/19 [00:13<00:01,  1.18it/s] 89%|████████▉ | 17/19 [00:13<00:01,  1.18it/s]    [h3:r5]:block] > MiniMaxH3LoopDenoiser i=17 t=0.4146
+    [h3:r7]:block] > MiniMaxH3LoopDenoiser i=17 t=0.4146
+    [h3:r3]:block] < MiniMaxH3LoopDenoiser i=16 t=0.3077: 0.852s
+    [h3:r3]:block] > MiniMaxH3LoopSchedulerStep i=16 t=0.3077
+    [h3:r6]:block] < MiniMaxH3LoopDenoiser i=16 t=0.3077: 0.853s
+    [h3:r6]:block] > MiniMaxH3LoopSchedulerStep i=16 t=0.3077
+    [h3:r2]:block] < MiniMaxH3LoopSchedulerStep i=16 t=0.3077: 0.002s
+    [h3:r1]:block] < MiniMaxH3LoopSchedulerStep i=16 t=0.3077: 0.002s
+ 89%|████████▉ | 17/19 [00:13<00:01,  1.18it/s]    [h3:r2]:block] > MiniMaxH3LoopDenoiser i=17 t=0.4146
+ 89%|████████▉ | 17/19 [00:13<00:01,  1.18it/s]    [h3:r1]:block] > MiniMaxH3LoopDenoiser i=17 t=0.4146
+    [h3:r0]:block] < MiniMaxH3LoopDenoiser i=16 t=0.3077: 0.852s
+    [h3:r6]:block] < MiniMaxH3LoopSchedulerStep i=16 t=0.3077: 0.002s
+    [h3:r0]:block] > MiniMaxH3LoopSchedulerStep i=16 t=0.3077
+    [h3:r3]:block] < MiniMaxH3LoopSchedulerStep i=16 t=0.3077: 0.003s
+ 89%|████████▉ | 17/19 [00:13<00:01,  1.18it/s]    [h3:r6]:block] > MiniMaxH3LoopDenoiser i=17 t=0.4146
+ 89%|████████▉ | 17/19 [00:13<00:01,  1.18it/s]    [h3:r3]:block] > MiniMaxH3LoopDenoiser i=17 t=0.4146
+    [h3:r0]:block] < MiniMaxH3LoopSchedulerStep i=16 t=0.3077: 0.002s
+ 89%|████████▉ | 17/19 [00:13<00:01,  1.17it/s]    [h3:r0]:block] > MiniMaxH3LoopDenoiser i=17 t=0.4146
+    [h3:r5]:block] < MiniMaxH3LoopDenoiser i=17 t=0.4146: 0.853s
+    [h3:r5]:block] > MiniMaxH3LoopSchedulerStep i=17 t=0.4146
+    [h3:r0]:block] < MiniMaxH3LoopDenoiser i=17 t=0.4146: 0.850s
+    [h3:r6]:block] < MiniMaxH3LoopDenoiser i=17 t=0.4146: 0.852s
+    [h3:r0]:block] > MiniMaxH3LoopSchedulerStep i=17 t=0.4146
+    [h3:r5]:block] < MiniMaxH3LoopSchedulerStep i=17 t=0.4146: 0.003s
+    [h3:r6]:block] > MiniMaxH3LoopSchedulerStep i=17 t=0.4146
+    [h3:r1]:block] < MiniMaxH3LoopDenoiser i=17 t=0.4146: 0.854s
+    [h3:r7]:block] < MiniMaxH3LoopDenoiser i=17 t=0.4146: 0.856s
+    [h3:r7]:block] > MiniMaxH3LoopSchedulerStep i=17 t=0.4146
+    [h3:r1]:block] > MiniMaxH3LoopSchedulerStep i=17 t=0.4146
+    [h3:r4]:block] < MiniMaxH3LoopDenoiser i=17 t=0.4146: 0.857s
+    [h3:r2]:block] < MiniMaxH3LoopDenoiser i=17 t=0.4146: 0.854s
+    [h3:r4]:block] > MiniMaxH3LoopSchedulerStep i=17 t=0.4146
+    [h3:r3]:block] < MiniMaxH3LoopDenoiser i=17 t=0.4146: 0.852s
+    [h3:r2]:block] > MiniMaxH3LoopSchedulerStep i=17 t=0.4146
+ 95%|█████████▍| 18/19 [00:14<00:00,  1.18it/s]    [h3:r3]:block] > MiniMaxH3LoopSchedulerStep i=17 t=0.4146
+    [h3:r5]:block] > MiniMaxH3LoopDenoiser i=18 t=0.6000
+    [h3:r0]:block] < MiniMaxH3LoopSchedulerStep i=17 t=0.4146: 0.002s
+    [h3:r6]:block] < MiniMaxH3LoopSchedulerStep i=17 t=0.4146: 0.002s
+    [h3:r7]:block] < MiniMaxH3LoopSchedulerStep i=17 t=0.4146: 0.002s
+ 95%|█████████▍| 18/19 [00:14<00:00,  1.17it/s] 95%|█████████▍| 18/19 [00:14<00:00,  1.18it/s] 95%|█████████▍| 18/19 [00:14<00:00,  1.18it/s]    [h3:r4]:block] < MiniMaxH3LoopSchedulerStep i=17 t=0.4146: 0.002s
+    [h3:r0]:block] > MiniMaxH3LoopDenoiser i=18 t=0.6000
+    [h3:r6]:block] > MiniMaxH3LoopDenoiser i=18 t=0.6000
+    [h3:r7]:block] > MiniMaxH3LoopDenoiser i=18 t=0.6000
+    [h3:r3]:block] < MiniMaxH3LoopSchedulerStep i=17 t=0.4146: 0.002s
+ 95%|█████████▍| 18/19 [00:14<00:00,  1.17it/s]    [h3:r1]:block] < MiniMaxH3LoopSchedulerStep i=17 t=0.4146: 0.002s
+    [h3:r4]:block] > MiniMaxH3LoopDenoiser i=18 t=0.6000
+    [h3:r2]:block] < MiniMaxH3LoopSchedulerStep i=17 t=0.4146: 0.002s
+ 95%|█████████▍| 18/19 [00:14<00:00,  1.18it/s]    [h3:r3]:block] > MiniMaxH3LoopDenoiser i=18 t=0.6000
+ 95%|█████████▍| 18/19 [00:14<00:00,  1.18it/s] 95%|█████████▍| 18/19 [00:14<00:00,  1.18it/s]    [h3:r1]:block] > MiniMaxH3LoopDenoiser i=18 t=0.6000
+    [h3:r2]:block] > MiniMaxH3LoopDenoiser i=18 t=0.6000
+    [h3:r6]:block] < MiniMaxH3LoopDenoiser i=18 t=0.6000: 0.851s
+    [h3:r6]:block] > MiniMaxH3LoopSchedulerStep i=18 t=0.6000
+    [h3:r5]:block] < MiniMaxH3LoopDenoiser i=18 t=0.6000: 0.853s
+    [h3:r5]:block] > MiniMaxH3LoopSchedulerStep i=18 t=0.6000
+    [h3:r0]:block] < MiniMaxH3LoopDenoiser i=18 t=0.6000: 0.853s
+    [h3:r0]:block] > MiniMaxH3LoopSchedulerStep i=18 t=0.6000
+    [h3:r1]:block] < MiniMaxH3LoopDenoiser i=18 t=0.6000: 0.852s
+    [h3:r1]:block] > MiniMaxH3LoopSchedulerStep i=18 t=0.6000
+    [h3:r7]:block] < MiniMaxH3LoopDenoiser i=18 t=0.6000: 0.853s
+    [h3:r6]:block] < MiniMaxH3LoopSchedulerStep i=18 t=0.6000: 0.002s
+    [h3:r7]:block] > MiniMaxH3LoopSchedulerStep i=18 t=0.6000
+100%|██████████| 19/19 [00:15<00:00,  1.17it/s]    [h3:r5]:block] < MiniMaxH3LoopSchedulerStep i=18 t=0.6000: 0.002s
+100%|██████████| 19/19 [00:15<00:00,  1.24it/s]
+100%|██████████| 19/19 [00:15<00:00,  1.17it/s]100%|██████████| 19/19 [00:15<00:00,  1.24it/s]
+  [h3:r6]:block] < MiniMaxH3DenoiseStep: 15.268s
+  [h3:r6]:block] > MiniMaxH3AfterDenoiseStep
+  [h3:r5]:block] < MiniMaxH3DenoiseStep: 15.268s
+  [h3:r5]:block] > MiniMaxH3AfterDenoiseStep
+    [h3:r3]:block] < MiniMaxH3LoopDenoiser i=18 t=0.6000: 0.854s
+    [h3:r3]:block] > MiniMaxH3LoopSchedulerStep i=18 t=0.6000
+    [h3:r0]:block] < MiniMaxH3LoopSchedulerStep i=18 t=0.6000: 0.002s
+  [h3:r6]:block] < MiniMaxH3AfterDenoiseStep: 0.001s
+  [h3:r6]:block] > _H3VideoDecodeStep
+    [h3:r4]:block] < MiniMaxH3LoopDenoiser i=18 t=0.6000: 0.855s
+100%|██████████| 19/19 [00:15<00:00,  1.17it/s]    [h3:r7]:block] < MiniMaxH3LoopSchedulerStep i=18 t=0.6000: 0.002s
+    [h3:r4]:block] > MiniMaxH3LoopSchedulerStep i=18 t=0.6000
+    [h3:r1]:block] < MiniMaxH3LoopSchedulerStep i=18 t=0.6000: 0.002s
+100%|██████████| 19/19 [00:15<00:00,  1.24it/s]
+100%|██████████| 19/19 [00:15<00:00,  1.17it/s]  [h3:r5]:block] < MiniMaxH3AfterDenoiseStep: 0.001s
+    [h3:r2]:block] < MiniMaxH3LoopDenoiser i=18 t=0.6000: 0.855s
+  [h3:r5]:block] > _H3VideoDecodeStep
+100%|██████████| 19/19 [00:15<00:00,  1.17it/s]    [h3:r2]:block] > MiniMaxH3LoopSchedulerStep i=18 t=0.6000
+100%|██████████| 19/19 [00:15<00:00,  1.24it/s]
+100%|██████████| 19/19 [00:15<00:00,  1.24it/s]
+  [h3:r0]:block] < MiniMaxH3DenoiseStep: 15.278s
+  [h3:r0]:block] > MiniMaxH3AfterDenoiseStep
+  [h3:r7]:block] < MiniMaxH3DenoiseStep: 15.270s
+  [h3:r7]:block] > MiniMaxH3AfterDenoiseStep
+  [h3:r1]:block] < MiniMaxH3DenoiseStep: 15.268s
+  [h3:r1]:block] > MiniMaxH3AfterDenoiseStep
+  [h3:r0]:block] < MiniMaxH3AfterDenoiseStep: 0.001s
+  [h3:r0]:block] > _H3VideoDecodeStep
+  [h3:r7]:block] < MiniMaxH3AfterDenoiseStep: 0.001s
+  [h3:r7]:block] > _H3VideoDecodeStep
+    [h3:r3]:block] < MiniMaxH3LoopSchedulerStep i=18 t=0.6000: 0.002s
+  [h3:r1]:block] < MiniMaxH3AfterDenoiseStep: 0.001s
+  [h3:r1]:block] > _H3VideoDecodeStep
+100%|██████████| 19/19 [00:15<00:00,  1.17it/s]    [h3:r4]:block] < MiniMaxH3LoopSchedulerStep i=18 t=0.6000: 0.002s
+100%|██████████| 19/19 [00:15<00:00,  1.24it/s]
+100%|██████████| 19/19 [00:15<00:00,  1.17it/s]100%|██████████| 19/19 [00:15<00:00,  1.24it/s]
+    [h3:r2]:block] < MiniMaxH3LoopSchedulerStep i=18 t=0.6000: 0.003s
+100%|██████████| 19/19 [00:15<00:00,  1.17it/s]  [h3:r3]:block] < MiniMaxH3DenoiseStep: 15.272s
+  [h3:r3]:block] > MiniMaxH3AfterDenoiseStep
+100%|██████████| 19/19 [00:15<00:00,  1.24it/s]
+  [h3:r4]:block] < MiniMaxH3DenoiseStep: 15.273s
+  [h3:r4]:block] > MiniMaxH3AfterDenoiseStep
+  [h3:r3]:block] < MiniMaxH3AfterDenoiseStep: 0.001s
+  [h3:r3]:block] > _H3VideoDecodeStep
+  [h3:r2]:block] < MiniMaxH3DenoiseStep: 15.272s
+  [h3:r2]:block] > MiniMaxH3AfterDenoiseStep
+  [h3:r4]:block] < MiniMaxH3AfterDenoiseStep: 0.001s
+  [h3:r4]:block] > _H3VideoDecodeStep
+  [h3:r2]:block] < MiniMaxH3AfterDenoiseStep: 0.001s
+  [h3:r2]:block] > _H3VideoDecodeStep
+[h3:r6]] denoise complete: device synced at decode entry (1.08s)
+[h3:r2]] denoise complete: device synced at decode entry (1.07s)
+[h3:r4]] denoise complete: device synced at decode entry (1.08s)
+[h3:r1]] denoise complete: device synced at decode entry (1.08s)
+[h3:r5]] denoise complete: device synced at decode entry (1.08s)
+[h3:r3]] denoise complete: device synced at decode entry (1.08s)
+[h3:r0]] denoise complete: device synced at decode entry (1.08s)
+[h3:r7]] denoise complete: device synced at decode entry (1.08s)
+ModularPipeline.update_components: setting transformer to None (spec unchanged)
+[h3:r2]] DiT freed from HPU before decode: mem_get_info free 22.1 -> 22.1 GiB of 94.6 (accounting lags; release verified functional)
+[h3:r4]] DiT freed from HPU before decode: mem_get_info free 22.1 -> 22.1 GiB of 94.6 (accounting lags; release verified functional)
+[h3:r1]] DiT freed from HPU before decode: mem_get_info free 22.1 -> 22.1 GiB of 94.6 (accounting lags; release verified functional)
+[h3:r5]] DiT freed from HPU before decode: mem_get_info free 22.1 -> 22.1 GiB of 94.6 (accounting lags; release verified functional)
+[h3:r6]] DiT freed from HPU before decode: mem_get_info free 22.1 -> 22.1 GiB of 94.6 (accounting lags; release verified functional)
+[h3:r7]] DiT freed from HPU before decode: mem_get_info free 22.1 -> 22.1 GiB of 94.6 (accounting lags; release verified functional)
+[h3:r3]] DiT freed from HPU before decode: mem_get_info free 22.1 -> 22.1 GiB of 94.6 (accounting lags; release verified functional)
+[h3:r0]] DiT freed from HPU before decode: mem_get_info free 22.1 -> 22.1 GiB of 94.6 (accounting lags; release verified functional)
+[h3:r7]:r7]] sharded audio decode: wav -> /root/src/h3/out/t2va_h3_e8fc8cad1b.wav
+[h3:r7]:r7]] sharded decode: 0 frames written, clip decode 0.0s, phase 0.0s
+  [h3:r7]:block] < _H3VideoDecodeStep: 1.972s
+  [h3:r7]:block] > _H3AudioDecodeStep
+  [h3:r7]:block] < _H3AudioDecodeStep: 0.000s
+[h3:r7]:block] < SequentialPipelineBlocks: 17.424s
+[h3:r7]] pipeline complete: device synced before export (0.00s)
+[h3:r7]] rank 7: rank0 owns export; nothing to write
+[h3:r7]] timings: {"generate": 17.42, "export": 0.0, "mux": 0.0}
+[h3:r7]:r7]] hard exit (skip HCCL/interpreter teardown)
+/root/.local/share/uv/python/cpython-3.12.13-linux-x86_64-gnu/lib/python3.12/multiprocessing/resource_tracker.py:279: UserWarning: resource_tracker: There appear to be 8 leaked semaphore objects to clean up at shutdown
+  warnings.warn('resource_tracker: There appear to be %d '

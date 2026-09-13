@@ -1,0 +1,9 @@
+{
+  "pythonVersion": "3.12",
+  "typeCheckingMode": "basic",
+  "useLibraryCodeForTypes": false,
+  "extraPaths": [
+    ".venv/lib/python3.12/site-packages",
+    "/root/venv-gaudi2/lib/python3.12/site-packages"
+  ]
+}

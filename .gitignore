@@ -1,0 +1,22 @@
+# Model weights / checkpoints
+MiniMax-H3/
+*.safetensors
+*.gguf
+*.bin
+*.pt
+
+# Machine-generated caches
+hpu_port/.recipe_cache/
+hpu_port/.recipe_cache_rank*/
+hpu_port/.ecache/
+hpu_port/.graph_dumps/
+hpu_port/.ruff_cache/
+hpu_port/__pycache__/
+**/__pycache__/
+
+# Run artifacts
+hpu_port/workdir/
+out/
+
+# Environment
+.venv/

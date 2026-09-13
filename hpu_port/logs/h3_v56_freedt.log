@@ -1,0 +1,77 @@
+launch_h3.sh: GC plugin missing in /usr/lib/habanatools/habana_plugins; using /opt/habanalabs/habana_plugins
+[h3] plan: {
+  "workflow": "t2va",
+  "bucket_res": "r480",
+  "canvas": [
+    864,
+    480
+  ],
+  "duration_frames": 124,
+  "T_lat": 37,
+  "audio_latents": 207,
+  "rows_per_frame": 405,
+  "fl2va_extra_rows": 0,
+  "text_budget": 512,
+  "expected_packed_seq": 15911,
+  "steps": 2,
+  "seed": 42,
+  "device_map": {
+    "te": "cpu",
+    "dit": "hpu",
+    "vae": "cpu",
+    "audio": "cpu"
+  }
+}
+[h3] workdir: /root/src/h3/hpu_port/workdir/t2va
+Loading weights:   0%|          | 0/1058 [00:00<?, ?it/s]Loading weights:  41%|████      | 435/1058 [00:00<00:00, 4349.17it/s]Loading weights:  82%|████████▏ | 870/1058 [00:00<00:00, 3445.23it/s]Loading weights: 100%|██████████| 1058/1058 [00:00<00:00, 3468.31it/s]
+Loading checkpoint shards:   0%|          | 0/14 [00:00<?, ?it/s]Loading checkpoint shards:  71%|███████▏  | 10/14 [00:00<00:00, 97.45it/s]Loading checkpoint shards: 100%|██████████| 14/14 [00:00<00:00, 97.47it/s]
+Loading checkpoint shards:   0%|          | 0/3 [00:00<?, ?it/s]Loading checkpoint shards: 100%|██████████| 3/3 [00:00<00:00, 38.62it/s]
+/root/src/h3/.venv/lib/python3.12/site-packages/torch/nn/utils/weight_norm.py:144: FutureWarning: `torch.nn.utils.weight_norm` is deprecated in favor of `torch.nn.utils.parametrizations.weight_norm`.
+  WeightNorm.apply(module, name, dim)
+============================= HPU PT BRIDGE CONFIGURATION ON RANK = 0 ============= 
+ PT_HPU_LAZY_MODE = 1
+ PT_HPU_RECIPE_CACHE_CONFIG = /root/src/h3/hpu_port/.recipe_cache,false,8192,false
+ PT_HPU_MAX_COMPOUND_OP_SIZE = 9223372036854775807
+ PT_HPU_LAZY_ACC_PAR_MODE = 1
+ PT_HPU_ENABLE_REFINE_DYNAMIC_SHAPES = 0
+ PT_HPU_EAGER_PIPELINE_ENABLE = 1
+ PT_HPU_EAGER_COLLECTIVE_PIPELINE_ENABLE = 1
+ PT_HPU_ENABLE_LAZY_COLLECTIVES = 0
+---------------------------: System Configuration :---------------------------
+Num CPU Cores : 128
+CPU RAM       : 125 GB
+------------------------------------------------------------------------------
+Attention backends are an experimental feature and the API may be subject to change.
+Attention backends are an experimental feature and the API may be subject to change.
+[h3] placed transformer on hpu
+[h3] attention backend: habana_fused_sdpa (DiT + video VAE)
+[h3] rope cache installed on transformer.rope
+[h3] DiT wrapped into HPU graphs (per-bucket static shapes)
+[h3] graphs ON
+[h3] block logging installed (12 block classes; H3_LOG_BLOCKS=0 to disable)
+[h3:block] > SequentialPipelineBlocks
+  [h3:block] > MiniMaxH3TextEncoderStep
+[h3] embed cache hit: /root/src/h3/hpu_port/.ecache/0be639c56afc729bbdfd0553cfcdb827514604c2bc47bd7cba02687153a0c4ff.pt
+  [h3:block] < MiniMaxH3TextEncoderStep: 0.010s
+  [h3:block] > MiniMaxH3NoKeyframeAnchorsStep
+  [h3:block] < MiniMaxH3NoKeyframeAnchorsStep: 0.000s
+  [h3:block] > MiniMaxH3PrepareLayoutStep
+  [h3:block] < MiniMaxH3PrepareLayoutStep: 0.003s
+  [h3:block] > MiniMaxH3PrepareLatentsStep
+  [h3:block] < MiniMaxH3PrepareLatentsStep: 0.012s
+  [h3:block] > MiniMaxH3SetTimestepsStep
+  [h3:block] < MiniMaxH3SetTimestepsStep: 0.002s
+  [h3:block] > MiniMaxH3DenoiseStep
+  0%|          | 0/1 [00:00<?, ?it/s]    [h3:block] > MiniMaxH3LoopDenoiser i=0 t=0.0000
+[W911 22:50:43.897217859 hpu_lazy_tensors.cpp:1293] Warning: The following operations used in HPU graphs might result in accuracy issues : index_select. (function WarnIfOpsIncompatibleWithHPUGraphs)
+    [h3:block] < MiniMaxH3LoopDenoiser i=0 t=0.0000: 0.634s
+    [h3:block] > MiniMaxH3LoopSchedulerStep i=0 t=0.0000
+    [h3:block] < MiniMaxH3LoopSchedulerStep i=0 t=0.0000: 0.003s
+100%|██████████| 1/1 [00:00<00:00,  1.57it/s]100%|██████████| 1/1 [00:00<00:00,  1.57it/s]
+  [h3:block] < MiniMaxH3DenoiseStep: 0.638s
+  [h3:block] > MiniMaxH3AfterDenoiseStep
+  [h3:block] < MiniMaxH3AfterDenoiseStep: 0.001s
+  [h3:block] > _H3VideoDecodeStep
+[h3] denoise complete: device synced at decode entry (6.20s)
+ModularPipeline.update_components: setting transformer to None (spec unchanged)
+[h3] WARNING: DiT free incomplete (module 'habana_frameworks.torch.hpu' has no attribute 'empty_cache')

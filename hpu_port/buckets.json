@@ -1,0 +1,108 @@
+{
+  "version": 2,
+  "model": "MiniMaxAI/MiniMax-H3",
+  "fps": 24,
+  "notes": "MiniMax-H3 generates at 24 fps on 32-aligned canvases; frame counts sit on the 17n+5 grid (1 encode chunk = 17 pixel frames -> 5 latent frames), each duration entry carries the aligned frame count F, latent frames T_lat = 5n+2 and audio latents A = round(F / 24 * 40). rows_per_frame = W*H/1024 = the video rows per latent frame at patch size 1x2x2 after the video VAE's 16x spatial compression.",
+  "frame_grid": {
+    "multiple": 17,
+    "remainder": 5
+  },
+  "canvas": {
+    "multiple": 32,
+    "min_aspect": 0.25,
+    "max_aspect": 4.0,
+    "short_edge": 768,
+    "max_pixels": 1032192
+  },
+  "defaults": {
+    "num_inference_steps": 30,
+    "seed": null
+  },
+  "canonical_steps": 30,
+  "text_budget": 512,
+  "resolutions": {
+    "r384": {
+      "hw": [384, 224],
+      "rows_per_frame": 84
+    },
+    "r480": {
+      "hw": [864, 480],
+      "rows_per_frame": 405
+    },
+    "r576": {
+      "hw": [1024, 576],
+      "rows_per_frame": 576
+    },
+    "r720": {
+      "hw": [1280, 704],
+      "rows_per_frame": 880
+    },
+    "r768": {
+      "hw": [1344, 768],
+      "rows_per_frame": 1008
+    }
+  },
+  "durations": {
+    "5": { "seconds": 5, "frames": 124, "T_lat": 37, "A": 207 },
+    "6": { "seconds": 6, "frames": 158, "T_lat": 47, "A": 263 },
+    "7": { "seconds": 7, "frames": 175, "T_lat": 52, "A": 292 },
+    "8": { "seconds": 8, "frames": 192, "T_lat": 57, "A": 320 },
+    "9": { "seconds": 9, "frames": 226, "T_lat": 67, "A": 377 },
+    "10": { "seconds": 10, "frames": 243, "T_lat": 72, "A": 405 },
+    "11": { "seconds": 11, "frames": 277, "T_lat": 82, "A": 462 },
+    "12": { "seconds": 12, "frames": 294, "T_lat": 87, "A": 490 },
+    "13": { "seconds": 13, "frames": 328, "T_lat": 97, "A": 547 },
+    "14": { "seconds": 14, "frames": 345, "T_lat": 102, "A": 575 },
+    "15": { "seconds": 15, "frames": 345, "T_lat": 102, "A": 575 }
+  },
+  "buckets": [
+    {
+      "name": "preview",
+      "width": 384,
+      "height": 224,
+      "seconds": 5,
+      "num_inference_steps": 8,
+      "notes": "smallest canvas (maps to r384) + fewest steps; connectivity/latency smoke test"
+    },
+    {
+      "name": "480p-5s",
+      "width": 864,
+      "height": 480,
+      "seconds": 5,
+      "num_inference_steps": 30,
+      "notes": "native 864x480 (r480) short clip, the runbook default canvas"
+    },
+    {
+      "name": "480p-10s",
+      "width": 864,
+      "height": 480,
+      "seconds": 10,
+      "num_inference_steps": 30,
+      "notes": "native resolution, 10 s (243 frames on the 17n+5 grid)"
+    },
+    {
+      "name": "480p-15s",
+      "width": 864,
+      "height": 480,
+      "seconds": 15,
+      "num_inference_steps": 30,
+      "notes": "native resolution, longest supported clip (345 frames)"
+    },
+    {
+      "name": "576p-16x9-5s",
+      "width": 1024,
+      "height": 576,
+      "seconds": 5,
+      "num_inference_steps": 30,
+      "notes": "16:9 mid-canvas (r576), both edges 32-aligned"
+    },
+    {
+      "name": "768p-16x9-5s",
+      "width": 1344,
+      "height": 768,
+      "seconds": 5,
+      "num_inference_steps": 30,
+      "notes": "max-area canvas at the released short edge 768 (r768, = canvas_max_pixels)"
+    }
+  ]
+}

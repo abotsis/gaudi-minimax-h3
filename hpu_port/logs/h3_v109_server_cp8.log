@@ -1,0 +1,243 @@
+launch_h3.sh: GC plugin missing in /usr/lib/habanatools/habana_plugins; using /opt/habanalabs/habana_plugins
+[h3] CP: seq 15911 padded by 1 text rows to 15912 (divisible by 8)
+[h3] plan: {
+  "workflow": "t2va",
+  "bucket_res": "r480",
+  "canvas": [
+    864,
+    480
+  ],
+  "duration_frames": 124,
+  "T_lat": 37,
+  "audio_latents": 207,
+  "rows_per_frame": 405,
+  "fl2va_extra_rows": 0,
+  "text_budget": 513,
+  "expected_packed_seq": 15912,
+  "steps": 5,
+  "seed": 42,
+  "device_map": {
+    "te": "cpu",
+    "dit": "hpu",
+    "vae": "hpu",
+    "audio": "hpu"
+  },
+  "cp": 8,
+  "cp_seq_base": 15911,
+  "cp_seq_pad": 1
+}
+[h3] server: HTTP API on :8032 (spool ../out/.server)
+[h3:r1]] workdir: /root/src/h3/hpu_port/workdir/t2va
+Loading weights:   0%|          | 0/1058 [00:00<?, ?it/s]Loading weights:  34%|███▍      | 363/1058 [00:00<00:00, 3625.41it/s][h3:r2]] workdir: /root/src/h3/hpu_port/workdir/t2va
+Loading weights:   0%|          | 0/1058 [00:00<?, ?it/s][h3:r6]] workdir: /root/src/h3/hpu_port/workdir/t2va
+Loading weights:   0%|          | 0/1058 [00:00<?, ?it/s][h3:r5]] workdir: /root/src/h3/hpu_port/workdir/t2va
+Loading weights:   0%|          | 0/1058 [00:00<?, ?it/s][h3:r0]] workdir: /root/src/h3/hpu_port/workdir/t2va
+Loading weights:   0%|          | 0/1058 [00:00<?, ?it/s][h3:r3]] workdir: /root/src/h3/hpu_port/workdir/t2va
+Loading weights:   0%|          | 0/1058 [00:00<?, ?it/s][h3:r7]] workdir: /root/src/h3/hpu_port/workdir/t2va
+Loading weights:   0%|          | 0/1058 [00:00<?, ?it/s][h3:r4]] workdir: /root/src/h3/hpu_port/workdir/t2va
+Loading weights:   0%|          | 0/1058 [00:00<?, ?it/s]Loading weights:  69%|██████▊   | 726/1058 [00:00<00:00, 3004.49it/s]Loading weights:  33%|███▎      | 345/1058 [00:00<00:00, 3435.95it/s]Loading weights:  34%|███▎      | 355/1058 [00:00<00:00, 3547.38it/s]Loading weights:  30%|██▉       | 314/1058 [00:00<00:00, 3128.96it/s]Loading weights:  34%|███▍      | 364/1058 [00:00<00:00, 3615.93it/s]Loading weights:  25%|██▌       | 267/1058 [00:00<00:00, 2652.23it/s]Loading weights:  32%|███▏      | 340/1058 [00:00<00:00, 3378.91it/s]Loading weights:  34%|███▍      | 362/1058 [00:00<00:00, 3599.97it/s]Loading weights:  98%|█████████▊| 1034/1058 [00:00<00:00, 2993.82it/s]Loading weights: 100%|██████████| 1058/1058 [00:00<00:00, 3052.97it/s]
+Loading weights:  59%|█████▉    | 627/1058 [00:00<00:00, 2799.58it/s]Loading weights:  50%|█████     | 533/1058 [00:00<00:00, 2515.94it/s]Loading weights:  65%|██████▌   | 689/1058 [00:00<00:00, 2684.21it/s]Loading weights:  67%|██████▋   | 710/1058 [00:00<00:00, 2771.25it/s]Loading weights:  69%|██████▊   | 726/1058 [00:00<00:00, 2846.66it/s]Loading weights:  64%|██████▍   | 678/1058 [00:00<00:00, 2953.63it/s]Loading weights:  68%|██████▊   | 722/1058 [00:00<00:00, 2811.26it/s]Loading weights:  86%|████████▌ | 910/1058 [00:00<00:00, 2771.81it/s]Loading weights:  74%|███████▍  | 786/1058 [00:00<00:00, 2346.29it/s]Loading weights:  91%|█████████▏| 968/1058 [00:00<00:00, 2582.06it/s]Loading weights:  94%|█████████▍| 998/1058 [00:00<00:00, 2630.34it/s]Loading weights:  97%|█████████▋| 1021/1058 [00:00<00:00, 2779.42it/s]Loading weights:  92%|█████████▏| 977/1058 [00:00<00:00, 2802.99it/s]Loading weights: 100%|██████████| 1058/1058 [00:00<00:00, 2866.92it/s]
+Loading weights: 100%|██████████| 1058/1058 [00:00<00:00, 2733.38it/s]
+Loading weights: 100%|██████████| 1058/1058 [00:00<00:00, 2785.57it/s]
+Loading weights: 100%|██████████| 1058/1058 [00:00<00:00, 2664.11it/s]
+Loading weights: 100%|██████████| 1058/1058 [00:00<00:00, 2868.73it/s]
+Loading weights:  96%|█████████▌| 1014/1058 [00:00<00:00, 2737.95it/s]Loading weights: 100%|██████████| 1058/1058 [00:00<00:00, 2831.80it/s]
+Loading weights: 100%|██████████| 1058/1058 [00:00<00:00, 2476.23it/s]
+Loading checkpoint shards:   0%|          | 0/14 [00:00<?, ?it/s]Loading checkpoint shards:  71%|███████▏  | 10/14 [00:00<00:00, 94.50it/s]Loading checkpoint shards: 100%|██████████| 14/14 [00:00<00:00, 95.52it/s]
+Loading checkpoint shards:   0%|          | 0/3 [00:00<?, ?it/s]/root/src/h3/.venv/lib/python3.12/site-packages/torch/nn/utils/weight_norm.py:144: FutureWarning: `torch.nn.utils.weight_norm` is deprecated in favor of `torch.nn.utils.parametrizations.weight_norm`.
+  WeightNorm.apply(module, name, dim)
+Loading checkpoint shards: 100%|██████████| 3/3 [00:00<00:00, 38.11it/s]
+/root/src/h3/.venv/lib/python3.12/site-packages/torch/nn/utils/weight_norm.py:144: FutureWarning: `torch.nn.utils.weight_norm` is deprecated in favor of `torch.nn.utils.parametrizations.weight_norm`.
+  WeightNorm.apply(module, name, dim)
+/root/src/h3/.venv/lib/python3.12/site-packages/torch/nn/utils/weight_norm.py:144: FutureWarning: `torch.nn.utils.weight_norm` is deprecated in favor of `torch.nn.utils.parametrizations.weight_norm`.
+  WeightNorm.apply(module, name, dim)
+/root/src/h3/.venv/lib/python3.12/site-packages/torch/nn/utils/weight_norm.py:144: FutureWarning: `torch.nn.utils.weight_norm` is deprecated in favor of `torch.nn.utils.parametrizations.weight_norm`.
+  WeightNorm.apply(module, name, dim)
+/root/src/h3/.venv/lib/python3.12/site-packages/torch/nn/utils/weight_norm.py:144: FutureWarning: `torch.nn.utils.weight_norm` is deprecated in favor of `torch.nn.utils.parametrizations.weight_norm`.
+  WeightNorm.apply(module, name, dim)
+/root/src/h3/.venv/lib/python3.12/site-packages/torch/nn/utils/weight_norm.py:144: FutureWarning: `torch.nn.utils.weight_norm` is deprecated in favor of `torch.nn.utils.parametrizations.weight_norm`.
+  WeightNorm.apply(module, name, dim)
+/root/src/h3/.venv/lib/python3.12/site-packages/torch/nn/utils/weight_norm.py:144: FutureWarning: `torch.nn.utils.weight_norm` is deprecated in favor of `torch.nn.utils.parametrizations.weight_norm`.
+  WeightNorm.apply(module, name, dim)
+/root/src/h3/.venv/lib/python3.12/site-packages/torch/nn/utils/weight_norm.py:144: FutureWarning: `torch.nn.utils.weight_norm` is deprecated in favor of `torch.nn.utils.parametrizations.weight_norm`.
+  WeightNorm.apply(module, name, dim)
+Traceback (most recent call last):
+Traceback (most recent call last):
+Traceback (most recent call last):
+  File "/root/src/h3/hpu_port/run_t2va.py", line 3171, in _cp_worker_entry
+    _cp_worker_main(rank, payload)
+  File "/root/src/h3/hpu_port/run_t2va.py", line 3203, in _cp_worker_main
+    timings = run_pipeline(
+              ^^^^^^^^^^^^^
+  File "/root/src/h3/hpu_port/run_t2va.py", line 4027, in run_pipeline
+    component.to(exec_device)
+  File "/root/src/h3/.venv/lib/python3.12/site-packages/diffusers/models/modeling_utils.py", line 1550, in to
+    return super().to(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/root/src/h3/.venv/lib/python3.12/site-packages/habana_frameworks/torch/core/weight_sharing.py", line 201, in wrapped_to
+    result = self.original_to(*args, **kwargs)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/root/src/h3/.venv/lib/python3.12/site-packages/torch/nn/modules/module.py", line 1384, in to
+    return self._apply(convert)
+           ^^^^^^^^^^^^^^^^^^^^
+  File "/root/src/h3/.venv/lib/python3.12/site-packages/torch/nn/modules/module.py", line 934, in _apply
+    module._apply(fn)
+  File "/root/src/h3/.venv/lib/python3.12/site-packages/torch/nn/modules/module.py", line 965, in _apply
+    param_applied = fn(param)
+                    ^^^^^^^^^
+  File "/root/src/h3/.venv/lib/python3.12/site-packages/torch/nn/modules/module.py", line 1370, in convert
+    return t.to(
+           ^^^^^
+  File "/root/src/h3/hpu_port/run_t2va.py", line 3171, in _cp_worker_entry
+    _cp_worker_main(rank, payload)
+  File "/root/src/h3/.venv/lib/python3.12/site-packages/habana_frameworks/torch/core/weight_sharing.py", line 81, in __torch_function__
+    return super().__torch_function__(func, types, new_args, kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/root/src/h3/.venv/lib/python3.12/site-packages/habana_frameworks/torch/hpu/__init__.py", line 85, in _lazy_init
+    _hpu_C.init()
+  File "/root/src/h3/hpu_port/run_t2va.py", line 3203, in _cp_worker_main
+    timings = run_pipeline(
+              ^^^^^^^^^^^^^
+RuntimeError: synStatus=8 [Device not found] Device acquire failed.
+  File "/root/src/h3/hpu_port/run_t2va.py", line 3171, in _cp_worker_entry
+    _cp_worker_main(rank, payload)
+  File "/root/src/h3/hpu_port/run_t2va.py", line 4027, in run_pipeline
+    component.to(exec_device)
+  File "/root/src/h3/.venv/lib/python3.12/site-packages/diffusers/models/modeling_utils.py", line 1550, in to
+    return super().to(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/root/src/h3/hpu_port/run_t2va.py", line 3203, in _cp_worker_main
+    timings = run_pipeline(
+              ^^^^^^^^^^^^^
+  File "/root/src/h3/.venv/lib/python3.12/site-packages/habana_frameworks/torch/core/weight_sharing.py", line 201, in wrapped_to
+    result = self.original_to(*args, **kwargs)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/root/src/h3/hpu_port/run_t2va.py", line 4027, in run_pipeline
+    component.to(exec_device)
+  File "/root/src/h3/.venv/lib/python3.12/site-packages/torch/nn/modules/module.py", line 1384, in to
+    return self._apply(convert)
+           ^^^^^^^^^^^^^^^^^^^^
+  File "/root/src/h3/.venv/lib/python3.12/site-packages/diffusers/models/modeling_utils.py", line 1550, in to
+    return super().to(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/root/src/h3/.venv/lib/python3.12/site-packages/torch/nn/modules/module.py", line 934, in _apply
+    module._apply(fn)
+  File "/root/src/h3/.venv/lib/python3.12/site-packages/habana_frameworks/torch/core/weight_sharing.py", line 201, in wrapped_to
+    result = self.original_to(*args, **kwargs)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/root/src/h3/.venv/lib/python3.12/site-packages/torch/nn/modules/module.py", line 965, in _apply
+    param_applied = fn(param)
+                    ^^^^^^^^^
+  File "/root/src/h3/.venv/lib/python3.12/site-packages/torch/nn/modules/module.py", line 1384, in to
+    return self._apply(convert)
+           ^^^^^^^^^^^^^^^^^^^^
+  File "/root/src/h3/.venv/lib/python3.12/site-packages/torch/nn/modules/module.py", line 1370, in convert
+    return t.to(
+           ^^^^^
+  File "/root/src/h3/.venv/lib/python3.12/site-packages/torch/nn/modules/module.py", line 934, in _apply
+    module._apply(fn)
+  File "/root/src/h3/.venv/lib/python3.12/site-packages/habana_frameworks/torch/core/weight_sharing.py", line 81, in __torch_function__
+    return super().__torch_function__(func, types, new_args, kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/root/src/h3/.venv/lib/python3.12/site-packages/torch/nn/modules/module.py", line 965, in _apply
+    param_applied = fn(param)
+                    ^^^^^^^^^
+  File "/root/src/h3/.venv/lib/python3.12/site-packages/habana_frameworks/torch/hpu/__init__.py", line 85, in _lazy_init
+    _hpu_C.init()
+  File "/root/src/h3/.venv/lib/python3.12/site-packages/torch/nn/modules/module.py", line 1370, in convert
+    return t.to(
+           ^^^^^
+  File "/root/src/h3/.venv/lib/python3.12/site-packages/habana_frameworks/torch/core/weight_sharing.py", line 81, in __torch_function__
+    return super().__torch_function__(func, types, new_args, kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+RuntimeError: synStatus=8 [Device not found] Device acquire failed.
+  File "/root/src/h3/.venv/lib/python3.12/site-packages/habana_frameworks/torch/hpu/__init__.py", line 85, in _lazy_init
+    _hpu_C.init()
+RuntimeError: synStatus=8 [Device not found] Device acquire failed.
+[h3:r1]] placed transformer on hpu
+[h3:r1]] placed vae on hpu
+[h3:r1]] placed audio_vae on hpu
+[h3:r1]] CP device map: dit/vae/audio on hpu (replicated); te on cpu
+[h3:r1]] attention backend: habana_fused_sdpa (DiT + video VAE)
+[h3:r1]] rope cache installed on transformer.rope
+[h3:r1]] CP: token refiner kept replicated (2 processors un-stamped; refiner runs pre-packing on the full text run)
+[h3:r1]] context parallelism ON: ulysses=8 backend=hccl mesh=DeviceMesh((ring=1, ulysses=8), 'hpu', stride=(8, 1)) (seq sharded inside diffusers via the model's _cp_plan)
+[h3:r4]] placed transformer on hpu
+[h3:r4]] placed vae on hpu
+[h3:r4]] placed audio_vae on hpu
+[h3:r4]] CP device map: dit/vae/audio on hpu (replicated); te on cpu
+[h3:r4]] attention backend: habana_fused_sdpa (DiT + video VAE)
+[h3:r4]] rope cache installed on transformer.rope
+[h3:r4]] CP: token refiner kept replicated (2 processors un-stamped; refiner runs pre-packing on the full text run)
+[h3:r6]] placed transformer on hpu
+[h3:r6]] placed vae on hpu
+[h3:r6]] placed audio_vae on hpu
+[h3:r6]] CP device map: dit/vae/audio on hpu (replicated); te on cpu
+[h3:r6]] attention backend: habana_fused_sdpa (DiT + video VAE)
+[h3:r6]] rope cache installed on transformer.rope
+[h3:r6]] CP: token refiner kept replicated (2 processors un-stamped; refiner runs pre-packing on the full text run)
+[h3:r4]] context parallelism ON: ulysses=8 backend=hccl mesh=DeviceMesh((ring=1, ulysses=8), 'hpu', stride=(8, 1)) (seq sharded inside diffusers via the model's _cp_plan)
+[h3:r5]] placed transformer on hpu
+[h3:r5]] placed vae on hpu
+[h3:r5]] placed audio_vae on hpu
+[h3:r5]] CP device map: dit/vae/audio on hpu (replicated); te on cpu
+[h3:r5]] attention backend: habana_fused_sdpa (DiT + video VAE)
+[h3:r5]] rope cache installed on transformer.rope
+[h3:r5]] CP: token refiner kept replicated (2 processors un-stamped; refiner runs pre-packing on the full text run)
+[h3:r6]] context parallelism ON: ulysses=8 backend=hccl mesh=DeviceMesh((ring=1, ulysses=8), 'hpu', stride=(8, 1)) (seq sharded inside diffusers via the model's _cp_plan)
+[h3:r5]] context parallelism ON: ulysses=8 backend=hccl mesh=DeviceMesh((ring=1, ulysses=8), 'hpu', stride=(8, 1)) (seq sharded inside diffusers via the model's _cp_plan)
+[h3:r3]] placed transformer on hpu
+[h3:r3]] placed vae on hpu
+[h3:r3]] placed audio_vae on hpu
+[h3:r3]] CP device map: dit/vae/audio on hpu (replicated); te on cpu
+[h3:r3]] attention backend: habana_fused_sdpa (DiT + video VAE)
+[h3:r3]] rope cache installed on transformer.rope
+[h3:r3]] CP: token refiner kept replicated (2 processors un-stamped; refiner runs pre-packing on the full text run)
+[h3:r3]] context parallelism ON: ulysses=8 backend=hccl mesh=DeviceMesh((ring=1, ulysses=8), 'hpu', stride=(8, 1)) (seq sharded inside diffusers via the model's _cp_plan)
+[h3:r4]] CP: HPU graphs default OFF under CP (collectives inside graph capture are untested; H3_CP_GRAPHS=1 to force)
+[h3:r4]] graphs OFF: eager lazy mode with post-call mark_step
+[h3:r4]] per-block mark_step installed on 52 blocks
+[h3:r1]] CP: HPU graphs default OFF under CP (collectives inside graph capture are untested; H3_CP_GRAPHS=1 to force)
+[h3:r1]] graphs OFF: eager lazy mode with post-call mark_step
+[h3:r1]] per-block mark_step installed on 52 blocks
+[h3:r6]] CP: HPU graphs default OFF under CP (collectives inside graph capture are untested; H3_CP_GRAPHS=1 to force)
+[h3:r6]] graphs OFF: eager lazy mode with post-call mark_step
+[h3:r6]] per-block mark_step installed on 52 blocks
+[h3:r5]] CP: HPU graphs default OFF under CP (collectives inside graph capture are untested; H3_CP_GRAPHS=1 to force)
+[h3:r5]] graphs OFF: eager lazy mode with post-call mark_step
+[h3:r5]] per-block mark_step installed on 52 blocks
+[h3:r4]] per-block mark_step installed on 36 blocks
+[h3:r4]] VAE decoder per-block mark_step installed on 36 blocks
+[h3:r4]] per-block mark_step installed on 6 blocks
+[h3:r4]] VAE encoder per-block mark_step installed on 6 blocks
+[h3:r1]] per-block mark_step installed on 36 blocks
+[h3:r1]] VAE decoder per-block mark_step installed on 36 blocks
+[h3:r6]] per-block mark_step installed on 36 blocks
+[h3:r6]] VAE decoder per-block mark_step installed on 36 blocks
+[h3:r5]] per-block mark_step installed on 36 blocks
+[h3:r5]] VAE decoder per-block mark_step installed on 36 blocks
+[h3:r1]] per-block mark_step installed on 6 blocks
+[h3:r6]] per-block mark_step installed on 6 blocks
+[h3:r1]] VAE encoder per-block mark_step installed on 6 blocks
+[h3:r6]] VAE encoder per-block mark_step installed on 6 blocks
+[h3:r5]] per-block mark_step installed on 6 blocks
+[h3:r5]] VAE encoder per-block mark_step installed on 6 blocks
+[h3:r3]] CP: HPU graphs default OFF under CP (collectives inside graph capture are untested; H3_CP_GRAPHS=1 to force)
+[h3:r3]] graphs OFF: eager lazy mode with post-call mark_step
+[h3:r3]] per-block mark_step installed on 52 blocks
+[h3:r3]] per-block mark_step installed on 36 blocks
+[h3:r3]] VAE decoder per-block mark_step installed on 36 blocks
+[h3:r3]] per-block mark_step installed on 6 blocks
+[h3:r3]] VAE encoder per-block mark_step installed on 6 blocks
+[h3:r3]] server: dual-pipe ready (t2va + fl2va; shared weights)
+[h3:r6]] server: dual-pipe ready (t2va + fl2va; shared weights)
+[h3:r4]] server: dual-pipe ready (t2va + fl2va; shared weights)
+[h3:r5]] server: dual-pipe ready (t2va + fl2va; shared weights)
+[h3:r1]] server: dual-pipe ready (t2va + fl2va; shared weights)
+[h3:r6]] block logging installed (12 block classes; H3_LOG_BLOCKS=0 to disable)
+[h3:r4]] block logging installed (12 block classes; H3_LOG_BLOCKS=0 to disable)
+[h3:r3]] block logging installed (12 block classes; H3_LOG_BLOCKS=0 to disable)
+[h3:r1]] block logging installed (12 block classes; H3_LOG_BLOCKS=0 to disable)
+[h3:r5]] block logging installed (12 block classes; H3_LOG_BLOCKS=0 to disable)
+/root/.local/share/uv/python/cpython-3.12.13-linux-x86_64-gnu/lib/python3.12/multiprocessing/resource_tracker.py:279: UserWarning: resource_tracker: There appear to be 5 leaked semaphore objects to clean up at shutdown
+  warnings.warn('resource_tracker: There appear to be %d '

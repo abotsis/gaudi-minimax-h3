@@ -1,0 +1,128 @@
+launch_h3.sh: GC plugin missing in /usr/lib/habanatools/habana_plugins; using /opt/habanalabs/habana_plugins
+launch_h3.sh: H3_HPU_MODE=eager -> eager plugin, no lazy-mode exports
+Calling add_step_closure function does not have any effect. It's lazy mode only functionality. (warning logged once)
+Calling mark_step function does not have any effect. It's lazy mode only functionality. (warning logged once)
+Calling iter_mark_step function does not have any effect. It's lazy mode only functionality. (warning logged once)
+[h3] plan: {
+  "workflow": "t2va",
+  "bucket_res": "r480",
+  "canvas": [
+    864,
+    480
+  ],
+  "duration_frames": 124,
+  "T_lat": 37,
+  "audio_latents": 207,
+  "rows_per_frame": 405,
+  "fl2va_extra_rows": 0,
+  "text_budget": 512,
+  "expected_packed_seq": 15911,
+  "steps": 2,
+  "seed": 42,
+  "device_map": {
+    "te": "cpu",
+    "dit": "hpu",
+    "vae": "hpu",
+    "audio": "hpu"
+  }
+}
+[h3] workdir: /root/src/h3/hpu_port/workdir/t2va
+Loading weights:   0%|          | 0/1058 [00:00<?, ?it/s]Loading weights:  41%|████      | 429/1058 [00:00<00:00, 4275.47it/s]Loading weights:  81%|████████  | 857/1058 [00:00<00:00, 3800.96it/s]Loading weights: 100%|██████████| 1058/1058 [00:00<00:00, 3827.29it/s]
+Loading checkpoint shards:   0%|          | 0/14 [00:00<?, ?it/s]Loading checkpoint shards: 100%|██████████| 14/14 [00:00<00:00, 179.97it/s]
+Loading checkpoint shards:   0%|          | 0/3 [00:00<?, ?it/s]Loading checkpoint shards: 100%|██████████| 3/3 [00:00<00:00, 74.50it/s]
+/root/src/h3/.venv/lib/python3.12/site-packages/torch/nn/utils/weight_norm.py:144: FutureWarning: `torch.nn.utils.weight_norm` is deprecated in favor of `torch.nn.utils.parametrizations.weight_norm`.
+  WeightNorm.apply(module, name, dim)
+============================= HPU PT BRIDGE CONFIGURATION ON RANK = 0 ============= 
+ PT_HPU_LAZY_MODE = 0
+ PT_HPU_RECIPE_CACHE_CONFIG = /root/src/h3/hpu_port/.recipe_cache,false,8192,false
+ PT_HPU_MAX_COMPOUND_OP_SIZE = 9223372036854775807
+ PT_HPU_LAZY_ACC_PAR_MODE = 1
+ PT_HPU_ENABLE_REFINE_DYNAMIC_SHAPES = 0
+ PT_HPU_EAGER_PIPELINE_ENABLE = 1
+ PT_HPU_EAGER_COLLECTIVE_PIPELINE_ENABLE = 1
+ PT_HPU_ENABLE_LAZY_COLLECTIVES = 0
+---------------------------: System Configuration :---------------------------
+Num CPU Cores : 128
+CPU RAM       : 125 GB
+------------------------------------------------------------------------------
+Attention backends are an experimental feature and the API may be subject to change.
+Attention backends are an experimental feature and the API may be subject to change.
+[h3] placed transformer on hpu
+[h3] placed vae on hpu
+[h3] placed audio_vae on hpu
+[h3] attention backend: habana_fused_sdpa (DiT + video VAE)
+[h3] rope cache installed on transformer.rope
+[h3] DiT wrapped into HPU graphs (per-bucket static shapes)
+[h3] graphs ON
+[h3] block logging installed (12 block classes; H3_LOG_BLOCKS=0 to disable)
+[h3:block] > SequentialPipelineBlocks
+  [h3:block] > MiniMaxH3TextEncoderStep
+/root/src/h3/.venv/lib/python3.12/site-packages/torch/serialization.py:2190: UserWarning: Detected pickle protocol 4 in the checkpoint, which was not the default pickle protocol used by `torch.load` (2). The weights_only Unpickler might not support all instructions implemented by this protocol, please file an issue for adding support if you encounter this.
+  result = unpickler.load()
+[h3] WARNING: embed cache read failed (Weights only load failed. In PyTorch 2.6, we changed the default value of the `weights_only` argument in `torch.load` from `False` to `True`. Re-running `torch.load` with `weights_only` set to `False` will likely succeed, but it can result in arbitrary code execution. Do it only if you got the file from a trusted source.
+Please file an issue with the following so that we can make `weights_only=True` compatible with your use case: WeightsUnpickler error: 
+
+Unsupported operand 149
+
+Check the documentation of torch.load to learn more about types accepted by default with weights_only https://pytorch.org/docs/stable/generated/torch.load.html.); recomputing the text embedding
+  [h3:block] < MiniMaxH3TextEncoderStep: 97.544s
+  [h3:block] > MiniMaxH3NoKeyframeAnchorsStep
+  [h3:block] < MiniMaxH3NoKeyframeAnchorsStep: 0.000s
+  [h3:block] > MiniMaxH3PrepareLayoutStep
+  [h3:block] ! MiniMaxH3PrepareLayoutStep: FAILED after 0.020s: RuntimeError: Graph compile failed. Recipe: .graph_dumps/1, synStatus=synStatus 26 [Generic failure]. 
+Last synapse error: file: recipe_manager.cpp:304 function: compileGraph, scope: SYN_RECIPE, failed condition: (ret == false), message: Can not compile graph. Recipe name .graph_dumps/1, graph name: .graph_dumps/1
+
+Error in block: (denoise.prepare_layout, MiniMaxH3PrepareLayoutStep)
+Error details: Graph compile failed. Recipe: .graph_dumps/1, synStatus=synStatus 26 [Generic failure]. 
+Last synapse error: file: recipe_manager.cpp:304 function: compileGraph, scope: SYN_RECIPE, failed condition: (ret == false), message: Can not compile graph. Recipe name .graph_dumps/1, graph name: .graph_dumps/1
+Traceback:
+Traceback (most recent call last):
+  File "/root/src/h3/.venv/lib/python3.12/site-packages/diffusers/modular_pipelines/modular_pipeline.py", line 1145, in __call__
+    pipeline, state = block(pipeline, state)
+                      ^^^^^^^^^^^^^^^^^^^^^^
+  File "/root/src/h3/hpu_port/run_t2va.py", line 792, in logged
+    out = orig(self, *args, **kwargs)
+          ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/root/src/h3/.venv/lib/python3.12/site-packages/torch/utils/_contextlib.py", line 124, in decorate_context
+    return func(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^
+  File "/root/src/h3/.venv/lib/python3.12/site-packages/diffusers/modular_pipelines/minimax_h3/before_denoise.py", line 444, in __call__
+    block_state.position_ids = position_ids.to(device)
+                               ^^^^^^^^^^^^^^^^^^^^^^^
+RuntimeError: Graph compile failed. Recipe: .graph_dumps/1, synStatus=synStatus 26 [Generic failure]. 
+Last synapse error: file: recipe_manager.cpp:304 function: compileGraph, scope: SYN_RECIPE, failed condition: (ret == false), message: Can not compile graph. Recipe name .graph_dumps/1, graph name: .graph_dumps/1
+
+[h3:block] ! SequentialPipelineBlocks: FAILED after 97.570s: RuntimeError: Graph compile failed. Recipe: .graph_dumps/1, synStatus=synStatus 26 [Generic failure]. 
+Last synapse error: file: recipe_manager.cpp:304 function: compileGraph, scope: SYN_RECIPE, failed condition: (ret == false), message: Can not compile graph. Recipe name .graph_dumps/1, graph name: .graph_dumps/1
+Error in block: (SequentialPipelineBlocks):
+
+Traceback (most recent call last):
+  File "/root/src/h3/hpu_port/run_t2va.py", line 1678, in <module>
+    sys.exit(main())
+             ^^^^^^
+  File "/root/src/h3/hpu_port/run_t2va.py", line 1635, in main
+    state = pipe(**{**kwargs, "num_inference_steps": run_steps})
+            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/root/src/h3/.venv/lib/python3.12/site-packages/diffusers/modular_pipelines/modular_pipeline.py", line 2927, in __call__
+    _, state = self._blocks(self, state)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/root/src/h3/hpu_port/run_t2va.py", line 792, in logged
+    out = orig(self, *args, **kwargs)
+          ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/root/src/h3/.venv/lib/python3.12/site-packages/torch/utils/_contextlib.py", line 124, in decorate_context
+    return func(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^
+  File "/root/src/h3/.venv/lib/python3.12/site-packages/diffusers/modular_pipelines/modular_pipeline.py", line 1145, in __call__
+    pipeline, state = block(pipeline, state)
+                      ^^^^^^^^^^^^^^^^^^^^^^
+  File "/root/src/h3/hpu_port/run_t2va.py", line 792, in logged
+    out = orig(self, *args, **kwargs)
+          ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/root/src/h3/.venv/lib/python3.12/site-packages/torch/utils/_contextlib.py", line 124, in decorate_context
+    return func(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^
+  File "/root/src/h3/.venv/lib/python3.12/site-packages/diffusers/modular_pipelines/minimax_h3/before_denoise.py", line 444, in __call__
+    block_state.position_ids = position_ids.to(device)
+                               ^^^^^^^^^^^^^^^^^^^^^^^
+RuntimeError: Graph compile failed. Recipe: .graph_dumps/1, synStatus=synStatus 26 [Generic failure]. 
+Last synapse error: file: recipe_manager.cpp:304 function: compileGraph, scope: SYN_RECIPE, failed condition: (ret == false), message: Can not compile graph. Recipe name .graph_dumps/1, graph name: .graph_dumps/1

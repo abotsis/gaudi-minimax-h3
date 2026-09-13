@@ -1,0 +1,75 @@
+launch_h3.sh: GC plugin missing in /usr/lib/habanatools/habana_plugins; using /opt/habanalabs/habana_plugins
+[h3] CP: seq 15911 padded by 1 text rows to 15912 (divisible by 8)
+[h3] plan: {
+  "workflow": "t2va",
+  "bucket_res": "r480",
+  "canvas": [
+    864,
+    480
+  ],
+  "duration_frames": 124,
+  "T_lat": 37,
+  "audio_latents": 207,
+  "rows_per_frame": 405,
+  "fl2va_extra_rows": 0,
+  "text_budget": 513,
+  "expected_packed_seq": 15912,
+  "steps": 5,
+  "seed": 42,
+  "device_map": {
+    "te": "cpu",
+    "dit": "hpu",
+    "vae": "hpu",
+    "audio": "hpu"
+  },
+  "cp": 8,
+  "cp_seq_base": 15911,
+  "cp_seq_pad": 1
+}
+[h3] server: HTTP API on :8032 (spool ../out/.server)
+[h3:r7]] workdir: /root/src/h3/hpu_port/workdir/t2va
+Loading weights:   0%|          | 0/1058 [00:00<?, ?it/s][h3:r3]] workdir: /root/src/h3/hpu_port/workdir/t2va
+Loading weights:   0%|          | 0/1058 [00:00<?, ?it/s]Loading weights:  27%|██▋       | 281/1058 [00:00<00:00, 2803.61it/s]Loading weights:  29%|██▉       | 309/1058 [00:00<00:00, 3070.52it/s][h3:r0]] workdir: /root/src/h3/hpu_port/workdir/t2va
+Loading weights:   0%|          | 0/1058 [00:00<?, ?it/s]Loading weights:  53%|█████▎    | 562/1058 [00:00<00:00, 2430.62it/s][h3:r6]] workdir: /root/src/h3/hpu_port/workdir/t2va
+Loading weights:   0%|          | 0/1058 [00:00<?, ?it/s][h3:r1]] workdir: /root/src/h3/hpu_port/workdir/t2va
+Loading weights:   0%|          | 0/1058 [00:00<?, ?it/s]Loading weights:  32%|███▏      | 343/1058 [00:00<00:00, 3414.22it/s]Loading weights:  58%|█████▊    | 617/1058 [00:00<00:00, 2488.64it/s][h3:r5]] workdir: /root/src/h3/hpu_port/workdir/t2va
+Loading weights:   0%|          | 0/1058 [00:00<?, ?it/s][h3:r2]] workdir: /root/src/h3/hpu_port/workdir/t2va
+Loading weights:   0%|          | 0/1058 [00:00<?, ?it/s][h3:r4]] workdir: /root/src/h3/hpu_port/workdir/t2va
+Loading weights:   0%|          | 0/1058 [00:00<?, ?it/s]Loading weights:  30%|██▉       | 313/1058 [00:00<00:00, 3115.87it/s]Loading weights:  76%|███████▋  | 809/1058 [00:00<00:00, 2391.52it/s]Loading weights:  27%|██▋       | 288/1058 [00:00<00:00, 2869.91it/s]Loading weights:  83%|████████▎ | 883/1058 [00:00<00:00, 2557.31it/s]Loading weights:  65%|██████▍   | 685/1058 [00:00<00:00, 2971.37it/s]Loading weights:  29%|██▊       | 304/1058 [00:00<00:00, 3031.13it/s]Loading weights:  31%|███       | 327/1058 [00:00<00:00, 3261.90it/s]Loading weights:  34%|███▍      | 364/1058 [00:00<00:00, 3629.16it/s]Loading weights: 100%|██████████| 1058/1058 [00:00<00:00, 2617.36it/s]
+Loading weights: 100%|██████████| 1058/1058 [00:00<00:00, 2483.20it/s]
+Loading weights:  59%|█████▉    | 625/1058 [00:00<00:00, 2766.93it/s]Loading weights:  54%|█████▍    | 575/1058 [00:00<00:00, 2643.90it/s]Loading weights:  93%|█████████▎| 989/1058 [00:00<00:00, 2997.68it/s]Loading weights: 100%|██████████| 1058/1058 [00:00<00:00, 3013.18it/s]
+Loading weights:  57%|█████▋    | 608/1058 [00:00<00:00, 2759.97it/s]Loading weights:  62%|██████▏   | 654/1058 [00:00<00:00, 2786.84it/s]Loading weights:  69%|██████▊   | 727/1058 [00:00<00:00, 3003.22it/s]Loading weights:  86%|████████▌ | 906/1058 [00:00<00:00, 2780.78it/s]Loading weights:  80%|███████▉  | 842/1058 [00:00<00:00, 2648.49it/s]Loading weights: 100%|██████████| 1058/1058 [00:00<00:00, 2823.49it/s]
+Loading weights:  84%|████████▎ | 886/1058 [00:00<00:00, 2694.86it/s]Loading checkpoint shards:   0%|          | 0/14 [00:00<?, ?it/s]Loading weights:  89%|████████▊ | 938/1058 [00:00<00:00, 2709.36it/s]Loading weights: 100%|██████████| 1058/1058 [00:00<00:00, 2665.56it/s]
+Loading weights:  98%|█████████▊| 1035/1058 [00:00<00:00, 2859.07it/s]Loading weights: 100%|██████████| 1058/1058 [00:00<00:00, 2947.92it/s]
+Loading weights: 100%|██████████| 1058/1058 [00:00<00:00, 2702.81it/s]
+Loading weights: 100%|██████████| 1058/1058 [00:00<00:00, 2732.57it/s]
+Loading checkpoint shards:  71%|███████▏  | 10/14 [00:00<00:00, 96.00it/s]Loading checkpoint shards: 100%|██████████| 14/14 [00:00<00:00, 94.71it/s]
+Loading checkpoint shards:   0%|          | 0/3 [00:00<?, ?it/s]Loading checkpoint shards: 100%|██████████| 3/3 [00:00<00:00, 38.36it/s]
+/root/src/h3/.venv/lib/python3.12/site-packages/torch/nn/utils/weight_norm.py:144: FutureWarning: `torch.nn.utils.weight_norm` is deprecated in favor of `torch.nn.utils.parametrizations.weight_norm`.
+  WeightNorm.apply(module, name, dim)
+/root/src/h3/.venv/lib/python3.12/site-packages/torch/nn/utils/weight_norm.py:144: FutureWarning: `torch.nn.utils.weight_norm` is deprecated in favor of `torch.nn.utils.parametrizations.weight_norm`.
+  WeightNorm.apply(module, name, dim)
+/root/src/h3/.venv/lib/python3.12/site-packages/torch/nn/utils/weight_norm.py:144: FutureWarning: `torch.nn.utils.weight_norm` is deprecated in favor of `torch.nn.utils.parametrizations.weight_norm`.
+  WeightNorm.apply(module, name, dim)
+/root/src/h3/.venv/lib/python3.12/site-packages/torch/nn/utils/weight_norm.py:144: FutureWarning: `torch.nn.utils.weight_norm` is deprecated in favor of `torch.nn.utils.parametrizations.weight_norm`.
+  WeightNorm.apply(module, name, dim)
+/root/src/h3/.venv/lib/python3.12/site-packages/torch/nn/utils/weight_norm.py:144: FutureWarning: `torch.nn.utils.weight_norm` is deprecated in favor of `torch.nn.utils.parametrizations.weight_norm`.
+  WeightNorm.apply(module, name, dim)
+/root/src/h3/.venv/lib/python3.12/site-packages/torch/nn/utils/weight_norm.py:144: FutureWarning: `torch.nn.utils.weight_norm` is deprecated in favor of `torch.nn.utils.parametrizations.weight_norm`.
+  WeightNorm.apply(module, name, dim)
+/root/src/h3/.venv/lib/python3.12/site-packages/torch/nn/utils/weight_norm.py:144: FutureWarning: `torch.nn.utils.weight_norm` is deprecated in favor of `torch.nn.utils.parametrizations.weight_norm`.
+  WeightNorm.apply(module, name, dim)
+/root/src/h3/.venv/lib/python3.12/site-packages/torch/nn/utils/weight_norm.py:144: FutureWarning: `torch.nn.utils.weight_norm` is deprecated in favor of `torch.nn.utils.parametrizations.weight_norm`.
+  WeightNorm.apply(module, name, dim)
+Traceback (most recent call last):
+  File "/root/src/h3/hpu_port/run_t2va.py", line 3171, in _cp_worker_entry
+    _cp_worker_main(rank, payload)
+  File "/root/src/h3/hpu_port/run_t2va.py", line 3203, in _cp_worker_main
+    timings = run_pipeline(
+              ^^^^^^^^^^^^^
+  File "/root/src/h3/hpu_port/run_t2va.py", line 4051, in run_pipeline
+    for tip, component_name in tip_to_component.items():
+                               ^^^^^^^^^^^^^^^^
+NameError: name 'tip_to_component' is not defined
+/root/.local/share/uv/python/cpython-3.12.13-linux-x86_64-gnu/lib/python3.12/multiprocessing/resource_tracker.py:279: UserWarning: resource_tracker: There appear to be 7 leaked semaphore objects to clean up at shutdown
+  warnings.warn('resource_tracker: There appear to be %d '

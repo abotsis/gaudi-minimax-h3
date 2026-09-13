@@ -1,0 +1,276 @@
+launch_h3.sh: GC plugin missing in /usr/lib/habanatools/habana_plugins; using /opt/habanalabs/habana_plugins
+[h3] CP: seq 15911 padded by 1 text rows to 15912 (divisible by 8)
+[h3] plan: {
+  "workflow": "t2va",
+  "bucket_res": "r480",
+  "canvas": [
+    864,
+    480
+  ],
+  "duration_frames": 124,
+  "T_lat": 37,
+  "audio_latents": 207,
+  "rows_per_frame": 405,
+  "fl2va_extra_rows": 0,
+  "text_budget": 513,
+  "expected_packed_seq": 15912,
+  "steps": 20,
+  "seed": 42,
+  "device_map": {
+    "te": "cpu",
+    "dit": "hpu",
+    "vae": "hpu",
+    "audio": "hpu"
+  },
+  "cp": 8,
+  "cp_seq_base": 15911,
+  "cp_seq_pad": 1
+}
+[h3:r2]] workdir: /root/src/h3/hpu_port/workdir/t2va
+Loading weights:   0%|          | 0/1058 [00:00<?, ?it/s][h3:r1]] workdir: /root/src/h3/hpu_port/workdir/t2va
+Loading weights:   0%|          | 0/1058 [00:00<?, ?it/s][h3:r6]] workdir: /root/src/h3/hpu_port/workdir/t2va
+Loading weights:   0%|          | 0/1058 [00:00<?, ?it/s]Loading weights:  28%|██▊       | 300/1058 [00:00<00:00, 2984.19it/s]Loading weights:  29%|██▉       | 305/1058 [00:00<00:00, 3019.49it/s]Loading weights:  29%|██▉       | 312/1058 [00:00<00:00, 3116.58it/s][h3:r3]] workdir: /root/src/h3/hpu_port/workdir/t2va
+Loading weights:   0%|          | 0/1058 [00:00<?, ?it/s]Loading weights:  29%|██▊       | 304/1058 [00:00<00:00, 3038.46it/s]Loading weights:  57%|█████▋    | 599/1058 [00:00<00:00, 2430.19it/s]Loading weights:  57%|█████▋    | 607/1058 [00:00<00:00, 2435.33it/s]Loading weights:  59%|█████▉    | 624/1058 [00:00<00:00, 2492.30it/s][h3:r0]] workdir: /root/src/h3/hpu_port/workdir/t2va
+Loading weights:   0%|          | 0/1058 [00:00<?, ?it/s]Loading weights:  80%|████████  | 849/1058 [00:00<00:00, 2424.54it/s]Loading weights:  57%|█████▋    | 608/1058 [00:00<00:00, 2831.33it/s]Loading weights:  81%|████████  | 858/1058 [00:00<00:00, 2424.63it/s][h3:r4]] workdir: /root/src/h3/hpu_port/workdir/t2va
+Loading weights:   0%|          | 0/1058 [00:00<?, ?it/s]Loading weights:  83%|████████▎ | 881/1058 [00:00<00:00, 2459.51it/s][h3:r7]] workdir: /root/src/h3/hpu_port/workdir/t2va
+Loading weights:   0%|          | 0/1058 [00:00<?, ?it/s][h3:r5]] workdir: /root/src/h3/hpu_port/workdir/t2va
+Loading weights:   0%|          | 0/1058 [00:00<?, ?it/s]Loading weights: 100%|██████████| 1058/1058 [00:00<00:00, 2448.34it/s]
+Loading weights: 100%|██████████| 1058/1058 [00:00<00:00, 2486.30it/s]
+Loading weights: 100%|██████████| 1058/1058 [00:00<00:00, 2451.55it/s]
+Loading weights:  36%|███▌      | 376/1058 [00:00<00:00, 3744.75it/s]Loading weights:  85%|████████▍ | 898/1058 [00:00<00:00, 2851.98it/s]Loading weights:  36%|███▋      | 384/1058 [00:00<00:00, 3833.62it/s]Loading weights:  37%|███▋      | 392/1058 [00:00<00:00, 3915.41it/s]Loading weights:  30%|███       | 319/1058 [00:00<00:00, 3167.90it/s]Loading weights: 100%|██████████| 1058/1058 [00:00<00:00, 2878.87it/s]
+Loading weights:  71%|███████   | 751/1058 [00:00<00:00, 3215.49it/s]Loading weights:  73%|███████▎  | 768/1058 [00:00<00:00, 3282.22it/s]Loading weights:  60%|██████    | 636/1058 [00:00<00:00, 2849.29it/s]Loading weights:  74%|███████▍  | 784/1058 [00:00<00:00, 3287.80it/s]Loading weights: 100%|██████████| 1058/1058 [00:00<00:00, 3215.63it/s]
+Loading weights: 100%|██████████| 1058/1058 [00:00<00:00, 3265.00it/s]
+Loading weights: 100%|██████████| 1058/1058 [00:00<00:00, 3234.33it/s]
+Loading weights:  87%|████████▋ | 923/1058 [00:00<00:00, 2778.91it/s]Loading weights: 100%|██████████| 1058/1058 [00:00<00:00, 2845.10it/s]
+Loading checkpoint shards:   0%|          | 0/14 [00:00<?, ?it/s]Loading checkpoint shards:  71%|███████▏  | 10/14 [00:00<00:00, 94.01it/s]Loading checkpoint shards: 100%|██████████| 14/14 [00:00<00:00, 93.95it/s]
+/root/src/h3/.venv/lib/python3.12/site-packages/torch/nn/utils/weight_norm.py:144: FutureWarning: `torch.nn.utils.weight_norm` is deprecated in favor of `torch.nn.utils.parametrizations.weight_norm`.
+  WeightNorm.apply(module, name, dim)
+/root/src/h3/.venv/lib/python3.12/site-packages/torch/nn/utils/weight_norm.py:144: FutureWarning: `torch.nn.utils.weight_norm` is deprecated in favor of `torch.nn.utils.parametrizations.weight_norm`.
+  WeightNorm.apply(module, name, dim)
+/root/src/h3/.venv/lib/python3.12/site-packages/torch/nn/utils/weight_norm.py:144: FutureWarning: `torch.nn.utils.weight_norm` is deprecated in favor of `torch.nn.utils.parametrizations.weight_norm`.
+  WeightNorm.apply(module, name, dim)
+/root/src/h3/.venv/lib/python3.12/site-packages/torch/nn/utils/weight_norm.py:144: FutureWarning: `torch.nn.utils.weight_norm` is deprecated in favor of `torch.nn.utils.parametrizations.weight_norm`.
+  WeightNorm.apply(module, name, dim)
+Loading checkpoint shards:   0%|          | 0/3 [00:00<?, ?it/s]Loading checkpoint shards: 100%|██████████| 3/3 [00:00<00:00, 38.50it/s]
+/root/src/h3/.venv/lib/python3.12/site-packages/torch/nn/utils/weight_norm.py:144: FutureWarning: `torch.nn.utils.weight_norm` is deprecated in favor of `torch.nn.utils.parametrizations.weight_norm`.
+  WeightNorm.apply(module, name, dim)
+/root/src/h3/.venv/lib/python3.12/site-packages/torch/nn/utils/weight_norm.py:144: FutureWarning: `torch.nn.utils.weight_norm` is deprecated in favor of `torch.nn.utils.parametrizations.weight_norm`.
+  WeightNorm.apply(module, name, dim)
+/root/src/h3/.venv/lib/python3.12/site-packages/torch/nn/utils/weight_norm.py:144: FutureWarning: `torch.nn.utils.weight_norm` is deprecated in favor of `torch.nn.utils.parametrizations.weight_norm`.
+  WeightNorm.apply(module, name, dim)
+/root/src/h3/.venv/lib/python3.12/site-packages/torch/nn/utils/weight_norm.py:144: FutureWarning: `torch.nn.utils.weight_norm` is deprecated in favor of `torch.nn.utils.parametrizations.weight_norm`.
+  WeightNorm.apply(module, name, dim)
+============================= HPU PT BRIDGE CONFIGURATION ON RANK = 0 ============= 
+ PT_HPU_LAZY_MODE = 1
+ PT_HPU_RECIPE_CACHE_CONFIG = /root/src/h3/hpu_port/.recipe_cache_rank0,false,8192,false
+ PT_HPU_MAX_COMPOUND_OP_SIZE = 9223372036854775807
+ PT_HPU_LAZY_ACC_PAR_MODE = 1
+ PT_HPU_ENABLE_REFINE_DYNAMIC_SHAPES = 0
+ PT_HPU_EAGER_PIPELINE_ENABLE = 1
+ PT_HPU_EAGER_COLLECTIVE_PIPELINE_ENABLE = 1
+ PT_HPU_ENABLE_LAZY_COLLECTIVES = 0
+---------------------------: System Configuration :---------------------------
+Num CPU Cores : 128
+CPU RAM       : 125 GB
+------------------------------------------------------------------------------
+[h3:r4]] placed transformer on hpu
+[h3:r4]] placed vae on hpu
+[h3:r4]] placed audio_vae on hpu
+[h3:r4]] CP device map: dit/vae/audio on hpu (replicated); te on cpu
+[h3:r4]] attention backend: habana_fused_sdpa (DiT + video VAE)
+[h3:r4]] rope cache installed on transformer.rope
+[h3:r4]] CP: token refiner kept replicated (2 processors un-stamped; refiner runs pre-packing on the full text run)
+[h3:r4]] context parallelism ON: ulysses=8 backend=hccl mesh=DeviceMesh((ring=1, ulysses=8), 'hpu', stride=(8, 1)) (seq sharded inside diffusers via the model's _cp_plan)
+[h3:r4]] CP: HPU graphs default OFF under CP (collectives inside graph capture are untested; H3_CP_GRAPHS=1 to force)
+[h3:r4]] graphs OFF: eager lazy mode with post-call mark_step
+[h3:r4]] per-block mark_step installed on 52 blocks
+[h3:r4]] block logging installed (12 block classes; H3_LOG_BLOCKS=0 to disable)
+[h3:r4]:block] > SequentialPipelineBlocks
+  [h3:r4]:block] > MiniMaxH3TextEncoderStep
+[h3:r4]] embed cache hit: /root/src/h3/hpu_port/.ecache/aa8a6ccc87b0f1bbc76541a79d03a92586293f5b468e0c4d12c94cea81e1e22b.pt
+  [h3:r4]:block] < MiniMaxH3TextEncoderStep: 0.009s
+  [h3:r4]:block] > MiniMaxH3NoKeyframeAnchorsStep
+  [h3:r4]:block] < MiniMaxH3NoKeyframeAnchorsStep: 0.000s
+  [h3:r4]:block] > MiniMaxH3PrepareLayoutStep
+  [h3:r4]:block] < MiniMaxH3PrepareLayoutStep: 0.008s
+  [h3:r4]:block] > MiniMaxH3PrepareLatentsStep
+Attention backends are an experimental feature and the API may be subject to change.
+Attention backends are an experimental feature and the API may be subject to change.
+[h3:r7]] placed transformer on hpu
+[h3:r7]] placed vae on hpu
+[h3:r7]] placed audio_vae on hpu
+[h3:r7]] CP device map: dit/vae/audio on hpu (replicated); te on cpu
+[h3:r7]] attention backend: habana_fused_sdpa (DiT + video VAE)
+[h3:r7]] rope cache installed on transformer.rope
+[h3:r7]] CP: token refiner kept replicated (2 processors un-stamped; refiner runs pre-packing on the full text run)
+[h3:r7]] context parallelism ON: ulysses=8 backend=hccl mesh=DeviceMesh((ring=1, ulysses=8), 'hpu', stride=(8, 1)) (seq sharded inside diffusers via the model's _cp_plan)
+[h3:r5]] placed transformer on hpu
+[h3:r5]] placed vae on hpu
+[h3:r5]] placed audio_vae on hpu
+[h3:r5]] CP device map: dit/vae/audio on hpu (replicated); te on cpu
+[h3:r5]] attention backend: habana_fused_sdpa (DiT + video VAE)
+[h3:r5]] rope cache installed on transformer.rope
+[h3:r5]] CP: token refiner kept replicated (2 processors un-stamped; refiner runs pre-packing on the full text run)
+[h3:r5]] context parallelism ON: ulysses=8 backend=hccl mesh=DeviceMesh((ring=1, ulysses=8), 'hpu', stride=(8, 1)) (seq sharded inside diffusers via the model's _cp_plan)
+[h3:r7]] CP: HPU graphs default OFF under CP (collectives inside graph capture are untested; H3_CP_GRAPHS=1 to force)
+[h3:r7]] graphs OFF: eager lazy mode with post-call mark_step
+[h3:r7]] per-block mark_step installed on 52 blocks
+`enable_parallelism` is an experimental feature. The API may change in the future and breaking changes may be introduced at any time without warning.
+[h3:r5]] CP: HPU graphs default OFF under CP (collectives inside graph capture are untested; H3_CP_GRAPHS=1 to force)
+[h3:r5]] graphs OFF: eager lazy mode with post-call mark_step
+[h3:r5]] per-block mark_step installed on 52 blocks
+[h3:r7]] block logging installed (12 block classes; H3_LOG_BLOCKS=0 to disable)
+[h3:r5]] block logging installed (12 block classes; H3_LOG_BLOCKS=0 to disable)
+[h3:r7]:block] > SequentialPipelineBlocks
+  [h3:r7]:block] > MiniMaxH3TextEncoderStep
+[h3:r5]:block] > SequentialPipelineBlocks
+  [h3:r5]:block] > MiniMaxH3TextEncoderStep
+[h3:r2]] placed transformer on hpu
+[h3:r2]] placed vae on hpu
+[h3:r2]] placed audio_vae on hpu
+[h3:r2]] CP device map: dit/vae/audio on hpu (replicated); te on cpu
+[h3:r2]] attention backend: habana_fused_sdpa (DiT + video VAE)
+[h3:r2]] rope cache installed on transformer.rope
+[h3:r2]] CP: token refiner kept replicated (2 processors un-stamped; refiner runs pre-packing on the full text run)
+[h3:r2]] context parallelism ON: ulysses=8 backend=hccl mesh=DeviceMesh((ring=1, ulysses=8), 'hpu', stride=(8, 1)) (seq sharded inside diffusers via the model's _cp_plan)
+[h3:r3]] placed transformer on hpu
+[h3:r3]] placed vae on hpu
+[h3:r3]] placed audio_vae on hpu
+[h3:r3]] CP device map: dit/vae/audio on hpu (replicated); te on cpu
+[h3:r3]] attention backend: habana_fused_sdpa (DiT + video VAE)
+[h3:r3]] rope cache installed on transformer.rope
+[h3:r3]] CP: token refiner kept replicated (2 processors un-stamped; refiner runs pre-packing on the full text run)
+[h3:r3]] context parallelism ON: ulysses=8 backend=hccl mesh=DeviceMesh((ring=1, ulysses=8), 'hpu', stride=(8, 1)) (seq sharded inside diffusers via the model's _cp_plan)
+[h3:r2]] CP: HPU graphs default OFF under CP (collectives inside graph capture are untested; H3_CP_GRAPHS=1 to force)
+[h3:r2]] graphs OFF: eager lazy mode with post-call mark_step
+[h3:r2]] per-block mark_step installed on 52 blocks
+[h3:r3]] CP: HPU graphs default OFF under CP (collectives inside graph capture are untested; H3_CP_GRAPHS=1 to force)
+[h3:r3]] graphs OFF: eager lazy mode with post-call mark_step
+[h3:r3]] per-block mark_step installed on 52 blocks
+[h3:r2]] block logging installed (12 block classes; H3_LOG_BLOCKS=0 to disable)
+[h3:r3]] block logging installed (12 block classes; H3_LOG_BLOCKS=0 to disable)
+[h3:r2]:block] > SequentialPipelineBlocks
+  [h3:r2]:block] > MiniMaxH3TextEncoderStep
+[h3:r0]] placed transformer on hpu
+[h3:r0]] placed vae on hpu
+[h3:r0]] placed audio_vae on hpu
+[h3:r0]] CP device map: dit/vae/audio on hpu (replicated); te on cpu
+[h3:r0]] attention backend: habana_fused_sdpa (DiT + video VAE)
+[h3:r0]] rope cache installed on transformer.rope
+[h3:r0]] CP: token refiner kept replicated (2 processors un-stamped; refiner runs pre-packing on the full text run)
+[h3:r0]] context parallelism ON: ulysses=8 backend=hccl mesh=DeviceMesh((ring=1, ulysses=8), 'hpu', stride=(8, 1)) (seq sharded inside diffusers via the model's _cp_plan)
+[h3:r3]:block] > SequentialPipelineBlocks
+  [h3:r3]:block] > MiniMaxH3TextEncoderStep
+[h3:r0]] CP: HPU graphs default OFF under CP (collectives inside graph capture are untested; H3_CP_GRAPHS=1 to force)
+[h3:r0]] graphs OFF: eager lazy mode with post-call mark_step
+[h3:r0]] per-block mark_step installed on 52 blocks
+[h3:r0]] block logging installed (12 block classes; H3_LOG_BLOCKS=0 to disable)
+[h3:r0]:block] > SequentialPipelineBlocks
+  [h3:r0]:block] > MiniMaxH3TextEncoderStep
+[h3:r7]] embed cache hit: /root/src/h3/hpu_port/.ecache/aa8a6ccc87b0f1bbc76541a79d03a92586293f5b468e0c4d12c94cea81e1e22b.pt
+  [h3:r7]:block] < MiniMaxH3TextEncoderStep: 0.009s
+  [h3:r7]:block] > MiniMaxH3NoKeyframeAnchorsStep
+  [h3:r7]:block] < MiniMaxH3NoKeyframeAnchorsStep: 0.000s
+  [h3:r7]:block] > MiniMaxH3PrepareLayoutStep
+[h3:r5]] embed cache hit: /root/src/h3/hpu_port/.ecache/aa8a6ccc87b0f1bbc76541a79d03a92586293f5b468e0c4d12c94cea81e1e22b.pt
+  [h3:r5]:block] < MiniMaxH3TextEncoderStep: 0.009s
+  [h3:r5]:block] > MiniMaxH3NoKeyframeAnchorsStep
+  [h3:r5]:block] < MiniMaxH3NoKeyframeAnchorsStep: 0.000s
+  [h3:r5]:block] > MiniMaxH3PrepareLayoutStep
+[h3:r2]] embed cache hit: /root/src/h3/hpu_port/.ecache/aa8a6ccc87b0f1bbc76541a79d03a92586293f5b468e0c4d12c94cea81e1e22b.pt
+  [h3:r2]:block] < MiniMaxH3TextEncoderStep: 0.009s
+  [h3:r2]:block] > MiniMaxH3NoKeyframeAnchorsStep
+  [h3:r2]:block] < MiniMaxH3NoKeyframeAnchorsStep: 0.000s
+  [h3:r2]:block] > MiniMaxH3PrepareLayoutStep
+  [h3:r7]:block] < MiniMaxH3PrepareLayoutStep: 0.004s
+  [h3:r7]:block] > MiniMaxH3PrepareLatentsStep
+[h3:r3]] embed cache hit: /root/src/h3/hpu_port/.ecache/aa8a6ccc87b0f1bbc76541a79d03a92586293f5b468e0c4d12c94cea81e1e22b.pt
+  [h3:r3]:block] < MiniMaxH3TextEncoderStep: 0.010s
+  [h3:r3]:block] > MiniMaxH3NoKeyframeAnchorsStep
+  [h3:r3]:block] < MiniMaxH3NoKeyframeAnchorsStep: 0.000s
+  [h3:r3]:block] > MiniMaxH3PrepareLayoutStep
+  [h3:r5]:block] < MiniMaxH3PrepareLayoutStep: 0.004s
+  [h3:r5]:block] > MiniMaxH3PrepareLatentsStep
+  [h3:r2]:block] < MiniMaxH3PrepareLayoutStep: 0.004s
+  [h3:r2]:block] > MiniMaxH3PrepareLatentsStep
+[h3:r0]] embed cache hit: /root/src/h3/hpu_port/.ecache/aa8a6ccc87b0f1bbc76541a79d03a92586293f5b468e0c4d12c94cea81e1e22b.pt
+  [h3:r0]:block] < MiniMaxH3TextEncoderStep: 0.010s
+  [h3:r0]:block] > MiniMaxH3NoKeyframeAnchorsStep
+  [h3:r3]:block] < MiniMaxH3PrepareLayoutStep: 0.004s
+  [h3:r3]:block] > MiniMaxH3PrepareLatentsStep
+  [h3:r0]:block] < MiniMaxH3NoKeyframeAnchorsStep: 0.000s
+  [h3:r0]:block] > MiniMaxH3PrepareLayoutStep
+[h3:r1]] placed transformer on hpu
+[h3:r1]] placed vae on hpu
+[h3:r1]] placed audio_vae on hpu
+[h3:r1]] CP device map: dit/vae/audio on hpu (replicated); te on cpu
+[h3:r1]] attention backend: habana_fused_sdpa (DiT + video VAE)
+[h3:r1]] rope cache installed on transformer.rope
+[h3:r1]] CP: token refiner kept replicated (2 processors un-stamped; refiner runs pre-packing on the full text run)
+[h3:r1]] context parallelism ON: ulysses=8 backend=hccl mesh=DeviceMesh((ring=1, ulysses=8), 'hpu', stride=(8, 1)) (seq sharded inside diffusers via the model's _cp_plan)
+[h3:r1]] CP: HPU graphs default OFF under CP (collectives inside graph capture are untested; H3_CP_GRAPHS=1 to force)
+[h3:r1]] graphs OFF: eager lazy mode with post-call mark_step
+[h3:r1]] per-block mark_step installed on 52 blocks
+[h3:r1]] block logging installed (12 block classes; H3_LOG_BLOCKS=0 to disable)
+  [h3:r0]:block] < MiniMaxH3PrepareLayoutStep: 0.004s
+  [h3:r0]:block] > MiniMaxH3PrepareLatentsStep
+[h3:r1]:block] > SequentialPipelineBlocks
+  [h3:r1]:block] > MiniMaxH3TextEncoderStep
+[h3:r6]] placed transformer on hpu
+[h3:r6]] placed vae on hpu
+[h3:r6]] placed audio_vae on hpu
+[h3:r6]] CP device map: dit/vae/audio on hpu (replicated); te on cpu
+[h3:r6]] attention backend: habana_fused_sdpa (DiT + video VAE)
+[h3:r6]] rope cache installed on transformer.rope
+[h3:r6]] CP: token refiner kept replicated (2 processors un-stamped; refiner runs pre-packing on the full text run)
+[h3:r6]] context parallelism ON: ulysses=8 backend=hccl mesh=DeviceMesh((ring=1, ulysses=8), 'hpu', stride=(8, 1)) (seq sharded inside diffusers via the model's _cp_plan)
+[h3:r6]] CP: HPU graphs default OFF under CP (collectives inside graph capture are untested; H3_CP_GRAPHS=1 to force)
+[h3:r6]] graphs OFF: eager lazy mode with post-call mark_step
+[h3:r6]] per-block mark_step installed on 52 blocks
+[h3:r6]] block logging installed (12 block classes; H3_LOG_BLOCKS=0 to disable)
+[h3:r6]:block] > SequentialPipelineBlocks
+  [h3:r6]:block] > MiniMaxH3TextEncoderStep
+[h3:r1]] embed cache hit: /root/src/h3/hpu_port/.ecache/aa8a6ccc87b0f1bbc76541a79d03a92586293f5b468e0c4d12c94cea81e1e22b.pt
+  [h3:r1]:block] < MiniMaxH3TextEncoderStep: 0.009s
+  [h3:r1]:block] > MiniMaxH3NoKeyframeAnchorsStep
+  [h3:r1]:block] < MiniMaxH3NoKeyframeAnchorsStep: 0.000s
+  [h3:r1]:block] > MiniMaxH3PrepareLayoutStep
+  [h3:r1]:block] < MiniMaxH3PrepareLayoutStep: 0.003s
+  [h3:r1]:block] > MiniMaxH3PrepareLatentsStep
+[h3:r6]] embed cache hit: /root/src/h3/hpu_port/.ecache/aa8a6ccc87b0f1bbc76541a79d03a92586293f5b468e0c4d12c94cea81e1e22b.pt
+  [h3:r6]:block] < MiniMaxH3TextEncoderStep: 0.010s
+  [h3:r6]:block] > MiniMaxH3NoKeyframeAnchorsStep
+  [h3:r6]:block] < MiniMaxH3NoKeyframeAnchorsStep: 0.000s
+  [h3:r6]:block] > MiniMaxH3PrepareLayoutStep
+  [h3:r6]:block] < MiniMaxH3PrepareLayoutStep: 0.003s
+  [h3:r6]:block] > MiniMaxH3PrepareLatentsStep
+[h3:r0]] CP noise determinism: video noise rows identical on all 8 ranks
+Synapse detected a device critical error that requires a restart. Killing process in 5 seconds (hl: 6, rankID: 6) 03:45:30 [No progress error]
+Synapse detected a device critical error that requires a restart. Killing process in 5 seconds (hl: 5, rankID: 4) 03:45:31 [No progress error]
+Synapse detected a device critical error that requires a restart. Killing process in 5 seconds (hl: 0, rankID: 3) 03:45:31 [No progress error]
+Synapse detected a device critical error that requires a restart. Killing process in 5 seconds (hl: 1, rankID: 0) 03:45:31 [No progress error]
+Synapse detected a device critical error that requires a restart. Killing process in 5 seconds (hl: 2, rankID: 2) 03:45:31 [No progress error]
+Synapse detected a device critical error that requires a restart. Killing process in 5 seconds (hl: 3, rankID: 5) 03:45:31 [No progress error]
+Synapse detected a device critical error that requires a restart. Killing process in 5 seconds (hl: 4, rankID: 1) 03:45:31 [No progress error]
+Synapse detected a device critical error that requires a restart. Killing process in 5 seconds (hl: 7, rankID: 7) 03:45:31 [No progress error]
+[h3] CP timing merge (world=8):
+  phase                 r0        r1        r2        r3        r4        r5        r6        r7   (max)
+  generate          127.51     16.85     16.99     16.93      16.9     16.83     16.96      17.0   127.51
+  export             21.35       0.0       0.0       0.0       0.0       0.0       0.0       0.0   21.35
+  mux                 2.28       0.0       0.0       0.0       0.0       0.0       0.0       0.0   2.28
+[h3] CP block totals (summed per class, generate run; host-side enqueue cost):
+  MiniMaxH3AfterDenoiseStep                      0.00     0.00     0.00     0.00     0.00     0.00     0.00     0.00
+  MiniMaxH3DenoiseStep                          15.23    15.24    15.24    15.24    15.24    15.23    15.23    15.24
+  MiniMaxH3LoopDenoiser                         15.18    15.18    15.18    15.18    15.18    15.18    15.18    15.18
+  MiniMaxH3LoopSchedulerStep                     0.04     0.04     0.05     0.04     0.04     0.04     0.04     0.04
+  MiniMaxH3NoKeyframeAnchorsStep                 0.00     0.00     0.00     0.00     0.00     0.00     0.00     0.00
+  MiniMaxH3PrepareLatentsStep                    0.10     0.08     0.09     0.09     0.09     0.10     0.10     0.09
+  MiniMaxH3PrepareLayoutStep                     0.01     0.00     0.01     0.01     0.01     0.00     0.00     0.01
+  MiniMaxH3SetTimestepsStep                      0.02     0.02     0.02     0.02     0.02     0.02     0.02     0.02
+  MiniMaxH3TextEncoderStep                       0.04     0.01     0.04     0.04     0.04     0.03     0.03     0.04
+  SequentialPipelineBlocks                     127.51    16.84    16.99    16.93    16.90    16.83    16.96    17.00
+  _H3AudioDecodeStep                             0.00     0.00     0.00     0.00     0.00     0.00     0.00     0.00
+  _H3VideoDecodeStep                           112.12     1.49     1.59     1.53     1.50     1.43     1.57     1.61
+[h3] CP FAILED: ['h3-cp-rank0', 'h3-cp-rank1', 'h3-cp-rank2', 'h3-cp-rank3', 'h3-cp-rank4', 'h3-cp-rank5', 'h3-cp-rank6', 'h3-cp-rank7'] (exit codes {'h3-cp-rank0': -9, 'h3-cp-rank1': -9, 'h3-cp-rank2': -9, 'h3-cp-rank3': -9, 'h3-cp-rank4': -9, 'h3-cp-rank5': -9, 'h3-cp-rank6': -9, 'h3-cp-rank7': -9})
+/root/.local/share/uv/python/cpython-3.12.13-linux-x86_64-gnu/lib/python3.12/multiprocessing/resource_tracker.py:279: UserWarning: resource_tracker: There appear to be 8 leaked semaphore objects to clean up at shutdown
+  warnings.warn('resource_tracker: There appear to be %d '

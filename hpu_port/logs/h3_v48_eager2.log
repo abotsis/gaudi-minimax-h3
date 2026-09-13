@@ -1,0 +1,315 @@
+launch_h3.sh: GC plugin missing in /usr/lib/habanatools/habana_plugins; using /opt/habanalabs/habana_plugins
+launch_h3.sh: H3_HPU_MODE=eager -> eager plugin, no lazy-mode exports
+Calling add_step_closure function does not have any effect. It's lazy mode only functionality. (warning logged once)
+Calling mark_step function does not have any effect. It's lazy mode only functionality. (warning logged once)
+Calling iter_mark_step function does not have any effect. It's lazy mode only functionality. (warning logged once)
+[h3] plan: {
+  "workflow": "t2va",
+  "bucket_res": "r480",
+  "canvas": [
+    864,
+    480
+  ],
+  "duration_frames": 124,
+  "T_lat": 37,
+  "audio_latents": 207,
+  "rows_per_frame": 405,
+  "fl2va_extra_rows": 0,
+  "text_budget": 512,
+  "expected_packed_seq": 15911,
+  "steps": 2,
+  "seed": 42,
+  "device_map": {
+    "te": "cpu",
+    "dit": "hpu",
+    "vae": "hpu",
+    "audio": "hpu"
+  }
+}
+[h3] workdir: /root/src/h3/hpu_port/workdir/t2va
+Loading weights:   0%|          | 0/1058 [00:00<?, ?it/s]Loading weights:  35%|███▍      | 370/1058 [00:00<00:00, 3686.97it/s]Loading weights:  70%|██████▉   | 739/1058 [00:00<00:00, 3286.40it/s]Loading weights: 100%|██████████| 1058/1058 [00:00<00:00, 3356.18it/s]
+Loading checkpoint shards:   0%|          | 0/14 [00:00<?, ?it/s]Loading checkpoint shards: 100%|██████████| 14/14 [00:00<00:00, 172.82it/s]
+Loading checkpoint shards:   0%|          | 0/3 [00:00<?, ?it/s]Loading checkpoint shards: 100%|██████████| 3/3 [00:00<00:00, 73.53it/s]
+/root/src/h3/.venv/lib/python3.12/site-packages/torch/nn/utils/weight_norm.py:144: FutureWarning: `torch.nn.utils.weight_norm` is deprecated in favor of `torch.nn.utils.parametrizations.weight_norm`.
+  WeightNorm.apply(module, name, dim)
+============================= HPU PT BRIDGE CONFIGURATION ON RANK = 0 ============= 
+ PT_HPU_LAZY_MODE = 0
+ PT_HPU_RECIPE_CACHE_CONFIG = /root/src/h3/hpu_port/.recipe_cache,false,8192,false
+ PT_HPU_MAX_COMPOUND_OP_SIZE = 9223372036854775807
+ PT_HPU_LAZY_ACC_PAR_MODE = 1
+ PT_HPU_ENABLE_REFINE_DYNAMIC_SHAPES = 0
+ PT_HPU_EAGER_PIPELINE_ENABLE = 1
+ PT_HPU_EAGER_COLLECTIVE_PIPELINE_ENABLE = 1
+ PT_HPU_ENABLE_LAZY_COLLECTIVES = 0
+---------------------------: System Configuration :---------------------------
+Num CPU Cores : 128
+CPU RAM       : 125 GB
+------------------------------------------------------------------------------
+Attention backends are an experimental feature and the API may be subject to change.
+Attention backends are an experimental feature and the API may be subject to change.
+[h3] placed transformer on hpu
+[h3] placed vae on hpu
+[h3] placed audio_vae on hpu
+[h3] attention backend: habana_fused_sdpa (DiT + video VAE)
+[h3] rope cache installed on transformer.rope
+[h3] graphs OFF: eager lazy mode with post-call mark_step
+[h3] per-block mark_step installed on 52 blocks
+[h3] block logging installed (12 block classes; H3_LOG_BLOCKS=0 to disable)
+[h3:block] > SequentialPipelineBlocks
+  [h3:block] > MiniMaxH3TextEncoderStep
+[h3] embed cache hit: /root/src/h3/hpu_port/.ecache/0be639c56afc729bbdfd0553cfcdb827514604c2bc47bd7cba02687153a0c4ff.pt
+  [h3:block] < MiniMaxH3TextEncoderStep: 0.024s
+  [h3:block] > MiniMaxH3NoKeyframeAnchorsStep
+  [h3:block] < MiniMaxH3NoKeyframeAnchorsStep: 0.000s
+  [h3:block] > MiniMaxH3PrepareLayoutStep
+  [h3:block] < MiniMaxH3PrepareLayoutStep: 0.008s
+  [h3:block] > MiniMaxH3PrepareLatentsStep
+  [h3:block] < MiniMaxH3PrepareLatentsStep: 0.017s
+  [h3:block] > MiniMaxH3SetTimestepsStep
+  [h3:block] < MiniMaxH3SetTimestepsStep: 0.004s
+  [h3:block] > MiniMaxH3DenoiseStep
+  0%|          | 0/1 [00:00<?, ?it/s]    [h3:block] > MiniMaxH3LoopDenoiser i=0 t=0.0000
+    [h3:block] ! MiniMaxH3LoopDenoiser i=0 t=0.0000: FAILED after 0.033s: RuntimeError: Graph compile failed. Recipe: .graph_dumps/0, synStatus=synStatus 26 [Generic failure]. 
+Last synapse error: file: recipe_manager.cpp:304 function: compileGraph, scope: SYN_RECIPE, failed condition: (ret == false), message: Can not compile graph. Recipe name .graph_dumps/0, graph name: .graph_dumps/0
+
+Error in block: (denoiser, MiniMaxH3LoopDenoiser)
+Error details: Graph compile failed. Recipe: .graph_dumps/0, synStatus=synStatus 26 [Generic failure]. 
+Last synapse error: file: recipe_manager.cpp:304 function: compileGraph, scope: SYN_RECIPE, failed condition: (ret == false), message: Can not compile graph. Recipe name .graph_dumps/0, graph name: .graph_dumps/0
+Traceback:
+Traceback (most recent call last):
+  File "/root/src/h3/.venv/lib/python3.12/site-packages/diffusers/modular_pipelines/modular_pipeline.py", line 1515, in loop_step
+    components, state = block(components, state, **kwargs)
+                        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/root/src/h3/hpu_port/run_t2va.py", line 1182, in logged
+    out = orig(self, *args, **kwargs)
+          ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/root/src/h3/.venv/lib/python3.12/site-packages/torch/utils/_contextlib.py", line 124, in decorate_context
+    return func(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^
+  File "/root/src/h3/.venv/lib/python3.12/site-packages/diffusers/modular_pipelines/minimax_h3/denoise.py", line 121, in __call__
+    block_state.noise_pred, block_state.audio_noise_pred = transformer(
+                                                           ^^^^^^^^^^^^
+  File "/root/src/h3/.venv/lib/python3.12/site-packages/torch/nn/modules/module.py", line 1779, in _wrapped_call_impl
+    return self._call_impl(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/root/src/h3/.venv/lib/python3.12/site-packages/torch/nn/modules/module.py", line 1790, in _call_impl
+    return forward_call(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/root/src/h3/hpu_port/run_t2va.py", line 1440, in wrapped
+    out = orig(*args, **kwargs)
+          ^^^^^^^^^^^^^^^^^^^^^
+  File "/root/src/h3/.venv/lib/python3.12/site-packages/diffusers/utils/peft_utils.py", line 323, in wrapper
+    result = forward_fn(self, *args, **kwargs)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/root/src/h3/.venv/lib/python3.12/site-packages/diffusers/models/transformers/transformer_minimax_h3.py", line 631, in forward
+    text_embeds = self.token_refiner(text_embeds)
+                  ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/root/src/h3/.venv/lib/python3.12/site-packages/torch/nn/modules/module.py", line 1779, in _wrapped_call_impl
+    return self._call_impl(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/root/src/h3/.venv/lib/python3.12/site-packages/torch/nn/modules/module.py", line 1790, in _call_impl
+    return forward_call(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/root/src/h3/.venv/lib/python3.12/site-packages/diffusers/models/transformers/transformer_minimax_h3.py", line 315, in forward
+    hidden_states = block(hidden_states)
+                    ^^^^^^^^^^^^^^^^^^^^
+  File "/root/src/h3/.venv/lib/python3.12/site-packages/torch/nn/modules/module.py", line 1779, in _wrapped_call_impl
+    return self._call_impl(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/root/src/h3/.venv/lib/python3.12/site-packages/torch/nn/modules/module.py", line 1790, in _call_impl
+    return forward_call(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/root/src/h3/.venv/lib/python3.12/site-packages/diffusers/models/transformers/transformer_minimax_h3.py", line 276, in forward
+    hidden_states = hidden_states + self.attn(self.norm1(hidden_states))
+                                              ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/root/src/h3/.venv/lib/python3.12/site-packages/torch/nn/modules/module.py", line 1779, in _wrapped_call_impl
+    return self._call_impl(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/root/src/h3/.venv/lib/python3.12/site-packages/torch/nn/modules/module.py", line 1790, in _call_impl
+    return forward_call(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/root/src/h3/.venv/lib/python3.12/site-packages/torch/nn/modules/normalization.py", line 419, in forward
+    return F.rms_norm(x, self.normalized_shape, self.weight, self.eps)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/root/src/h3/.venv/lib/python3.12/site-packages/torch/nn/functional.py", line 2954, in rms_norm
+    return torch.rms_norm(input, normalized_shape, weight, eps)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+RuntimeError: Graph compile failed. Recipe: .graph_dumps/0, synStatus=synStatus 26 [Generic failure]. 
+Last synapse error: file: recipe_manager.cpp:304 function: compileGraph, scope: SYN_RECIPE, failed condition: (ret == false), message: Can not compile graph. Recipe name .graph_dumps/0, graph name: .graph_dumps/0
+
+  0%|          | 0/1 [00:00<?, ?it/s]
+  [h3:block] ! MiniMaxH3DenoiseStep: FAILED after 0.041s: RuntimeError: Graph compile failed. Recipe: .graph_dumps/0, synStatus=synStatus 26 [Generic failure]. 
+Last synapse error: file: recipe_manager.cpp:304 function: compileGraph, scope: SYN_RECIPE, failed condition: (ret == false), message: Can not compile graph. Recipe name .graph_dumps/0, graph name: .graph_dumps/0
+
+Error in block: (denoise.denoise, MiniMaxH3DenoiseStep)
+Error details: Graph compile failed. Recipe: .graph_dumps/0, synStatus=synStatus 26 [Generic failure]. 
+Last synapse error: file: recipe_manager.cpp:304 function: compileGraph, scope: SYN_RECIPE, failed condition: (ret == false), message: Can not compile graph. Recipe name .graph_dumps/0, graph name: .graph_dumps/0
+Traceback:
+Traceback (most recent call last):
+  File "/root/src/h3/.venv/lib/python3.12/site-packages/diffusers/modular_pipelines/modular_pipeline.py", line 1145, in __call__
+    pipeline, state = block(pipeline, state)
+                      ^^^^^^^^^^^^^^^^^^^^^^
+  File "/root/src/h3/hpu_port/run_t2va.py", line 1182, in logged
+    out = orig(self, *args, **kwargs)
+          ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/root/src/h3/.venv/lib/python3.12/site-packages/torch/utils/_contextlib.py", line 124, in decorate_context
+    return func(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^
+  File "/root/src/h3/.venv/lib/python3.12/site-packages/diffusers/modular_pipelines/minimax_h3/denoise.py", line 265, in __call__
+    components, block_state = self.loop_step(components, block_state, i=i, t=t)
+                              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/root/src/h3/.venv/lib/python3.12/site-packages/diffusers/modular_pipelines/modular_pipeline.py", line 1515, in loop_step
+    components, state = block(components, state, **kwargs)
+                        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/root/src/h3/hpu_port/run_t2va.py", line 1182, in logged
+    out = orig(self, *args, **kwargs)
+          ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/root/src/h3/.venv/lib/python3.12/site-packages/torch/utils/_contextlib.py", line 124, in decorate_context
+    return func(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^
+  File "/root/src/h3/.venv/lib/python3.12/site-packages/diffusers/modular_pipelines/minimax_h3/denoise.py", line 121, in __call__
+    block_state.noise_pred, block_state.audio_noise_pred = transformer(
+                                                           ^^^^^^^^^^^^
+  File "/root/src/h3/.venv/lib/python3.12/site-packages/torch/nn/modules/module.py", line 1779, in _wrapped_call_impl
+    return self._call_impl(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/root/src/h3/.venv/lib/python3.12/site-packages/torch/nn/modules/module.py", line 1790, in _call_impl
+    return forward_call(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/root/src/h3/hpu_port/run_t2va.py", line 1440, in wrapped
+    out = orig(*args, **kwargs)
+          ^^^^^^^^^^^^^^^^^^^^^
+  File "/root/src/h3/.venv/lib/python3.12/site-packages/diffusers/utils/peft_utils.py", line 323, in wrapper
+    result = forward_fn(self, *args, **kwargs)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/root/src/h3/.venv/lib/python3.12/site-packages/diffusers/models/transformers/transformer_minimax_h3.py", line 631, in forward
+    text_embeds = self.token_refiner(text_embeds)
+                  ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/root/src/h3/.venv/lib/python3.12/site-packages/torch/nn/modules/module.py", line 1779, in _wrapped_call_impl
+    return self._call_impl(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/root/src/h3/.venv/lib/python3.12/site-packages/torch/nn/modules/module.py", line 1790, in _call_impl
+    return forward_call(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/root/src/h3/.venv/lib/python3.12/site-packages/diffusers/models/transformers/transformer_minimax_h3.py", line 315, in forward
+    hidden_states = block(hidden_states)
+                    ^^^^^^^^^^^^^^^^^^^^
+  File "/root/src/h3/.venv/lib/python3.12/site-packages/torch/nn/modules/module.py", line 1779, in _wrapped_call_impl
+    return self._call_impl(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/root/src/h3/.venv/lib/python3.12/site-packages/torch/nn/modules/module.py", line 1790, in _call_impl
+    return forward_call(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/root/src/h3/.venv/lib/python3.12/site-packages/diffusers/models/transformers/transformer_minimax_h3.py", line 276, in forward
+    hidden_states = hidden_states + self.attn(self.norm1(hidden_states))
+                                              ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/root/src/h3/.venv/lib/python3.12/site-packages/torch/nn/modules/module.py", line 1779, in _wrapped_call_impl
+    return self._call_impl(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/root/src/h3/.venv/lib/python3.12/site-packages/torch/nn/modules/module.py", line 1790, in _call_impl
+    return forward_call(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/root/src/h3/.venv/lib/python3.12/site-packages/torch/nn/modules/normalization.py", line 419, in forward
+    return F.rms_norm(x, self.normalized_shape, self.weight, self.eps)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/root/src/h3/.venv/lib/python3.12/site-packages/torch/nn/functional.py", line 2954, in rms_norm
+    return torch.rms_norm(input, normalized_shape, weight, eps)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+RuntimeError: Graph compile failed. Recipe: .graph_dumps/0, synStatus=synStatus 26 [Generic failure]. 
+Last synapse error: file: recipe_manager.cpp:304 function: compileGraph, scope: SYN_RECIPE, failed condition: (ret == false), message: Can not compile graph. Recipe name .graph_dumps/0, graph name: .graph_dumps/0
+
+[h3:block] ! SequentialPipelineBlocks: FAILED after 0.097s: RuntimeError: Graph compile failed. Recipe: .graph_dumps/0, synStatus=synStatus 26 [Generic failure]. 
+Last synapse error: file: recipe_manager.cpp:304 function: compileGraph, scope: SYN_RECIPE, failed condition: (ret == false), message: Can not compile graph. Recipe name .graph_dumps/0, graph name: .graph_dumps/0
+Error in block: (SequentialPipelineBlocks):
+
+Traceback (most recent call last):
+  File "/root/src/h3/hpu_port/run_t2va.py", line 2105, in <module>
+    sys.exit(main())
+             ^^^^^^
+  File "/root/src/h3/hpu_port/run_t2va.py", line 2059, in main
+    state = pipe(**{**kwargs, "num_inference_steps": run_steps})
+            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/root/src/h3/.venv/lib/python3.12/site-packages/diffusers/modular_pipelines/modular_pipeline.py", line 2927, in __call__
+    _, state = self._blocks(self, state)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/root/src/h3/hpu_port/run_t2va.py", line 1182, in logged
+    out = orig(self, *args, **kwargs)
+          ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/root/src/h3/.venv/lib/python3.12/site-packages/torch/utils/_contextlib.py", line 124, in decorate_context
+    return func(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^
+  File "/root/src/h3/.venv/lib/python3.12/site-packages/diffusers/modular_pipelines/modular_pipeline.py", line 1145, in __call__
+    pipeline, state = block(pipeline, state)
+                      ^^^^^^^^^^^^^^^^^^^^^^
+  File "/root/src/h3/hpu_port/run_t2va.py", line 1182, in logged
+    out = orig(self, *args, **kwargs)
+          ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/root/src/h3/.venv/lib/python3.12/site-packages/torch/utils/_contextlib.py", line 124, in decorate_context
+    return func(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^
+  File "/root/src/h3/.venv/lib/python3.12/site-packages/diffusers/modular_pipelines/minimax_h3/denoise.py", line 265, in __call__
+    components, block_state = self.loop_step(components, block_state, i=i, t=t)
+                              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/root/src/h3/.venv/lib/python3.12/site-packages/diffusers/modular_pipelines/modular_pipeline.py", line 1515, in loop_step
+    components, state = block(components, state, **kwargs)
+                        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/root/src/h3/hpu_port/run_t2va.py", line 1182, in logged
+    out = orig(self, *args, **kwargs)
+          ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/root/src/h3/.venv/lib/python3.12/site-packages/torch/utils/_contextlib.py", line 124, in decorate_context
+    return func(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^
+  File "/root/src/h3/.venv/lib/python3.12/site-packages/diffusers/modular_pipelines/minimax_h3/denoise.py", line 121, in __call__
+    block_state.noise_pred, block_state.audio_noise_pred = transformer(
+                                                           ^^^^^^^^^^^^
+  File "/root/src/h3/.venv/lib/python3.12/site-packages/torch/nn/modules/module.py", line 1779, in _wrapped_call_impl
+    return self._call_impl(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/root/src/h3/.venv/lib/python3.12/site-packages/torch/nn/modules/module.py", line 1790, in _call_impl
+    return forward_call(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/root/src/h3/hpu_port/run_t2va.py", line 1440, in wrapped
+    out = orig(*args, **kwargs)
+          ^^^^^^^^^^^^^^^^^^^^^
+  File "/root/src/h3/.venv/lib/python3.12/site-packages/diffusers/utils/peft_utils.py", line 323, in wrapper
+    result = forward_fn(self, *args, **kwargs)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/root/src/h3/.venv/lib/python3.12/site-packages/diffusers/models/transformers/transformer_minimax_h3.py", line 631, in forward
+    text_embeds = self.token_refiner(text_embeds)
+                  ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/root/src/h3/.venv/lib/python3.12/site-packages/torch/nn/modules/module.py", line 1779, in _wrapped_call_impl
+    return self._call_impl(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/root/src/h3/.venv/lib/python3.12/site-packages/torch/nn/modules/module.py", line 1790, in _call_impl
+    return forward_call(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/root/src/h3/.venv/lib/python3.12/site-packages/diffusers/models/transformers/transformer_minimax_h3.py", line 315, in forward
+    hidden_states = block(hidden_states)
+                    ^^^^^^^^^^^^^^^^^^^^
+  File "/root/src/h3/.venv/lib/python3.12/site-packages/torch/nn/modules/module.py", line 1779, in _wrapped_call_impl
+    return self._call_impl(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/root/src/h3/.venv/lib/python3.12/site-packages/torch/nn/modules/module.py", line 1790, in _call_impl
+    return forward_call(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/root/src/h3/.venv/lib/python3.12/site-packages/diffusers/models/transformers/transformer_minimax_h3.py", line 276, in forward
+    hidden_states = hidden_states + self.attn(self.norm1(hidden_states))
+                                              ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/root/src/h3/.venv/lib/python3.12/site-packages/torch/nn/modules/module.py", line 1779, in _wrapped_call_impl
+    return self._call_impl(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/root/src/h3/.venv/lib/python3.12/site-packages/torch/nn/modules/module.py", line 1790, in _call_impl
+    return forward_call(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/root/src/h3/.venv/lib/python3.12/site-packages/torch/nn/modules/normalization.py", line 419, in forward
+    return F.rms_norm(x, self.normalized_shape, self.weight, self.eps)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/root/src/h3/.venv/lib/python3.12/site-packages/torch/nn/functional.py", line 2954, in rms_norm
+    return torch.rms_norm(input, normalized_shape, weight, eps)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+RuntimeError: Graph compile failed. Recipe: .graph_dumps/0, synStatus=synStatus 26 [Generic failure]. 
+Last synapse error: file: recipe_manager.cpp:304 function: compileGraph, scope: SYN_RECIPE, failed condition: (ret == false), message: Can not compile graph. Recipe name .graph_dumps/0, graph name: .graph_dumps/0
+terminate called after throwing an instance of 'c10::Error'
+  what():  Graph compile failed. Recipe: .graph_dumps/15, synStatus=synStatus 26 [Generic failure]. 
+Last synapse error: file: recipe_manager.cpp:304 function: compileGraph, scope: SYN_RECIPE, failed condition: (ret == false), message: Can not compile graph. Recipe name .graph_dumps/15, graph name: .graph_dumps/15
+[Rank:0] Habana exception raised from std::shared_ptr<synapse_helpers::graph::recipe_handle> synapse_helpers::graph::compile() at graph.cpp:661

@@ -1,0 +1,1302 @@
+launch_h3.sh: GC plugin missing in /usr/lib/habanatools/habana_plugins; using /opt/habanalabs/habana_plugins
+[h3] CP: seq 15911 padded by 1 text rows to 15912 (divisible by 8)
+[h3] plan: {
+  "workflow": "t2va",
+  "bucket_res": "r480",
+  "canvas": [
+    864,
+    480
+  ],
+  "duration_frames": 124,
+  "T_lat": 37,
+  "audio_latents": 207,
+  "rows_per_frame": 405,
+  "fl2va_extra_rows": 0,
+  "text_budget": 513,
+  "expected_packed_seq": 15912,
+  "steps": 5,
+  "seed": 42,
+  "device_map": {
+    "te": "cpu",
+    "dit": "hpu",
+    "vae": "hpu",
+    "audio": "hpu"
+  },
+  "cp": 8,
+  "cp_seq_base": 15911,
+  "cp_seq_pad": 1
+}
+[h3:r1]] workdir: /root/src/h3/hpu_port/workdir/t2va
+Loading weights:   0%|          | 0/1058 [00:00<?, ?it/s]Loading weights:  26%|██▌       | 275/1058 [00:00<00:00, 2729.53it/s][h3:r2]] workdir: /root/src/h3/hpu_port/workdir/t2va
+Loading weights:   0%|          | 0/1058 [00:00<?, ?it/s][h3:r6]] workdir: /root/src/h3/hpu_port/workdir/t2va
+Loading weights:   0%|          | 0/1058 [00:00<?, ?it/s]Loading weights:  52%|█████▏    | 548/1058 [00:00<00:00, 2589.13it/s]Loading weights:  31%|███       | 330/1058 [00:00<00:00, 3290.83it/s]Loading weights:  34%|███▎      | 355/1058 [00:00<00:00, 3538.02it/s]Loading weights:  76%|███████▋  | 808/1058 [00:00<00:00, 2575.60it/s]Loading weights:  62%|██████▏   | 660/1058 [00:00<00:00, 2891.40it/s][h3:r7]] workdir: /root/src/h3/hpu_port/workdir/t2va
+Loading weights:   0%|          | 0/1058 [00:00<?, ?it/s]Loading weights:  67%|██████▋   | 709/1058 [00:00<00:00, 3105.84it/s]Loading weights: 100%|██████████| 1058/1058 [00:00<00:00, 2583.34it/s]
+[h3:r5]] workdir: /root/src/h3/hpu_port/workdir/t2va
+Loading weights:   0%|          | 0/1058 [00:00<?, ?it/s][h3:r0]] workdir: /root/src/h3/hpu_port/workdir/t2va
+Loading weights:   0%|          | 0/1058 [00:00<?, ?it/s]Loading weights:  31%|███       | 327/1058 [00:00<00:00, 3231.38it/s]Loading weights:  90%|█████████ | 953/1058 [00:00<00:00, 2838.19it/s]Loading weights:  97%|█████████▋| 1023/1058 [00:00<00:00, 3090.61it/s]Loading weights: 100%|██████████| 1058/1058 [00:00<00:00, 3132.67it/s]
+Loading weights: 100%|██████████| 1058/1058 [00:00<00:00, 2886.77it/s]
+[h3:r4]] workdir: /root/src/h3/hpu_port/workdir/t2va
+Loading weights:   0%|          | 0/1058 [00:00<?, ?it/s][h3:r3]] workdir: /root/src/h3/hpu_port/workdir/t2va
+Loading weights:   0%|          | 0/1058 [00:00<?, ?it/s]Loading weights:  38%|███▊      | 399/1058 [00:00<00:00, 3986.19it/s]Loading weights:  37%|███▋      | 388/1058 [00:00<00:00, 3874.52it/s]Loading weights:  62%|██████▏   | 651/1058 [00:00<00:00, 2928.38it/s]Loading weights:  36%|███▌      | 380/1058 [00:00<00:00, 3778.90it/s]Loading weights:  31%|███▏      | 333/1058 [00:00<00:00, 3328.14it/s]Loading weights:  75%|███████▌  | 798/1058 [00:00<00:00, 3385.06it/s]Loading weights:  89%|████████▉ | 946/1058 [00:00<00:00, 2914.10it/s]Loading weights:  73%|███████▎  | 776/1058 [00:00<00:00, 3217.05it/s]Loading weights: 100%|██████████| 1058/1058 [00:00<00:00, 2955.65it/s]
+Loading weights:  72%|███████▏  | 758/1058 [00:00<00:00, 3065.56it/s]Loading weights: 100%|██████████| 1058/1058 [00:00<00:00, 3361.23it/s]
+Loading weights:  63%|██████▎   | 666/1058 [00:00<00:00, 2752.98it/s]Loading weights: 100%|██████████| 1058/1058 [00:00<00:00, 3213.64it/s]
+Loading weights: 100%|██████████| 1058/1058 [00:00<00:00, 3062.92it/s]
+Loading weights:  90%|████████▉ | 948/1058 [00:00<00:00, 2729.78it/s]/root/src/h3/.venv/lib/python3.12/site-packages/torch/nn/utils/weight_norm.py:144: FutureWarning: `torch.nn.utils.weight_norm` is deprecated in favor of `torch.nn.utils.parametrizations.weight_norm`.
+  WeightNorm.apply(module, name, dim)
+/root/src/h3/.venv/lib/python3.12/site-packages/torch/nn/utils/weight_norm.py:144: FutureWarning: `torch.nn.utils.weight_norm` is deprecated in favor of `torch.nn.utils.parametrizations.weight_norm`.
+  WeightNorm.apply(module, name, dim)
+/root/src/h3/.venv/lib/python3.12/site-packages/torch/nn/utils/weight_norm.py:144: FutureWarning: `torch.nn.utils.weight_norm` is deprecated in favor of `torch.nn.utils.parametrizations.weight_norm`.
+  WeightNorm.apply(module, name, dim)
+Loading checkpoint shards:   0%|          | 0/14 [00:00<?, ?it/s]Loading weights: 100%|██████████| 1058/1058 [00:00<00:00, 2814.12it/s]
+Loading checkpoint shards:  79%|███████▊  | 11/14 [00:00<00:00, 100.35it/s]Loading checkpoint shards: 100%|██████████| 14/14 [00:00<00:00, 100.18it/s]
+Loading checkpoint shards:   0%|          | 0/3 [00:00<?, ?it/s]/root/src/h3/.venv/lib/python3.12/site-packages/torch/nn/utils/weight_norm.py:144: FutureWarning: `torch.nn.utils.weight_norm` is deprecated in favor of `torch.nn.utils.parametrizations.weight_norm`.
+  WeightNorm.apply(module, name, dim)
+/root/src/h3/.venv/lib/python3.12/site-packages/torch/nn/utils/weight_norm.py:144: FutureWarning: `torch.nn.utils.weight_norm` is deprecated in favor of `torch.nn.utils.parametrizations.weight_norm`.
+  WeightNorm.apply(module, name, dim)
+Loading checkpoint shards: 100%|██████████| 3/3 [00:00<00:00, 39.62it/s]
+/root/src/h3/.venv/lib/python3.12/site-packages/torch/nn/utils/weight_norm.py:144: FutureWarning: `torch.nn.utils.weight_norm` is deprecated in favor of `torch.nn.utils.parametrizations.weight_norm`.
+  WeightNorm.apply(module, name, dim)
+/root/src/h3/.venv/lib/python3.12/site-packages/torch/nn/utils/weight_norm.py:144: FutureWarning: `torch.nn.utils.weight_norm` is deprecated in favor of `torch.nn.utils.parametrizations.weight_norm`.
+  WeightNorm.apply(module, name, dim)
+/root/src/h3/.venv/lib/python3.12/site-packages/torch/nn/utils/weight_norm.py:144: FutureWarning: `torch.nn.utils.weight_norm` is deprecated in favor of `torch.nn.utils.parametrizations.weight_norm`.
+  WeightNorm.apply(module, name, dim)
+============================= HPU PT BRIDGE CONFIGURATION ON RANK = 0 ============= 
+ PT_HPU_LAZY_MODE = 1
+ PT_HPU_RECIPE_CACHE_CONFIG = /root/src/h3/hpu_port/.recipe_cache_rank0,false,8192,false
+ PT_HPU_MAX_COMPOUND_OP_SIZE = 9223372036854775807
+ PT_HPU_LAZY_ACC_PAR_MODE = 1
+ PT_HPU_ENABLE_REFINE_DYNAMIC_SHAPES = 0
+ PT_HPU_EAGER_PIPELINE_ENABLE = 1
+ PT_HPU_EAGER_COLLECTIVE_PIPELINE_ENABLE = 1
+ PT_HPU_ENABLE_LAZY_COLLECTIVES = 0
+---------------------------: System Configuration :---------------------------
+Num CPU Cores : 128
+CPU RAM       : 125 GB
+------------------------------------------------------------------------------
+Attention backends are an experimental feature and the API may be subject to change.
+Attention backends are an experimental feature and the API may be subject to change.
+`enable_parallelism` is an experimental feature. The API may change in the future and breaking changes may be introduced at any time without warning.
+[h3:r3]] placed transformer on hpu
+[h3:r3]] placed vae on hpu
+[h3:r3]] placed audio_vae on hpu
+[h3:r3]] CP device map: dit/vae/audio on hpu (replicated); te on cpu
+[h3:r3]] attention backend: habana_fused_sdpa (DiT + video VAE)
+[h3:r3]] rope cache installed on transformer.rope
+[h3:r3]] CP: token refiner kept replicated (2 processors un-stamped; refiner runs pre-packing on the full text run)
+[h3:r6]] placed transformer on hpu
+[h3:r6]] placed vae on hpu
+[h3:r6]] placed audio_vae on hpu
+[h3:r6]] CP device map: dit/vae/audio on hpu (replicated); te on cpu
+[h3:r6]] attention backend: habana_fused_sdpa (DiT + video VAE)
+[h3:r6]] rope cache installed on transformer.rope
+[h3:r6]] CP: token refiner kept replicated (2 processors un-stamped; refiner runs pre-packing on the full text run)
+[h3:r3]] context parallelism ON: ulysses=8 backend=hccl mesh=DeviceMesh((ring=1, ulysses=8), 'hpu', stride=(8, 1)) (seq sharded inside diffusers via the model's _cp_plan)
+[h3:r6]] context parallelism ON: ulysses=8 backend=hccl mesh=DeviceMesh((ring=1, ulysses=8), 'hpu', stride=(8, 1)) (seq sharded inside diffusers via the model's _cp_plan)
+[h3:r7]] placed transformer on hpu
+[h3:r7]] placed vae on hpu
+[h3:r7]] placed audio_vae on hpu
+[h3:r7]] CP device map: dit/vae/audio on hpu (replicated); te on cpu
+[h3:r7]] attention backend: habana_fused_sdpa (DiT + video VAE)
+[h3:r7]] rope cache installed on transformer.rope
+[h3:r7]] CP: token refiner kept replicated (2 processors un-stamped; refiner runs pre-packing on the full text run)
+[h3:r1]] placed transformer on hpu
+[h3:r1]] placed vae on hpu
+[h3:r1]] placed audio_vae on hpu
+[h3:r1]] CP device map: dit/vae/audio on hpu (replicated); te on cpu
+[h3:r1]] attention backend: habana_fused_sdpa (DiT + video VAE)
+[h3:r1]] rope cache installed on transformer.rope
+[h3:r1]] CP: token refiner kept replicated (2 processors un-stamped; refiner runs pre-packing on the full text run)
+[h3:r2]] placed transformer on hpu
+[h3:r2]] placed vae on hpu
+[h3:r2]] placed audio_vae on hpu
+[h3:r2]] CP device map: dit/vae/audio on hpu (replicated); te on cpu
+[h3:r2]] attention backend: habana_fused_sdpa (DiT + video VAE)
+[h3:r2]] rope cache installed on transformer.rope
+[h3:r2]] CP: token refiner kept replicated (2 processors un-stamped; refiner runs pre-packing on the full text run)
+[h3:r0]] placed transformer on hpu
+[h3:r0]] placed vae on hpu
+[h3:r0]] placed audio_vae on hpu
+[h3:r0]] CP device map: dit/vae/audio on hpu (replicated); te on cpu
+[h3:r0]] attention backend: habana_fused_sdpa (DiT + video VAE)
+[h3:r0]] rope cache installed on transformer.rope
+[h3:r0]] CP: token refiner kept replicated (2 processors un-stamped; refiner runs pre-packing on the full text run)
+[h3:r7]] context parallelism ON: ulysses=8 backend=hccl mesh=DeviceMesh((ring=1, ulysses=8), 'hpu', stride=(8, 1)) (seq sharded inside diffusers via the model's _cp_plan)
+[h3:r1]] context parallelism ON: ulysses=8 backend=hccl mesh=DeviceMesh((ring=1, ulysses=8), 'hpu', stride=(8, 1)) (seq sharded inside diffusers via the model's _cp_plan)
+[h3:r4]] placed transformer on hpu
+[h3:r4]] placed vae on hpu
+[h3:r4]] placed audio_vae on hpu
+[h3:r4]] CP device map: dit/vae/audio on hpu (replicated); te on cpu
+[h3:r4]] attention backend: habana_fused_sdpa (DiT + video VAE)
+[h3:r4]] rope cache installed on transformer.rope
+[h3:r4]] CP: token refiner kept replicated (2 processors un-stamped; refiner runs pre-packing on the full text run)
+[h3:r2]] context parallelism ON: ulysses=8 backend=hccl mesh=DeviceMesh((ring=1, ulysses=8), 'hpu', stride=(8, 1)) (seq sharded inside diffusers via the model's _cp_plan)
+[h3:r5]] placed transformer on hpu
+[h3:r5]] placed vae on hpu
+[h3:r5]] placed audio_vae on hpu
+[h3:r5]] CP device map: dit/vae/audio on hpu (replicated); te on cpu
+[h3:r5]] attention backend: habana_fused_sdpa (DiT + video VAE)
+[h3:r5]] rope cache installed on transformer.rope
+[h3:r5]] CP: token refiner kept replicated (2 processors un-stamped; refiner runs pre-packing on the full text run)
+[h3:r0]] context parallelism ON: ulysses=8 backend=hccl mesh=DeviceMesh((ring=1, ulysses=8), 'hpu', stride=(8, 1)) (seq sharded inside diffusers via the model's _cp_plan)
+[h3:r4]] context parallelism ON: ulysses=8 backend=hccl mesh=DeviceMesh((ring=1, ulysses=8), 'hpu', stride=(8, 1)) (seq sharded inside diffusers via the model's _cp_plan)
+[h3:r5]] context parallelism ON: ulysses=8 backend=hccl mesh=DeviceMesh((ring=1, ulysses=8), 'hpu', stride=(8, 1)) (seq sharded inside diffusers via the model's _cp_plan)
+[h3:r3]] CP: HPU graphs default OFF under CP (collectives inside graph capture are untested; H3_CP_GRAPHS=1 to force)
+[h3:r3]] graphs OFF: eager lazy mode with post-call mark_step
+[h3:r3]] per-block mark_step installed on 52 blocks
+[h3:r0]] CP: HPU graphs default OFF under CP (collectives inside graph capture are untested; H3_CP_GRAPHS=1 to force)
+[h3:r0]] graphs OFF: eager lazy mode with post-call mark_step
+[h3:r0]] per-block mark_step installed on 52 blocks
+[h3:r6]] CP: HPU graphs default OFF under CP (collectives inside graph capture are untested; H3_CP_GRAPHS=1 to force)
+[h3:r6]] graphs OFF: eager lazy mode with post-call mark_step
+[h3:r6]] per-block mark_step installed on 52 blocks
+[h3:r4]] CP: HPU graphs default OFF under CP (collectives inside graph capture are untested; H3_CP_GRAPHS=1 to force)
+[h3:r4]] graphs OFF: eager lazy mode with post-call mark_step
+[h3:r4]] per-block mark_step installed on 52 blocks
+[h3:r7]] CP: HPU graphs default OFF under CP (collectives inside graph capture are untested; H3_CP_GRAPHS=1 to force)
+[h3:r7]] graphs OFF: eager lazy mode with post-call mark_step
+[h3:r7]] per-block mark_step installed on 52 blocks
+[h3:r5]] CP: HPU graphs default OFF under CP (collectives inside graph capture are untested; H3_CP_GRAPHS=1 to force)
+[h3:r5]] graphs OFF: eager lazy mode with post-call mark_step
+[h3:r5]] per-block mark_step installed on 52 blocks
+[h3:r1]] CP: HPU graphs default OFF under CP (collectives inside graph capture are untested; H3_CP_GRAPHS=1 to force)
+[h3:r1]] graphs OFF: eager lazy mode with post-call mark_step
+[h3:r1]] per-block mark_step installed on 52 blocks
+[h3:r2]] CP: HPU graphs default OFF under CP (collectives inside graph capture are untested; H3_CP_GRAPHS=1 to force)
+[h3:r2]] graphs OFF: eager lazy mode with post-call mark_step
+[h3:r2]] per-block mark_step installed on 52 blocks
+[h3:r7]] block logging installed (12 block classes; H3_LOG_BLOCKS=0 to disable)
+[h3:r0]] block logging installed (12 block classes; H3_LOG_BLOCKS=0 to disable)
+[h3:r5]] block logging installed (12 block classes; H3_LOG_BLOCKS=0 to disable)
+[h3:r4]] block logging installed (12 block classes; H3_LOG_BLOCKS=0 to disable)
+[h3:r3]] block logging installed (12 block classes; H3_LOG_BLOCKS=0 to disable)
+[h3:r1]] block logging installed (12 block classes; H3_LOG_BLOCKS=0 to disable)
+[h3:r6]] block logging installed (12 block classes; H3_LOG_BLOCKS=0 to disable)
+[h3:r2]] block logging installed (12 block classes; H3_LOG_BLOCKS=0 to disable)
+[h3:r5]] === serve request 1/2 ===
+[h3:r4]] === serve request 1/2 ===
+[h3:r6]] === serve request 1/2 ===
+[h3:r3]] === serve request 1/2 ===
+[h3:r7]] === serve request 1/2 ===
+[h3:r2]] === serve request 1/2 ===
+[h3:r1]] === serve request 1/2 ===
+[h3:r0]] === serve request 1/2 ===
+[h3:r7]:block] > SequentialPipelineBlocks
+  [h3:r7]:block] > MiniMaxH3TextEncoderStep
+[h3:r4]:block] > SequentialPipelineBlocks
+[h3:r0]:block] > SequentialPipelineBlocks
+[h3:r5]:block] > SequentialPipelineBlocks
+[h3:r3]:block] > SequentialPipelineBlocks
+  [h3:r0]:block] > MiniMaxH3TextEncoderStep
+[h3:r1]:block] > SequentialPipelineBlocks
+[h3:r2]:block] > SequentialPipelineBlocks
+  [h3:r4]:block] > MiniMaxH3TextEncoderStep
+[h3:r6]:block] > SequentialPipelineBlocks
+  [h3:r5]:block] > MiniMaxH3TextEncoderStep
+  [h3:r3]:block] > MiniMaxH3TextEncoderStep
+  [h3:r1]:block] > MiniMaxH3TextEncoderStep
+  [h3:r2]:block] > MiniMaxH3TextEncoderStep
+  [h3:r6]:block] > MiniMaxH3TextEncoderStep
+[h3:r0]] embed cache hit: /tmp/h3_ecache2/5b883f3cd3e64a283ea1ea2185f3de5faa8e0f82ff4bd358f2aa945d732cdca2.pt
+  [h3:r0]:block] < MiniMaxH3TextEncoderStep: 0.059s
+[h3:r7]] embed cache hit: /tmp/h3_ecache2/5b883f3cd3e64a283ea1ea2185f3de5faa8e0f82ff4bd358f2aa945d732cdca2.pt
+  [h3:r7]:block] < MiniMaxH3TextEncoderStep: 0.060s
+[h3:r3]] embed cache hit: /tmp/h3_ecache2/5b883f3cd3e64a283ea1ea2185f3de5faa8e0f82ff4bd358f2aa945d732cdca2.pt
+  [h3:r3]:block] < MiniMaxH3TextEncoderStep: 0.059s
+  [h3:r7]:block] > MiniMaxH3NoKeyframeAnchorsStep
+  [h3:r3]:block] > MiniMaxH3NoKeyframeAnchorsStep
+  [h3:r0]:block] > MiniMaxH3NoKeyframeAnchorsStep
+[h3:r4]] embed cache hit: /tmp/h3_ecache2/5b883f3cd3e64a283ea1ea2185f3de5faa8e0f82ff4bd358f2aa945d732cdca2.pt
+  [h3:r4]:block] < MiniMaxH3TextEncoderStep: 0.060s
+  [h3:r7]:block] < MiniMaxH3NoKeyframeAnchorsStep: 0.000s
+  [h3:r4]:block] > MiniMaxH3NoKeyframeAnchorsStep
+  [h3:r3]:block] < MiniMaxH3NoKeyframeAnchorsStep: 0.000s
+  [h3:r7]:block] > MiniMaxH3PrepareLayoutStep
+  [h3:r0]:block] < MiniMaxH3NoKeyframeAnchorsStep: 0.000s
+  [h3:r3]:block] > MiniMaxH3PrepareLayoutStep
+  [h3:r0]:block] > MiniMaxH3PrepareLayoutStep
+  [h3:r4]:block] < MiniMaxH3NoKeyframeAnchorsStep: 0.000s
+  [h3:r4]:block] > MiniMaxH3PrepareLayoutStep
+[h3:r5]] embed cache hit: /tmp/h3_ecache2/5b883f3cd3e64a283ea1ea2185f3de5faa8e0f82ff4bd358f2aa945d732cdca2.pt
+  [h3:r5]:block] < MiniMaxH3TextEncoderStep: 0.060s
+  [h3:r5]:block] > MiniMaxH3NoKeyframeAnchorsStep
+  [h3:r5]:block] < MiniMaxH3NoKeyframeAnchorsStep: 0.000s
+[h3:r2]] embed cache hit: /tmp/h3_ecache2/5b883f3cd3e64a283ea1ea2185f3de5faa8e0f82ff4bd358f2aa945d732cdca2.pt
+  [h3:r2]:block] < MiniMaxH3TextEncoderStep: 0.060s
+  [h3:r5]:block] > MiniMaxH3PrepareLayoutStep
+[h3:r1]] embed cache hit: /tmp/h3_ecache2/5b883f3cd3e64a283ea1ea2185f3de5faa8e0f82ff4bd358f2aa945d732cdca2.pt
+  [h3:r1]:block] < MiniMaxH3TextEncoderStep: 0.060s
+  [h3:r2]:block] > MiniMaxH3NoKeyframeAnchorsStep
+  [h3:r1]:block] > MiniMaxH3NoKeyframeAnchorsStep
+  [h3:r2]:block] < MiniMaxH3NoKeyframeAnchorsStep: 0.000s
+  [h3:r2]:block] > MiniMaxH3PrepareLayoutStep
+  [h3:r1]:block] < MiniMaxH3NoKeyframeAnchorsStep: 0.000s
+  [h3:r1]:block] > MiniMaxH3PrepareLayoutStep
+[h3:r6]] embed cache hit: /tmp/h3_ecache2/5b883f3cd3e64a283ea1ea2185f3de5faa8e0f82ff4bd358f2aa945d732cdca2.pt
+  [h3:r6]:block] < MiniMaxH3TextEncoderStep: 0.063s
+  [h3:r6]:block] > MiniMaxH3NoKeyframeAnchorsStep
+  [h3:r6]:block] < MiniMaxH3NoKeyframeAnchorsStep: 0.000s
+  [h3:r6]:block] > MiniMaxH3PrepareLayoutStep
+  [h3:r7]:block] < MiniMaxH3PrepareLayoutStep: 0.032s
+  [h3:r7]:block] > MiniMaxH3PrepareLatentsStep
+  [h3:r6]:block] < MiniMaxH3PrepareLayoutStep: 0.029s
+  [h3:r5]:block] < MiniMaxH3PrepareLayoutStep: 0.031s
+  [h3:r0]:block] < MiniMaxH3PrepareLayoutStep: 0.032s
+  [h3:r6]:block] > MiniMaxH3PrepareLatentsStep
+  [h3:r1]:block] < MiniMaxH3PrepareLayoutStep: 0.031s
+  [h3:r5]:block] > MiniMaxH3PrepareLatentsStep
+  [h3:r3]:block] < MiniMaxH3PrepareLayoutStep: 0.032s
+  [h3:r4]:block] < MiniMaxH3PrepareLayoutStep: 0.032s
+  [h3:r0]:block] > MiniMaxH3PrepareLatentsStep
+  [h3:r1]:block] > MiniMaxH3PrepareLatentsStep
+  [h3:r2]:block] < MiniMaxH3PrepareLayoutStep: 0.031s
+  [h3:r3]:block] > MiniMaxH3PrepareLatentsStep
+  [h3:r4]:block] > MiniMaxH3PrepareLatentsStep
+  [h3:r2]:block] > MiniMaxH3PrepareLatentsStep
+[h3:r0]] CP noise determinism: video noise rows identical on all 8 ranks
+[h3:r0]] CP noise determinism: audio noise rows identical on all 8 ranks
+  [h3:r0]:block] < MiniMaxH3PrepareLatentsStep: 0.243s
+  [h3:r0]:block] > MiniMaxH3SetTimestepsStep
+  [h3:r5]:block] < MiniMaxH3PrepareLatentsStep: 0.243s
+  [h3:r4]:block] < MiniMaxH3PrepareLatentsStep: 0.243s
+  [h3:r5]:block] > MiniMaxH3SetTimestepsStep
+  [h3:r4]:block] > MiniMaxH3SetTimestepsStep
+  [h3:r6]:block] < MiniMaxH3PrepareLatentsStep: 0.244s
+  [h3:r6]:block] > MiniMaxH3SetTimestepsStep
+  [h3:r2]:block] < MiniMaxH3PrepareLatentsStep: 0.244s
+  [h3:r1]:block] < MiniMaxH3PrepareLatentsStep: 0.244s
+  [h3:r2]:block] > MiniMaxH3SetTimestepsStep
+  [h3:r1]:block] > MiniMaxH3SetTimestepsStep
+  [h3:r7]:block] < MiniMaxH3PrepareLatentsStep: 0.245s
+  [h3:r7]:block] > MiniMaxH3SetTimestepsStep
+  [h3:r3]:block] < MiniMaxH3PrepareLatentsStep: 0.248s
+  [h3:r3]:block] > MiniMaxH3SetTimestepsStep
+  [h3:r3]:block] < MiniMaxH3SetTimestepsStep: 0.010s
+  [h3:r3]:block] > MiniMaxH3DenoiseStep
+  [h3:r6]:block] < MiniMaxH3SetTimestepsStep: 0.014s
+  [h3:r6]:block] > MiniMaxH3DenoiseStep
+  [h3:r2]:block] < MiniMaxH3SetTimestepsStep: 0.014s
+  [h3:r5]:block] < MiniMaxH3SetTimestepsStep: 0.015s
+  [h3:r1]:block] < MiniMaxH3SetTimestepsStep: 0.014s
+  [h3:r2]:block] > MiniMaxH3DenoiseStep
+  [h3:r5]:block] > MiniMaxH3DenoiseStep
+  [h3:r1]:block] > MiniMaxH3DenoiseStep
+  [h3:r7]:block] < MiniMaxH3SetTimestepsStep: 0.014s
+  [h3:r0]:block] < MiniMaxH3SetTimestepsStep: 0.016s
+  [h3:r7]:block] > MiniMaxH3DenoiseStep
+  [h3:r0]:block] > MiniMaxH3DenoiseStep
+  [h3:r4]:block] < MiniMaxH3SetTimestepsStep: 0.016s
+  [h3:r4]:block] > MiniMaxH3DenoiseStep
+  0%|          | 0/4 [00:00<?, ?it/s]    [h3:r3]:block] > MiniMaxH3LoopDenoiser i=0 t=0.0000
+  0%|          | 0/4 [00:00<?, ?it/s]    [h3:r6]:block] > MiniMaxH3LoopDenoiser i=0 t=0.0000
+  0%|          | 0/4 [00:00<?, ?it/s]  0%|          | 0/4 [00:00<?, ?it/s]  0%|          | 0/4 [00:00<?, ?it/s]  0%|          | 0/4 [00:00<?, ?it/s]    [h3:r2]:block] > MiniMaxH3LoopDenoiser i=0 t=0.0000
+    [h3:r7]:block] > MiniMaxH3LoopDenoiser i=0 t=0.0000
+    [h3:r5]:block] > MiniMaxH3LoopDenoiser i=0 t=0.0000
+  0%|          | 0/4 [00:00<?, ?it/s]    [h3:r1]:block] > MiniMaxH3LoopDenoiser i=0 t=0.0000
+    [h3:r0]:block] > MiniMaxH3LoopDenoiser i=0 t=0.0000
+  0%|          | 0/4 [00:00<?, ?it/s]    [h3:r4]:block] > MiniMaxH3LoopDenoiser i=0 t=0.0000
+    [h3:r1]:block] < MiniMaxH3LoopDenoiser i=0 t=0.0000: 0.658s
+    [h3:r1]:block] > MiniMaxH3LoopSchedulerStep i=0 t=0.0000
+    [h3:r0]:block] < MiniMaxH3LoopDenoiser i=0 t=0.0000: 0.658s
+    [h3:r0]:block] > MiniMaxH3LoopSchedulerStep i=0 t=0.0000
+    [h3:r1]:block] < MiniMaxH3LoopSchedulerStep i=0 t=0.0000: 0.003s
+    [h3:r0]:block] < MiniMaxH3LoopSchedulerStep i=0 t=0.0000: 0.003s
+ 25%|██▌       | 1/4 [00:00<00:01,  1.51it/s] 25%|██▌       | 1/4 [00:00<00:01,  1.51it/s]    [h3:r1]:block] > MiniMaxH3LoopDenoiser i=1 t=0.0270
+    [h3:r0]:block] > MiniMaxH3LoopDenoiser i=1 t=0.0270
+    [h3:r3]:block] < MiniMaxH3LoopDenoiser i=0 t=0.0000: 0.681s
+    [h3:r3]:block] > MiniMaxH3LoopSchedulerStep i=0 t=0.0000
+    [h3:r5]:block] < MiniMaxH3LoopDenoiser i=0 t=0.0000: 0.680s
+    [h3:r5]:block] > MiniMaxH3LoopSchedulerStep i=0 t=0.0000
+    [h3:r5]:block] < MiniMaxH3LoopSchedulerStep i=0 t=0.0000: 0.002s
+ 25%|██▌       | 1/4 [00:00<00:02,  1.46it/s]    [h3:r5]:block] > MiniMaxH3LoopDenoiser i=1 t=0.0270
+    [h3:r3]:block] < MiniMaxH3LoopSchedulerStep i=0 t=0.0000: 0.004s
+ 25%|██▌       | 1/4 [00:00<00:02,  1.46it/s]    [h3:r3]:block] > MiniMaxH3LoopDenoiser i=1 t=0.0270
+    [h3:r7]:block] < MiniMaxH3LoopDenoiser i=0 t=0.0000: 0.692s
+    [h3:r7]:block] > MiniMaxH3LoopSchedulerStep i=0 t=0.0000
+    [h3:r7]:block] < MiniMaxH3LoopSchedulerStep i=0 t=0.0000: 0.002s
+ 25%|██▌       | 1/4 [00:00<00:02,  1.44it/s]    [h3:r7]:block] > MiniMaxH3LoopDenoiser i=1 t=0.0270
+    [h3:r4]:block] < MiniMaxH3LoopDenoiser i=0 t=0.0000: 0.706s
+    [h3:r4]:block] > MiniMaxH3LoopSchedulerStep i=0 t=0.0000
+    [h3:r4]:block] < MiniMaxH3LoopSchedulerStep i=0 t=0.0000: 0.002s
+ 25%|██▌       | 1/4 [00:00<00:02,  1.41it/s]    [h3:r4]:block] > MiniMaxH3LoopDenoiser i=1 t=0.0270
+    [h3:r2]:block] < MiniMaxH3LoopDenoiser i=0 t=0.0000: 0.721s
+    [h3:r2]:block] > MiniMaxH3LoopSchedulerStep i=0 t=0.0000
+    [h3:r6]:block] < MiniMaxH3LoopDenoiser i=0 t=0.0000: 0.724s
+    [h3:r6]:block] > MiniMaxH3LoopSchedulerStep i=0 t=0.0000
+    [h3:r2]:block] < MiniMaxH3LoopSchedulerStep i=0 t=0.0000: 0.003s
+ 25%|██▌       | 1/4 [00:00<00:02,  1.38it/s]    [h3:r2]:block] > MiniMaxH3LoopDenoiser i=1 t=0.0270
+    [h3:r6]:block] < MiniMaxH3LoopSchedulerStep i=0 t=0.0000: 0.002s
+ 25%|██▌       | 1/4 [00:00<00:02,  1.38it/s]    [h3:r6]:block] > MiniMaxH3LoopDenoiser i=1 t=0.0270
+    [h3:r1]:block] < MiniMaxH3LoopDenoiser i=1 t=0.0270: 0.515s
+    [h3:r1]:block] > MiniMaxH3LoopSchedulerStep i=1 t=0.0270
+    [h3:r1]:block] < MiniMaxH3LoopSchedulerStep i=1 t=0.0270: 0.002s
+ 50%|█████     | 2/4 [00:01<00:01,  1.73it/s]    [h3:r1]:block] > MiniMaxH3LoopDenoiser i=2 t=0.0769
+    [h3:r0]:block] < MiniMaxH3LoopDenoiser i=1 t=0.0270: 0.579s
+    [h3:r0]:block] > MiniMaxH3LoopSchedulerStep i=1 t=0.0270
+    [h3:r0]:block] < MiniMaxH3LoopSchedulerStep i=1 t=0.0270: 0.002s
+ 50%|█████     | 2/4 [00:01<00:01,  1.63it/s]    [h3:r0]:block] > MiniMaxH3LoopDenoiser i=2 t=0.0769
+    [h3:r4]:block] < MiniMaxH3LoopDenoiser i=1 t=0.0270: 0.551s
+    [h3:r4]:block] > MiniMaxH3LoopSchedulerStep i=1 t=0.0270
+    [h3:r3]:block] < MiniMaxH3LoopDenoiser i=1 t=0.0270: 0.576s
+    [h3:r3]:block] > MiniMaxH3LoopSchedulerStep i=1 t=0.0270
+    [h3:r4]:block] < MiniMaxH3LoopSchedulerStep i=1 t=0.0270: 0.002s
+ 50%|█████     | 2/4 [00:01<00:01,  1.62it/s]    [h3:r4]:block] > MiniMaxH3LoopDenoiser i=2 t=0.0769
+    [h3:r3]:block] < MiniMaxH3LoopSchedulerStep i=1 t=0.0270: 0.002s
+ 50%|█████     | 2/4 [00:01<00:01,  1.61it/s]    [h3:r3]:block] > MiniMaxH3LoopDenoiser i=2 t=0.0769
+    [h3:r5]:block] < MiniMaxH3LoopDenoiser i=1 t=0.0270: 0.590s
+    [h3:r5]:block] > MiniMaxH3LoopSchedulerStep i=1 t=0.0270
+    [h3:r5]:block] < MiniMaxH3LoopSchedulerStep i=1 t=0.0270: 0.002s
+ 50%|█████     | 2/4 [00:01<00:01,  1.59it/s]    [h3:r5]:block] > MiniMaxH3LoopDenoiser i=2 t=0.0769
+    [h3:r7]:block] < MiniMaxH3LoopDenoiser i=1 t=0.0270: 0.587s
+    [h3:r7]:block] > MiniMaxH3LoopSchedulerStep i=1 t=0.0270
+    [h3:r7]:block] < MiniMaxH3LoopSchedulerStep i=1 t=0.0270: 0.002s
+ 50%|█████     | 2/4 [00:01<00:01,  1.58it/s]    [h3:r7]:block] > MiniMaxH3LoopDenoiser i=2 t=0.0769
+    [h3:r2]:block] < MiniMaxH3LoopDenoiser i=1 t=0.0270: 0.592s
+    [h3:r2]:block] > MiniMaxH3LoopSchedulerStep i=1 t=0.0270
+    [h3:r6]:block] < MiniMaxH3LoopDenoiser i=1 t=0.0270: 0.590s
+    [h3:r6]:block] > MiniMaxH3LoopSchedulerStep i=1 t=0.0270
+    [h3:r2]:block] < MiniMaxH3LoopSchedulerStep i=1 t=0.0270: 0.002s
+ 50%|█████     | 2/4 [00:01<00:01,  1.54it/s]    [h3:r2]:block] > MiniMaxH3LoopDenoiser i=2 t=0.0769
+    [h3:r6]:block] < MiniMaxH3LoopSchedulerStep i=1 t=0.0270: 0.002s
+ 50%|█████     | 2/4 [00:01<00:01,  1.54it/s]    [h3:r6]:block] > MiniMaxH3LoopDenoiser i=2 t=0.0769
+    [h3:r1]:block] < MiniMaxH3LoopDenoiser i=2 t=0.0769: 0.479s
+    [h3:r1]:block] > MiniMaxH3LoopSchedulerStep i=2 t=0.0769
+    [h3:r1]:block] < MiniMaxH3LoopSchedulerStep i=2 t=0.0769: 0.002s
+ 75%|███████▌  | 3/4 [00:01<00:00,  1.88it/s]    [h3:r1]:block] > MiniMaxH3LoopDenoiser i=3 t=0.2000
+    [h3:r0]:block] < MiniMaxH3LoopDenoiser i=2 t=0.0769: 0.525s
+    [h3:r0]:block] > MiniMaxH3LoopSchedulerStep i=2 t=0.0769
+    [h3:r0]:block] < MiniMaxH3LoopSchedulerStep i=2 t=0.0769: 0.002s
+ 75%|███████▌  | 3/4 [00:01<00:00,  1.74it/s]    [h3:r0]:block] > MiniMaxH3LoopDenoiser i=3 t=0.2000
+    [h3:r3]:block] < MiniMaxH3LoopDenoiser i=2 t=0.0769: 0.508s
+    [h3:r3]:block] > MiniMaxH3LoopSchedulerStep i=2 t=0.0769
+    [h3:r3]:block] < MiniMaxH3LoopSchedulerStep i=2 t=0.0769: 0.002s
+ 75%|███████▌  | 3/4 [00:01<00:00,  1.75it/s]    [h3:r3]:block] > MiniMaxH3LoopDenoiser i=3 t=0.2000
+    [h3:r4]:block] < MiniMaxH3LoopDenoiser i=2 t=0.0769: 0.539s
+    [h3:r4]:block] > MiniMaxH3LoopSchedulerStep i=2 t=0.0769
+    [h3:r6]:block] < MiniMaxH3LoopDenoiser i=2 t=0.0769: 0.482s
+    [h3:r6]:block] > MiniMaxH3LoopSchedulerStep i=2 t=0.0769
+    [h3:r4]:block] < MiniMaxH3LoopSchedulerStep i=2 t=0.0769: 0.002s
+    [h3:r6]:block] < MiniMaxH3LoopSchedulerStep i=2 t=0.0769: 0.002s
+ 75%|███████▌  | 3/4 [00:01<00:00,  1.72it/s]    [h3:r4]:block] > MiniMaxH3LoopDenoiser i=3 t=0.2000
+ 75%|███████▌  | 3/4 [00:01<00:00,  1.74it/s]    [h3:r6]:block] > MiniMaxH3LoopDenoiser i=3 t=0.2000
+    [h3:r7]:block] < MiniMaxH3LoopDenoiser i=2 t=0.0769: 0.524s
+    [h3:r7]:block] > MiniMaxH3LoopSchedulerStep i=2 t=0.0769
+    [h3:r7]:block] < MiniMaxH3LoopSchedulerStep i=2 t=0.0769: 0.002s
+ 75%|███████▌  | 3/4 [00:01<00:00,  1.71it/s]    [h3:r7]:block] > MiniMaxH3LoopDenoiser i=3 t=0.2000
+    [h3:r2]:block] < MiniMaxH3LoopDenoiser i=2 t=0.0769: 0.502s
+    [h3:r2]:block] > MiniMaxH3LoopSchedulerStep i=2 t=0.0769
+    [h3:r2]:block] < MiniMaxH3LoopSchedulerStep i=2 t=0.0769: 0.002s
+ 75%|███████▌  | 3/4 [00:01<00:00,  1.72it/s]    [h3:r2]:block] > MiniMaxH3LoopDenoiser i=3 t=0.2000
+    [h3:r5]:block] < MiniMaxH3LoopDenoiser i=2 t=0.0769: 0.552s
+    [h3:r5]:block] > MiniMaxH3LoopSchedulerStep i=2 t=0.0769
+    [h3:r5]:block] < MiniMaxH3LoopSchedulerStep i=2 t=0.0769: 0.002s
+ 75%|███████▌  | 3/4 [00:01<00:00,  1.68it/s]    [h3:r5]:block] > MiniMaxH3LoopDenoiser i=3 t=0.2000
+    [h3:r7]:block] < MiniMaxH3LoopDenoiser i=3 t=0.2000: 0.669s
+    [h3:r7]:block] > MiniMaxH3LoopSchedulerStep i=3 t=0.2000
+    [h3:r7]:block] < MiniMaxH3LoopSchedulerStep i=3 t=0.2000: 0.002s
+100%|██████████| 4/4 [00:02<00:00,  1.62it/s]100%|██████████| 4/4 [00:02<00:00,  1.61it/s]
+  [h3:r7]:block] < MiniMaxH3DenoiseStep: 2.485s
+  [h3:r7]:block] > MiniMaxH3AfterDenoiseStep
+  [h3:r7]:block] < MiniMaxH3AfterDenoiseStep: 0.001s
+  [h3:r7]:block] > _H3VideoDecodeStep
+    [h3:r0]:block] < MiniMaxH3LoopDenoiser i=3 t=0.2000: 0.714s
+    [h3:r0]:block] > MiniMaxH3LoopSchedulerStep i=3 t=0.2000
+    [h3:r4]:block] < MiniMaxH3LoopDenoiser i=3 t=0.2000: 0.681s
+    [h3:r4]:block] > MiniMaxH3LoopSchedulerStep i=3 t=0.2000
+    [h3:r1]:block] < MiniMaxH3LoopDenoiser i=3 t=0.2000: 0.826s
+    [h3:r1]:block] > MiniMaxH3LoopSchedulerStep i=3 t=0.2000
+    [h3:r5]:block] < MiniMaxH3LoopDenoiser i=3 t=0.2000: 0.656s
+    [h3:r5]:block] > MiniMaxH3LoopSchedulerStep i=3 t=0.2000
+    [h3:r0]:block] < MiniMaxH3LoopSchedulerStep i=3 t=0.2000: 0.002s
+100%|██████████| 4/4 [00:02<00:00,  1.59it/s]100%|██████████| 4/4 [00:02<00:00,  1.61it/s]
+    [h3:r4]:block] < MiniMaxH3LoopSchedulerStep i=3 t=0.2000: 0.002s
+    [h3:r3]:block] < MiniMaxH3LoopDenoiser i=3 t=0.2000: 0.714s
+100%|██████████| 4/4 [00:02<00:00,  1.61it/s]    [h3:r1]:block] < MiniMaxH3LoopSchedulerStep i=3 t=0.2000: 0.002s
+  [h3:r0]:block] < MiniMaxH3DenoiseStep: 2.490s
+    [h3:r3]:block] > MiniMaxH3LoopSchedulerStep i=3 t=0.2000
+    [h3:r2]:block] < MiniMaxH3LoopDenoiser i=3 t=0.2000: 0.665s
+  [h3:r0]:block] > MiniMaxH3AfterDenoiseStep
+100%|██████████| 4/4 [00:02<00:00,  1.61it/s]    [h3:r2]:block] > MiniMaxH3LoopSchedulerStep i=3 t=0.2000
+
+100%|██████████| 4/4 [00:02<00:00,  1.54it/s]100%|██████████| 4/4 [00:02<00:00,  1.61it/s]
+  [h3:r0]:block] < MiniMaxH3AfterDenoiseStep: 0.001s
+  [h3:r4]:block] < MiniMaxH3DenoiseStep: 2.490s
+    [h3:r5]:block] < MiniMaxH3LoopSchedulerStep i=3 t=0.2000: 0.002s
+  [h3:r0]:block] > _H3VideoDecodeStep
+  [h3:r4]:block] > MiniMaxH3AfterDenoiseStep
+100%|██████████| 4/4 [00:02<00:00,  1.61it/s]    [h3:r6]:block] < MiniMaxH3LoopDenoiser i=3 t=0.2000: 0.686s
+  [h3:r1]:block] < MiniMaxH3DenoiseStep: 2.491s
+    [h3:r6]:block] > MiniMaxH3LoopSchedulerStep i=3 t=0.2000
+  [h3:r1]:block] > MiniMaxH3AfterDenoiseStep
+100%|██████████| 4/4 [00:02<00:00,  1.61it/s]
+  [h3:r4]:block] < MiniMaxH3AfterDenoiseStep: 0.001s
+  [h3:r4]:block] > _H3VideoDecodeStep
+    [h3:r3]:block] < MiniMaxH3LoopSchedulerStep i=3 t=0.2000: 0.002s
+  [h3:r1]:block] < MiniMaxH3AfterDenoiseStep: 0.001s
+  [h3:r1]:block] > _H3VideoDecodeStep
+  [h3:r5]:block] < MiniMaxH3DenoiseStep: 2.492s
+100%|██████████| 4/4 [00:02<00:00,  1.59it/s]  [h3:r5]:block] > MiniMaxH3AfterDenoiseStep
+    [h3:r2]:block] < MiniMaxH3LoopSchedulerStep i=3 t=0.2000: 0.002s
+100%|██████████| 4/4 [00:02<00:00,  1.61it/s]
+100%|██████████| 4/4 [00:02<00:00,  1.62it/s]100%|██████████| 4/4 [00:02<00:00,  1.61it/s]
+  [h3:r5]:block] < MiniMaxH3AfterDenoiseStep: 0.001s
+  [h3:r5]:block] > _H3VideoDecodeStep
+  [h3:r3]:block] < MiniMaxH3DenoiseStep: 2.494s
+  [h3:r3]:block] > MiniMaxH3AfterDenoiseStep
+    [h3:r6]:block] < MiniMaxH3LoopSchedulerStep i=3 t=0.2000: 0.002s
+  [h3:r2]:block] < MiniMaxH3DenoiseStep: 2.494s
+  [h3:r2]:block] > MiniMaxH3AfterDenoiseStep
+100%|██████████| 4/4 [00:02<00:00,  1.62it/s]  [h3:r3]:block] < MiniMaxH3AfterDenoiseStep: 0.001s
+100%|██████████| 4/4 [00:02<00:00,  1.60it/s]  [h3:r3]:block] > _H3VideoDecodeStep
+
+  [h3:r2]:block] < MiniMaxH3AfterDenoiseStep: 0.001s
+  [h3:r2]:block] > _H3VideoDecodeStep
+  [h3:r6]:block] < MiniMaxH3DenoiseStep: 2.495s
+  [h3:r6]:block] > MiniMaxH3AfterDenoiseStep
+  [h3:r6]:block] < MiniMaxH3AfterDenoiseStep: 0.001s
+  [h3:r6]:block] > _H3VideoDecodeStep
+[h3:r6]] denoise complete: device synced at decode entry (1.08s)
+[h3:r2]] denoise complete: device synced at decode entry (1.08s)
+[h3:r4]] denoise complete: device synced at decode entry (1.08s)
+[h3:r1]] denoise complete: device synced at decode entry (1.08s)
+[h3:r0]] denoise complete: device synced at decode entry (1.08s)
+[h3:r6]] serve mode: DiT kept resident for the next request
+[h3:r5]] denoise complete: device synced at decode entry (1.08s)
+[h3:r7]] denoise complete: device synced at decode entry (1.09s)
+[h3:r2]] serve mode: DiT kept resident for the next request
+[h3:r4]] serve mode: DiT kept resident for the next request
+[h3:r3]] denoise complete: device synced at decode entry (1.08s)
+[h3:r1]] serve mode: DiT kept resident for the next request
+[h3:r0]] serve mode: DiT kept resident for the next request
+[h3:r5]] serve mode: DiT kept resident for the next request
+[h3:r7]] serve mode: DiT kept resident for the next request
+[h3:r3]] serve mode: DiT kept resident for the next request
+  [h3:r6]:block] < _H3VideoDecodeStep: 1.083s
+  [h3:r6]:block] > _H3AudioDecodeStep
+  [h3:r4]:block] < _H3VideoDecodeStep: 1.087s
+  [h3:r1]:block] < _H3VideoDecodeStep: 1.087s
+  [h3:r2]:block] < _H3VideoDecodeStep: 1.084s
+  [h3:r4]:block] > _H3AudioDecodeStep
+  [h3:r1]:block] > _H3AudioDecodeStep
+  [h3:r2]:block] > _H3AudioDecodeStep
+  [h3:r5]:block] < _H3VideoDecodeStep: 1.086s
+  [h3:r6]:block] < _H3AudioDecodeStep: 0.000s
+  [h3:r7]:block] < _H3VideoDecodeStep: 1.093s
+  [h3:r3]:block] < _H3VideoDecodeStep: 1.085s
+  [h3:r5]:block] > _H3AudioDecodeStep
+[h3:r6]:block] < SequentialPipelineBlocks: 3.930s
+  [h3:r4]:block] < _H3AudioDecodeStep: 0.000s
+  [h3:r1]:block] < _H3AudioDecodeStep: 0.000s
+  [h3:r7]:block] > _H3AudioDecodeStep
+  [h3:r3]:block] > _H3AudioDecodeStep
+  [h3:r2]:block] < _H3AudioDecodeStep: 0.000s
+[h3:r4]:block] < SequentialPipelineBlocks: 3.930s
+[h3:r1]:block] < SequentialPipelineBlocks: 3.930s
+[h3:r6]] pipeline complete: device synced before export (0.00s)
+[h3:r2]:block] < SequentialPipelineBlocks: 3.930s
+[h3:r6]] rank 6: rank0 owns export; nothing to write
+  [h3:r5]:block] < _H3AudioDecodeStep: 0.000s
+[h3:r4]] pipeline complete: device synced before export (0.00s)
+  [h3:r7]:block] < _H3AudioDecodeStep: 0.000s
+  [h3:r3]:block] < _H3AudioDecodeStep: 0.000s
+[h3:r1]] pipeline complete: device synced before export (0.00s)
+[h3:r4]] rank 4: rank0 owns export; nothing to write
+[h3:r5]:block] < SequentialPipelineBlocks: 3.930s
+[h3:r2]] pipeline complete: device synced before export (0.00s)
+[h3:r1]] rank 1: rank0 owns export; nothing to write
+[h3:r7]:block] < SequentialPipelineBlocks: 3.930s
+[h3:r3]:block] < SequentialPipelineBlocks: 3.930s
+[h3:r2]] rank 2: rank0 owns export; nothing to write
+[h3:r5]] pipeline complete: device synced before export (0.00s)
+[h3:r6]] timings: {"generate": 3.93, "export": 0.0, "mux": 0.0}
+[h3:r6]] === serve request 2/2 ===
+[h3:r5]] rank 5: rank0 owns export; nothing to write
+[h3:r7]] pipeline complete: device synced before export (0.00s)
+[h3:r3]] pipeline complete: device synced before export (0.00s)
+[h3:r7]] rank 7: rank0 owns export; nothing to write
+[h3:r3]] rank 3: rank0 owns export; nothing to write
+[h3:r4]] timings: {"generate": 3.93, "export": 0.0, "mux": 0.0}
+[h3:r4]] === serve request 2/2 ===
+[h3:r1]] timings: {"generate": 3.93, "export": 0.0, "mux": 0.0}
+[h3:r1]] === serve request 2/2 ===
+[h3:r2]] timings: {"generate": 3.93, "export": 0.0, "mux": 0.0}
+[h3:r2]] === serve request 2/2 ===
+[h3:r6]] serve sync: rank export done (0.0s wait)
+[h3:r4]] serve sync: rank export done (0.0s wait)
+[h3:r1]] serve sync: rank export done (0.0s wait)
+[h3:r2]] serve sync: rank export done (0.0s wait)
+[h3:r7]] timings: {"generate": 3.93, "export": 0.0, "mux": 0.0}
+[h3:r7]] === serve request 2/2 ===
+[h3:r5]] timings: {"generate": 3.93, "export": 0.0, "mux": 0.0}
+[h3:r5]] === serve request 2/2 ===
+[h3:r3]] timings: {"generate": 3.93, "export": 0.0, "mux": 0.0}
+[h3:r3]] === serve request 2/2 ===
+[h3:r5]] serve sync: rank export done (0.0s wait)
+[h3:r7]] serve sync: rank export done (0.0s wait)
+[h3:r3]] serve sync: rank export done (0.0s wait)
+[h3:r6]:block] > SequentialPipelineBlocks
+  [h3:r6]:block] > MiniMaxH3TextEncoderStep
+[h3:r1]:block] > SequentialPipelineBlocks
+  [h3:r1]:block] > MiniMaxH3TextEncoderStep
+[h3:r2]:block] > SequentialPipelineBlocks
+  [h3:r2]:block] > MiniMaxH3TextEncoderStep
+[h3:r3]:block] > SequentialPipelineBlocks
+  [h3:r3]:block] > MiniMaxH3TextEncoderStep
+[h3:r5]:block] > SequentialPipelineBlocks
+[h3:r4]:block] > SequentialPipelineBlocks
+[h3:r7]:block] > SequentialPipelineBlocks
+  [h3:r5]:block] > MiniMaxH3TextEncoderStep
+  [h3:r4]:block] > MiniMaxH3TextEncoderStep
+  [h3:r7]:block] > MiniMaxH3TextEncoderStep
+[h3:r5]] embed cache hit: /tmp/h3_ecache2/5b883f3cd3e64a283ea1ea2185f3de5faa8e0f82ff4bd358f2aa945d732cdca2.pt
+  [h3:r5]:block] < MiniMaxH3TextEncoderStep: 0.010s
+  [h3:r5]:block] > MiniMaxH3NoKeyframeAnchorsStep
+[h3:r4]] embed cache hit: /tmp/h3_ecache2/5b883f3cd3e64a283ea1ea2185f3de5faa8e0f82ff4bd358f2aa945d732cdca2.pt
+  [h3:r4]:block] < MiniMaxH3TextEncoderStep: 0.010s
+[h3:r2]] embed cache hit: /tmp/h3_ecache2/5b883f3cd3e64a283ea1ea2185f3de5faa8e0f82ff4bd358f2aa945d732cdca2.pt
+  [h3:r2]:block] < MiniMaxH3TextEncoderStep: 0.010s
+  [h3:r4]:block] > MiniMaxH3NoKeyframeAnchorsStep
+  [h3:r2]:block] > MiniMaxH3NoKeyframeAnchorsStep
+  [h3:r5]:block] < MiniMaxH3NoKeyframeAnchorsStep: 0.000s
+  [h3:r5]:block] > MiniMaxH3PrepareLayoutStep
+[h3:r1]] embed cache hit: /tmp/h3_ecache2/5b883f3cd3e64a283ea1ea2185f3de5faa8e0f82ff4bd358f2aa945d732cdca2.pt
+  [h3:r1]:block] < MiniMaxH3TextEncoderStep: 0.010s
+  [h3:r2]:block] < MiniMaxH3NoKeyframeAnchorsStep: 0.000s
+  [h3:r4]:block] < MiniMaxH3NoKeyframeAnchorsStep: 0.000s
+  [h3:r1]:block] > MiniMaxH3NoKeyframeAnchorsStep
+  [h3:r2]:block] > MiniMaxH3PrepareLayoutStep
+  [h3:r4]:block] > MiniMaxH3PrepareLayoutStep
+[h3:r3]] embed cache hit: /tmp/h3_ecache2/5b883f3cd3e64a283ea1ea2185f3de5faa8e0f82ff4bd358f2aa945d732cdca2.pt
+  [h3:r3]:block] < MiniMaxH3TextEncoderStep: 0.010s
+  [h3:r1]:block] < MiniMaxH3NoKeyframeAnchorsStep: 0.000s
+  [h3:r1]:block] > MiniMaxH3PrepareLayoutStep
+  [h3:r3]:block] > MiniMaxH3NoKeyframeAnchorsStep
+[h3:r6]] embed cache hit: /tmp/h3_ecache2/5b883f3cd3e64a283ea1ea2185f3de5faa8e0f82ff4bd358f2aa945d732cdca2.pt
+  [h3:r6]:block] < MiniMaxH3TextEncoderStep: 0.011s
+  [h3:r3]:block] < MiniMaxH3NoKeyframeAnchorsStep: 0.000s
+  [h3:r3]:block] > MiniMaxH3PrepareLayoutStep
+  [h3:r6]:block] > MiniMaxH3NoKeyframeAnchorsStep
+  [h3:r6]:block] < MiniMaxH3NoKeyframeAnchorsStep: 0.000s
+  [h3:r6]:block] > MiniMaxH3PrepareLayoutStep
+[h3:r7]] embed cache hit: /tmp/h3_ecache2/5b883f3cd3e64a283ea1ea2185f3de5faa8e0f82ff4bd358f2aa945d732cdca2.pt
+  [h3:r7]:block] < MiniMaxH3TextEncoderStep: 0.011s
+  [h3:r7]:block] > MiniMaxH3NoKeyframeAnchorsStep
+  [h3:r7]:block] < MiniMaxH3NoKeyframeAnchorsStep: 0.000s
+  [h3:r7]:block] > MiniMaxH3PrepareLayoutStep
+  [h3:r2]:block] < MiniMaxH3PrepareLayoutStep: 0.003s
+  [h3:r2]:block] > MiniMaxH3PrepareLatentsStep
+  [h3:r1]:block] < MiniMaxH3PrepareLayoutStep: 0.003s
+  [h3:r1]:block] > MiniMaxH3PrepareLatentsStep
+  [h3:r5]:block] < MiniMaxH3PrepareLayoutStep: 0.004s
+  [h3:r5]:block] > MiniMaxH3PrepareLatentsStep
+  [h3:r4]:block] < MiniMaxH3PrepareLayoutStep: 0.004s
+  [h3:r4]:block] > MiniMaxH3PrepareLatentsStep
+  [h3:r3]:block] < MiniMaxH3PrepareLayoutStep: 0.004s
+  [h3:r3]:block] > MiniMaxH3PrepareLatentsStep
+  [h3:r6]:block] < MiniMaxH3PrepareLayoutStep: 0.004s
+  [h3:r6]:block] > MiniMaxH3PrepareLatentsStep
+  [h3:r7]:block] < MiniMaxH3PrepareLayoutStep: 0.004s
+  [h3:r7]:block] > MiniMaxH3PrepareLatentsStep
+[h3:r0]] decode farm: 7 video workers + 1 audio worker spawned (audio card 0; video cards 1..7)
+  [h3:r0]:block] < _H3VideoDecodeStep: 9.146s
+  [h3:r0]:block] > _H3AudioDecodeStep
+  [h3:r0]:block] < _H3AudioDecodeStep: 0.000s
+[h3:r0]:block] < SequentialPipelineBlocks: 11.988s
+[h3:r0]] pipeline complete: device synced before export (0.00s)
+[h3:r0]] respawn farm worker shard 7 (audio) on card 0 (attempt 1/8)
+[h3:r0]] dead worker shard 7 tail: m_applied = fn(param)
+                    ^^^^^^^^^
+  File "/root/src/h3/.venv/lib/python3.12/site-packages/torch/nn/modules/module.py", line 1370, in convert
+    return t.to(
+           ^^^^^
+  File "/root/src/h3/.venv/lib/python3.12/site-packages/habana_frameworks/torch/hpu/__init__.py", line 85, in _lazy_init
+    _hpu_C.init()
+RuntimeError: synStatus=8 [Device not found] Device acquire failed.
+
+[h3:r0]] respawn farm worker shard 0 on card 1 (attempt 1/8)
+[h3:r0]] dead worker shard 0 tail: m_applied = fn(param)
+                    ^^^^^^^^^
+  File "/root/src/h3/.venv/lib/python3.12/site-packages/torch/nn/modules/module.py", line 1370, in convert
+    return t.to(
+           ^^^^^
+  File "/root/src/h3/.venv/lib/python3.12/site-packages/habana_frameworks/torch/hpu/__init__.py", line 85, in _lazy_init
+    _hpu_C.init()
+RuntimeError: synStatus=8 [Device not found] Device acquire failed.
+
+[h3:r0]] respawn farm worker shard 1 on card 2 (attempt 1/8)
+[h3:r0]] dead worker shard 1 tail: m_applied = fn(param)
+                    ^^^^^^^^^
+  File "/root/src/h3/.venv/lib/python3.12/site-packages/torch/nn/modules/module.py", line 1370, in convert
+    return t.to(
+           ^^^^^
+  File "/root/src/h3/.venv/lib/python3.12/site-packages/habana_frameworks/torch/hpu/__init__.py", line 85, in _lazy_init
+    _hpu_C.init()
+RuntimeError: synStatus=8 [Device not found] Device acquire failed.
+
+[h3:r0]] respawn farm worker shard 2 on card 3 (attempt 1/8)
+[h3:r0]] dead worker shard 2 tail: m_applied = fn(param)
+                    ^^^^^^^^^
+  File "/root/src/h3/.venv/lib/python3.12/site-packages/torch/nn/modules/module.py", line 1370, in convert
+    return t.to(
+           ^^^^^
+  File "/root/src/h3/.venv/lib/python3.12/site-packages/habana_frameworks/torch/hpu/__init__.py", line 85, in _lazy_init
+    _hpu_C.init()
+RuntimeError: synStatus=8 [Device not found] Device acquire failed.
+
+[h3:r0]] respawn farm worker shard 3 on card 4 (attempt 1/8)
+[h3:r0]] dead worker shard 3 tail: m_applied = fn(param)
+                    ^^^^^^^^^
+  File "/root/src/h3/.venv/lib/python3.12/site-packages/torch/nn/modules/module.py", line 1370, in convert
+    return t.to(
+           ^^^^^
+  File "/root/src/h3/.venv/lib/python3.12/site-packages/habana_frameworks/torch/hpu/__init__.py", line 85, in _lazy_init
+    _hpu_C.init()
+RuntimeError: synStatus=8 [Device not found] Device acquire failed.
+
+[h3:r0]] respawn farm worker shard 4 on card 5 (attempt 1/8)
+[h3:r0]] dead worker shard 4 tail: m_applied = fn(param)
+                    ^^^^^^^^^
+  File "/root/src/h3/.venv/lib/python3.12/site-packages/torch/nn/modules/module.py", line 1370, in convert
+    return t.to(
+           ^^^^^
+  File "/root/src/h3/.venv/lib/python3.12/site-packages/habana_frameworks/torch/hpu/__init__.py", line 85, in _lazy_init
+    _hpu_C.init()
+RuntimeError: synStatus=8 [Device not found] Device acquire failed.
+
+[h3:r0]] respawn farm worker shard 5 on card 6 (attempt 1/8)
+[h3:r0]] dead worker shard 5 tail: m_applied = fn(param)
+                    ^^^^^^^^^
+  File "/root/src/h3/.venv/lib/python3.12/site-packages/torch/nn/modules/module.py", line 1370, in convert
+    return t.to(
+           ^^^^^
+  File "/root/src/h3/.venv/lib/python3.12/site-packages/habana_frameworks/torch/hpu/__init__.py", line 85, in _lazy_init
+    _hpu_C.init()
+RuntimeError: synStatus=8 [Device not found] Device acquire failed.
+
+[h3:r0]] respawn farm worker shard 6 on card 7 (attempt 1/8)
+[h3:r0]] dead worker shard 6 tail: m_applied = fn(param)
+                    ^^^^^^^^^
+  File "/root/src/h3/.venv/lib/python3.12/site-packages/torch/nn/modules/module.py", line 1370, in convert
+    return t.to(
+           ^^^^^
+  File "/root/src/h3/.venv/lib/python3.12/site-packages/habana_frameworks/torch/hpu/__init__.py", line 85, in _lazy_init
+    _hpu_C.init()
+RuntimeError: synStatus=8 [Device not found] Device acquire failed.
+
+[h3:r0]] respawn farm worker shard 7 (audio) on card 0 (attempt 2/8)
+[h3:r0]] dead worker shard 7 tail: m_applied = fn(param)
+                    ^^^^^^^^^
+  File "/root/src/h3/.venv/lib/python3.12/site-packages/torch/nn/modules/module.py", line 1370, in convert
+    return t.to(
+           ^^^^^
+  File "/root/src/h3/.venv/lib/python3.12/site-packages/habana_frameworks/torch/hpu/__init__.py", line 85, in _lazy_init
+    _hpu_C.init()
+RuntimeError: synStatus=8 [Device not found] Device acquire failed.
+
+[h3:r0]] respawn farm worker shard 0 on card 1 (attempt 2/8)
+[h3:r0]] dead worker shard 0 tail: m_applied = fn(param)
+                    ^^^^^^^^^
+  File "/root/src/h3/.venv/lib/python3.12/site-packages/torch/nn/modules/module.py", line 1370, in convert
+    return t.to(
+           ^^^^^
+  File "/root/src/h3/.venv/lib/python3.12/site-packages/habana_frameworks/torch/hpu/__init__.py", line 85, in _lazy_init
+    _hpu_C.init()
+RuntimeError: synStatus=8 [Device not found] Device acquire failed.
+
+[h3:r0]] respawn farm worker shard 1 on card 2 (attempt 2/8)
+[h3:r0]] dead worker shard 1 tail: m_applied = fn(param)
+                    ^^^^^^^^^
+  File "/root/src/h3/.venv/lib/python3.12/site-packages/torch/nn/modules/module.py", line 1370, in convert
+    return t.to(
+           ^^^^^
+  File "/root/src/h3/.venv/lib/python3.12/site-packages/habana_frameworks/torch/hpu/__init__.py", line 85, in _lazy_init
+    _hpu_C.init()
+RuntimeError: synStatus=8 [Device not found] Device acquire failed.
+
+[h3:r0]] respawn farm worker shard 2 on card 3 (attempt 2/8)
+[h3:r0]] dead worker shard 2 tail: m_applied = fn(param)
+                    ^^^^^^^^^
+  File "/root/src/h3/.venv/lib/python3.12/site-packages/torch/nn/modules/module.py", line 1370, in convert
+    return t.to(
+           ^^^^^
+  File "/root/src/h3/.venv/lib/python3.12/site-packages/habana_frameworks/torch/hpu/__init__.py", line 85, in _lazy_init
+    _hpu_C.init()
+RuntimeError: synStatus=8 [Device not found] Device acquire failed.
+
+[h3:r0]] respawn farm worker shard 3 on card 4 (attempt 2/8)
+[h3:r0]] dead worker shard 3 tail: m_applied = fn(param)
+                    ^^^^^^^^^
+  File "/root/src/h3/.venv/lib/python3.12/site-packages/torch/nn/modules/module.py", line 1370, in convert
+    return t.to(
+           ^^^^^
+  File "/root/src/h3/.venv/lib/python3.12/site-packages/habana_frameworks/torch/hpu/__init__.py", line 85, in _lazy_init
+    _hpu_C.init()
+RuntimeError: synStatus=8 [Device not found] Device acquire failed.
+
+[h3:r0]] respawn farm worker shard 4 on card 5 (attempt 2/8)
+[h3:r0]] dead worker shard 4 tail: m_applied = fn(param)
+                    ^^^^^^^^^
+  File "/root/src/h3/.venv/lib/python3.12/site-packages/torch/nn/modules/module.py", line 1370, in convert
+    return t.to(
+           ^^^^^
+  File "/root/src/h3/.venv/lib/python3.12/site-packages/habana_frameworks/torch/hpu/__init__.py", line 85, in _lazy_init
+    _hpu_C.init()
+RuntimeError: synStatus=8 [Device not found] Device acquire failed.
+
+[h3:r0]] respawn farm worker shard 5 on card 6 (attempt 2/8)
+[h3:r0]] dead worker shard 5 tail: m_applied = fn(param)
+                    ^^^^^^^^^
+  File "/root/src/h3/.venv/lib/python3.12/site-packages/torch/nn/modules/module.py", line 1370, in convert
+    return t.to(
+           ^^^^^
+  File "/root/src/h3/.venv/lib/python3.12/site-packages/habana_frameworks/torch/hpu/__init__.py", line 85, in _lazy_init
+    _hpu_C.init()
+RuntimeError: synStatus=8 [Device not found] Device acquire failed.
+
+[h3:r0]] respawn farm worker shard 6 on card 7 (attempt 2/8)
+[h3:r0]] dead worker shard 6 tail: m_applied = fn(param)
+                    ^^^^^^^^^
+  File "/root/src/h3/.venv/lib/python3.12/site-packages/torch/nn/modules/module.py", line 1370, in convert
+    return t.to(
+           ^^^^^
+  File "/root/src/h3/.venv/lib/python3.12/site-packages/habana_frameworks/torch/hpu/__init__.py", line 85, in _lazy_init
+    _hpu_C.init()
+RuntimeError: synStatus=8 [Device not found] Device acquire failed.
+
+[h3:r0]] respawn farm worker shard 7 (audio) on card 0 (attempt 3/8)
+[h3:r0]] dead worker shard 7 tail: m_applied = fn(param)
+                    ^^^^^^^^^
+  File "/root/src/h3/.venv/lib/python3.12/site-packages/torch/nn/modules/module.py", line 1370, in convert
+    return t.to(
+           ^^^^^
+  File "/root/src/h3/.venv/lib/python3.12/site-packages/habana_frameworks/torch/hpu/__init__.py", line 85, in _lazy_init
+    _hpu_C.init()
+RuntimeError: synStatus=8 [Device not found] Device acquire failed.
+
+[h3:r0]] respawn farm worker shard 0 on card 1 (attempt 3/8)
+[h3:r0]] dead worker shard 0 tail: m_applied = fn(param)
+                    ^^^^^^^^^
+  File "/root/src/h3/.venv/lib/python3.12/site-packages/torch/nn/modules/module.py", line 1370, in convert
+    return t.to(
+           ^^^^^
+  File "/root/src/h3/.venv/lib/python3.12/site-packages/habana_frameworks/torch/hpu/__init__.py", line 85, in _lazy_init
+    _hpu_C.init()
+RuntimeError: synStatus=8 [Device not found] Device acquire failed.
+
+[h3:r0]] respawn farm worker shard 1 on card 2 (attempt 3/8)
+[h3:r0]] dead worker shard 1 tail: m_applied = fn(param)
+                    ^^^^^^^^^
+  File "/root/src/h3/.venv/lib/python3.12/site-packages/torch/nn/modules/module.py", line 1370, in convert
+    return t.to(
+           ^^^^^
+  File "/root/src/h3/.venv/lib/python3.12/site-packages/habana_frameworks/torch/hpu/__init__.py", line 85, in _lazy_init
+    _hpu_C.init()
+RuntimeError: synStatus=8 [Device not found] Device acquire failed.
+
+[h3:r0]] respawn farm worker shard 2 on card 3 (attempt 3/8)
+[h3:r0]] dead worker shard 2 tail: m_applied = fn(param)
+                    ^^^^^^^^^
+  File "/root/src/h3/.venv/lib/python3.12/site-packages/torch/nn/modules/module.py", line 1370, in convert
+    return t.to(
+           ^^^^^
+  File "/root/src/h3/.venv/lib/python3.12/site-packages/habana_frameworks/torch/hpu/__init__.py", line 85, in _lazy_init
+    _hpu_C.init()
+RuntimeError: synStatus=8 [Device not found] Device acquire failed.
+
+[h3:r0]] respawn farm worker shard 3 on card 4 (attempt 3/8)
+[h3:r0]] dead worker shard 3 tail: m_applied = fn(param)
+                    ^^^^^^^^^
+  File "/root/src/h3/.venv/lib/python3.12/site-packages/torch/nn/modules/module.py", line 1370, in convert
+    return t.to(
+           ^^^^^
+  File "/root/src/h3/.venv/lib/python3.12/site-packages/habana_frameworks/torch/hpu/__init__.py", line 85, in _lazy_init
+    _hpu_C.init()
+RuntimeError: synStatus=8 [Device not found] Device acquire failed.
+
+[h3:r0]] respawn farm worker shard 4 on card 5 (attempt 3/8)
+[h3:r0]] dead worker shard 4 tail: m_applied = fn(param)
+                    ^^^^^^^^^
+  File "/root/src/h3/.venv/lib/python3.12/site-packages/torch/nn/modules/module.py", line 1370, in convert
+    return t.to(
+           ^^^^^
+  File "/root/src/h3/.venv/lib/python3.12/site-packages/habana_frameworks/torch/hpu/__init__.py", line 85, in _lazy_init
+    _hpu_C.init()
+RuntimeError: synStatus=8 [Device not found] Device acquire failed.
+
+[h3:r0]] respawn farm worker shard 5 on card 6 (attempt 3/8)
+[h3:r0]] dead worker shard 5 tail: m_applied = fn(param)
+                    ^^^^^^^^^
+  File "/root/src/h3/.venv/lib/python3.12/site-packages/torch/nn/modules/module.py", line 1370, in convert
+    return t.to(
+           ^^^^^
+  File "/root/src/h3/.venv/lib/python3.12/site-packages/habana_frameworks/torch/hpu/__init__.py", line 85, in _lazy_init
+    _hpu_C.init()
+RuntimeError: synStatus=8 [Device not found] Device acquire failed.
+
+[h3:r0]] respawn farm worker shard 6 on card 7 (attempt 3/8)
+[h3:r0]] dead worker shard 6 tail: m_applied = fn(param)
+                    ^^^^^^^^^
+  File "/root/src/h3/.venv/lib/python3.12/site-packages/torch/nn/modules/module.py", line 1370, in convert
+    return t.to(
+           ^^^^^
+  File "/root/src/h3/.venv/lib/python3.12/site-packages/habana_frameworks/torch/hpu/__init__.py", line 85, in _lazy_init
+    _hpu_C.init()
+RuntimeError: synStatus=8 [Device not found] Device acquire failed.
+
+[h3:r0]] respawn farm worker shard 7 (audio) on card 0 (attempt 4/8)
+[h3:r0]] dead worker shard 7 tail: m_applied = fn(param)
+                    ^^^^^^^^^
+  File "/root/src/h3/.venv/lib/python3.12/site-packages/torch/nn/modules/module.py", line 1370, in convert
+    return t.to(
+           ^^^^^
+  File "/root/src/h3/.venv/lib/python3.12/site-packages/habana_frameworks/torch/hpu/__init__.py", line 85, in _lazy_init
+    _hpu_C.init()
+RuntimeError: synStatus=8 [Device not found] Device acquire failed.
+
+[h3:r0]] respawn farm worker shard 0 on card 1 (attempt 4/8)
+[h3:r0]] dead worker shard 0 tail: m_applied = fn(param)
+                    ^^^^^^^^^
+  File "/root/src/h3/.venv/lib/python3.12/site-packages/torch/nn/modules/module.py", line 1370, in convert
+    return t.to(
+           ^^^^^
+  File "/root/src/h3/.venv/lib/python3.12/site-packages/habana_frameworks/torch/hpu/__init__.py", line 85, in _lazy_init
+    _hpu_C.init()
+RuntimeError: synStatus=8 [Device not found] Device acquire failed.
+
+[h3:r0]] respawn farm worker shard 1 on card 2 (attempt 4/8)
+[h3:r0]] dead worker shard 1 tail: m_applied = fn(param)
+                    ^^^^^^^^^
+  File "/root/src/h3/.venv/lib/python3.12/site-packages/torch/nn/modules/module.py", line 1370, in convert
+    return t.to(
+           ^^^^^
+  File "/root/src/h3/.venv/lib/python3.12/site-packages/habana_frameworks/torch/hpu/__init__.py", line 85, in _lazy_init
+    _hpu_C.init()
+RuntimeError: synStatus=8 [Device not found] Device acquire failed.
+
+[h3:r0]] respawn farm worker shard 2 on card 3 (attempt 4/8)
+[h3:r0]] dead worker shard 2 tail: m_applied = fn(param)
+                    ^^^^^^^^^
+  File "/root/src/h3/.venv/lib/python3.12/site-packages/torch/nn/modules/module.py", line 1370, in convert
+    return t.to(
+           ^^^^^
+  File "/root/src/h3/.venv/lib/python3.12/site-packages/habana_frameworks/torch/hpu/__init__.py", line 85, in _lazy_init
+    _hpu_C.init()
+RuntimeError: synStatus=8 [Device not found] Device acquire failed.
+
+[h3:r0]] respawn farm worker shard 3 on card 4 (attempt 4/8)
+[h3:r0]] dead worker shard 3 tail: m_applied = fn(param)
+                    ^^^^^^^^^
+  File "/root/src/h3/.venv/lib/python3.12/site-packages/torch/nn/modules/module.py", line 1370, in convert
+    return t.to(
+           ^^^^^
+  File "/root/src/h3/.venv/lib/python3.12/site-packages/habana_frameworks/torch/hpu/__init__.py", line 85, in _lazy_init
+    _hpu_C.init()
+RuntimeError: synStatus=8 [Device not found] Device acquire failed.
+
+[h3:r0]] respawn farm worker shard 4 on card 5 (attempt 4/8)
+[h3:r0]] dead worker shard 4 tail: m_applied = fn(param)
+                    ^^^^^^^^^
+  File "/root/src/h3/.venv/lib/python3.12/site-packages/torch/nn/modules/module.py", line 1370, in convert
+    return t.to(
+           ^^^^^
+  File "/root/src/h3/.venv/lib/python3.12/site-packages/habana_frameworks/torch/hpu/__init__.py", line 85, in _lazy_init
+    _hpu_C.init()
+RuntimeError: synStatus=8 [Device not found] Device acquire failed.
+
+[h3:r0]] respawn farm worker shard 5 on card 6 (attempt 4/8)
+[h3:r0]] dead worker shard 5 tail: m_applied = fn(param)
+                    ^^^^^^^^^
+  File "/root/src/h3/.venv/lib/python3.12/site-packages/torch/nn/modules/module.py", line 1370, in convert
+    return t.to(
+           ^^^^^
+  File "/root/src/h3/.venv/lib/python3.12/site-packages/habana_frameworks/torch/hpu/__init__.py", line 85, in _lazy_init
+    _hpu_C.init()
+RuntimeError: synStatus=8 [Device not found] Device acquire failed.
+
+[h3:r0]] respawn farm worker shard 6 on card 7 (attempt 4/8)
+[h3:r0]] dead worker shard 6 tail: m_applied = fn(param)
+                    ^^^^^^^^^
+  File "/root/src/h3/.venv/lib/python3.12/site-packages/torch/nn/modules/module.py", line 1370, in convert
+    return t.to(
+           ^^^^^
+  File "/root/src/h3/.venv/lib/python3.12/site-packages/habana_frameworks/torch/hpu/__init__.py", line 85, in _lazy_init
+    _hpu_C.init()
+RuntimeError: synStatus=8 [Device not found] Device acquire failed.
+
+[h3:r0]] respawn farm worker shard 7 (audio) on card 0 (attempt 5/8)
+[h3:r0]] dead worker shard 7 tail: m_applied = fn(param)
+                    ^^^^^^^^^
+  File "/root/src/h3/.venv/lib/python3.12/site-packages/torch/nn/modules/module.py", line 1370, in convert
+    return t.to(
+           ^^^^^
+  File "/root/src/h3/.venv/lib/python3.12/site-packages/habana_frameworks/torch/hpu/__init__.py", line 85, in _lazy_init
+    _hpu_C.init()
+RuntimeError: synStatus=8 [Device not found] Device acquire failed.
+
+[h3:r0]] respawn farm worker shard 0 on card 1 (attempt 5/8)
+[h3:r0]] dead worker shard 0 tail: m_applied = fn(param)
+                    ^^^^^^^^^
+  File "/root/src/h3/.venv/lib/python3.12/site-packages/torch/nn/modules/module.py", line 1370, in convert
+    return t.to(
+           ^^^^^
+  File "/root/src/h3/.venv/lib/python3.12/site-packages/habana_frameworks/torch/hpu/__init__.py", line 85, in _lazy_init
+    _hpu_C.init()
+RuntimeError: synStatus=8 [Device not found] Device acquire failed.
+
+[h3:r0]] respawn farm worker shard 1 on card 2 (attempt 5/8)
+[h3:r0]] dead worker shard 1 tail: m_applied = fn(param)
+                    ^^^^^^^^^
+  File "/root/src/h3/.venv/lib/python3.12/site-packages/torch/nn/modules/module.py", line 1370, in convert
+    return t.to(
+           ^^^^^
+  File "/root/src/h3/.venv/lib/python3.12/site-packages/habana_frameworks/torch/hpu/__init__.py", line 85, in _lazy_init
+    _hpu_C.init()
+RuntimeError: synStatus=8 [Device not found] Device acquire failed.
+
+[h3:r0]] respawn farm worker shard 2 on card 3 (attempt 5/8)
+[h3:r0]] dead worker shard 2 tail: m_applied = fn(param)
+                    ^^^^^^^^^
+  File "/root/src/h3/.venv/lib/python3.12/site-packages/torch/nn/modules/module.py", line 1370, in convert
+    return t.to(
+           ^^^^^
+  File "/root/src/h3/.venv/lib/python3.12/site-packages/habana_frameworks/torch/hpu/__init__.py", line 85, in _lazy_init
+    _hpu_C.init()
+RuntimeError: synStatus=8 [Device not found] Device acquire failed.
+
+[h3:r0]] respawn farm worker shard 3 on card 4 (attempt 5/8)
+[h3:r0]] dead worker shard 3 tail: m_applied = fn(param)
+                    ^^^^^^^^^
+  File "/root/src/h3/.venv/lib/python3.12/site-packages/torch/nn/modules/module.py", line 1370, in convert
+    return t.to(
+           ^^^^^
+  File "/root/src/h3/.venv/lib/python3.12/site-packages/habana_frameworks/torch/hpu/__init__.py", line 85, in _lazy_init
+    _hpu_C.init()
+RuntimeError: synStatus=8 [Device not found] Device acquire failed.
+
+[h3:r0]] respawn farm worker shard 4 on card 5 (attempt 5/8)
+[h3:r0]] dead worker shard 4 tail: m_applied = fn(param)
+                    ^^^^^^^^^
+  File "/root/src/h3/.venv/lib/python3.12/site-packages/torch/nn/modules/module.py", line 1370, in convert
+    return t.to(
+           ^^^^^
+  File "/root/src/h3/.venv/lib/python3.12/site-packages/habana_frameworks/torch/hpu/__init__.py", line 85, in _lazy_init
+    _hpu_C.init()
+RuntimeError: synStatus=8 [Device not found] Device acquire failed.
+
+[h3:r0]] respawn farm worker shard 5 on card 6 (attempt 5/8)
+[h3:r0]] dead worker shard 5 tail: m_applied = fn(param)
+                    ^^^^^^^^^
+  File "/root/src/h3/.venv/lib/python3.12/site-packages/torch/nn/modules/module.py", line 1370, in convert
+    return t.to(
+           ^^^^^
+  File "/root/src/h3/.venv/lib/python3.12/site-packages/habana_frameworks/torch/hpu/__init__.py", line 85, in _lazy_init
+    _hpu_C.init()
+RuntimeError: synStatus=8 [Device not found] Device acquire failed.
+
+[h3:r0]] respawn farm worker shard 6 on card 7 (attempt 5/8)
+[h3:r0]] dead worker shard 6 tail: m_applied = fn(param)
+                    ^^^^^^^^^
+  File "/root/src/h3/.venv/lib/python3.12/site-packages/torch/nn/modules/module.py", line 1370, in convert
+    return t.to(
+           ^^^^^
+  File "/root/src/h3/.venv/lib/python3.12/site-packages/habana_frameworks/torch/hpu/__init__.py", line 85, in _lazy_init
+    _hpu_C.init()
+RuntimeError: synStatus=8 [Device not found] Device acquire failed.
+
+[h3:r0]] respawn farm worker shard 7 (audio) on card 0 (attempt 6/8)
+[h3:r0]] dead worker shard 7 tail: m_applied = fn(param)
+                    ^^^^^^^^^
+  File "/root/src/h3/.venv/lib/python3.12/site-packages/torch/nn/modules/module.py", line 1370, in convert
+    return t.to(
+           ^^^^^
+  File "/root/src/h3/.venv/lib/python3.12/site-packages/habana_frameworks/torch/hpu/__init__.py", line 85, in _lazy_init
+    _hpu_C.init()
+RuntimeError: synStatus=8 [Device not found] Device acquire failed.
+
+[h3:r0]] respawn farm worker shard 0 on card 1 (attempt 6/8)
+[h3:r0]] dead worker shard 0 tail: m_applied = fn(param)
+                    ^^^^^^^^^
+  File "/root/src/h3/.venv/lib/python3.12/site-packages/torch/nn/modules/module.py", line 1370, in convert
+    return t.to(
+           ^^^^^
+  File "/root/src/h3/.venv/lib/python3.12/site-packages/habana_frameworks/torch/hpu/__init__.py", line 85, in _lazy_init
+    _hpu_C.init()
+RuntimeError: synStatus=8 [Device not found] Device acquire failed.
+
+[h3:r0]] respawn farm worker shard 1 on card 2 (attempt 6/8)
+[h3:r0]] dead worker shard 1 tail: m_applied = fn(param)
+                    ^^^^^^^^^
+  File "/root/src/h3/.venv/lib/python3.12/site-packages/torch/nn/modules/module.py", line 1370, in convert
+    return t.to(
+           ^^^^^
+  File "/root/src/h3/.venv/lib/python3.12/site-packages/habana_frameworks/torch/hpu/__init__.py", line 85, in _lazy_init
+    _hpu_C.init()
+RuntimeError: synStatus=8 [Device not found] Device acquire failed.
+
+[h3:r0]] respawn farm worker shard 2 on card 3 (attempt 6/8)
+[h3:r0]] dead worker shard 2 tail: m_applied = fn(param)
+                    ^^^^^^^^^
+  File "/root/src/h3/.venv/lib/python3.12/site-packages/torch/nn/modules/module.py", line 1370, in convert
+    return t.to(
+           ^^^^^
+  File "/root/src/h3/.venv/lib/python3.12/site-packages/habana_frameworks/torch/hpu/__init__.py", line 85, in _lazy_init
+    _hpu_C.init()
+RuntimeError: synStatus=8 [Device not found] Device acquire failed.
+
+[h3:r0]] respawn farm worker shard 3 on card 4 (attempt 6/8)
+[h3:r0]] dead worker shard 3 tail: m_applied = fn(param)
+                    ^^^^^^^^^
+  File "/root/src/h3/.venv/lib/python3.12/site-packages/torch/nn/modules/module.py", line 1370, in convert
+    return t.to(
+           ^^^^^
+  File "/root/src/h3/.venv/lib/python3.12/site-packages/habana_frameworks/torch/hpu/__init__.py", line 85, in _lazy_init
+    _hpu_C.init()
+RuntimeError: synStatus=8 [Device not found] Device acquire failed.
+
+[h3:r0]] respawn farm worker shard 4 on card 5 (attempt 6/8)
+[h3:r0]] dead worker shard 4 tail: m_applied = fn(param)
+                    ^^^^^^^^^
+  File "/root/src/h3/.venv/lib/python3.12/site-packages/torch/nn/modules/module.py", line 1370, in convert
+    return t.to(
+           ^^^^^
+  File "/root/src/h3/.venv/lib/python3.12/site-packages/habana_frameworks/torch/hpu/__init__.py", line 85, in _lazy_init
+    _hpu_C.init()
+RuntimeError: synStatus=8 [Device not found] Device acquire failed.
+
+[h3:r0]] respawn farm worker shard 5 on card 6 (attempt 6/8)
+[h3:r0]] dead worker shard 5 tail: m_applied = fn(param)
+                    ^^^^^^^^^
+  File "/root/src/h3/.venv/lib/python3.12/site-packages/torch/nn/modules/module.py", line 1370, in convert
+    return t.to(
+           ^^^^^
+  File "/root/src/h3/.venv/lib/python3.12/site-packages/habana_frameworks/torch/hpu/__init__.py", line 85, in _lazy_init
+    _hpu_C.init()
+RuntimeError: synStatus=8 [Device not found] Device acquire failed.
+
+[h3:r0]] respawn farm worker shard 6 on card 7 (attempt 6/8)
+[h3:r0]] dead worker shard 6 tail: m_applied = fn(param)
+                    ^^^^^^^^^
+  File "/root/src/h3/.venv/lib/python3.12/site-packages/torch/nn/modules/module.py", line 1370, in convert
+    return t.to(
+           ^^^^^
+  File "/root/src/h3/.venv/lib/python3.12/site-packages/habana_frameworks/torch/hpu/__init__.py", line 85, in _lazy_init
+    _hpu_C.init()
+RuntimeError: synStatus=8 [Device not found] Device acquire failed.
+
+[h3:r0]] respawn farm worker shard 7 (audio) on card 0 (attempt 7/8)
+[h3:r0]] dead worker shard 7 tail: m_applied = fn(param)
+                    ^^^^^^^^^
+  File "/root/src/h3/.venv/lib/python3.12/site-packages/torch/nn/modules/module.py", line 1370, in convert
+    return t.to(
+           ^^^^^
+  File "/root/src/h3/.venv/lib/python3.12/site-packages/habana_frameworks/torch/hpu/__init__.py", line 85, in _lazy_init
+    _hpu_C.init()
+RuntimeError: synStatus=8 [Device not found] Device acquire failed.
+
+[h3:r0]] respawn farm worker shard 0 on card 1 (attempt 7/8)
+[h3:r0]] dead worker shard 0 tail: m_applied = fn(param)
+                    ^^^^^^^^^
+  File "/root/src/h3/.venv/lib/python3.12/site-packages/torch/nn/modules/module.py", line 1370, in convert
+    return t.to(
+           ^^^^^
+  File "/root/src/h3/.venv/lib/python3.12/site-packages/habana_frameworks/torch/hpu/__init__.py", line 85, in _lazy_init
+    _hpu_C.init()
+RuntimeError: synStatus=8 [Device not found] Device acquire failed.
+
+[h3:r0]] respawn farm worker shard 1 on card 2 (attempt 7/8)
+[h3:r0]] dead worker shard 1 tail: m_applied = fn(param)
+                    ^^^^^^^^^
+  File "/root/src/h3/.venv/lib/python3.12/site-packages/torch/nn/modules/module.py", line 1370, in convert
+    return t.to(
+           ^^^^^
+  File "/root/src/h3/.venv/lib/python3.12/site-packages/habana_frameworks/torch/hpu/__init__.py", line 85, in _lazy_init
+    _hpu_C.init()
+RuntimeError: synStatus=8 [Device not found] Device acquire failed.
+
+Synapse detected a device critical error that requires a restart. Killing process in 5 seconds (hl: 1, rankID: 5) 09:11:58 [No progress error]
+Synapse detected a device critical error that requires a restart. Killing process in 5 seconds (hl: 0, rankID: 2) 09:11:58 [No progress error]
+Synapse detected a device critical error that requires a restart. Killing process in 5 seconds (hl: 5, rankID: 4) 09:11:58 [No progress error]
+Synapse detected a device critical error that requires a restart. Killing process in 5 seconds (hl: 2, rankID: 7) 09:11:58 [No progress error]
+Synapse detected a device critical error that requires a restart. Killing process in 5 seconds (hl: 4, rankID: 1) 09:11:58 [No progress error]
+Synapse detected a device critical error that requires a restart. Killing process in 5 seconds (hl: 7, rankID: 3) 09:11:59 [No progress error]
+Synapse detected a device critical error that requires a restart. Killing process in 5 seconds (hl: 6, rankID: 6) 09:11:59 [No progress error]
+[h3:r0]] respawn farm worker shard 2 on card 3 (attempt 7/8)
+[h3:r0]] dead worker shard 2 tail: m_applied = fn(param)
+                    ^^^^^^^^^
+  File "/root/src/h3/.venv/lib/python3.12/site-packages/torch/nn/modules/module.py", line 1370, in convert
+    return t.to(
+           ^^^^^
+  File "/root/src/h3/.venv/lib/python3.12/site-packages/habana_frameworks/torch/hpu/__init__.py", line 85, in _lazy_init
+    _hpu_C.init()
+RuntimeError: synStatus=8 [Device not found] Device acquire failed.
+
+[h3:r0]] respawn farm worker shard 3 on card 4 (attempt 7/8)
+[h3:r0]] dead worker shard 3 tail: m_applied = fn(param)
+                    ^^^^^^^^^
+  File "/root/src/h3/.venv/lib/python3.12/site-packages/torch/nn/modules/module.py", line 1370, in convert
+    return t.to(
+           ^^^^^
+  File "/root/src/h3/.venv/lib/python3.12/site-packages/habana_frameworks/torch/hpu/__init__.py", line 85, in _lazy_init
+    _hpu_C.init()
+RuntimeError: synStatus=8 [Device not found] Device acquire failed.
+
+[h3:r0]] respawn farm worker shard 4 on card 5 (attempt 7/8)
+[h3:r0]] dead worker shard 4 tail: m_applied = fn(param)
+                    ^^^^^^^^^
+  File "/root/src/h3/.venv/lib/python3.12/site-packages/torch/nn/modules/module.py", line 1370, in convert
+    return t.to(
+           ^^^^^
+  File "/root/src/h3/.venv/lib/python3.12/site-packages/habana_frameworks/torch/hpu/__init__.py", line 85, in _lazy_init
+    _hpu_C.init()
+RuntimeError: synStatus=8 [Device not found] Device acquire failed.
+
+[h3:r0]] respawn farm worker shard 5 on card 6 (attempt 7/8)
+[h3:r0]] dead worker shard 5 tail: m_applied = fn(param)
+                    ^^^^^^^^^
+  File "/root/src/h3/.venv/lib/python3.12/site-packages/torch/nn/modules/module.py", line 1370, in convert
+    return t.to(
+           ^^^^^
+  File "/root/src/h3/.venv/lib/python3.12/site-packages/habana_frameworks/torch/hpu/__init__.py", line 85, in _lazy_init
+    _hpu_C.init()
+RuntimeError: synStatus=8 [Device not found] Device acquire failed.
+
+[h3:r0]] respawn farm worker shard 6 on card 7 (attempt 7/8)
+[h3:r0]] dead worker shard 6 tail: m_applied = fn(param)
+                    ^^^^^^^^^
+  File "/root/src/h3/.venv/lib/python3.12/site-packages/torch/nn/modules/module.py", line 1370, in convert
+    return t.to(
+           ^^^^^
+  File "/root/src/h3/.venv/lib/python3.12/site-packages/habana_frameworks/torch/hpu/__init__.py", line 85, in _lazy_init
+    _hpu_C.init()
+RuntimeError: synStatus=8 [Device not found] Device acquire failed.
+
+[h3:r0]] respawn farm worker shard 7 (audio) on card 0 (attempt 8/8)
+[h3:r0]] dead worker shard 7 tail: m_applied = fn(param)
+                    ^^^^^^^^^
+  File "/root/src/h3/.venv/lib/python3.12/site-packages/torch/nn/modules/module.py", line 1370, in convert
+    return t.to(
+           ^^^^^
+  File "/root/src/h3/.venv/lib/python3.12/site-packages/habana_frameworks/torch/hpu/__init__.py", line 85, in _lazy_init
+    _hpu_C.init()
+RuntimeError: synStatus=8 [Device not found] Device acquire failed.
+
+[h3:r0]] respawn farm worker shard 0 on card 1 (attempt 8/8)
+[h3:r0]] dead worker shard 0 tail: m_applied = fn(param)
+                    ^^^^^^^^^
+  File "/root/src/h3/.venv/lib/python3.12/site-packages/torch/nn/modules/module.py", line 1370, in convert
+    return t.to(
+           ^^^^^
+  File "/root/src/h3/.venv/lib/python3.12/site-packages/habana_frameworks/torch/hpu/__init__.py", line 85, in _lazy_init
+    _hpu_C.init()
+RuntimeError: synStatus=8 [Device not found] Device acquire failed.
+
+[h3:r0]] respawn farm worker shard 1 on card 2 (attempt 8/8)
+[h3:r0]] dead worker shard 1 tail: m_applied = fn(param)
+                    ^^^^^^^^^
+  File "/root/src/h3/.venv/lib/python3.12/site-packages/torch/nn/modules/module.py", line 1370, in convert
+    return t.to(
+           ^^^^^
+  File "/root/src/h3/.venv/lib/python3.12/site-packages/habana_frameworks/torch/hpu/__init__.py", line 85, in _lazy_init
+    _hpu_C.init()
+RuntimeError: synStatus=8 [Device not found] Device acquire failed.
+
+[h3:r0]] farm worker rc=1: 
+[h3:r0]] farm worker rc=1: 
+[h3:r0]] farm worker rc=1: 
+[h3:r0]] farm worker rc=1: 
+[h3:r0]] farm worker rc=1: 
+[h3:r0]] farm worker rc=1: 
+[h3:r0]] farm worker rc=1: 
+[h3:r0]] farm worker rc=1: 
+[h3:r0]] farm worker rc=1: 
+[h3:r0]] farm worker rc=1: 
+[h3:r0]] farm worker rc=1: 
+[h3:r0]] farm worker rc=1: 
+[h3:r0]] farm worker rc=1: 
+[h3:r0]] farm worker rc=1: 
+[h3:r0]] farm worker rc=1: 
+[h3:r0]] farm worker rc=1: 
+[h3:r0]] farm worker rc=1: 
+[h3:r0]] farm worker rc=1: 
+[h3:r0]] farm worker rc=1: 
+[h3:r0]] farm worker rc=1: 
+[h3:r0]] farm worker rc=1: 
+[h3:r0]] farm worker rc=1: 
+[h3:r0]] farm worker rc=1: 
+[h3:r0]] farm worker rc=1: 
+[h3:r0]] farm worker rc=1: 
+[h3:r0]] farm worker rc=1: 
+[h3:r0]] farm worker rc=1: 
+[h3:r0]] farm worker rc=1: 
+[h3:r0]] farm worker rc=1: 
+[h3:r0]] farm worker rc=1: 
+[h3:r0]] farm worker rc=1: 
+[h3:r0]] farm worker rc=1: 
+[h3:r0]] farm worker rc=1: 
+[h3:r0]] farm worker rc=1: 
+[h3:r0]] farm worker rc=1: 
+[h3:r0]] farm worker rc=1: 
+[h3:r0]] farm worker rc=1: 
+[h3:r0]] farm worker rc=1: 
+[h3:r0]] farm worker rc=1: 
+[h3:r0]] farm worker rc=1: 
+[h3:r0]] farm worker rc=1: 
+[h3:r0]] farm worker rc=1: 
+[h3:r0]] farm worker rc=1: 
+[h3:r0]] farm worker rc=1: 
+[h3:r0]] farm worker rc=1: 
+[h3:r0]] farm worker rc=1: 
+[h3:r0]] farm worker rc=1: 
+[h3:r0]] farm worker rc=1: 
+[h3:r0]] farm worker rc=1: 
+[h3:r0]] farm worker rc=1: 
+[h3:r0]] farm worker rc=1: 
+[h3:r0]] farm worker rc=1: 
+[h3:r0]] farm worker rc=1: 
+[h3:r0]] farm worker rc=1: 
+[h3:r0]] farm worker rc=1: 
+[h3:r0]] farm worker rc=1: 
+[h3:r0]] farm worker rc=1: 
+[h3:r0]] farm worker rc=1: 
+[h3:r0]] farm worker rc=1: 
+[h3:r0]] farm worker rc=None: 
+[h3:r0]] farm worker rc=None: 
+[h3:r0]] farm worker rc=None: 
+[h3:r0]] farm worker rc=None: 
+[h3:r0]] all 8 shard markers present (804.3s wait)
+[h3:r0]] frames already on disk from sharded decode: ../out/t2va_h3_req0_frames
+[h3:r0]] audio adopted from decode subprocess: ../out/t2va_h3_req0.wav
+[h3:r0]] mux: /usr/bin/ffmpeg -y -framerate 24 -i ../out/t2va_h3_req0_frames/frame_%06d.png -i ../out/t2va_h3_req0.wav -filter_complex [0:v]format=yuv420p[v];[1:a]aresample=48000[a] -map [v] -map [a] -c:v libx264 -preset slow -crf 17 -c:a aac -b:a 192k -movflags +faststart -shortest ../out/t2va_h3_req0.mp4
+[h3:r0]] wrote ../out/t2va_h3_req0.mp4
+[h3:r0]] timings: {"generate": 11.99, "export": 804.26, "mux": 2.32}
+[h3:r0]] === serve request 2/2 ===
+[h3:r0]:block] > SequentialPipelineBlocks
+  [h3:r0]:block] > MiniMaxH3TextEncoderStep
+[h3:r0]] embed cache hit: /tmp/h3_ecache2/5b883f3cd3e64a283ea1ea2185f3de5faa8e0f82ff4bd358f2aa945d732cdca2.pt
+  [h3:r0]:block] < MiniMaxH3TextEncoderStep: 0.016s
+  [h3:r0]:block] > MiniMaxH3NoKeyframeAnchorsStep
+  [h3:r0]:block] < MiniMaxH3NoKeyframeAnchorsStep: 0.000s
+  [h3:r0]:block] > MiniMaxH3PrepareLayoutStep
+  [h3:r0]:block] < MiniMaxH3PrepareLayoutStep: 0.005s
+  [h3:r0]:block] > MiniMaxH3PrepareLatentsStep
+Synapse detected a device critical error that requires a restart. Killing process in 5 seconds (hl: 3, rankID: 0) 09:15:49 [HCL error]
+[h3] CP timing merge (world=2):
+  phase                 r0        r1   (max)
+  generate            4.23    101.93   101.93
+  export             52.01       0.0   52.01
+  mux                 1.73       0.0   1.73
+[h3] CP block totals (summed per class, generate run; host-side enqueue cost):
+  MiniMaxH3AfterDenoiseStep                      0.00     0.00
+  MiniMaxH3DenoiseStep                           2.79     2.78
+  MiniMaxH3LoopDenoiser                          2.78     2.77
+  MiniMaxH3LoopSchedulerStep                     0.01     0.00
+  MiniMaxH3NoKeyframeAnchorsStep                 0.00     0.00
+  MiniMaxH3PrepareLatentsStep                    0.03    97.91
+  MiniMaxH3PrepareLayoutStep                     0.01     0.00
+  MiniMaxH3SetTimestepsStep                      0.00     0.00
+  MiniMaxH3TextEncoderStep                       0.02     0.01
+  SequentialPipelineBlocks                       4.23   101.93
+  _H3AudioDecodeStep                             0.00     0.00
+  _H3VideoDecodeStep                             1.38     1.23
+[h3] CP FAILED: ['h3-cp-rank0', 'h3-cp-rank1', 'h3-cp-rank2', 'h3-cp-rank3', 'h3-cp-rank4', 'h3-cp-rank5', 'h3-cp-rank6', 'h3-cp-rank7'] (exit codes {'h3-cp-rank0': -9, 'h3-cp-rank1': -9, 'h3-cp-rank2': -9, 'h3-cp-rank3': -9, 'h3-cp-rank4': -9, 'h3-cp-rank5': -9, 'h3-cp-rank6': -9, 'h3-cp-rank7': -9})
+/root/.local/share/uv/python/cpython-3.12.13-linux-x86_64-gnu/lib/python3.12/multiprocessing/resource_tracker.py:279: UserWarning: resource_tracker: There appear to be 8 leaked semaphore objects to clean up at shutdown
+  warnings.warn('resource_tracker: There appear to be %d '

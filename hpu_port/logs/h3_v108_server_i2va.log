@@ -1,0 +1,226 @@
+launch_h3.sh: GC plugin missing in /usr/lib/habanatools/habana_plugins; using /opt/habanalabs/habana_plugins
+[h3] CP: seq 15911 padded by 1 text rows to 15912 (divisible by 2)
+[h3] plan: {
+  "workflow": "t2va",
+  "bucket_res": "r480",
+  "canvas": [
+    864,
+    480
+  ],
+  "duration_frames": 124,
+  "T_lat": 37,
+  "audio_latents": 207,
+  "rows_per_frame": 405,
+  "fl2va_extra_rows": 0,
+  "text_budget": 513,
+  "expected_packed_seq": 15912,
+  "steps": 5,
+  "seed": 42,
+  "device_map": {
+    "te": "cpu",
+    "dit": "hpu",
+    "vae": "hpu",
+    "audio": "hpu"
+  },
+  "cp": 2,
+  "cp_seq_base": 15911,
+  "cp_seq_pad": 1
+}
+[h3] server: HTTP API on :8032 (spool ../out/.server)
+[h3:r1]] workdir: /root/src/h3/hpu_port/workdir/t2va
+Loading weights:   0%|          | 0/1058 [00:00<?, ?it/s][h3:r0]] workdir: /root/src/h3/hpu_port/workdir/t2va
+Loading weights:   0%|          | 0/1058 [00:00<?, ?it/s]Loading weights:  32%|███▏      | 343/1058 [00:00<00:00, 3415.95it/s]Loading weights:  31%|███       | 326/1058 [00:00<00:00, 3254.70it/s]Loading weights:  65%|██████▍   | 685/1058 [00:00<00:00, 3121.77it/s]Loading weights:  62%|██████▏   | 652/1058 [00:00<00:00, 3041.43it/s]Loading weights:  94%|█████████▍| 999/1058 [00:00<00:00, 3126.11it/s]Loading weights:  91%|█████████ | 958/1058 [00:00<00:00, 3014.57it/s]Loading weights: 100%|██████████| 1058/1058 [00:00<00:00, 3152.07it/s]
+Loading weights: 100%|██████████| 1058/1058 [00:00<00:00, 3049.78it/s]
+Loading checkpoint shards:   0%|          | 0/14 [00:00<?, ?it/s]Loading checkpoint shards:  29%|██▊       | 4/14 [00:00<00:00, 32.20it/s]Loading checkpoint shards:  57%|█████▋    | 8/14 [00:00<00:00, 27.67it/s]Loading checkpoint shards:  79%|███████▊  | 11/14 [00:00<00:00, 27.99it/s]Loading checkpoint shards: 100%|██████████| 14/14 [00:00<00:00, 27.04it/s]Loading checkpoint shards: 100%|██████████| 14/14 [00:00<00:00, 27.65it/s]
+Loading checkpoint shards:   0%|          | 0/3 [00:00<?, ?it/s]Loading checkpoint shards: 100%|██████████| 3/3 [00:00<00:00, 30.70it/s]
+/root/src/h3/.venv/lib/python3.12/site-packages/torch/nn/utils/weight_norm.py:144: FutureWarning: `torch.nn.utils.weight_norm` is deprecated in favor of `torch.nn.utils.parametrizations.weight_norm`.
+  WeightNorm.apply(module, name, dim)
+/root/src/h3/.venv/lib/python3.12/site-packages/torch/nn/utils/weight_norm.py:144: FutureWarning: `torch.nn.utils.weight_norm` is deprecated in favor of `torch.nn.utils.parametrizations.weight_norm`.
+  WeightNorm.apply(module, name, dim)
+============================= HPU PT BRIDGE CONFIGURATION ON RANK = 0 ============= 
+ PT_HPU_LAZY_MODE = 1
+ PT_HPU_RECIPE_CACHE_CONFIG = /root/src/h3/hpu_port/.recipe_cache_rank0,false,8192,false
+ PT_HPU_MAX_COMPOUND_OP_SIZE = 9223372036854775807
+ PT_HPU_LAZY_ACC_PAR_MODE = 1
+ PT_HPU_ENABLE_REFINE_DYNAMIC_SHAPES = 0
+ PT_HPU_EAGER_PIPELINE_ENABLE = 1
+ PT_HPU_EAGER_COLLECTIVE_PIPELINE_ENABLE = 1
+ PT_HPU_ENABLE_LAZY_COLLECTIVES = 0
+---------------------------: System Configuration :---------------------------
+Num CPU Cores : 128
+CPU RAM       : 125 GB
+------------------------------------------------------------------------------
+[h3:r1]] placed transformer on hpu
+[h3:r1]] placed vae on hpu
+[h3:r1]] placed audio_vae on hpu
+[h3:r1]] CP device map: dit/vae/audio on hpu (replicated); te on cpu
+[h3:r1]] attention backend: habana_fused_sdpa (DiT + video VAE)
+[h3:r1]] rope cache installed on transformer.rope
+[h3:r1]] CP: token refiner kept replicated (2 processors un-stamped; refiner runs pre-packing on the full text run)
+[h3:r1]] context parallelism ON: ulysses=2 backend=hccl mesh=DeviceMesh((ring=1, ulysses=2), 'hpu', stride=(2, 1)) (seq sharded inside diffusers via the model's _cp_plan)
+[h3:r1]] CP: HPU graphs default OFF under CP (collectives inside graph capture are untested; H3_CP_GRAPHS=1 to force)
+[h3:r1]] graphs OFF: eager lazy mode with post-call mark_step
+[h3:r1]] per-block mark_step installed on 52 blocks
+[h3:r1]] per-block mark_step installed on 36 blocks
+[h3:r1]] VAE decoder per-block mark_step installed on 36 blocks
+[h3:r1]] per-block mark_step installed on 6 blocks
+[h3:r1]] VAE encoder per-block mark_step installed on 6 blocks
+Attention backends are an experimental feature and the API may be subject to change.
+Attention backends are an experimental feature and the API may be subject to change.
+[h3:r1]] server: dual-pipe ready (t2va + fl2va; shared weights)
+[h3:r1]] block logging installed (12 block classes; H3_LOG_BLOCKS=0 to disable)
+`enable_parallelism` is an experimental feature. The API may change in the future and breaking changes may be introduced at any time without warning.
+[h3:r0]] placed transformer on hpu
+[h3:r0]] placed vae on hpu
+[h3:r0]] placed audio_vae on hpu
+[h3:r0]] CP device map: dit/vae/audio on hpu (replicated); te on cpu
+[h3:r0]] attention backend: habana_fused_sdpa (DiT + video VAE)
+[h3:r0]] rope cache installed on transformer.rope
+[h3:r0]] CP: token refiner kept replicated (2 processors un-stamped; refiner runs pre-packing on the full text run)
+[h3:r0]] context parallelism ON: ulysses=2 backend=hccl mesh=DeviceMesh((ring=1, ulysses=2), 'hpu', stride=(2, 1)) (seq sharded inside diffusers via the model's _cp_plan)
+[h3:r0]] CP: HPU graphs default OFF under CP (collectives inside graph capture are untested; H3_CP_GRAPHS=1 to force)
+[h3:r0]] graphs OFF: eager lazy mode with post-call mark_step
+[h3:r0]] per-block mark_step installed on 52 blocks
+[h3:r0]] per-block mark_step installed on 36 blocks
+[h3:r0]] VAE decoder per-block mark_step installed on 36 blocks
+[h3:r0]] per-block mark_step installed on 6 blocks
+[h3:r0]] VAE encoder per-block mark_step installed on 6 blocks
+[h3:r0]] server: dual-pipe ready (t2va + fl2va; shared weights)
+[h3:r0]] block logging installed (12 block classes; H3_LOG_BLOCKS=0 to disable)
+[h3:r0]] server: wf fl2va anchors 1 frames 124 (T_lat 37, A 207, budget 512+0, seq 16316)
+[h3:r0]] server: claimed job_a6a3eb803d (seq 1)
+[h3:r0]] === server request job_a6a3eb803d (fl2va) ===
+[h3:r0]:block] > SequentialPipelineBlocks
+[h3:r1]:r1]] server: received claim job_a6a3eb803d (seq 1)
+[h3:r1]] server: wf fl2va anchors 1 frames 124 (T_lat 37, A 207, budget 512+0, seq 16316)
+[h3:r1]] === server request job_a6a3eb803d (fl2va) ===
+[h3:r1]:block] > SequentialPipelineBlocks
+[h3:r1]] embed cache hit: /tmp/h3_ecache2/10ad36e9e5caba5612318c9a8a91c78b0346de98d39ec97fc57ef0c2b5240979.pt
+[h3:r1]] TE broadcast: received embeds from rank0 (waited 238.0s)
+  [h3:r0]:block] > MiniMaxH3PrepareLayoutStep
+  [h3:r0]:block] < MiniMaxH3PrepareLayoutStep: 0.027s
+  [h3:r0]:block] > MiniMaxH3PrepareLatentsStep
+  [h3:r1]:block] > MiniMaxH3PrepareLayoutStep
+  [h3:r1]:block] < MiniMaxH3PrepareLayoutStep: 0.012s
+  [h3:r1]:block] > MiniMaxH3PrepareLatentsStep
+[h3:r0]] CP noise determinism: video noise rows identical on all 2 ranks
+[h3:r0]] CP noise determinism: audio noise rows identical on all 2 ranks
+  [h3:r0]:block] < MiniMaxH3PrepareLatentsStep: 2.931s
+  [h3:r1]:block] < MiniMaxH3PrepareLatentsStep: 0.270s
+  [h3:r0]:block] > MiniMaxH3SetTimestepsStep
+  [h3:r1]:block] > MiniMaxH3SetTimestepsStep
+  [h3:r0]:block] < MiniMaxH3SetTimestepsStep: 0.022s
+  [h3:r0]:block] > MiniMaxH3DenoiseStep
+  0%|          | 0/1 [00:00<?, ?it/s]    [h3:r0]:block] > MiniMaxH3LoopDenoiser i=0 t=0.0000
+  [h3:r1]:block] < MiniMaxH3SetTimestepsStep: 0.024s
+  [h3:r1]:block] > MiniMaxH3DenoiseStep
+  0%|          | 0/1 [00:00<?, ?it/s]    [h3:r1]:block] > MiniMaxH3LoopDenoiser i=0 t=0.0000
+    [h3:r1]:block] < MiniMaxH3LoopDenoiser i=0 t=0.0000: 6.945s
+    [h3:r1]:block] > MiniMaxH3LoopSchedulerStep i=0 t=0.0000
+    [h3:r0]:block] < MiniMaxH3LoopDenoiser i=0 t=0.0000: 6.951s
+    [h3:r0]:block] > MiniMaxH3LoopSchedulerStep i=0 t=0.0000
+    [h3:r1]:block] < MiniMaxH3LoopSchedulerStep i=0 t=0.0000: 0.698s
+100%|██████████| 1/1 [00:07<00:00,  7.64s/it]100%|██████████| 1/1 [00:07<00:00,  7.64s/it]
+  [h3:r1]:block] < MiniMaxH3DenoiseStep: 7.647s
+  [h3:r1]:block] > MiniMaxH3AfterDenoiseStep
+  [h3:r1]:block] < MiniMaxH3AfterDenoiseStep: 0.004s
+  [h3:r1]:block] > _H3VideoDecodeStep
+    [h3:r0]:block] < MiniMaxH3LoopSchedulerStep i=0 t=0.0000: 0.705s
+100%|██████████| 1/1 [00:07<00:00,  7.66s/it]100%|██████████| 1/1 [00:07<00:00,  7.66s/it]
+  [h3:r0]:block] < MiniMaxH3DenoiseStep: 7.661s
+  [h3:r0]:block] > MiniMaxH3AfterDenoiseStep
+  [h3:r0]:block] < MiniMaxH3AfterDenoiseStep: 0.003s
+  [h3:r0]:block] > _H3VideoDecodeStep
+[h3:r1]:r1]] fused decode: 51 frames, clip 5.6s, wall 13.9s
+[h3:r1]:r1]] sharded audio decode: wav -> ../out/job_a6a3eb803d.wav
+  [h3:r1]:block] < _H3VideoDecodeStep: 16.413s
+  [h3:r1]:block] > _H3AudioDecodeStep
+  [h3:r1]:block] < _H3AudioDecodeStep: 0.000s
+[h3:r1]:block] < SequentialPipelineBlocks: 266.759s
+[h3:r1]] pipeline complete: device synced before export (0.00s)
+[h3:r1]] rank 1: rank0 owns export; nothing to write
+[h3:r0]:r0]] fused decode: 73 frames, clip 7.7s, wall 19.4s
+  [h3:r0]:block] < _H3VideoDecodeStep: 19.377s
+  [h3:r0]:block] > _H3AudioDecodeStep
+  [h3:r0]:block] < _H3AudioDecodeStep: 0.000s
+[h3:r0]:block] < SequentialPipelineBlocks: 270.707s
+[h3:r0]] pipeline complete: device synced before export (0.00s)
+[h3:r0]] all 2 shard markers present (0.0s wait)
+[h3:r0]] frames already on disk from sharded decode: ../out/job_a6a3eb803d_frames
+[h3:r0]] audio adopted from decode subprocess: ../out/job_a6a3eb803d.wav
+[h3:r0]] mux: /usr/bin/ffmpeg -y -framerate 24 -i ../out/job_a6a3eb803d_frames/frame_%06d.png -i ../out/job_a6a3eb803d.wav -filter_complex [0:v]format=yuv420p[v];[1:a]aresample=48000[a] -map [v] -map [a] -c:v libx264 -preset slow -crf 17 -c:a aac -b:a 192k -movflags +faststart -shortest ../out/job_a6a3eb803d.mp4
+[h3:r0]] wrote ../out/job_a6a3eb803d.mp4
+[h3:r0]] timings: {"generate": 270.71, "export": 0.0, "mux": 2.42}
+[h3:r0]] server: wf t2va anchors 0 frames 124 (T_lat 37, A 207, budget 512+1, seq 15912)
+[h3:r0]] server: claimed job_9a5282b0d6 (seq 2)
+[h3:r0]] === server request job_9a5282b0d6 (t2va) ===
+[h3:r0]:block] > SequentialPipelineBlocks
+  [h3:r0]:block] > MiniMaxH3TextEncoderStep
+[h3:r0]] embed cache hit: /tmp/h3_ecache2/450d436c58034ca81efdcd0225e439b7182c120c8fc7de4a903fb5235fa1df8d.pt
+  [h3:r0]:block] < MiniMaxH3TextEncoderStep: 0.011s
+  [h3:r0]:block] > MiniMaxH3NoKeyframeAnchorsStep
+  [h3:r0]:block] < MiniMaxH3NoKeyframeAnchorsStep: 0.000s
+  [h3:r0]:block] > MiniMaxH3PrepareLayoutStep
+  [h3:r0]:block] < MiniMaxH3PrepareLayoutStep: 0.017s
+  [h3:r0]:block] > MiniMaxH3PrepareLatentsStep
+[h3:r1]] timings: {"generate": 266.76, "export": 0.0, "mux": 0.0}
+[h3:r1]:r1]] server: received claim job_9a5282b0d6 (seq 2)
+[h3:r1]] server: wf t2va anchors 0 frames 124 (T_lat 37, A 207, budget 512+1, seq 15912)
+[h3:r1]] === server request job_9a5282b0d6 (t2va) ===
+[h3:r1]] serve sync: rank export done (0.0s wait)
+[h3:r1]:block] > SequentialPipelineBlocks
+  [h3:r1]:block] > MiniMaxH3TextEncoderStep
+[h3:r1]] embed cache hit: /tmp/h3_ecache2/450d436c58034ca81efdcd0225e439b7182c120c8fc7de4a903fb5235fa1df8d.pt
+  [h3:r1]:block] < MiniMaxH3TextEncoderStep: 0.009s
+  [h3:r1]:block] > MiniMaxH3NoKeyframeAnchorsStep
+  [h3:r1]:block] < MiniMaxH3NoKeyframeAnchorsStep: 0.000s
+  [h3:r1]:block] > MiniMaxH3PrepareLayoutStep
+  [h3:r1]:block] < MiniMaxH3PrepareLayoutStep: 0.005s
+  [h3:r1]:block] > MiniMaxH3PrepareLatentsStep
+[h3:r0]] CP noise determinism: video noise rows identical on all 2 ranks
+[h3:r0]] CP noise determinism: audio noise rows identical on all 2 ranks
+  [h3:r1]:block] < MiniMaxH3PrepareLatentsStep: 0.035s
+  [h3:r1]:block] > MiniMaxH3SetTimestepsStep
+  [h3:r0]:block] < MiniMaxH3PrepareLatentsStep: 0.635s
+  [h3:r0]:block] > MiniMaxH3SetTimestepsStep
+  [h3:r1]:block] < MiniMaxH3SetTimestepsStep: 0.014s
+  [h3:r1]:block] > MiniMaxH3DenoiseStep
+  [h3:r0]:block] < MiniMaxH3SetTimestepsStep: 0.013s
+  [h3:r0]:block] > MiniMaxH3DenoiseStep
+  0%|          | 0/1 [00:00<?, ?it/s]    [h3:r1]:block] > MiniMaxH3LoopDenoiser i=0 t=0.0000
+  0%|          | 0/1 [00:00<?, ?it/s]    [h3:r0]:block] > MiniMaxH3LoopDenoiser i=0 t=0.0000
+    [h3:r1]:block] < MiniMaxH3LoopDenoiser i=0 t=0.0000: 2.804s
+    [h3:r0]:block] < MiniMaxH3LoopDenoiser i=0 t=0.0000: 2.804s
+    [h3:r1]:block] > MiniMaxH3LoopSchedulerStep i=0 t=0.0000
+    [h3:r0]:block] > MiniMaxH3LoopSchedulerStep i=0 t=0.0000
+    [h3:r1]:block] < MiniMaxH3LoopSchedulerStep i=0 t=0.0000: 0.004s
+    [h3:r0]:block] < MiniMaxH3LoopSchedulerStep i=0 t=0.0000: 0.004s
+100%|██████████| 1/1 [00:02<00:00,  2.81s/it]100%|██████████| 1/1 [00:02<00:00,  2.81s/it]100%|██████████| 1/1 [00:02<00:00,  2.81s/it]
+100%|██████████| 1/1 [00:02<00:00,  2.81s/it]
+  [h3:r1]:block] < MiniMaxH3DenoiseStep: 2.811s
+  [h3:r0]:block] < MiniMaxH3DenoiseStep: 2.810s
+  [h3:r1]:block] > MiniMaxH3AfterDenoiseStep
+  [h3:r0]:block] > MiniMaxH3AfterDenoiseStep
+  [h3:r1]:block] < MiniMaxH3AfterDenoiseStep: 0.001s
+  [h3:r0]:block] < MiniMaxH3AfterDenoiseStep: 0.001s
+  [h3:r1]:block] > _H3VideoDecodeStep
+  [h3:r0]:block] > _H3VideoDecodeStep
+[h3:r1]:r1]] fused decode: 51 frames, clip 5.6s, wall 14.8s
+[h3:r1]:r1]] sharded audio decode: wav -> ../out/job_9a5282b0d6.wav
+  [h3:r1]:block] < _H3VideoDecodeStep: 17.052s
+  [h3:r1]:block] > _H3AudioDecodeStep
+  [h3:r1]:block] < _H3AudioDecodeStep: 0.000s
+[h3:r1]:block] < SequentialPipelineBlocks: 19.929s
+[h3:r1]] pipeline complete: device synced before export (0.00s)
+[h3:r1]] rank 1: rank0 owns export; nothing to write
+[h3:r0]:r0]] fused decode: 73 frames, clip 7.5s, wall 20.9s
+  [h3:r0]:block] < _H3VideoDecodeStep: 20.866s
+  [h3:r0]:block] > _H3AudioDecodeStep
+  [h3:r0]:block] < _H3AudioDecodeStep: 0.000s
+[h3:r0]:block] < SequentialPipelineBlocks: 24.354s
+[h3:r0]] pipeline complete: device synced before export (0.00s)
+[h3:r0]] all 2 shard markers present (0.0s wait)
+[h3:r0]] frames already on disk from sharded decode: ../out/job_9a5282b0d6_frames
+[h3:r0]] audio adopted from decode subprocess: ../out/job_9a5282b0d6.wav
+/root/.local/share/uv/python/cpython-3.12.13-linux-x86_64-gnu/lib/python3.12/multiprocessing/resource_tracker.py:279: UserWarning: resource_tracker: There appear to be 2 leaked semaphore objects to clean up at shutdown
+  warnings.warn('resource_tracker: There appear to be %d '

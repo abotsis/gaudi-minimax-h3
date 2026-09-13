@@ -1,0 +1,215 @@
+launch_h3.sh: GC plugin missing in /usr/lib/habanatools/habana_plugins; using /opt/habanalabs/habana_plugins
+[h3] CP: seq 15911 padded by 1 text rows to 15912 (divisible by 2)
+[h3] plan: {
+  "workflow": "t2va",
+  "bucket_res": "r480",
+  "canvas": [
+    864,
+    480
+  ],
+  "duration_frames": 124,
+  "T_lat": 37,
+  "audio_latents": 207,
+  "rows_per_frame": 405,
+  "fl2va_extra_rows": 0,
+  "text_budget": 513,
+  "expected_packed_seq": 15912,
+  "steps": 2,
+  "seed": 42,
+  "device_map": {
+    "te": "cpu",
+    "dit": "hpu",
+    "vae": "hpu",
+    "audio": "hpu"
+  },
+  "cp": 2,
+  "cp_seq_base": 15911,
+  "cp_seq_pad": 1
+}
+[h3:r1]] workdir: /root/src/h3/hpu_port/workdir/t2va
+Loading weights:   0%|          | 0/1058 [00:00<?, ?it/s][h3:r0]] workdir: /root/src/h3/hpu_port/workdir/t2va
+Loading weights:   0%|          | 0/1058 [00:00<?, ?it/s]Loading weights:  35%|███▌      | 375/1058 [00:00<00:00, 3725.97it/s]Loading weights:  35%|███▌      | 371/1058 [00:00<00:00, 3706.95it/s]Loading weights:  71%|███████   | 748/1058 [00:00<00:00, 3162.22it/s]Loading weights:  70%|███████   | 742/1058 [00:00<00:00, 3238.31it/s]Loading weights: 100%|██████████| 1058/1058 [00:00<00:00, 3129.91it/s]
+Loading weights: 100%|██████████| 1058/1058 [00:00<00:00, 3108.51it/s]
+Loading checkpoint shards:   0%|          | 0/14 [00:00<?, ?it/s]Loading checkpoint shards:  71%|███████▏  | 10/14 [00:00<00:00, 93.11it/s]Loading checkpoint shards: 100%|██████████| 14/14 [00:00<00:00, 91.09it/s]
+Loading checkpoint shards:   0%|          | 0/3 [00:00<?, ?it/s]/root/src/h3/.venv/lib/python3.12/site-packages/torch/nn/utils/weight_norm.py:144: FutureWarning: `torch.nn.utils.weight_norm` is deprecated in favor of `torch.nn.utils.parametrizations.weight_norm`.
+  WeightNorm.apply(module, name, dim)
+Loading checkpoint shards: 100%|██████████| 3/3 [00:00<00:00, 37.97it/s]
+/root/src/h3/.venv/lib/python3.12/site-packages/torch/nn/utils/weight_norm.py:144: FutureWarning: `torch.nn.utils.weight_norm` is deprecated in favor of `torch.nn.utils.parametrizations.weight_norm`.
+  WeightNorm.apply(module, name, dim)
+============================= HPU PT BRIDGE CONFIGURATION ON RANK = 0 ============= 
+ PT_HPU_LAZY_MODE = 1
+ PT_HPU_RECIPE_CACHE_CONFIG = /root/src/h3/hpu_port/.recipe_cache_rank0,false,8192,false
+ PT_HPU_MAX_COMPOUND_OP_SIZE = 9223372036854775807
+ PT_HPU_LAZY_ACC_PAR_MODE = 1
+ PT_HPU_ENABLE_REFINE_DYNAMIC_SHAPES = 0
+ PT_HPU_EAGER_PIPELINE_ENABLE = 1
+ PT_HPU_EAGER_COLLECTIVE_PIPELINE_ENABLE = 1
+ PT_HPU_ENABLE_LAZY_COLLECTIVES = 0
+---------------------------: System Configuration :---------------------------
+Num CPU Cores : 128
+CPU RAM       : 125 GB
+------------------------------------------------------------------------------
+Attention backends are an experimental feature and the API may be subject to change.
+[h3:r1]] placed transformer on hpu
+[h3:r1]] placed vae on hpu
+[h3:r1]] placed audio_vae on hpu
+[h3:r1]] CP device map: dit/vae/audio on hpu (replicated); te on cpu
+[h3:r1]] attention backend: habana_fused_sdpa (DiT + video VAE)
+[h3:r1]] rope cache installed on transformer.rope
+[h3:r1]] CP: token refiner kept replicated (2 processors un-stamped; refiner runs pre-packing on the full text run)
+[h3:r1]] context parallelism ON: ulysses=2 backend=hccl mesh=DeviceMesh((ring=1, ulysses=2), 'hpu', stride=(2, 1)) (seq sharded inside diffusers via the model's _cp_plan)
+[h3:r1]] CP: HPU graphs default OFF under CP (collectives inside graph capture are untested; H3_CP_GRAPHS=1 to force)
+[h3:r1]] graphs OFF: eager lazy mode with post-call mark_step
+[h3:r1]] per-block mark_step installed on 52 blocks
+[h3:r1]] block logging installed (12 block classes; H3_LOG_BLOCKS=0 to disable)
+Attention backends are an experimental feature and the API may be subject to change.
+[h3:r1]:block] > SequentialPipelineBlocks
+  [h3:r1]:block] > MiniMaxH3TextEncoderStep
+`enable_parallelism` is an experimental feature. The API may change in the future and breaking changes may be introduced at any time without warning.
+[h3:r0]] placed transformer on hpu
+[h3:r0]] placed vae on hpu
+[h3:r0]] placed audio_vae on hpu
+[h3:r0]] CP device map: dit/vae/audio on hpu (replicated); te on cpu
+[h3:r0]] attention backend: habana_fused_sdpa (DiT + video VAE)
+[h3:r0]] rope cache installed on transformer.rope
+[h3:r0]] CP: token refiner kept replicated (2 processors un-stamped; refiner runs pre-packing on the full text run)
+[h3:r0]] context parallelism ON: ulysses=2 backend=hccl mesh=DeviceMesh((ring=1, ulysses=2), 'hpu', stride=(2, 1)) (seq sharded inside diffusers via the model's _cp_plan)
+[h3:r0]] CP: HPU graphs default OFF under CP (collectives inside graph capture are untested; H3_CP_GRAPHS=1 to force)
+[h3:r0]] graphs OFF: eager lazy mode with post-call mark_step
+[h3:r0]] per-block mark_step installed on 52 blocks
+[h3:r1]] embed cache hit: /root/src/h3/hpu_port/.ecache/0be639c56afc729bbdfd0553cfcdb827514604c2bc47bd7cba02687153a0c4ff.pt
+  [h3:r1]:block] < MiniMaxH3TextEncoderStep: 0.010s
+  [h3:r1]:block] > MiniMaxH3NoKeyframeAnchorsStep
+  [h3:r1]:block] < MiniMaxH3NoKeyframeAnchorsStep: 0.000s
+  [h3:r1]:block] > MiniMaxH3PrepareLayoutStep
+[h3:r0]] block logging installed (12 block classes; H3_LOG_BLOCKS=0 to disable)
+[h3:r0]:block] > SequentialPipelineBlocks
+  [h3:r0]:block] > MiniMaxH3TextEncoderStep
+  [h3:r1]:block] < MiniMaxH3PrepareLayoutStep: 0.003s
+  [h3:r1]:block] > MiniMaxH3PrepareLatentsStep
+[h3:r0]] embed cache hit: /root/src/h3/hpu_port/.ecache/0be639c56afc729bbdfd0553cfcdb827514604c2bc47bd7cba02687153a0c4ff.pt
+  [h3:r0]:block] < MiniMaxH3TextEncoderStep: 0.010s
+  [h3:r0]:block] > MiniMaxH3NoKeyframeAnchorsStep
+  [h3:r0]:block] < MiniMaxH3NoKeyframeAnchorsStep: 0.000s
+  [h3:r0]:block] > MiniMaxH3PrepareLayoutStep
+  [h3:r0]:block] < MiniMaxH3PrepareLayoutStep: 0.003s
+  [h3:r0]:block] > MiniMaxH3PrepareLatentsStep
+[h3:r0]] CP noise determinism: video noise rows identical on all 2 ranks
+[h3:r0]] CP noise determinism: audio noise rows identical on all 2 ranks
+  [h3:r0]:block] < MiniMaxH3PrepareLatentsStep: 0.039s
+  [h3:r0]:block] > MiniMaxH3SetTimestepsStep
+  [h3:r1]:block] < MiniMaxH3PrepareLatentsStep: 0.050s
+  [h3:r1]:block] > MiniMaxH3SetTimestepsStep
+  [h3:r0]:block] < MiniMaxH3SetTimestepsStep: 0.002s
+  [h3:r0]:block] > MiniMaxH3DenoiseStep
+  [h3:r1]:block] < MiniMaxH3SetTimestepsStep: 0.002s
+  [h3:r1]:block] > MiniMaxH3DenoiseStep
+  0%|          | 0/1 [00:00<?, ?it/s]    [h3:r0]:block] > MiniMaxH3LoopDenoiser i=0 t=0.0000
+  0%|          | 0/1 [00:00<?, ?it/s]    [h3:r1]:block] > MiniMaxH3LoopDenoiser i=0 t=0.0000
+    [h3:r1]:block] < MiniMaxH3LoopDenoiser i=0 t=0.0000: 2.793s
+    [h3:r1]:block] > MiniMaxH3LoopSchedulerStep i=0 t=0.0000
+    [h3:r0]:block] < MiniMaxH3LoopDenoiser i=0 t=0.0000: 2.794s
+    [h3:r0]:block] > MiniMaxH3LoopSchedulerStep i=0 t=0.0000
+    [h3:r1]:block] < MiniMaxH3LoopSchedulerStep i=0 t=0.0000: 0.004s
+100%|██████████| 1/1 [00:02<00:00,  2.80s/it]100%|██████████| 1/1 [00:02<00:00,  2.80s/it]
+    [h3:r0]:block] < MiniMaxH3LoopSchedulerStep i=0 t=0.0000: 0.004s
+100%|██████████| 1/1 [00:02<00:00,  2.80s/it]  [h3:r1]:block] < MiniMaxH3DenoiseStep: 2.799s
+  [h3:r1]:block] > MiniMaxH3AfterDenoiseStep
+100%|██████████| 1/1 [00:02<00:00,  2.80s/it]
+  [h3:r1]:block] < MiniMaxH3AfterDenoiseStep: 0.001s
+  [h3:r1]:block] > _H3VideoDecodeStep
+  [h3:r0]:block] < MiniMaxH3DenoiseStep: 2.801s
+  [h3:r0]:block] > MiniMaxH3AfterDenoiseStep
+  [h3:r0]:block] < MiniMaxH3AfterDenoiseStep: 0.001s
+  [h3:r0]:block] > _H3VideoDecodeStep
+[h3:r0]] denoise complete: device synced at decode entry (0.80s)
+[h3:r1]] denoise complete: device synced at decode entry (0.80s)
+ModularPipeline.update_components: setting transformer to None (spec unchanged)
+[h3:r1]] DiT freed from HPU before decode: mem_get_info free 21.9 -> 21.9 GiB of 94.6 (accounting lags; release verified functional)
+  [h3:r1]:block] < _H3VideoDecodeStep: 1.177s
+  [h3:r1]:block] > _H3AudioDecodeStep
+  [h3:r1]:block] < _H3AudioDecodeStep: 0.000s
+[h3:r1]:block] < SequentialPipelineBlocks: 4.042s
+[h3:r1]] pipeline complete: device synced before export (0.00s)
+[h3:r1]] rank 1: rank0 owns export; nothing to write
+[h3:r0]] DiT freed from HPU before decode: mem_get_info free 21.9 -> 21.9 GiB of 94.6 (accounting lags; release verified functional)
+  [h3:r0]:block] ! _H3VideoDecodeStep: FAILED after 1.200s: AttributeError: 'BlockState' object has no attribute 'audio_latents'
+
+Error in block: (decode.video, _H3VideoDecodeStep)
+Error details: 'BlockState' object has no attribute 'audio_latents'
+Traceback:
+Traceback (most recent call last):
+  File "/root/src/h3/.venv/lib/python3.12/site-packages/diffusers/modular_pipelines/modular_pipeline.py", line 1145, in __call__
+    pipeline, state = block(pipeline, state)
+                      ^^^^^^^^^^^^^^^^^^^^^^
+  File "/root/src/h3/hpu_port/run_t2va.py", line 1322, in logged
+    out = orig(self, *args, **kwargs)
+          ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/root/src/h3/.venv/lib/python3.12/site-packages/torch/utils/_contextlib.py", line 124, in decorate_context
+    return func(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^
+  File "/root/src/h3/hpu_port/run_t2va.py", line 747, in __call__
+    block_state = _decode_via_subprocess(self, components, state, block_state)
+                  ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/root/src/h3/hpu_port/run_t2va.py", line 1900, in _decode_via_subprocess
+    if block_state.audio_latents is not None
+       ^^^^^^^^^^^^^^^^^^^^^^^^^
+AttributeError: 'BlockState' object has no attribute 'audio_latents'
+
+[h3:r0]:block] ! SequentialPipelineBlocks: FAILED after 4.070s: AttributeError: 'BlockState' object has no attribute 'audio_latents'
+Error in block: (SequentialPipelineBlocks):
+
+Traceback (most recent call last):
+  File "/root/src/h3/hpu_port/run_t2va.py", line 2008, in _cp_worker_entry
+    _cp_worker_main(rank, payload)
+  File "/root/src/h3/hpu_port/run_t2va.py", line 2040, in _cp_worker_main
+    timings = run_pipeline(args, info, rank=rank, world_size=world, device_map=device_map)
+              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/root/src/h3/hpu_port/run_t2va.py", line 2792, in run_pipeline
+    state = pipe(**{**kwargs, "num_inference_steps": run_steps})
+            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/root/src/h3/.venv/lib/python3.12/site-packages/diffusers/modular_pipelines/modular_pipeline.py", line 2927, in __call__
+    _, state = self._blocks(self, state)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/root/src/h3/hpu_port/run_t2va.py", line 1322, in logged
+    out = orig(self, *args, **kwargs)
+          ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/root/src/h3/.venv/lib/python3.12/site-packages/torch/utils/_contextlib.py", line 124, in decorate_context
+    return func(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^
+  File "/root/src/h3/.venv/lib/python3.12/site-packages/diffusers/modular_pipelines/modular_pipeline.py", line 1145, in __call__
+    pipeline, state = block(pipeline, state)
+                      ^^^^^^^^^^^^^^^^^^^^^^
+  File "/root/src/h3/hpu_port/run_t2va.py", line 1322, in logged
+    out = orig(self, *args, **kwargs)
+          ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/root/src/h3/.venv/lib/python3.12/site-packages/torch/utils/_contextlib.py", line 124, in decorate_context
+    return func(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^
+  File "/root/src/h3/hpu_port/run_t2va.py", line 747, in __call__
+    block_state = _decode_via_subprocess(self, components, state, block_state)
+                  ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/root/src/h3/hpu_port/run_t2va.py", line 1900, in _decode_via_subprocess
+    if block_state.audio_latents is not None
+       ^^^^^^^^^^^^^^^^^^^^^^^^^
+AttributeError: 'BlockState' object has no attribute 'audio_latents'
+[h3:r1]] timings: {"generate": 4.04, "export": 0.0, "mux": 0.0}
+[h3] CP timing merge (world=1):
+  phase                 r1   (max)
+  generate            4.04   4.04
+  export               0.0   0.00
+  mux                  0.0   0.00
+[h3] CP block totals (summed per class, generate run; host-side enqueue cost):
+  MiniMaxH3AfterDenoiseStep                      0.00
+  MiniMaxH3DenoiseStep                           2.80
+  MiniMaxH3LoopDenoiser                          2.79
+  MiniMaxH3LoopSchedulerStep                     0.00
+  MiniMaxH3NoKeyframeAnchorsStep                 0.00
+  MiniMaxH3PrepareLatentsStep                    0.05
+  MiniMaxH3PrepareLayoutStep                     0.00
+  MiniMaxH3SetTimestepsStep                      0.00
+  MiniMaxH3TextEncoderStep                       0.01
+  SequentialPipelineBlocks                       4.04
+  _H3AudioDecodeStep                             0.00
+  _H3VideoDecodeStep                             1.18
+[h3] CP FAILED: ['h3-cp-rank0'] (exit codes {'h3-cp-rank0': 1, 'h3-cp-rank1': 0})

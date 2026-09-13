@@ -1,0 +1,127 @@
+launch_h3.sh: GC plugin missing in /usr/lib/habanatools/habana_plugins; using /opt/habanalabs/habana_plugins
+[h3] plan: {
+  "workflow": "t2va",
+  "bucket_res": "r480",
+  "canvas": [
+    864,
+    480
+  ],
+  "duration_frames": 124,
+  "T_lat": 37,
+  "audio_latents": 207,
+  "rows_per_frame": 405,
+  "fl2va_extra_rows": 0,
+  "text_budget": 512,
+  "expected_packed_seq": 15911,
+  "steps": 2,
+  "seed": 42,
+  "device_map": {
+    "te": "cpu",
+    "dit": "hpu",
+    "vae": "hpu",
+    "audio": "hpu"
+  }
+}
+[h3] workdir: /root/src/h3/hpu_port/workdir/t2va
+Loading weights:   0%|          | 0/1058 [00:00<?, ?it/s]Loading weights:  34%|███▍      | 360/1058 [00:00<00:00, 3587.43it/s]Loading weights:  68%|██████▊   | 719/1058 [00:00<00:00, 3141.56it/s]Loading weights:  98%|█████████▊| 1037/1058 [00:00<00:00, 3132.71it/s]Loading weights: 100%|██████████| 1058/1058 [00:00<00:00, 3173.09it/s]
+Loading checkpoint shards:   0%|          | 0/14 [00:00<?, ?it/s]Loading checkpoint shards:  71%|███████▏  | 10/14 [00:00<00:00, 96.12it/s]Loading checkpoint shards: 100%|██████████| 14/14 [00:00<00:00, 96.48it/s]
+Loading checkpoint shards:   0%|          | 0/3 [00:00<?, ?it/s]Loading checkpoint shards: 100%|██████████| 3/3 [00:00<00:00, 38.50it/s]
+/root/src/h3/.venv/lib/python3.12/site-packages/torch/nn/utils/weight_norm.py:144: FutureWarning: `torch.nn.utils.weight_norm` is deprecated in favor of `torch.nn.utils.parametrizations.weight_norm`.
+  WeightNorm.apply(module, name, dim)
+============================= HPU PT BRIDGE CONFIGURATION ON RANK = 0 ============= 
+ PT_HPU_LAZY_MODE = 1
+ PT_HPU_RECIPE_CACHE_CONFIG = /root/src/h3/hpu_port/.recipe_cache,false,8192,false
+ PT_HPU_MAX_COMPOUND_OP_SIZE = 9223372036854775807
+ PT_HPU_LAZY_ACC_PAR_MODE = 1
+ PT_HPU_ENABLE_REFINE_DYNAMIC_SHAPES = 0
+ PT_HPU_EAGER_PIPELINE_ENABLE = 1
+ PT_HPU_EAGER_COLLECTIVE_PIPELINE_ENABLE = 1
+ PT_HPU_ENABLE_LAZY_COLLECTIVES = 0
+---------------------------: System Configuration :---------------------------
+Num CPU Cores : 128
+CPU RAM       : 125 GB
+------------------------------------------------------------------------------
+Attention backends are an experimental feature and the API may be subject to change.
+Attention backends are an experimental feature and the API may be subject to change.
+[h3] placed transformer on hpu
+[h3] placed vae on hpu
+[h3] placed audio_vae on hpu
+[h3] attention backend: habana_fused_sdpa (DiT + video VAE)
+[h3] rope cache installed on transformer.rope
+[h3] DiT wrapped into HPU graphs (per-bucket static shapes)
+[h3] graphs ON
+[h3] block logging installed (12 block classes; H3_LOG_BLOCKS=0 to disable)
+[h3:block] > SequentialPipelineBlocks
+  [h3:block] > MiniMaxH3TextEncoderStep
+[h3] embed cache hit: /root/src/h3/hpu_port/.ecache/0be639c56afc729bbdfd0553cfcdb827514604c2bc47bd7cba02687153a0c4ff.pt
+  [h3:block] < MiniMaxH3TextEncoderStep: 0.012s
+  [h3:block] > MiniMaxH3NoKeyframeAnchorsStep
+  [h3:block] < MiniMaxH3NoKeyframeAnchorsStep: 0.000s
+  [h3:block] > MiniMaxH3PrepareLayoutStep
+  [h3:block] < MiniMaxH3PrepareLayoutStep: 0.007s
+  [h3:block] > MiniMaxH3PrepareLatentsStep
+  [h3:block] < MiniMaxH3PrepareLatentsStep: 0.029s
+  [h3:block] > MiniMaxH3SetTimestepsStep
+  [h3:block] ! MiniMaxH3SetTimestepsStep: FAILED after 0.056s: RuntimeError: Graph compile failed. Recipe: .graph_dumps/HabanaFusedOpLazy_0_1, synStatus=synStatus 26 [Generic failure]. 
+Last synapse error: file: memcpy_engine_manager.cpp:77 function: selectEngine, scope: GC, failed condition: (replaceRet == REPLACE_NODE_SUCCESS), message: Failed replacing semantic node 1_memcpy_191_internal[Memcpy], replaceNodes retval: 1[REPLACE_FAILED_INVALID_NEW_NODES], graph name: .graph_dumps/HabanaFusedOpLazy_0_1
+
+Error in block: (denoise.set_timesteps, MiniMaxH3SetTimestepsStep)
+Error details: Graph compile failed. Recipe: .graph_dumps/HabanaFusedOpLazy_0_1, synStatus=synStatus 26 [Generic failure]. 
+Last synapse error: file: memcpy_engine_manager.cpp:77 function: selectEngine, scope: GC, failed condition: (replaceRet == REPLACE_NODE_SUCCESS), message: Failed replacing semantic node 1_memcpy_191_internal[Memcpy], replaceNodes retval: 1[REPLACE_FAILED_INVALID_NEW_NODES], graph name: .graph_dumps/HabanaFusedOpLazy_0_1
+Traceback:
+Traceback (most recent call last):
+  File "/root/src/h3/.venv/lib/python3.12/site-packages/diffusers/modular_pipelines/modular_pipeline.py", line 1145, in __call__
+    pipeline, state = block(pipeline, state)
+                      ^^^^^^^^^^^^^^^^^^^^^^
+  File "/root/src/h3/hpu_port/run_t2va.py", line 792, in logged
+    out = orig(self, *args, **kwargs)
+          ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/root/src/h3/.venv/lib/python3.12/site-packages/torch/utils/_contextlib.py", line 124, in decorate_context
+    return func(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^
+  File "/root/src/h3/hpu_port/run_t2va.py", line 703, in cpu_schedule_call
+    for tensor in self.build_row_timesteps(
+                  ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/root/src/h3/hpu_port/run_t2va.py", line 638, in bridged
+    args[i] = args[i].cpu()
+              ^^^^^^^^^^^^^
+RuntimeError: Graph compile failed. Recipe: .graph_dumps/HabanaFusedOpLazy_0_1, synStatus=synStatus 26 [Generic failure]. 
+Last synapse error: file: memcpy_engine_manager.cpp:77 function: selectEngine, scope: GC, failed condition: (replaceRet == REPLACE_NODE_SUCCESS), message: Failed replacing semantic node 1_memcpy_191_internal[Memcpy], replaceNodes retval: 1[REPLACE_FAILED_INVALID_NEW_NODES], graph name: .graph_dumps/HabanaFusedOpLazy_0_1
+
+[h3:block] ! SequentialPipelineBlocks: FAILED after 0.108s: RuntimeError: Graph compile failed. Recipe: .graph_dumps/HabanaFusedOpLazy_0_1, synStatus=synStatus 26 [Generic failure]. 
+Last synapse error: file: memcpy_engine_manager.cpp:77 function: selectEngine, scope: GC, failed condition: (replaceRet == REPLACE_NODE_SUCCESS), message: Failed replacing semantic node 1_memcpy_191_internal[Memcpy], replaceNodes retval: 1[REPLACE_FAILED_INVALID_NEW_NODES], graph name: .graph_dumps/HabanaFusedOpLazy_0_1
+Error in block: (SequentialPipelineBlocks):
+
+Traceback (most recent call last):
+  File "/root/src/h3/hpu_port/run_t2va.py", line 1678, in <module>
+    sys.exit(main())
+             ^^^^^^
+  File "/root/src/h3/hpu_port/run_t2va.py", line 1635, in main
+    state = pipe(**{**kwargs, "num_inference_steps": run_steps})
+            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/root/src/h3/.venv/lib/python3.12/site-packages/diffusers/modular_pipelines/modular_pipeline.py", line 2927, in __call__
+    _, state = self._blocks(self, state)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/root/src/h3/hpu_port/run_t2va.py", line 792, in logged
+    out = orig(self, *args, **kwargs)
+          ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/root/src/h3/.venv/lib/python3.12/site-packages/torch/utils/_contextlib.py", line 124, in decorate_context
+    return func(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^
+  File "/root/src/h3/.venv/lib/python3.12/site-packages/diffusers/modular_pipelines/modular_pipeline.py", line 1145, in __call__
+    pipeline, state = block(pipeline, state)
+                      ^^^^^^^^^^^^^^^^^^^^^^
+  File "/root/src/h3/hpu_port/run_t2va.py", line 792, in logged
+    out = orig(self, *args, **kwargs)
+          ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/root/src/h3/.venv/lib/python3.12/site-packages/torch/utils/_contextlib.py", line 124, in decorate_context
+    return func(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^
+  File "/root/src/h3/hpu_port/run_t2va.py", line 703, in cpu_schedule_call
+    for tensor in self.build_row_timesteps(
+                  ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/root/src/h3/hpu_port/run_t2va.py", line 638, in bridged
+    args[i] = args[i].cpu()
+              ^^^^^^^^^^^^^
+RuntimeError: Graph compile failed. Recipe: .graph_dumps/HabanaFusedOpLazy_0_1, synStatus=synStatus 26 [Generic failure]. 
+Last synapse error: file: memcpy_engine_manager.cpp:77 function: selectEngine, scope: GC, failed condition: (replaceRet == REPLACE_NODE_SUCCESS), message: Failed replacing semantic node 1_memcpy_191_internal[Memcpy], replaceNodes retval: 1[REPLACE_FAILED_INVALID_NEW_NODES], graph name: .graph_dumps/HabanaFusedOpLazy_0_1
