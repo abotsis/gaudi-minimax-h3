@@ -1,0 +1,39 @@
+[probe] torch=2.11.0a0+git009b5f6 seq=512 layers_probed=4
+[probe] hpu available=True count=8
+============================= HPU PT BRIDGE CONFIGURATION ON RANK = 0 ============= 
+ PT_HPU_LAZY_MODE = 1
+ PT_HPU_RECIPE_CACHE_CONFIG = ,false,1024,false
+ PT_HPU_MAX_COMPOUND_OP_SIZE = 9223372036854775807
+ PT_HPU_LAZY_ACC_PAR_MODE = 1
+ PT_HPU_ENABLE_REFINE_DYNAMIC_SHAPES = 0
+ PT_HPU_EAGER_PIPELINE_ENABLE = 1
+ PT_HPU_EAGER_COLLECTIVE_PIPELINE_ENABLE = 1
+ PT_HPU_ENABLE_LAZY_COLLECTIVES = 0
+---------------------------: System Configuration :---------------------------
+Num CPU Cores : 128
+CPU RAM       : 125 GB
+------------------------------------------------------------------------------
+[probe] mem: free=101.60 GB total=101.60 GB
+[probe] layer0 shard: model-00001-of-00014.safetensors
+[probe] H2D pinned 0.54 GB: 44.0 ms -> 12.2 GB/s (first=44.0 ms)
+[probe] real layer-0 page-in from mmap shard: 5.5 ms (0.98 GB, expected ~1.06 GB)
+[probe] layer forward warmup 0: 454.8 ms (first includes per-op lazy compile)
+[probe] layer forward warmup 1: 7.8 ms (first includes per-op lazy compile)
+[probe] layer forward warmup 2: 6.2 ms (first includes per-op lazy compile)
+[probe] layer forward steady: 5.81 ms (min 5.75 max 5.90)
+[probe] layer forward FLOPs ~ 0.6 TFLOP -> 101 TFLOPS eff.
+[probe] stream layer 0: page-in 1 ms | H2D copy 227 ms | compute 92 ms | total 320 ms
+[probe] stream layer 1: page-in 1 ms | H2D copy 209 ms | compute 6 ms | total 216 ms
+[probe] stream layer 2: page-in 1 ms | H2D copy 214 ms | compute 6 ms | total 221 ms
+Traceback (most recent call last):
+  File "/root/src/h3/hpu_port/te_stream_probe.py", line 285, in <module>
+    sys.exit(main())
+             ^^^^^^
+  File "/root/src/h3/hpu_port/te_stream_probe.py", line 238, in main
+    tensors = load_real_layer_cpu(shard0, i)  # layers 0..3 all in shard 1
+              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/root/src/h3/hpu_port/te_stream_probe.py", line 148, in load_real_layer_cpu
+    tensors[suffix] = f.get_tensor(name)
+                      ^^^^^^^^^^^^^^^^^^
+safetensors._safetensors_rust.SafetensorError: File does not contain tensor model.language_model.layers.3.mlp.down_proj.weight
+weight

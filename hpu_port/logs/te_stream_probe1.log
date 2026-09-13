@@ -1,0 +1,36 @@
+[probe] torch=2.11.0a0+git009b5f6 seq=512 layers_probed=4
+[probe] hpu available=True count=8
+============================= HPU PT BRIDGE CONFIGURATION ON RANK = 0 ============= 
+ PT_HPU_LAZY_MODE = 1
+ PT_HPU_RECIPE_CACHE_CONFIG = ,false,1024,false
+ PT_HPU_MAX_COMPOUND_OP_SIZE = 9223372036854775807
+ PT_HPU_LAZY_ACC_PAR_MODE = 1
+ PT_HPU_ENABLE_REFINE_DYNAMIC_SHAPES = 0
+ PT_HPU_EAGER_PIPELINE_ENABLE = 1
+ PT_HPU_EAGER_COLLECTIVE_PIPELINE_ENABLE = 1
+ PT_HPU_ENABLE_LAZY_COLLECTIVES = 0
+---------------------------: System Configuration :---------------------------
+Num CPU Cores : 128
+CPU RAM       : 125 GB
+------------------------------------------------------------------------------
+[probe] mem: free=101.60 GB total=101.60 GB
+[probe] layer0 shard: model-00001-of-00014.safetensors
+[probe] H2D pinned 0.01 GB: 0.9 ms -> 11.2 GB/s (first=2.2 ms)
+[probe] real layer-0 page-in from mmap shard: 3.3 ms (0.98 GB, expected ~1.06 GB)
+Traceback (most recent call last):
+  File "/root/src/h3/hpu_port/te_stream_probe.py", line 283, in <module>
+    sys.exit(main())
+             ^^^^^^
+  File "/root/src/h3/hpu_port/te_stream_probe.py", line 220, in main
+    y = layer(x, cos, sin)
+        ^^^^^^^^^^^^^^^^^^
+  File "/root/src/h3/.venv/lib/python3.12/site-packages/torch/nn/modules/module.py", line 1779, in _wrapped_call_impl
+    return self._call_impl(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/root/src/h3/.venv/lib/python3.12/site-packages/torch/nn/modules/module.py", line 1790, in _call_impl
+    return forward_call(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/root/src/h3/hpu_port/te_stream_probe.py", line 106, in forward
+    a = torch.nn.functional.scaled_dot_product_attention(q, k, v, is_causal=True)
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+RuntimeError: Batch dimension 1 of matmul inputs should be the same or at least one of them should be equal to 1. Got 64 and 8
