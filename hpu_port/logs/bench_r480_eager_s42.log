@@ -1,0 +1,182 @@
+launch_h3.sh: GC plugin missing in /usr/lib/habanatools/habana_plugins; using /opt/habanalabs/habana_plugins
+[h3] plan: {
+  "workflow": "t2va",
+  "bucket_res": "r480",
+  "canvas": [
+    864,
+    480
+  ],
+  "duration_frames": 124,
+  "T_lat": 37,
+  "audio_latents": 207,
+  "rows_per_frame": 405,
+  "fl2va_extra_rows": 0,
+  "text_budget": 2048,
+  "expected_packed_seq": 17447,
+  "steps": 8,
+  "seed": 42,
+  "device_map": {
+    "te": "stream",
+    "dit": "hpu",
+    "vae": "hpu",
+    "audio": "hpu"
+  }
+}
+[h3] server: HTTP API on :8032 (spool /root/src/h3/out/.server)
+[h3] workdir: /root/src/h3/hpu_port/workdir/t2va
+Loading weights:   0%|          | 0/1058 [00:00<?, ?it/s]Loading weights:  16%|█▋        | 173/1058 [00:00<00:00, 1724.30it/s]Loading weights:  33%|███▎      | 346/1058 [00:00<00:00, 1415.55it/s]Loading weights:  47%|████▋     | 492/1058 [00:00<00:00, 1433.29it/s]Loading weights:  60%|██████    | 638/1058 [00:00<00:00, 1404.79it/s]Loading weights:  74%|███████▎  | 780/1058 [00:00<00:00, 1408.61it/s]Loading weights:  89%|████████▉ | 943/1058 [00:00<00:00, 1475.97it/s]Loading weights: 100%|██████████| 1058/1058 [00:00<00:00, 1484.23it/s]
+Loading checkpoint shards:   0%|          | 0/14 [00:00<?, ?it/s]Loading checkpoint shards:  21%|██▏       | 3/14 [00:00<00:00, 23.29it/s]Loading checkpoint shards:  43%|████▎     | 6/14 [00:00<00:00, 22.16it/s]Loading checkpoint shards:  64%|██████▍   | 9/14 [00:00<00:00, 21.56it/s]Loading checkpoint shards:  86%|████████▌ | 12/14 [00:00<00:00, 22.11it/s]Loading checkpoint shards: 100%|██████████| 14/14 [00:00<00:00, 22.13it/s]
+Loading checkpoint shards:   0%|          | 0/3 [00:00<?, ?it/s]Loading checkpoint shards:  33%|███▎      | 1/3 [00:00<00:00,  7.06it/s]Loading checkpoint shards:  67%|██████▋   | 2/3 [00:00<00:00,  6.38it/s]Loading checkpoint shards: 100%|██████████| 3/3 [00:00<00:00,  9.25it/s]
+/root/src/h3/.venv/lib/python3.12/site-packages/torch/nn/utils/weight_norm.py:144: FutureWarning: `torch.nn.utils.weight_norm` is deprecated in favor of `torch.nn.utils.parametrizations.weight_norm`.
+  WeightNorm.apply(module, name, dim)
+============================= HPU PT BRIDGE CONFIGURATION ON RANK = 0 ============= 
+ PT_HPU_LAZY_MODE = 1
+ PT_HPU_RECIPE_CACHE_CONFIG = /tmp/h3bench_eager_recipes.g8krkr,false,8192,false
+ PT_HPU_MAX_COMPOUND_OP_SIZE = 9223372036854775807
+ PT_HPU_LAZY_ACC_PAR_MODE = 1
+ PT_HPU_ENABLE_REFINE_DYNAMIC_SHAPES = 0
+ PT_HPU_EAGER_PIPELINE_ENABLE = 1
+ PT_HPU_EAGER_COLLECTIVE_PIPELINE_ENABLE = 1
+ PT_HPU_ENABLE_LAZY_COLLECTIVES = 0
+---------------------------: System Configuration :---------------------------
+Num CPU Cores : 128
+CPU RAM       : 125 GB
+------------------------------------------------------------------------------
+[h3] placed transformer on hpu
+[h3] placed vae on hpu
+[h3] placed audio_vae on hpu
+Attention backends are an experimental feature and the API may be subject to change.
+Attention backends are an experimental feature and the API may be subject to change.
+[h3] attention backend: habana_fused_sdpa (DiT + video VAE)
+[h3] rope cache installed on transformer.rope
+[h3] graphs OFF: eager lazy mode with post-call mark_step
+[h3] per-block mark_step installed on 52 blocks
+[h3] per-block mark_step installed on 36 blocks
+[h3] VAE decoder per-block mark_step installed on 36 blocks
+[h3] per-block mark_step installed on 6 blocks
+[h3] VAE encoder per-block mark_step installed on 6 blocks
+[h3] server: dual-pipe ready (t2va + fl2va; shared weights)
+[te-stream] dropped 13 never-executed decoder layers
+[te-stream] dropped lm_head (never used; embeds are tied)
+[te-stream] rotary on hpu; vision tower + embed stay on CPU (bit-exact)
+[te-stream] activated on hpu (graphs OFF, eager recipes per region)
+[h3] TE streaming conditioner active (rank0; condition layer 50; graphs OFF)
+[h3] block logging installed (12 block classes; H3_LOG_BLOCKS=0 to disable)
+[h3] server: wf t2va anchors 0 frames 124 (T_lat 37, A 207, budget 2048+0, seq 17447)
+[h3] server: claimed job_dc6cf3ac85 (seq 27)
+[h3] === server request job_dc6cf3ac85 (t2va) ===
+[h3:block] > SequentialPipelineBlocks
+  [h3:block] > MiniMaxH3TextEncoderStep
+[h3] embed cache hit: /root/src/h3/hpu_port/.ecache/a2ad11cee2bd3383c5f0b169e32fd248040521e42847988ccbd74a2054892e81.pt
+  [h3:block] < MiniMaxH3TextEncoderStep: 0.032s
+  [h3:block] > MiniMaxH3NoKeyframeAnchorsStep
+  [h3:block] < MiniMaxH3NoKeyframeAnchorsStep: 0.000s
+  [h3:block] > MiniMaxH3PrepareLayoutStep
+  [h3:block] < MiniMaxH3PrepareLayoutStep: 0.016s
+  [h3:block] > MiniMaxH3PrepareLatentsStep
+  [h3:block] < MiniMaxH3PrepareLatentsStep: 0.012s
+  [h3:block] > MiniMaxH3SetTimestepsStep
+  [h3:block] < MiniMaxH3SetTimestepsStep: 0.198s
+  [h3:block] > MiniMaxH3DenoiseStep
+  0%|          | 0/7 [00:00<?, ?it/s]    [h3:block] > MiniMaxH3LoopDenoiser i=0 t=0.0000
+    [h3:block] < MiniMaxH3LoopDenoiser i=0 t=0.0000: 0.851s
+    [h3:block] > MiniMaxH3LoopSchedulerStep i=0 t=0.0000
+    [h3:block] < MiniMaxH3LoopSchedulerStep i=0 t=0.0000: 0.002s
+ 14%|█▍        | 1/7 [00:00<00:05,  1.17it/s]    [h3:block] > MiniMaxH3LoopDenoiser i=1 t=0.0137
+    [h3:block] < MiniMaxH3LoopDenoiser i=1 t=0.0137: 5.600s
+    [h3:block] > MiniMaxH3LoopSchedulerStep i=1 t=0.0137
+    [h3:block] < MiniMaxH3LoopSchedulerStep i=1 t=0.0137: 0.002s
+ 29%|██▊       | 2/7 [00:06<00:18,  3.65s/it]    [h3:block] > MiniMaxH3LoopDenoiser i=2 t=0.0323
+    [h3:block] < MiniMaxH3LoopDenoiser i=2 t=0.0323: 5.806s
+    [h3:block] > MiniMaxH3LoopSchedulerStep i=2 t=0.0323
+    [h3:block] < MiniMaxH3LoopSchedulerStep i=2 t=0.0323: 0.269s
+ 43%|████▎     | 3/7 [00:12<00:19,  4.76s/it]    [h3:block] > MiniMaxH3LoopDenoiser i=3 t=0.0588
+    [h3:block] < MiniMaxH3LoopDenoiser i=3 t=0.0588: 0.670s
+    [h3:block] > MiniMaxH3LoopSchedulerStep i=3 t=0.0588
+    [h3:block] < MiniMaxH3LoopSchedulerStep i=3 t=0.0588: 0.217s
+ 57%|█████▋    | 4/7 [00:13<00:09,  3.23s/it]    [h3:block] > MiniMaxH3LoopDenoiser i=4 t=0.1000
+    [h3:block] < MiniMaxH3LoopDenoiser i=4 t=0.1000: 6.880s
+    [h3:block] > MiniMaxH3LoopSchedulerStep i=4 t=0.1000
+    [h3:block] < MiniMaxH3LoopSchedulerStep i=4 t=0.1000: 0.274s
+ 71%|███████▏  | 5/7 [00:20<00:09,  4.64s/it]    [h3:block] > MiniMaxH3LoopDenoiser i=5 t=0.1724
+    [h3:block] < MiniMaxH3LoopDenoiser i=5 t=0.1724: 7.028s
+    [h3:block] > MiniMaxH3LoopSchedulerStep i=5 t=0.1724
+    [h3:block] < MiniMaxH3LoopSchedulerStep i=5 t=0.1724: 0.130s
+ 86%|████████▌ | 6/7 [00:27<00:05,  5.50s/it]    [h3:block] > MiniMaxH3LoopDenoiser i=6 t=0.3333
+    [h3:block] < MiniMaxH3LoopDenoiser i=6 t=0.3333: 7.028s
+    [h3:block] > MiniMaxH3LoopSchedulerStep i=6 t=0.3333
+    [h3:block] < MiniMaxH3LoopSchedulerStep i=6 t=0.3333: 0.002s
+100%|██████████| 7/7 [00:34<00:00,  6.00s/it]100%|██████████| 7/7 [00:34<00:00,  4.97s/it]
+  [h3:block] < MiniMaxH3DenoiseStep: 34.764s
+  [h3:block] > MiniMaxH3AfterDenoiseStep
+  [h3:block] < MiniMaxH3AfterDenoiseStep: 0.000s
+  [h3:block] > _H3VideoDecodeStep
+[h3] denoise complete: device synced at decode entry (22.02s)
+[h3] serve mode: DiT kept resident for the next request
+  [h3:block] < _H3VideoDecodeStep: 69.116s
+  [h3:block] > _H3AudioDecodeStep
+[h3] video decode complete: device synced at audio entry (0.00s)
+  [h3:block] < _H3AudioDecodeStep: 0.381s
+[h3:block] < SequentialPipelineBlocks: 104.520s
+[h3] pipeline complete: device synced before export (9.24s)
+[h3] wrote 124 frames to /root/src/h3/out/job_dc6cf3ac85_frames
+[h3] mux: /usr/bin/ffmpeg -y -framerate 24 -i /root/src/h3/out/job_dc6cf3ac85_frames/frame_%06d.png -i /root/src/h3/out/job_dc6cf3ac85.wav -filter_complex [0:v]format=yuv420p[v];[1:a]aresample=48000[a] -map [v] -map [a] -c:v libx264 -preset slow -crf 17 -c:a aac -b:a 192k -movflags +faststart -shortest /root/src/h3/out/job_dc6cf3ac85.mp4
+[h3] wrote /root/src/h3/out/job_dc6cf3ac85.mp4
+[h3] timings: {"generate": 104.52, "export": 23.04, "mux": 1.7}
+[h3] server: wf t2va anchors 0 frames 124 (T_lat 37, A 207, budget 2048+0, seq 17447)
+[h3] server: claimed job_993f32501c (seq 28)
+[h3] === server request job_993f32501c (t2va) ===
+[h3:block] > SequentialPipelineBlocks
+  [h3:block] > MiniMaxH3TextEncoderStep
+[h3] embed cache hit: /root/src/h3/hpu_port/.ecache/a2ad11cee2bd3383c5f0b169e32fd248040521e42847988ccbd74a2054892e81.pt
+  [h3:block] < MiniMaxH3TextEncoderStep: 0.018s
+  [h3:block] > MiniMaxH3NoKeyframeAnchorsStep
+  [h3:block] < MiniMaxH3NoKeyframeAnchorsStep: 0.000s
+  [h3:block] > MiniMaxH3PrepareLayoutStep
+  [h3:block] < MiniMaxH3PrepareLayoutStep: 0.006s
+  [h3:block] > MiniMaxH3PrepareLatentsStep
+  [h3:block] < MiniMaxH3PrepareLatentsStep: 0.016s
+  [h3:block] > MiniMaxH3SetTimestepsStep
+  [h3:block] < MiniMaxH3SetTimestepsStep: 0.009s
+  [h3:block] > MiniMaxH3DenoiseStep
+  0%|          | 0/7 [00:00<?, ?it/s]    [h3:block] > MiniMaxH3LoopDenoiser i=0 t=0.0000
+    [h3:block] < MiniMaxH3LoopDenoiser i=0 t=0.0000: 0.241s
+    [h3:block] > MiniMaxH3LoopSchedulerStep i=0 t=0.0000
+    [h3:block] < MiniMaxH3LoopSchedulerStep i=0 t=0.0000: 0.003s
+ 14%|█▍        | 1/7 [00:00<00:01,  4.11it/s]    [h3:block] > MiniMaxH3LoopDenoiser i=1 t=0.0137
+    [h3:block] < MiniMaxH3LoopDenoiser i=1 t=0.0137: 0.243s
+    [h3:block] > MiniMaxH3LoopSchedulerStep i=1 t=0.0137
+    [h3:block] < MiniMaxH3LoopSchedulerStep i=1 t=0.0137: 0.002s
+ 29%|██▊       | 2/7 [00:00<00:01,  4.08it/s]    [h3:block] > MiniMaxH3LoopDenoiser i=2 t=0.0323
+    [h3:block] < MiniMaxH3LoopDenoiser i=2 t=0.0323: 0.223s
+    [h3:block] > MiniMaxH3LoopSchedulerStep i=2 t=0.0323
+    [h3:block] < MiniMaxH3LoopSchedulerStep i=2 t=0.0323: 0.002s
+ 43%|████▎     | 3/7 [00:00<00:00,  4.24it/s]    [h3:block] > MiniMaxH3LoopDenoiser i=3 t=0.0588
+    [h3:block] < MiniMaxH3LoopDenoiser i=3 t=0.0588: 6.694s
+    [h3:block] > MiniMaxH3LoopSchedulerStep i=3 t=0.0588
+    [h3:block] < MiniMaxH3LoopSchedulerStep i=3 t=0.0588: 0.003s
+ 57%|█████▋    | 4/7 [00:07<00:08,  2.79s/it]    [h3:block] > MiniMaxH3LoopDenoiser i=4 t=0.1000
+    [h3:block] < MiniMaxH3LoopDenoiser i=4 t=0.1000: 7.300s
+    [h3:block] > MiniMaxH3LoopSchedulerStep i=4 t=0.1000
+    [h3:block] < MiniMaxH3LoopSchedulerStep i=4 t=0.1000: 0.002s
+ 71%|███████▏  | 5/7 [00:14<00:08,  4.42s/it]    [h3:block] > MiniMaxH3LoopDenoiser i=5 t=0.1724
+    [h3:block] < MiniMaxH3LoopDenoiser i=5 t=0.1724: 7.301s
+    [h3:block] > MiniMaxH3LoopSchedulerStep i=5 t=0.1724
+    [h3:block] < MiniMaxH3LoopSchedulerStep i=5 t=0.1724: 0.002s
+ 86%|████████▌ | 6/7 [00:22<00:05,  5.40s/it]    [h3:block] > MiniMaxH3LoopDenoiser i=6 t=0.3333
+    [h3:block] < MiniMaxH3LoopDenoiser i=6 t=0.3333: 7.302s
+    [h3:block] > MiniMaxH3LoopSchedulerStep i=6 t=0.3333
+    [h3:block] < MiniMaxH3LoopSchedulerStep i=6 t=0.3333: 0.002s
+100%|██████████| 7/7 [00:29<00:00,  6.02s/it]100%|██████████| 7/7 [00:29<00:00,  4.19s/it]
+  [h3:block] < MiniMaxH3DenoiseStep: 29.323s
+  [h3:block] > MiniMaxH3AfterDenoiseStep
+  [h3:block] < MiniMaxH3AfterDenoiseStep: 0.000s
+  [h3:block] > _H3VideoDecodeStep
+[h3] denoise complete: device synced at decode entry (21.82s)
+[h3] serve mode: DiT kept resident for the next request
+  [h3:block] < _H3VideoDecodeStep: 42.300s
+  [h3:block] > _H3AudioDecodeStep
+[h3] video decode complete: device synced at audio entry (0.00s)
+  [h3:block] < _H3AudioDecodeStep: 0.177s
+[h3:block] < SequentialPipelineBlocks: 71.850s
+[h3] pipeline complete: device synced before export (0.10s)
