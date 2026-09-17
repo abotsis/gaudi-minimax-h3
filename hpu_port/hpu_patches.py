@@ -43,6 +43,7 @@ import functools
 import inspect
 import logging
 import os
+import threading
 from dataclasses import dataclass, field
 from typing import Any
 
@@ -1077,6 +1078,167 @@ def patch_pipeline(pipe, wrap_graphs: bool | None = None) -> dict:
 
 
 wrap_hpu_graph = wrap_module_in_hpu_graph
+
+
+# ---------------------------------------------------------------------------
+# v122: static equal-split all-to-all for CP under HPU graphs.
+#
+# With PT_HPU_ENABLE_LAZY_COLLECTIVES=1 the HCCL plugin ACCEPTS collectives
+# into graph capture (v119's nonSFG rejection is gone), but the plugin's
+# JobThread validates funcol.all_to_all_single split lists against the
+# capture-recorded tensor BASE: diffusers' all_to_all_single_any_qkv_async
+# flattens (world,S,B,H,D)->(world*S,B,H,D) as a VIEW, so the base storage's
+# dim0 is `world` while the split lists sum to world*S -> "Split sizes doesn't
+# match total dim 0 size" (v122 cp2 abort). Eager never runs that validator.
+#
+# Our CP plan pads seq to % world == 0 always (boot plan + per-request
+# _server_apply_params), so the splits are ALWAYS uniform — and for uniform
+# splits funcol.all_to_all_single(x, None, None, group) is semantically
+# identical to explicit lists. The patch swaps both any_qkv/any_o helpers for
+# static-equal-split versions (also dropping gather_size_by_comm, an extra
+# all-gather collective that would otherwise ride inside the capture).
+# Kill switch: H3_CP_A2A_STATIC=0 restores stock diffusers helpers.
+# ---------------------------------------------------------------------------
+_cp_a2a_static_installed = False
+_capture_depth = threading.local()
+
+
+def _in_hpugraph_capture() -> bool:
+    """True while inside an HPUGraph capture_begin..capture_end on this thread.
+
+    HPU graph capture is lazy-IR tracing (NOT stream capture), so
+    is_current_stream_capturing() is always False here. We track depth by
+    wrapping the HPUGraph class methods themselves (the same class object
+    wrap_in_hpu_graph uses).
+    """
+    return getattr(_capture_depth, "depth", 0) > 0
+
+
+def _install_capture_depth_tracker() -> None:
+    if getattr(_capture_depth, "installed", False):
+        return
+    from habana_frameworks.torch.hpu import graphs as _gmod
+
+    orig_begin, orig_end = _gmod.HPUGraph.capture_begin, _gmod.HPUGraph.capture_end
+
+    def _begin(self, dry_run=False):
+        _capture_depth.depth = getattr(_capture_depth, "depth", 0) + 1
+        return orig_begin(self, dry_run)
+
+    def _end(self):
+        _capture_depth.depth = max(0, getattr(_capture_depth, "depth", 1) - 1)
+        return orig_end(self)
+
+    _gmod.HPUGraph.capture_begin = _begin
+    _gmod.HPUGraph.capture_end = _end
+    _capture_depth.installed = True
+
+
+def _install_cp_static_allsplit() -> None:
+    """Monkeypatch diffusers' Ulysses all-to-all helpers to equal-split form.
+
+    Only touches the module attributes the templated CP attention resolves at
+    call time (attention_dispatch.py lines ~2749-2793), so stock callers are
+    unaffected and the patch is inert at world_size==1.
+    """
+    global _cp_a2a_static_installed
+    if _cp_a2a_static_installed or os.getenv("H3_CP_A2A_STATIC", "1") != "1":
+        return
+    import threading
+
+    import torch.distributed as dist
+    from torch.distributed import _functional_collectives as funcol
+
+    from diffusers.models import attention_dispatch as ad
+
+    _install_capture_depth_tracker()
+
+    def _a2a_qkv_static(x, group, **kwargs):
+        """qkv exchange, classic sync API: in (B,S_LOCAL,H,D) -> wait() ->
+        (B,S_GLOBAL,H_LOCAL,D). No split lists anywhere (checkSplitSizes never
+        runs), no funcol/AsyncCollectiveTensor, no flatten views. Requires
+        S_LOCAL uniform (guaranteed: CP pad makes seq % world == 0)."""
+        world = dist.get_world_size(group=group)
+        B, S_LOCAL, H, D = x.shape
+        x, H_PAD = ad._maybe_pad_qkv_head(x, H, group)
+        H_LOCAL = (H + H_PAD) // world
+        # (B,S,world,HL,D) -> (world,S,B,HL,D), dim0=world, contiguous BASE
+        x = x.reshape(B, S_LOCAL, world, H_LOCAL, D).permute(2, 1, 0, 3, 4).contiguous()
+        import habana_frameworks.torch.core as _htcore
+        if not _in_hpugraph_capture():
+            _htcore.mark_step()  # materialize the contiguous copy BEFORE the collective
+        out = torch.empty_like(x)
+        dist.all_to_all_single(out, x, group=group)  # equal-split implicit
+
+        def wait():
+            # out[j] = rank j's seq block in my head group -> (B, world*S, HL, D)
+            o = out.permute(2, 0, 1, 3, 4).contiguous().reshape(
+                B, world * S_LOCAL, H_LOCAL, D
+            )
+            return ad._maybe_unpad_qkv_head(o, H_PAD, group)
+
+        return wait
+
+    def _a2a_o_static(x, group, **kwargs):
+        """output exchange, classic sync API: in (B,S_GLOBAL,H_LOCAL,D) ->
+        wait() -> (B,S_LOCAL,H_GLOBAL,D). dim0=S_GLOBAL splits evenly into
+        world chunks of S_LOCAL (CP pad guarantee)."""
+        world = dist.get_world_size(group=group)
+        H = kwargs.get("NUM_QO_HEAD")
+        x, H_PAD = ad._maybe_pad_o_head(x, H, group)
+        B, S_GLOBAL, H_LOCAL, D = x.shape
+        if S_GLOBAL % world != 0:
+            raise RuntimeError(
+                f"static a2a: S_GLOBAL {S_GLOBAL} not divisible by world {world} "
+                f"(CP pad guarantee violated)"
+            )
+        S_LOCAL = S_GLOBAL // world
+        x = x.permute(1, 0, 2, 3).contiguous()  # (S_GLOBAL,B,HL,D), dim0=S_GLOBAL
+        import habana_frameworks.torch.core as _htcore
+        if not _in_hpugraph_capture():
+            _htcore.mark_step()  # materialize before the collective (lazy-base elision guard)
+        out = torch.empty_like(x)
+        dist.all_to_all_single(out, x, group=group)  # equal-split implicit
+
+        def wait():
+            # out[j*S:(j+1)*S] = rank j's seq block in my head group
+            o = out.reshape(world, S_LOCAL, B, H_LOCAL, D)
+            o = o.permute(2, 1, 0, 3, 4).contiguous()
+            o = o.reshape(B, S_LOCAL, world * H_LOCAL, D)
+            return ad._maybe_unpad_o_head(o, H_PAD, group)
+
+        return wait
+
+    ad.all_to_all_single_any_qkv_async = _a2a_qkv_static
+    ad.all_to_all_single_any_o_async = _a2a_o_static
+
+    # v125: TemplatedUlyssesAttention (the NON-anything variant, used when
+    # ulysses_anything=False — our config) calls ad._all_to_all_single, which
+    # does x.flatten() -> 1-D VIEW -> funcol.all_to_all_single(None,None).
+    # Under PT_HPU_ENABLE_LAZY_COLLECTIVES=1 the HCCL job thread derives equal
+    # splits for the flat length N but validates against the 5-D BASE tensor
+    # (dim0=world=2) -> "Split sizes doesn't match total dim 0 size" abort.
+    # Replace with the classic sync API on the (world,S,B,HL,D) contiguous
+    # base itself: dim0=world, implicit equal splits, no lists, no views.
+    def _a2a_static_base(x, group):
+        if not _in_hpugraph_capture():
+            # eager: materialize producer ops so the lazy-collective job thread
+            # validates splits against the REAL buffer (not an elided base).
+            import habana_frameworks.torch.core as _htcore
+
+            _htcore.mark_step()
+        # under capture: NO mark_step — a step closure mid-capture eagerly
+        # materializes the whole pending IR alongside the capture's own
+        # allocations (v127: PT_DEVMEM OOM, 119 MB short). Inside a captured
+        # region the collective rides the recipe; no job-thread split check.
+        out = torch.empty_like(x)
+        dist.all_to_all_single(out, x, group=group)  # dim0=world, equal-split implicit
+        return out
+
+    ad._all_to_all_single = _a2a_static_base
+    _cp_a2a_static_installed = True
+    print("[h3] CP: static equal-split all-to-all installed (HPU-graph capture safe)", flush=True)
+
 
 # re-dispatch: post-venv-fix pyright verification (whitespace only)
 

@@ -1986,10 +1986,24 @@ def apply_text_budget(
 # ---------------------------------------------------------------------------
 
 
+import torch.nn as _nn
+
+
 def wrap_transformer_graphs(pipe, transformer):
     """`wrap_in_hpu_graph(transformer)` per bucket (Wan precedent
     `pipeline_wan_i2v.py:154-160`). Static per-bucket shapes (B=1, seq) make
-    the DiT a per-bucket graph asset."""
+    the DiT a per-bucket graph asset.
+
+    v131: H3_PER_BLOCK_GRAPHS=1 wraps EACH transformer block instead of the
+    whole transformer — the GC compiles one recipe per block, so cold-capture
+    host RSS is bounded by the LARGEST single block instead of the 5.4k-node
+    whole-DiT graph (v121 kernel-OOM at 92 GB). Combined with
+    PT_HPUGRAPH_DISABLE_TENSOR_CACHE=1 (intermediates freed after each replay
+    instead of retained per graph) this attacks both the host-IR and device
+    ceilings h3expert identified. Replay boundary overhead ~0.5 ms/block
+    (vllm-gaudi measurement) — negligible vs the device-bound step.
+    """
+    per_block = _env_bool("H3_PER_BLOCK_GRAPHS", False)
     shim = _try_module("graphs")
     apply = getattr(shim, "wrap_in_hpu_graph", None) if shim is not None else None
     if apply is None:
@@ -2001,7 +2015,21 @@ def wrap_transformer_graphs(pipe, transformer):
             )
             return transformer
         apply = wrap_in_hpu_graph
-    wrapped = apply(transformer)
+    if per_block:
+        import habana_frameworks.torch.core as _htcore
+
+        _htcore.mark_step()
+        blocks = list(transformer.transformer_blocks)
+        for _bi, _blk in enumerate(blocks):
+            blocks[_bi] = apply(_blk, disable_tensor_cache=True)
+        transformer.transformer_blocks = _nn.ModuleList(blocks)
+        wrapped = transformer
+        print(
+            f"[h3] DiT wrapped per-block: {len(blocks)} block graphs "
+            "(disable_tensor_cache=True)"
+        )
+    else:
+        wrapped = apply(transformer)
     if wrapped is not transformer:
         try:
             pipe.update_components(transformer=wrapped)
@@ -2065,6 +2093,45 @@ def apply_mark_step_pipe(pipe, transformer, text_encoder, include_transformer: b
 # ---------------------------------------------------------------------------
 # Embed cache (design 4.1)
 # ---------------------------------------------------------------------------
+
+
+def _fit_anchor_image(img, width: int, height: int, mode: str):
+    """v117: fl2va anchor conditioning geometry.
+
+    Stock fl2va stretches the geometry anchor onto the canvas (diffusers
+    before_encoder.py MiniMaxH3FL2VASetupStep, resize_mode="default" = PIL
+    LANCZOS resize). For an anchor whose aspect differs from the canvas that
+    distorts subjects (4:3 photo on the 1.75 r768 canvas -> 31% horizontal
+    stretch, measured frame0-vs-stretched-init cos 0.995). Server-side fit
+    modes replace the stretch:
+      stretch  stock behavior: plain resize to (width, height)
+      crop     cover-crop with the released model's own follower-anchor
+               rounding (scale=max, round, (src-w)//2 centering) — full-bleed,
+               top/bottom content lost
+      pad      ImageOps.pad: undistorted fit + letterbox bars. The bars are
+               part of the conditioning (frame0 matches the padded anchor).
+    Called per request in the server claim block; a same-size anchor passes
+    through untouched for every mode.
+    """
+    from PIL import Image, ImageOps
+
+    w, h = img.size
+    if (w, h) == (width, height):
+        return img
+    if mode == "stretch":
+        return img.resize((width, height), Image.LANCZOS)
+    if mode == "crop":
+        scale = max(width / w, height / h)
+        rw = max(width, round(w * scale))
+        rh = max(height, round(h * scale))
+        left = max(0, (rw - width) // 2)
+        top = max(0, (rh - height) // 2)
+        return img.resize((rw, rh), Image.LANCZOS).crop(
+            (left, top, left + width, top + height)
+        )
+    if mode == "pad":
+        return ImageOps.pad(img, (width, height), method=Image.LANCZOS, color=(0, 0, 0))
+    raise ValueError(f"bad anchor fit mode {mode!r} (stretch|crop|pad)")
 
 
 def embed_cache_key(
@@ -2233,6 +2300,13 @@ def _cp_enable_parallelism(transformer, world_size: int, backend: str):
         device_type, mesh_shape=(1, world_size), mesh_dim_names=("ring", "ulysses")
     )
     cp_cfg = ContextParallelConfig(ulysses_degree=world_size, mesh=mesh)
+    if backend == "hccl":
+        # v122: equal-split all-to-alls — the HCCL JobThread validates capture
+        # split lists against the tensor BASE (view dim0 mismatch abort). See
+        # _install_cp_static_allsplit in hpu_patches.py.
+        import hpu_patches as _hp
+
+        _hp._install_cp_static_allsplit()
     transformer.enable_parallelism(config=cp_cfg)
     # enable_parallelism stamps `_parallel_config` on EVERY attention processor
     # in the model -- including the token refiner's. The refiner runs on the
@@ -2279,11 +2353,18 @@ def _cp_verify_identical_cpu(tensor, tag: str) -> None:
     if t.device.type != "cpu":
         t = t.to("cpu")
     digest = hashlib.sha256(t.contiguous().to(torch.float32).numpy().tobytes()).digest()[:8]
-    local = torch.frombuffer(bytearray(digest), dtype=torch.uint8).clone()
+    # v117: fold the server job id into the gathered payload. In the v115
+    # desync the ranks held IDENTICAL noise (same seed) while serving
+    # DIFFERENT jobs, so the tensor digest alone passed spuriously. Gathering
+    # 8 B tensor digest + 4 B job-id digest makes a cross-job desync fail
+    # loudly instead of silently cross-contaminating outputs.
+    _srv_job = str(_RUNTIME.get("_server_job") or "")
+    job_digest = hashlib.sha256(_srv_job.encode()).digest()[:4]
+    local = torch.frombuffer(bytearray(digest + job_digest), dtype=torch.uint8).clone()
     world = dist.get_world_size()
     # hccl collectives only accept HPU-resident tensors ("No backend type
     # associated with device type cpu"); gloo (the CPU harness) only cpu.
-    # Place the 8-byte digest on the backend's device for the gather.
+    # Place the 12-byte digest on the backend's device for the gather.
     if dist.get_backend() == "hccl":
         gather_dev = torch.device("hpu")
     else:
@@ -2291,11 +2372,18 @@ def _cp_verify_identical_cpu(tensor, tag: str) -> None:
     local_dev = local.to(gather_dev)
     gathered = [torch.empty_like(local_dev) for _ in range(world)]
     dist.all_gather(gathered, local_dev)
-    seen = {bytes(g.cpu().tolist()) for g in gathered}
-    if len(seen) != 1:
+    tensor_dg = {bytes(g.cpu().tolist()[:8]) for g in gathered}
+    job_dg = {bytes(g.cpu().tolist()[8:]) for g in gathered}
+    if len(tensor_dg) != 1:
         raise RuntimeError(
-            f"CP noise determinism FAILED for {tag}: {len(seen)} distinct draws across "
+            f"CP noise determinism FAILED for {tag}: {len(tensor_dg)} distinct draws across "
             f"{world} ranks (seed/generator diverged)"
+        )
+    if len(job_dg) != 1:
+        raise RuntimeError(
+            f"CP noise determinism FAILED for {tag}: RANK DESYNC — ranks are serving "
+            f"{len(job_dg)} different job contexts across {world} ranks "
+            f"(stale serve_sync state or missed claim broadcast)"
         )
     if dist.get_rank() == 0:
         print(f"[h3] CP noise determinism: {tag} identical on all {world} ranks", flush=True)
@@ -3608,7 +3696,7 @@ def parse_args(argv=None):
     p = argparse.ArgumentParser(
         description="Run MiniMax-H3 t2va/fl2va (HPU port runner)."
     )
-    p.add_argument("--prompt", required=True)
+    p.add_argument("--prompt", required="--server" not in (argv or sys.argv[1:]))  # not required in --server mode (prompt is per-request)
     p.add_argument("--repo", default=REPO_DEFAULT)
     p.add_argument("--workflow", choices=["t2va", "fl2va"], default="t2va")
     p.add_argument(
@@ -3812,6 +3900,42 @@ def main(argv=None) -> int:
         _sdir = out_path.parent / ".server"
         (_sdir / "spool").mkdir(parents=True, exist_ok=True)
         (_sdir / "jobs").mkdir(parents=True, exist_ok=True)
+        # v117 boot hygiene: spool/jobs/serve_sync state PERSISTS across boots
+        # (the out dir is never wiped). Stale state caused the v115 desync:
+        # ranks 1..N-1 initialized last_seq=0 and immediately adopted the
+        # PREVIOUS boot's current.json (seq 6) while rank0's claim loop
+        # scanned the spool and claimed seq 9 — a one-job offset. Identical
+        # plans + seed made every collective shape-match and the noise digest
+        # pass spuriously; both outputs were cross-job chimeras.
+        _syncdir = _sdir / "serve_sync"
+        _syncdir.mkdir(parents=True, exist_ok=True)
+        # (a) a leftover SHUTDOWN marker would make the new pool exit instantly
+        (_sdir / "SHUTDOWN").unlink(missing_ok=True)
+        (_syncdir / "SHUTDOWN").unlink(missing_ok=True)
+        # (b) the broadcast file must never survive a boot: ranks pace off it,
+        # so it must not exist until rank0 publishes THIS boot's first claim
+        (_syncdir / "current.json").unlink(missing_ok=True)
+        for _stale in _syncdir.glob("req*.done"):
+            _stale.unlink(missing_ok=True)
+        # (b2) the serve-pacing markers live in <out>/.serve_sync (out_path
+        # parent, NOT the .server dir) and ALSO persist across boots — a stale
+        # req0.done lets ranks 1..N-1 skip the export-pacing wait on this
+        # boot's request #2 and race rank0's export collectives.
+        _servesync = out_path.parent / ".serve_sync"
+        if _servesync.is_dir():
+            for _stale in _servesync.glob("req*.done"):
+                _stale.unlink(missing_ok=True)
+        # (c) jobs still marked "running" belong to a dead pool
+        for _jr in sorted((_sdir / "jobs").glob("job_*.json")):
+            try:
+                _jd = json.loads(_jr.read_text())
+            except Exception:
+                continue
+            if _jd.get("status") == "running":
+                _jd["status"] = "failed"
+                _jd["error"] = "stale: worker pool exited before completion (previous boot)"
+                _jr.write_text(json.dumps(_jd))
+                print(f"[h3] server: stale running job {_jd.get('id')} marked failed at boot", flush=True)
         os.environ["H3_SERVER_MODE"] = "1"
         os.environ["H3_SERVER_DIR"] = str(_sdir)
         import h3_server as _srv
@@ -4267,6 +4391,13 @@ def run_pipeline(
     fingerprint = (
         f"te{te_layer}/{width}x{height}/{frames}/{args.workflow}/{device_map.get('te', 'cpu')}"
     )
+    if args.prompt is None:
+        # --server mode: no boot prompt (requests carry their own). The
+        # boot-time embed-cache key is a placeholder; _server_apply_params
+        # rebuilds it per request. Outside --server this is unreachable
+        # (argparse requires --prompt).
+        assert _env_bool("H3_SERVER_MODE", False), "--prompt is required outside --server mode"
+        args.prompt = ""
     budget_cache_key = embed_cache_key(
         args.workflow, args.prompt, args.keyframe, fingerprint
     )
@@ -4377,14 +4508,32 @@ def run_pipeline(
             f"seq {_expected + _pad})",
             flush=True,
         )
+        # v121: guard the graph-capture host-IR budget. Under CP=1 with HPU
+        # graphs, a bucket NOT already in the recipe cache triggers a fresh
+        # FULL graph capture whose host-side IR is roughly linear in seq
+        # (r480/124f ~ seq 17.4k fits; r768/192f ~ seq 60k ballooned process
+        # RSS to 86.6 GB and the kernel OOM-killed the whole server
+        # mid-capture, leaving a 96 GiB ghost pool on the card). Reject HERE
+        # (pre-publish, v103b discipline) so only this job fails. Remedies:
+        # --cp 4/8 (per-rank graphs shrink by N), restart with --no-graphs
+        # (per-block mark_steps bound the IR), or raise H3_MAX_GRAPH_SEQ.
+        _gcap = int(os.environ.get("H3_MAX_GRAPH_SEQ") or 20000)
+        if world_size == 1 and graphs_on and (_expected + _pad) > _gcap:
+            raise ValueError(
+                f"packed seq {_expected + _pad} exceeds H3_MAX_GRAPH_SEQ={_gcap} "
+                f"under CP=1 with HPU graphs (graph-capture host IR OOM, v121): "
+                f"use --cp 4/8, restart the server with --no-graphs, or set "
+                f"H3_MAX_GRAPH_SEQ higher"
+            )
         # Per-request embed cache key (encode-once-broadcast keyed on prompt
-        # AND shape AND workflow AND keyframe bytes).
+        # AND shape AND workflow AND keyframe bytes AND anchor fit mode).
         _kfs = [k for k in (req.get("init_image"), req.get("end_image")) if k]
+        _fit = str(req.get("fit") or "stretch").lower()
         _te_layer = getattr(pipe, "text_encoder_layer", None)
         _fp = (
             f"te{_te_layer}/{kwargs.get('width') or info['canvas'][0]}x"
             f"{kwargs.get('height') or info['canvas'][1]}/"
-            f"{kwargs.get('num_frames') or info['duration_frames']}/{_wf}"
+            f"{kwargs.get('num_frames') or info['duration_frames']}/{_wf}/fit{_fit}"
         )
         _ck = embed_cache_key(_wf, req["prompt"], _kfs, _fp)
         _encoders = _import_h3_module("encoders")
@@ -4434,9 +4583,18 @@ def run_pipeline(
                 _pipes = _RUNTIME.get("_server_pipes") or {}
                 _pipe_i = _pipes.get("fl2va", pipe)
                 from PIL import Image as _PILImage
-                kwargs["image"] = _PILImage.open(_req["init_image"]).convert("RGB")
+                _fit = str(_req.get("fit") or "stretch").lower()
+                kwargs["image"] = _fit_anchor_image(
+                    _PILImage.open(_req["init_image"]).convert("RGB"),
+                    kwargs["width"], kwargs["height"], _fit,
+                )
                 if _req.get("end_image"):
-                    kwargs["last_image"] = _PILImage.open(_req["end_image"]).convert("RGB")
+                    kwargs["last_image"] = _fit_anchor_image(
+                        _PILImage.open(_req["end_image"]).convert("RGB"),
+                        kwargs["width"], kwargs["height"], _fit,
+                    )
+                if _fit != "stretch":
+                    print(f"[h3] server: anchor fit {_fit}", flush=True)
             if _req.get("negative_prompt"):
                 print(f"[h3] server: negative_prompt ignored in v1", flush=True)
             print(f"[h3] === server request {out_path.stem} ({_wf}) ===", flush=True)

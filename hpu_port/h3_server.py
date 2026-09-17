@@ -136,7 +136,7 @@ class _Handler(BaseHTTPRequestHandler):
                             "per_request_frames": True,
                             "per_request_resolution": "snap to supported buckets",
                             "img2vid": True,
-                            "img2vid_note": "init_image = start anchor (fl2va); end_image optional end anchor; portrait requests snap to the canonical landscape bucket",
+                            "img2vid_note": "init_image = start anchor (fl2va); end_image optional end anchor; portrait requests snap to the canonical landscape bucket; fit=stretch|crop|pad controls anchor geometry (default stretch = stock behavior)",
                             "audio": True,
                         }
                     },
@@ -184,6 +184,17 @@ class _Handler(BaseHTTPRequestHandler):
             if not prompt:
                 self._send_json(400, {"error": "prompt is required"})
                 return
+            # v117: anchor geometry fit for fl2va. Stock fl2va STRETCHES the
+            # geometry anchor onto the canvas (diffusers before_encoder.py
+            # MiniMaxH3FL2VASetupStep); a 4:3 photo on the 1.75 landscape
+            # canvas comes out 31% horizontally stretched. "crop" cover-crops
+            # (the released model's own follower-anchor arithmetic), "pad"
+            # letterboxes (undistorted subjects, bars are part of the video —
+            # frame0 matches the padded anchor). Default "stretch" = stock.
+            fit = str(req.get("fit") or "stretch").lower()
+            if fit not in ("stretch", "crop", "pad"):
+                self._send_json(400, {"error": f"fit {fit!r} unsupported (stretch|crop|pad)"})
+                return
             fmt = (req.get("output_format") or "mp4").lower()
             if fmt != "mp4":
                 self._send_json(400, {"error": f"output_format {fmt!r} unsupported; this backend emits mp4 (H.264+AAC)"})
@@ -212,6 +223,7 @@ class _Handler(BaseHTTPRequestHandler):
                 "kind": "vid_gen",
                 "prompt": prompt,
                 "negative_prompt": req.get("negative_prompt") or "",
+                "fit": fit,
                 "steps": int((req.get("sample_params") or {}).get("sample_steps") or _server_config(self.server_dir).get("steps", 4)),
                 "seed": int(req.get("seed", -1)),
                 "video_frames": req.get("video_frames"),
